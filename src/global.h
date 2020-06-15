@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/System.hpp>
 #include <chrono>
+#include <random>
 /* */
 #include <SFML/Graphics.hpp>
 
@@ -10,7 +11,7 @@ namespace global {
 //
 const float ftStep = 16.f;  // fixed update interval in ms
 const float keyInputStep = ftStep;
-
+inline std::default_random_engine rand_engine;
 //
 // free functions
 //
@@ -27,7 +28,7 @@ std::pair<float, float> calc_frames_per_second(
 bool check_for_window_close(sf::RenderWindow& window, sf::Event& event);
 
 // handle user input
-void handle_keyboard_input(float timer, const float maxTime);
+bool handle_keyboard_input(float timer, const float maxTime, sf::RenderWindow& window);
 
 // get current date and time as string
 const std::string return_current_time_and_date();

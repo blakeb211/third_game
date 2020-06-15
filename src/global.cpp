@@ -40,10 +40,11 @@ bool global::check_for_window_close(RenderWindow& window, Event& event) {
 }
 
 // get user input
-void global::handle_keyboard_input(float timer, const float maxTime) {
-  if (timer < maxTime) return;
+bool global::handle_keyboard_input(float timer, const float maxTime, RenderWindow& window) {
+  if (timer < maxTime) return false; // don't exit main game loop
   if (Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-    cerr << "Esc key pressed" << endl;
+    window.close();
+    return true; // exit main game loop
   }
   if (Keyboard::isKeyPressed(sf::Keyboard::Left)) {
     cerr << "Left key pressed" << endl;
@@ -58,6 +59,7 @@ void global::handle_keyboard_input(float timer, const float maxTime) {
     cerr << "LShift key pressed" << endl;
   }
   timer = 0.f;
+  return false; // don't exit the main game loop
 }
 
 // free function to get current date and time as string

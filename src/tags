@@ -4,12 +4,1225 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.7	//
-calc_frames_per_second	global.cpp	/^pair<float, float> global::calc_frames_per_second($/;"	f	class:global
-check_for_window_close	global.cpp	/^bool global::check_for_window_close(RenderWindow& window, Event& event) {$/;"	f	class:global
-create_log_file	global.cpp	/^unique_ptr<fstream> global::create_log_file(const string currDateTime) {$/;"	f	class:global
-create_window	global.cpp	/^unique_ptr<RenderWindow> global::create_window() {$/;"	f	class:global
-handle_keyboard_input	global.cpp	/^void global::handle_keyboard_input(float timer, const float maxTime) {$/;"	f	class:global
-high_res_clock	global.cpp	/^typedef chrono::high_resolution_clock high_res_clock;$/;"	t	file:
-high_res_clock	main1.cpp	/^typedef chrono::high_resolution_clock high_res_clock;$/;"	t	file:
-main	main1.cpp	/^int main() {$/;"	f
-return_current_time_and_date	global.cpp	/^const std::string return_current_time_and_date() {$/;"	f
+A	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        A = 0,        \/\/\/< The A key$/;"	e	enum:sf::Keyboard::Key
+Accelerometer	c:\SFML\include\SFML\Window\Sensor.hpp	/^        Accelerometer,    \/\/\/< Measures the raw acceleration (m\/s^2)$/;"	e	enum:sf::Sensor::Type
+Accepted	c:\SFML\include\SFML\Network\Http.hpp	/^            Accepted       = 202, \/\/\/< The request has been accepted, but will be processed later by the server$/;"	e	enum:sf::Http::Response::Status
+Add	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^        Add,            \/\/\/< Pixel = Src * SrcFactor + Dst * DstFactor$/;"	e	enum:sf::BlendMode::Equation
+Add	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Add,          \/\/\/< The + key$/;"	e	enum:sf::Keyboard::Key
+AlResource	c:\SFML\include\SFML\Audio\AlResource.hpp	/^class SFML_AUDIO_API AlResource$/;"	c	namespace:sf
+Any	c:\SFML\include\SFML\Network\IpAddress.hpp	/^    static const IpAddress Any;       \/\/\/< Value representing any address (0.0.0.0)$/;"	m	class:sf::IpAddress
+AnyPort	c:\SFML\include\SFML\Network\Socket.hpp	/^        AnyPort = 0 \/\/\/< Special value that tells the system to pick any available port$/;"	e	enum:sf::Socket::__anon6
+Arrow	c:\SFML\include\SFML\Window\Cursor.hpp	/^        Arrow,                  \/\/\/< Arrow cursor (default)$/;"	e	enum:sf::Cursor::Type
+ArrowWait	c:\SFML\include\SFML\Window\Cursor.hpp	/^        ArrowWait,              \/\/\/< Busy arrow cursor$/;"	e	enum:sf::Cursor::Type
+Ascii	c:\SFML\include\SFML\Network\Ftp.hpp	/^        Ascii,  \/\/\/< Text mode using ASCII encoding$/;"	e	enum:sf::Ftp::TransferMode
+Attribute	c:\SFML\include\SFML\Window\ContextSettings.hpp	/^    enum Attribute$/;"	g	struct:sf::ContextSettings
+Axis	c:\SFML\include\SFML\Window\Joystick.hpp	/^    enum Axis$/;"	g	class:sf::Joystick
+AxisCount	c:\SFML\include\SFML\Window\Joystick.hpp	/^        AxisCount   = 8   \/\/\/< Maximum number of supported axes$/;"	e	enum:sf::Joystick::__anon9
+B	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        B,            \/\/\/< The B key$/;"	e	enum:sf::Keyboard::Key
+BackSlash	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        BackSlash = Backslash,    \/\/\/< \\deprecated Use Backslash instead$/;"	e	enum:sf::Keyboard::Key
+BackSpace	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        BackSpace = Backspace,    \/\/\/< \\deprecated Use Backspace instead$/;"	e	enum:sf::Keyboard::Key
+Backslash	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Backslash,    \/\/\/< The \\ key$/;"	e	enum:sf::Keyboard::Key
+Backspace	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Backspace,    \/\/\/< The Backspace key$/;"	e	enum:sf::Keyboard::Key
+BadCommandSequence	c:\SFML\include\SFML\Network\Ftp.hpp	/^            BadCommandSequence      = 503, \/\/\/< Bad sequence of commands$/;"	e	enum:sf::Ftp::Response::Status
+BadGateway	c:\SFML\include\SFML\Network\Http.hpp	/^            BadGateway          = 502, \/\/\/< The gateway server has received an error from the source server$/;"	e	enum:sf::Http::Response::Status
+BadRequest	c:\SFML\include\SFML\Network\Http.hpp	/^            BadRequest          = 400, \/\/\/< The server couldn't understand the request (syntax error)$/;"	e	enum:sf::Http::Response::Status
+Binary	c:\SFML\include\SFML\Network\Ftp.hpp	/^        Binary, \/\/\/< Binary mode (file is transfered as a sequence of bytes)$/;"	e	enum:sf::Ftp::TransferMode
+Black	c:\SFML\include\SFML\Graphics\Color.hpp	/^    static const Color Black;       \/\/\/< Black predefined color$/;"	m	class:sf::Color
+BlendMode	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^struct SFML_GRAPHICS_API BlendMode$/;"	s	namespace:sf
+Blue	c:\SFML\include\SFML\Graphics\Color.hpp	/^    static const Color Blue;        \/\/\/< Blue predefined color$/;"	m	class:sf::Color
+Bold	c:\SFML\include\SFML\Graphics\Text.hpp	/^        Bold          = 1 << 0, \/\/\/< Bold characters$/;"	e	enum:sf::Text::Style
+BoolType	c:\SFML\include\SFML\Network\Packet.hpp	/^    typedef bool (Packet::*BoolType)(std::size_t);$/;"	t	class:sf::Packet
+Broadcast	c:\SFML\include\SFML\Network\IpAddress.hpp	/^    static const IpAddress Broadcast; \/\/\/< The "broadcast" address (for sending UDP messages to everyone on a local network)$/;"	m	class:sf::IpAddress
+BufferCount	c:\SFML\include\SFML\Audio\SoundStream.hpp	/^        BufferCount = 3,    \/\/\/< Number of audio buffers used by the streaming loop$/;"	e	enum:sf::SoundStream::__anon4
+BufferRetries	c:\SFML\include\SFML\Audio\SoundStream.hpp	/^        BufferRetries = 2   \/\/\/< Number of retries (excluding initial try) for onGetData()$/;"	e	enum:sf::SoundStream::__anon4
+Button	c:\SFML\include\SFML\Window\Mouse.hpp	/^    enum Button$/;"	g	class:sf::Mouse
+ButtonCount	c:\SFML\include\SFML\Window\Joystick.hpp	/^        ButtonCount = 32, \/\/\/< Maximum number of supported buttons$/;"	e	enum:sf::Joystick::__anon9
+ButtonCount	c:\SFML\include\SFML\Window\Mouse.hpp	/^        ButtonCount \/\/\/< Keep last -- the total number of mouse buttons$/;"	e	enum:sf::Mouse::Button
+Bvec2	c:\SFML\include\SFML\Graphics\Glsl.hpp	/^    typedef Vector2<bool> Bvec2;$/;"	t	namespace:sf::Glsl
+Bvec3	c:\SFML\include\SFML\Graphics\Glsl.hpp	/^    typedef Vector3<bool> Bvec3;$/;"	t	namespace:sf::Glsl
+Bvec4	c:\SFML\include\SFML\Graphics\Glsl.hpp	/^    typedef implementation-defined Bvec4;$/;"	t	namespace:sf::Glsl
+Bvec4	c:\SFML\include\SFML\Graphics\Glsl.hpp	/^    typedef priv::Vector4<bool> Bvec4;$/;"	t	namespace:sf::Glsl
+C	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        C,            \/\/\/< The C key$/;"	e	enum:sf::Keyboard::Key
+Chunk	c:\SFML\include\SFML\Audio\SoundStream.hpp	/^    struct Chunk$/;"	s	class:sf::SoundStream
+CircleShape	c:\SFML\include\SFML\Graphics\CircleShape.hpp	/^class SFML_GRAPHICS_API CircleShape : public Shape$/;"	c	namespace:sf
+Clipboard	c:\SFML\include\SFML\Window\Clipboard.hpp	/^class SFML_WINDOW_API Clipboard$/;"	c	namespace:sf
+Clock	c:\SFML\include\SFML\System\Clock.hpp	/^class SFML_SYSTEM_API Clock$/;"	c	namespace:sf
+Close	c:\SFML\include\SFML\Window\WindowStyle.hpp	/^        Close      = 1 << 2, \/\/\/< Title bar + close button$/;"	e	enum:sf::Style::__anon10
+Closed	c:\SFML\include\SFML\Window\Event.hpp	/^        Closed,                 \/\/\/< The window requested to be closed (no data)$/;"	e	enum:sf::Event::EventType
+ClosingConnection	c:\SFML\include\SFML\Network\Ftp.hpp	/^            ClosingConnection     = 221, \/\/\/< Service closing control connection$/;"	e	enum:sf::Ftp::Response::Status
+ClosingDataConnection	c:\SFML\include\SFML\Network\Ftp.hpp	/^            ClosingDataConnection = 226, \/\/\/< Closing data connection, requested file action successful$/;"	e	enum:sf::Ftp::Response::Status
+Color	c:\SFML\include\SFML\Graphics\Color.hpp	/^class SFML_GRAPHICS_API Color$/;"	c	namespace:sf
+Comma	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Comma,        \/\/\/< The , key$/;"	e	enum:sf::Keyboard::Key
+CommandNotImplemented	c:\SFML\include\SFML\Network\Ftp.hpp	/^            CommandNotImplemented   = 502, \/\/\/< Command not implemented$/;"	e	enum:sf::Ftp::Response::Status
+CommandUnknown	c:\SFML\include\SFML\Network\Ftp.hpp	/^            CommandUnknown          = 500, \/\/\/< Syntax error, command unrecognized$/;"	e	enum:sf::Ftp::Response::Status
+ConnectionClosed	c:\SFML\include\SFML\Network\Ftp.hpp	/^            ConnectionClosed = 1002, \/\/\/< Not part of the FTP standard, generated by SFML when the low-level socket connection is unexpectedly closed$/;"	e	enum:sf::Ftp::Response::Status
+ConnectionFailed	c:\SFML\include\SFML\Network\Ftp.hpp	/^            ConnectionFailed = 1001, \/\/\/< Not part of the FTP standard, generated by SFML when the low-level socket connection with the server fails$/;"	e	enum:sf::Ftp::Response::Status
+ConnectionFailed	c:\SFML\include\SFML\Network\Http.hpp	/^            ConnectionFailed = 1001  \/\/\/< Connection with server failed$/;"	e	enum:sf::Http::Response::Status
+ConstIterator	c:\SFML\include\SFML\System\String.hpp	/^    typedef std::basic_string<Uint32>::const_iterator ConstIterator; \/\/\/< Read-only iterator type$/;"	t	class:sf::String
+Context	c:\SFML\include\SFML\Window\Context.hpp	/^class SFML_WINDOW_API Context : GlResource, NonCopyable$/;"	c	namespace:sf
+ContextDestroyCallback	c:\SFML\include\SFML\Window\GlResource.hpp	/^typedef void(*ContextDestroyCallback)(void*);$/;"	t	namespace:sf
+ContextSettings	c:\SFML\include\SFML\Window\ContextSettings.hpp	/^    explicit ContextSettings(unsigned int depth = 0, unsigned int stencil = 0, unsigned int antialiasing = 0, unsigned int major = 1, unsigned int minor = 1, unsigned int attributes = Default, bool sRgb = false) :$/;"	f	struct:sf::ContextSettings
+ContextSettings	c:\SFML\include\SFML\Window\ContextSettings.hpp	/^struct ContextSettings$/;"	s	namespace:sf
+ConvexShape	c:\SFML\include\SFML\Graphics\ConvexShape.hpp	/^class SFML_GRAPHICS_API ConvexShape : public Shape$/;"	c	namespace:sf
+CoordinateType	c:\SFML\include\SFML\Graphics\Texture.hpp	/^    enum CoordinateType$/;"	g	class:sf::Texture
+Core	c:\SFML\include\SFML\Window\ContextSettings.hpp	/^        Core    = 1 << 0, \/\/\/< Core attribute$/;"	e	enum:sf::ContextSettings::Attribute
+Count	c:\SFML\include\SFML\Window\Event.hpp	/^        Count                   \/\/\/< Keep last -- the total number of event types$/;"	e	enum:sf::Event::EventType
+Count	c:\SFML\include\SFML\Window\Joystick.hpp	/^        Count       = 8,  \/\/\/< Maximum number of supported joysticks$/;"	e	enum:sf::Joystick::__anon9
+Count	c:\SFML\include\SFML\Window\Sensor.hpp	/^        Count             \/\/\/< Keep last -- the total number of sensor types$/;"	e	enum:sf::Sensor::Type
+Created	c:\SFML\include\SFML\Network\Http.hpp	/^            Created        = 201, \/\/\/< The resource has successfully been created$/;"	e	enum:sf::Http::Response::Status
+Cross	c:\SFML\include\SFML\Window\Cursor.hpp	/^        Cross,                  \/\/\/< Crosshair cursor$/;"	e	enum:sf::Cursor::Type
+CurrentTexture	c:\SFML\include\SFML\Graphics\Shader.hpp	/^    static CurrentTextureType CurrentTexture;$/;"	m	class:sf::Shader
+CurrentTextureType	c:\SFML\include\SFML\Graphics\Shader.hpp	/^    struct CurrentTextureType {};$/;"	s	class:sf::Shader
+Cursor	c:\SFML\include\SFML\Window\Cursor.hpp	/^class SFML_WINDOW_API Cursor : NonCopyable$/;"	c	namespace:sf
+Cyan	c:\SFML\include\SFML\Graphics\Color.hpp	/^    static const Color Cyan;        \/\/\/< Cyan predefined color$/;"	m	class:sf::Color
+D	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        D,            \/\/\/< The D key$/;"	e	enum:sf::Keyboard::Key
+Dash	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Dash      = Hyphen,       \/\/\/< \\deprecated Use Hyphen instead$/;"	e	enum:sf::Keyboard::Key
+Data	c:\SFML\include\SFML\Network\TcpSocket.hpp	/^        std::vector<char> Data;         \/\/\/< Data of the packet$/;"	m	struct:sf::TcpSocket::PendingPacket
+DataConnectionAlreadyOpened	c:\SFML\include\SFML\Network\Ftp.hpp	/^            DataConnectionAlreadyOpened = 125, \/\/\/< Data connection already opened, transfer starting$/;"	e	enum:sf::Ftp::Response::Status
+DataConnectionOpened	c:\SFML\include\SFML\Network\Ftp.hpp	/^            DataConnectionOpened  = 225, \/\/\/< Data connection open, no transfer in progress$/;"	e	enum:sf::Ftp::Response::Status
+DataConnectionUnavailable	c:\SFML\include\SFML\Network\Ftp.hpp	/^            DataConnectionUnavailable = 425, \/\/\/< Can't open data connection$/;"	e	enum:sf::Ftp::Response::Status
+Debug	c:\SFML\include\SFML\Window\ContextSettings.hpp	/^        Debug   = 1 << 2  \/\/\/< Debug attribute$/;"	e	enum:sf::ContextSettings::Attribute
+Default	c:\SFML\include\SFML\Graphics\RenderStates.hpp	/^    static const RenderStates Default; \/\/\/< Special instance holding the default render states$/;"	m	class:sf::RenderStates
+Default	c:\SFML\include\SFML\Window\ContextSettings.hpp	/^        Default = 0,      \/\/\/< Non-debug, compatibility context (this and the core attribute are mutually exclusive)$/;"	e	enum:sf::ContextSettings::Attribute
+Default	c:\SFML\include\SFML\Window\WindowStyle.hpp	/^        Default = Titlebar | Resize | Close \/\/\/< Default window style$/;"	e	enum:sf::Style::__anon10
+Delete	c:\SFML\include\SFML\Network\Http.hpp	/^            Delete \/\/\/< Request in delete mode, useful for a REST API$/;"	e	enum:sf::Http::Request::Method
+Delete	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Delete,       \/\/\/< The Delete key$/;"	e	enum:sf::Keyboard::Key
+DirectoryOk	c:\SFML\include\SFML\Network\Ftp.hpp	/^            DirectoryOk           = 257, \/\/\/< PATHNAME created$/;"	e	enum:sf::Ftp::Response::Status
+DirectoryResponse	c:\SFML\include\SFML\Network\Ftp.hpp	/^    class SFML_NETWORK_API DirectoryResponse : public Response$/;"	c	class:sf::Ftp
+DirectoryStatus	c:\SFML\include\SFML\Network\Ftp.hpp	/^            DirectoryStatus       = 212, \/\/\/< Directory status$/;"	e	enum:sf::Ftp::Response::Status
+Disconnected	c:\SFML\include\SFML\Network\Socket.hpp	/^        Disconnected, \/\/\/< The TCP socket has been disconnected$/;"	e	enum:sf::Socket::Status
+Divide	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Divide,       \/\/\/< The \/ key$/;"	e	enum:sf::Keyboard::Key
+Done	c:\SFML\include\SFML\Network\Socket.hpp	/^        Done,         \/\/\/< The socket has sent \/ received the data$/;"	e	enum:sf::Socket::Status
+Down	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Down,         \/\/\/< Down arrow$/;"	e	enum:sf::Keyboard::Key
+Drawable	c:\SFML\include\SFML\Graphics\Drawable.hpp	/^class SFML_GRAPHICS_API Drawable$/;"	c	namespace:sf
+DstAlpha	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^        DstAlpha,         \/\/\/< (dst.a, dst.a, dst.a, dst.a)$/;"	e	enum:sf::BlendMode::Factor
+DstColor	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^        DstColor,         \/\/\/< (dst.r, dst.g, dst.b, dst.a)$/;"	e	enum:sf::BlendMode::Factor
+Dynamic	c:\SFML\include\SFML\Graphics\VertexBuffer.hpp	/^        Dynamic, \/\/\/< Occasionally changing data$/;"	e	enum:sf::VertexBuffer::Usage
+E	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        E,            \/\/\/< The E key$/;"	e	enum:sf::Keyboard::Key
+EFFECT_HPP	c:\SFML\examples\shader\Effect.hpp	2;"	d
+Ebcdic	c:\SFML\include\SFML\Network\Ftp.hpp	/^        Ebcdic  \/\/\/< Text mode using EBCDIC encoding$/;"	e	enum:sf::Ftp::TransferMode
+Edge	c:\SFML\examples\shader\Shader.cpp	/^    Edge() :$/;"	f	class:Edge
+Edge	c:\SFML\examples\shader\Shader.cpp	/^class Edge : public Effect$/;"	c	file:
+Effect	c:\SFML\examples\shader\Effect.hpp	/^    Effect(const std::string& name) :$/;"	f	class:Effect
+Effect	c:\SFML\examples\shader\Effect.hpp	/^class Effect : public sf::Drawable$/;"	c
+End	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        End,          \/\/\/< The End key$/;"	e	enum:sf::Keyboard::Key
+Enter	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Enter,        \/\/\/< The Enter\/Return keys$/;"	e	enum:sf::Keyboard::Key
+EnteringPassiveMode	c:\SFML\include\SFML\Network\Ftp.hpp	/^            EnteringPassiveMode   = 227, \/\/\/< Entering passive mode$/;"	e	enum:sf::Ftp::Response::Status
+Equal	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Equal,        \/\/\/< The = key$/;"	e	enum:sf::Keyboard::Key
+Equation	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^    enum Equation$/;"	g	struct:sf::BlendMode
+Error	c:\SFML\include\SFML\Network\Socket.hpp	/^        Error         \/\/\/< An unexpected error happened$/;"	e	enum:sf::Socket::Status
+Escape	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Escape,       \/\/\/< The Escape key$/;"	e	enum:sf::Keyboard::Key
+Event	c:\SFML\include\SFML\Window\Event.hpp	/^class Event$/;"	c	namespace:sf
+EventType	c:\SFML\include\SFML\Window\Event.hpp	/^    enum EventType$/;"	g	class:sf::Event
+F	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        F,            \/\/\/< The F key$/;"	e	enum:sf::Keyboard::Key
+F1	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        F1,           \/\/\/< The F1 key$/;"	e	enum:sf::Keyboard::Key
+F10	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        F10,          \/\/\/< The F10 key$/;"	e	enum:sf::Keyboard::Key
+F11	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        F11,          \/\/\/< The F11 key$/;"	e	enum:sf::Keyboard::Key
+F12	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        F12,          \/\/\/< The F12 key$/;"	e	enum:sf::Keyboard::Key
+F13	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        F13,          \/\/\/< The F13 key$/;"	e	enum:sf::Keyboard::Key
+F14	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        F14,          \/\/\/< The F14 key$/;"	e	enum:sf::Keyboard::Key
+F15	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        F15,          \/\/\/< The F15 key$/;"	e	enum:sf::Keyboard::Key
+F2	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        F2,           \/\/\/< The F2 key$/;"	e	enum:sf::Keyboard::Key
+F3	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        F3,           \/\/\/< The F3 key$/;"	e	enum:sf::Keyboard::Key
+F4	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        F4,           \/\/\/< The F4 key$/;"	e	enum:sf::Keyboard::Key
+F5	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        F5,           \/\/\/< The F5 key$/;"	e	enum:sf::Keyboard::Key
+F6	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        F6,           \/\/\/< The F6 key$/;"	e	enum:sf::Keyboard::Key
+F7	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        F7,           \/\/\/< The F7 key$/;"	e	enum:sf::Keyboard::Key
+F8	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        F8,           \/\/\/< The F8 key$/;"	e	enum:sf::Keyboard::Key
+F9	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        F9,           \/\/\/< The F9 key$/;"	e	enum:sf::Keyboard::Key
+Factor	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^    enum Factor$/;"	g	struct:sf::BlendMode
+FieldTable	c:\SFML\include\SFML\Network\Http.hpp	/^        typedef std::map<std::string, std::string> FieldTable;$/;"	t	class:sf::Http::Request
+FieldTable	c:\SFML\include\SFML\Network\Http.hpp	/^        typedef std::map<std::string, std::string> FieldTable;$/;"	t	class:sf::Http::Response
+FileActionAborted	c:\SFML\include\SFML\Network\Ftp.hpp	/^            FileActionAborted         = 450, \/\/\/< Requested file action not taken$/;"	e	enum:sf::Ftp::Response::Status
+FileActionOk	c:\SFML\include\SFML\Network\Ftp.hpp	/^            FileActionOk          = 250, \/\/\/< Requested file action ok$/;"	e	enum:sf::Ftp::Response::Status
+FileInputStream	c:\SFML\include\SFML\System\FileInputStream.hpp	/^class SFML_SYSTEM_API FileInputStream : public InputStream, NonCopyable$/;"	c	namespace:sf
+FileStatus	c:\SFML\include\SFML\Network\Ftp.hpp	/^            FileStatus            = 213, \/\/\/< File status$/;"	e	enum:sf::Ftp::Response::Status
+FileUnavailable	c:\SFML\include\SFML\Network\Ftp.hpp	/^            FileUnavailable         = 550, \/\/\/< Requested action not taken, file unavailable$/;"	e	enum:sf::Ftp::Response::Status
+FilenameNotAllowed	c:\SFML\include\SFML\Network\Ftp.hpp	/^            FilenameNotAllowed      = 553, \/\/\/< Requested action not taken, file name not allowed$/;"	e	enum:sf::Ftp::Response::Status
+FloatRect	c:\SFML\include\SFML\Graphics\Rect.hpp	/^typedef Rect<float> FloatRect;$/;"	t	namespace:sf
+Font	c:\SFML\include\SFML\Graphics\Font.hpp	/^class SFML_GRAPHICS_API Font$/;"	c	namespace:sf
+Forbidden	c:\SFML\include\SFML\Network\Http.hpp	/^            Forbidden           = 403, \/\/\/< The requested page cannot be accessed at all, even with authentication$/;"	e	enum:sf::Http::Response::Status
+Fragment	c:\SFML\include\SFML\Graphics\Shader.hpp	/^        Fragment  \/\/\/< Fragment (pixel) shader$/;"	e	enum:sf::Shader::Type
+Ftp	c:\SFML\include\SFML\Network\Ftp.hpp	/^class SFML_NETWORK_API Ftp : NonCopyable$/;"	c	namespace:sf
+Fullscreen	c:\SFML\include\SFML\Window\WindowStyle.hpp	/^        Fullscreen = 1 << 3, \/\/\/< Fullscreen mode (this flag and all others are mutually exclusive)$/;"	e	enum:sf::Style::__anon10
+G	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        G,            \/\/\/< The G key$/;"	e	enum:sf::Keyboard::Key
+GL_SRGB8_ALPHA8	c:\SFML\examples\opengl\OpenGL.cpp	9;"	d	file:
+GainedFocus	c:\SFML\include\SFML\Window\Event.hpp	/^        GainedFocus,            \/\/\/< The window gained the focus (no data)$/;"	e	enum:sf::Event::EventType
+GatewayTimeout	c:\SFML\include\SFML\Network\Http.hpp	/^            GatewayTimeout      = 504, \/\/\/< The gateway server couldn't receive a response from the source server$/;"	e	enum:sf::Http::Response::Status
+Geometry	c:\SFML\examples\shader\Shader.cpp	/^    Geometry() :$/;"	f	class:Geometry
+Geometry	c:\SFML\examples\shader\Shader.cpp	/^class Geometry : public Effect$/;"	c	file:
+Geometry	c:\SFML\include\SFML\Graphics\Shader.hpp	/^        Geometry, \/\/\/< Geometry shader$/;"	e	enum:sf::Shader::Type
+Get	c:\SFML\include\SFML\Network\Http.hpp	/^            Get,   \/\/\/< Request in get mode, standard method to retrieve a page$/;"	e	enum:sf::Http::Request::Method
+GlFunctionPointer	c:\SFML\include\SFML\Window\Context.hpp	/^typedef void (*GlFunctionPointer)();$/;"	t	namespace:sf
+GlResource	c:\SFML\include\SFML\Window\GlResource.hpp	/^class SFML_WINDOW_API GlResource$/;"	c	namespace:sf
+Glsl	c:\SFML\include\SFML\Graphics\Glsl.hpp	/^namespace Glsl$/;"	n	namespace:sf
+Glyph	c:\SFML\include\SFML\Graphics\Glyph.hpp	/^    Glyph() : advance(0) {}$/;"	f	class:sf::Glyph
+Glyph	c:\SFML\include\SFML\Graphics\Glyph.hpp	/^class SFML_GRAPHICS_API Glyph$/;"	c	namespace:sf
+GlyphTable	c:\SFML\include\SFML\Graphics\Font.hpp	/^    typedef std::map<Uint64, Glyph> GlyphTable; \/\/\/< Table mapping a codepoint to its glyph$/;"	t	class:sf::Font
+Gravity	c:\SFML\include\SFML\Window\Sensor.hpp	/^        Gravity,          \/\/\/< Measures the direction and intensity of gravity, independent of device acceleration (m\/s^2)$/;"	e	enum:sf::Sensor::Type
+Green	c:\SFML\include\SFML\Graphics\Color.hpp	/^    static const Color Green;       \/\/\/< Green predefined color$/;"	m	class:sf::Color
+Gyroscope	c:\SFML\include\SFML\Window\Sensor.hpp	/^        Gyroscope,        \/\/\/< Measures the raw rotation rates (degrees\/s)$/;"	e	enum:sf::Sensor::Type
+H	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        H,            \/\/\/< The H key$/;"	e	enum:sf::Keyboard::Key
+Hand	c:\SFML\include\SFML\Window\Cursor.hpp	/^        Hand,                   \/\/\/< Pointing hand cursor$/;"	e	enum:sf::Cursor::Type
+Head	c:\SFML\include\SFML\Network\Http.hpp	/^            Head,  \/\/\/< Request a page's header only$/;"	e	enum:sf::Http::Request::Method
+Help	c:\SFML\include\SFML\Window\Cursor.hpp	/^        Help,                   \/\/\/< Help cursor$/;"	e	enum:sf::Cursor::Type
+HelpMessage	c:\SFML\include\SFML\Network\Ftp.hpp	/^            HelpMessage           = 214, \/\/\/< Help message$/;"	e	enum:sf::Ftp::Response::Status
+Home	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Home,         \/\/\/< The Home key$/;"	e	enum:sf::Keyboard::Key
+HorizontalWheel	c:\SFML\include\SFML\Window\Mouse.hpp	/^        HorizontalWheel \/\/\/< The horizontal mouse wheel$/;"	e	enum:sf::Mouse::Wheel
+Http	c:\SFML\include\SFML\Network\Http.hpp	/^class SFML_NETWORK_API Http : NonCopyable$/;"	c	namespace:sf
+Hyphen	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Hyphen,       \/\/\/< The - key (hyphen)$/;"	e	enum:sf::Keyboard::Key
+I	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        I,            \/\/\/< The I key$/;"	e	enum:sf::Keyboard::Key
+Identification	c:\SFML\include\SFML\Window\Joystick.hpp	/^    struct SFML_WINDOW_API Identification$/;"	s	class:sf::Joystick
+Identity	c:\SFML\include\SFML\Graphics\Transform.hpp	/^    static const Transform Identity; \/\/\/< The identity transform (does nothing)$/;"	m	class:sf::Transform
+Image	c:\SFML\include\SFML\Graphics\Image.hpp	/^class SFML_GRAPHICS_API Image$/;"	c	namespace:sf
+Info	c:\SFML\include\SFML\Audio\SoundFileReader.hpp	/^    struct Info$/;"	s	class:sf::SoundFileReader
+Info	c:\SFML\include\SFML\Graphics\Font.hpp	/^    struct Info$/;"	s	class:sf::Font
+InputSoundFile	c:\SFML\include\SFML\Audio\InputSoundFile.hpp	/^class SFML_AUDIO_API InputSoundFile : NonCopyable$/;"	c	namespace:sf
+InputStream	c:\SFML\include\SFML\System\InputStream.hpp	/^class SFML_SYSTEM_API InputStream$/;"	c	namespace:sf
+Insert	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Insert,       \/\/\/< The Insert key$/;"	e	enum:sf::Keyboard::Key
+InsufficientStorageSpace	c:\SFML\include\SFML\Network\Ftp.hpp	/^            InsufficientStorageSpace  = 452, \/\/\/< Requested action not taken; insufficient storage space in system, file unavailable$/;"	e	enum:sf::Ftp::Response::Status
+Int16	c:\SFML\include\SFML\Config.hpp	/^    typedef signed   short Int16;$/;"	t	namespace:sf
+Int32	c:\SFML\include\SFML\Config.hpp	/^    typedef signed   int Int32;$/;"	t	namespace:sf
+Int64	c:\SFML\include\SFML\Config.hpp	/^        typedef signed   __int64 Int64;$/;"	t	namespace:sf
+Int64	c:\SFML\include\SFML\Config.hpp	/^        typedef signed   long long Int64;$/;"	t	namespace:sf
+Int8	c:\SFML\include\SFML\Config.hpp	/^    typedef signed   char Int8;$/;"	t	namespace:sf
+IntRect	c:\SFML\include\SFML\Graphics\Rect.hpp	/^typedef Rect<int>   IntRect;$/;"	t	namespace:sf
+InternalServerError	c:\SFML\include\SFML\Network\Http.hpp	/^            InternalServerError = 500, \/\/\/< The server encountered an unexpected error$/;"	e	enum:sf::Http::Response::Status
+InvalidFile	c:\SFML\include\SFML\Network\Ftp.hpp	/^            InvalidFile      = 1003  \/\/\/< Not part of the FTP standard, generated by SFML when a local file cannot be read or written$/;"	e	enum:sf::Ftp::Response::Status
+InvalidPos	c:\SFML\include\SFML\System\String.hpp	/^    static const std::size_t InvalidPos; \/\/\/< Represents an invalid position in the string$/;"	m	class:sf::String
+InvalidResponse	c:\SFML\include\SFML\Network\Ftp.hpp	/^            InvalidResponse  = 1000, \/\/\/< Not part of the FTP standard, generated by SFML when a received response cannot be parsed$/;"	e	enum:sf::Ftp::Response::Status
+InvalidResponse	c:\SFML\include\SFML\Network\Http.hpp	/^            InvalidResponse  = 1000, \/\/\/< Response is not a valid HTTP one$/;"	e	enum:sf::Http::Response::Status
+IpAddress	c:\SFML\include\SFML\Network\IpAddress.hpp	/^class SFML_NETWORK_API IpAddress$/;"	c	namespace:sf
+Italic	c:\SFML\include\SFML\Graphics\Text.hpp	/^        Italic        = 1 << 1, \/\/\/< Italic characters$/;"	e	enum:sf::Text::Style
+Iterator	c:\SFML\include\SFML\System\String.hpp	/^    typedef std::basic_string<Uint32>::iterator       Iterator;      \/\/\/< Iterator type$/;"	t	class:sf::String
+Ivec2	c:\SFML\include\SFML\Graphics\Glsl.hpp	/^    typedef Vector2<int> Ivec2;$/;"	t	namespace:sf::Glsl
+Ivec3	c:\SFML\include\SFML\Graphics\Glsl.hpp	/^    typedef Vector3<int> Ivec3;$/;"	t	namespace:sf::Glsl
+Ivec4	c:\SFML\include\SFML\Graphics\Glsl.hpp	/^    typedef implementation-defined Ivec4;$/;"	t	namespace:sf::Glsl
+Ivec4	c:\SFML\include\SFML\Graphics\Glsl.hpp	/^    typedef priv::Vector4<int> Ivec4;$/;"	t	namespace:sf::Glsl
+J	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        J,            \/\/\/< The J key$/;"	e	enum:sf::Keyboard::Key
+Joystick	c:\SFML\include\SFML\Window\Joystick.hpp	/^class SFML_WINDOW_API Joystick$/;"	c	namespace:sf
+JoystickButtonEvent	c:\SFML\include\SFML\Window\Event.hpp	/^    struct JoystickButtonEvent$/;"	s	class:sf::Event
+JoystickButtonPressed	c:\SFML\include\SFML\Window\Event.hpp	/^        JoystickButtonPressed,  \/\/\/< A joystick button was pressed (data in event.joystickButton)$/;"	e	enum:sf::Event::EventType
+JoystickButtonReleased	c:\SFML\include\SFML\Window\Event.hpp	/^        JoystickButtonReleased, \/\/\/< A joystick button was released (data in event.joystickButton)$/;"	e	enum:sf::Event::EventType
+JoystickConnectEvent	c:\SFML\include\SFML\Window\Event.hpp	/^    struct JoystickConnectEvent$/;"	s	class:sf::Event
+JoystickConnected	c:\SFML\include\SFML\Window\Event.hpp	/^        JoystickConnected,      \/\/\/< A joystick was connected (data in event.joystickConnect)$/;"	e	enum:sf::Event::EventType
+JoystickDisconnected	c:\SFML\include\SFML\Window\Event.hpp	/^        JoystickDisconnected,   \/\/\/< A joystick was disconnected (data in event.joystickConnect)$/;"	e	enum:sf::Event::EventType
+JoystickMoveEvent	c:\SFML\include\SFML\Window\Event.hpp	/^    struct JoystickMoveEvent$/;"	s	class:sf::Event
+JoystickMoved	c:\SFML\include\SFML\Window\Event.hpp	/^        JoystickMoved,          \/\/\/< The joystick moved along an axis (data in event.joystickMove)$/;"	e	enum:sf::Event::EventType
+JoystickObject	c:\SFML\examples\joystick\Joystick.cpp	/^    struct JoystickObject$/;"	s	namespace:__anon2	file:
+K	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        K,            \/\/\/< The K key$/;"	e	enum:sf::Keyboard::Key
+Key	c:\SFML\include\SFML\Window\Keyboard.hpp	/^    enum Key$/;"	g	class:sf::Keyboard
+KeyCount	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        KeyCount,     \/\/\/< Keep last -- the total number of keyboard keys$/;"	e	enum:sf::Keyboard::Key
+KeyEvent	c:\SFML\include\SFML\Window\Event.hpp	/^    struct KeyEvent$/;"	s	class:sf::Event
+KeyPressed	c:\SFML\include\SFML\Window\Event.hpp	/^        KeyPressed,             \/\/\/< A key was pressed (data in event.key)$/;"	e	enum:sf::Event::EventType
+KeyReleased	c:\SFML\include\SFML\Window\Event.hpp	/^        KeyReleased,            \/\/\/< A key was released (data in event.key)$/;"	e	enum:sf::Event::EventType
+Keyboard	c:\SFML\include\SFML\Window\Keyboard.hpp	/^class SFML_WINDOW_API Keyboard$/;"	c	namespace:sf
+L	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        L,            \/\/\/< The L key$/;"	e	enum:sf::Keyboard::Key
+LAlt	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        LAlt,         \/\/\/< The left Alt key$/;"	e	enum:sf::Keyboard::Key
+LBracket	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        LBracket,     \/\/\/< The [ key$/;"	e	enum:sf::Keyboard::Key
+LControl	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        LControl,     \/\/\/< The left Control key$/;"	e	enum:sf::Keyboard::Key
+LShift	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        LShift,       \/\/\/< The left Shift key$/;"	e	enum:sf::Keyboard::Key
+LSystem	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        LSystem,      \/\/\/< The left OS specific key: window (Windows and Linux), apple (MacOS X), ...$/;"	e	enum:sf::Keyboard::Key
+Left	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Left,         \/\/\/< Left arrow$/;"	e	enum:sf::Keyboard::Key
+Left	c:\SFML\include\SFML\Window\Mouse.hpp	/^        Left,       \/\/\/< The left mouse button$/;"	e	enum:sf::Mouse::Button
+LineStrip	c:\SFML\include\SFML\Graphics\PrimitiveType.hpp	/^    LineStrip,     \/\/\/< List of connected lines, a point uses the previous point to form a line$/;"	e	enum:sf::PrimitiveType
+Lines	c:\SFML\include\SFML\Graphics\PrimitiveType.hpp	/^    Lines,         \/\/\/< List of individual lines$/;"	e	enum:sf::PrimitiveType
+LinesStrip	c:\SFML\include\SFML\Graphics\PrimitiveType.hpp	/^    LinesStrip     = LineStrip,     \/\/\/< \\deprecated Use LineStrip instead$/;"	e	enum:sf::PrimitiveType
+Listener	c:\SFML\include\SFML\Audio\Listener.hpp	/^class SFML_AUDIO_API Listener$/;"	c	namespace:sf
+ListingResponse	c:\SFML\include\SFML\Network\Ftp.hpp	/^    class SFML_NETWORK_API ListingResponse : public Response$/;"	c	class:sf::Ftp
+LocalError	c:\SFML\include\SFML\Network\Ftp.hpp	/^            LocalError                = 451, \/\/\/< Requested action aborted, local error in processing$/;"	e	enum:sf::Ftp::Response::Status
+LocalHost	c:\SFML\include\SFML\Network\IpAddress.hpp	/^    static const IpAddress LocalHost; \/\/\/< The "localhost" address (for connecting a computer to itself locally)$/;"	m	class:sf::IpAddress
+Lock	c:\SFML\include\SFML\System\Lock.hpp	/^class SFML_SYSTEM_API Lock : NonCopyable$/;"	c	namespace:sf
+LoggedIn	c:\SFML\include\SFML\Network\Ftp.hpp	/^            LoggedIn              = 230, \/\/\/< User logged in, proceed. Logged out if appropriate$/;"	e	enum:sf::Ftp::Response::Status
+LostFocus	c:\SFML\include\SFML\Window\Event.hpp	/^        LostFocus,              \/\/\/< The window lost the focus (no data)$/;"	e	enum:sf::Event::EventType
+M	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        M,            \/\/\/< The M key$/;"	e	enum:sf::Keyboard::Key
+Magenta	c:\SFML\include\SFML\Graphics\Color.hpp	/^    static const Color Magenta;     \/\/\/< Magenta predefined color$/;"	m	class:sf::Color
+Magnetometer	c:\SFML\include\SFML\Window\Sensor.hpp	/^        Magnetometer,     \/\/\/< Measures the ambient magnetic field (micro-teslas)$/;"	e	enum:sf::Sensor::Type
+Mat3	c:\SFML\include\SFML\Graphics\Glsl.hpp	/^    typedef implementation-defined Mat3;$/;"	t	namespace:sf::Glsl
+Mat3	c:\SFML\include\SFML\Graphics\Glsl.hpp	/^    typedef priv::Matrix<3, 3> Mat3;$/;"	t	namespace:sf::Glsl
+Mat4	c:\SFML\include\SFML\Graphics\Glsl.hpp	/^    typedef implementation-defined Mat4;$/;"	t	namespace:sf::Glsl
+Mat4	c:\SFML\include\SFML\Graphics\Glsl.hpp	/^    typedef priv::Matrix<4, 4> Mat4;$/;"	t	namespace:sf::Glsl
+MaxDatagramSize	c:\SFML\include\SFML\Network\UdpSocket.hpp	/^        MaxDatagramSize = 65507 \/\/\/< The maximum number of bytes that can be sent in a single UDP datagram$/;"	e	enum:sf::UdpSocket::__anon7
+MemoryInputStream	c:\SFML\include\SFML\System\MemoryInputStream.hpp	/^class SFML_SYSTEM_API MemoryInputStream : public InputStream$/;"	c	namespace:sf
+Menu	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Menu,         \/\/\/< The Menu key$/;"	e	enum:sf::Keyboard::Key
+Method	c:\SFML\include\SFML\Network\Http.hpp	/^        enum Method$/;"	g	class:sf::Http::Request
+Middle	c:\SFML\include\SFML\Window\Mouse.hpp	/^        Middle,     \/\/\/< The middle (wheel) mouse button$/;"	e	enum:sf::Mouse::Button
+Mouse	c:\SFML\include\SFML\Window\Mouse.hpp	/^class SFML_WINDOW_API Mouse$/;"	c	namespace:sf
+MouseButtonEvent	c:\SFML\include\SFML\Window\Event.hpp	/^    struct MouseButtonEvent$/;"	s	class:sf::Event
+MouseButtonPressed	c:\SFML\include\SFML\Window\Event.hpp	/^        MouseButtonPressed,     \/\/\/< A mouse button was pressed (data in event.mouseButton)$/;"	e	enum:sf::Event::EventType
+MouseButtonReleased	c:\SFML\include\SFML\Window\Event.hpp	/^        MouseButtonReleased,    \/\/\/< A mouse button was released (data in event.mouseButton)$/;"	e	enum:sf::Event::EventType
+MouseEntered	c:\SFML\include\SFML\Window\Event.hpp	/^        MouseEntered,           \/\/\/< The mouse cursor entered the area of the window (no data)$/;"	e	enum:sf::Event::EventType
+MouseLeft	c:\SFML\include\SFML\Window\Event.hpp	/^        MouseLeft,              \/\/\/< The mouse cursor left the area of the window (no data)$/;"	e	enum:sf::Event::EventType
+MouseMoveEvent	c:\SFML\include\SFML\Window\Event.hpp	/^    struct MouseMoveEvent$/;"	s	class:sf::Event
+MouseMoved	c:\SFML\include\SFML\Window\Event.hpp	/^        MouseMoved,             \/\/\/< The mouse cursor moved (data in event.mouseMove)$/;"	e	enum:sf::Event::EventType
+MouseWheelEvent	c:\SFML\include\SFML\Window\Event.hpp	/^    struct MouseWheelEvent$/;"	s	class:sf::Event
+MouseWheelMoved	c:\SFML\include\SFML\Window\Event.hpp	/^        MouseWheelMoved,        \/\/\/< The mouse wheel was scrolled (data in event.mouseWheel) (deprecated)$/;"	e	enum:sf::Event::EventType
+MouseWheelScrollEvent	c:\SFML\include\SFML\Window\Event.hpp	/^    struct MouseWheelScrollEvent$/;"	s	class:sf::Event
+MouseWheelScrolled	c:\SFML\include\SFML\Window\Event.hpp	/^        MouseWheelScrolled,     \/\/\/< The mouse wheel was scrolled (data in event.mouseWheelScroll)$/;"	e	enum:sf::Event::EventType
+MovedPermanently	c:\SFML\include\SFML\Network\Http.hpp	/^            MovedPermanently = 301, \/\/\/< The requested page has permanently moved to a new location$/;"	e	enum:sf::Http::Response::Status
+MovedTemporarily	c:\SFML\include\SFML\Network\Http.hpp	/^            MovedTemporarily = 302, \/\/\/< The requested page has temporarily moved to a new location$/;"	e	enum:sf::Http::Response::Status
+MultipleChoices	c:\SFML\include\SFML\Network\Http.hpp	/^            MultipleChoices  = 300, \/\/\/< The requested page can be accessed from several locations$/;"	e	enum:sf::Http::Response::Status
+Multiply	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Multiply,     \/\/\/< The * key$/;"	e	enum:sf::Keyboard::Key
+Music	c:\SFML\include\SFML\Audio\Music.hpp	/^class SFML_AUDIO_API Music : public SoundStream$/;"	c	namespace:sf
+Mutex	c:\SFML\include\SFML\System\Mutex.hpp	/^class SFML_SYSTEM_API Mutex : NonCopyable$/;"	c	namespace:sf
+N	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        N,            \/\/\/< The N key$/;"	e	enum:sf::Keyboard::Key
+NOMINMAX	c:\SFML\include\SFML\Config.hpp	46;"	d
+NeedAccountToLogIn	c:\SFML\include\SFML\Network\Ftp.hpp	/^            NeedAccountToLogIn = 332, \/\/\/< Need account for login$/;"	e	enum:sf::Ftp::Response::Status
+NeedAccountToStore	c:\SFML\include\SFML\Network\Ftp.hpp	/^            NeedAccountToStore      = 532, \/\/\/< Need account for storing files$/;"	e	enum:sf::Ftp::Response::Status
+NeedInformation	c:\SFML\include\SFML\Network\Ftp.hpp	/^            NeedInformation    = 350, \/\/\/< Requested file action pending further information$/;"	e	enum:sf::Ftp::Response::Status
+NeedPassword	c:\SFML\include\SFML\Network\Ftp.hpp	/^            NeedPassword       = 331, \/\/\/< User name ok, need password$/;"	e	enum:sf::Ftp::Response::Status
+NetworkAudioStream	c:\SFML\examples\voip\Server.cpp	/^    NetworkAudioStream() :$/;"	f	class:NetworkAudioStream
+NetworkAudioStream	c:\SFML\examples\voip\Server.cpp	/^class NetworkAudioStream : public sf::SoundStream$/;"	c	file:
+NetworkRecorder	c:\SFML\examples\voip\Client.cpp	/^    NetworkRecorder(const sf::IpAddress& host, unsigned short port) :$/;"	f	class:NetworkRecorder
+NetworkRecorder	c:\SFML\examples\voip\Client.cpp	/^class NetworkRecorder : public sf::SoundRecorder$/;"	c	file:
+NoContent	c:\SFML\include\SFML\Network\Http.hpp	/^            NoContent      = 204, \/\/\/< The server didn't send any data in return$/;"	e	enum:sf::Http::Response::Status
+NoLoop	c:\SFML\include\SFML\Audio\SoundStream.hpp	/^        NoLoop = -1 \/\/\/< "Invalid" endSeeks value, telling us to continue uninterrupted$/;"	e	enum:sf::SoundStream::__anon3
+NonCopyable	c:\SFML\include\SFML\System\NonCopyable.hpp	/^    NonCopyable() {}$/;"	f	class:sf::NonCopyable
+NonCopyable	c:\SFML\include\SFML\System\NonCopyable.hpp	/^class SFML_SYSTEM_API NonCopyable$/;"	c	namespace:sf
+None	c:\SFML\include\SFML\Network\IpAddress.hpp	/^    static const IpAddress None;      \/\/\/< Value representing an empty\/invalid address$/;"	m	class:sf::IpAddress
+None	c:\SFML\include\SFML\Window\WindowStyle.hpp	/^        None       = 0,      \/\/\/< No border \/ title bar (this flag and all others are mutually exclusive)$/;"	e	enum:sf::Style::__anon10
+Normalized	c:\SFML\include\SFML\Graphics\Texture.hpp	/^        Normalized, \/\/\/< Texture coordinates in range [0 .. 1]$/;"	e	enum:sf::Texture::CoordinateType
+NotAllowed	c:\SFML\include\SFML\Window\Cursor.hpp	/^        NotAllowed              \/\/\/< Action not allowed cursor$/;"	e	enum:sf::Cursor::Type
+NotEnoughMemory	c:\SFML\include\SFML\Network\Ftp.hpp	/^            NotEnoughMemory         = 552, \/\/\/< Requested file action aborted, exceeded storage allocation$/;"	e	enum:sf::Ftp::Response::Status
+NotFound	c:\SFML\include\SFML\Network\Http.hpp	/^            NotFound            = 404, \/\/\/< The requested page doesn't exist$/;"	e	enum:sf::Http::Response::Status
+NotImplemented	c:\SFML\include\SFML\Network\Http.hpp	/^            NotImplemented      = 501, \/\/\/< The server doesn't implement a requested feature$/;"	e	enum:sf::Http::Response::Status
+NotLoggedIn	c:\SFML\include\SFML\Network\Ftp.hpp	/^            NotLoggedIn             = 530, \/\/\/< Not logged in$/;"	e	enum:sf::Ftp::Response::Status
+NotModified	c:\SFML\include\SFML\Network\Http.hpp	/^            NotModified      = 304, \/\/\/< For conditional requests, means the requested page hasn't changed and doesn't need to be refreshed$/;"	e	enum:sf::Http::Response::Status
+NotReady	c:\SFML\include\SFML\Network\Socket.hpp	/^        NotReady,     \/\/\/< The socket is not ready to send \/ receive data yet$/;"	e	enum:sf::Socket::Status
+Num0	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Num0,         \/\/\/< The 0 key$/;"	e	enum:sf::Keyboard::Key
+Num1	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Num1,         \/\/\/< The 1 key$/;"	e	enum:sf::Keyboard::Key
+Num2	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Num2,         \/\/\/< The 2 key$/;"	e	enum:sf::Keyboard::Key
+Num3	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Num3,         \/\/\/< The 3 key$/;"	e	enum:sf::Keyboard::Key
+Num4	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Num4,         \/\/\/< The 4 key$/;"	e	enum:sf::Keyboard::Key
+Num5	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Num5,         \/\/\/< The 5 key$/;"	e	enum:sf::Keyboard::Key
+Num6	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Num6,         \/\/\/< The 6 key$/;"	e	enum:sf::Keyboard::Key
+Num7	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Num7,         \/\/\/< The 7 key$/;"	e	enum:sf::Keyboard::Key
+Num8	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Num8,         \/\/\/< The 8 key$/;"	e	enum:sf::Keyboard::Key
+Num9	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Num9,         \/\/\/< The 9 key$/;"	e	enum:sf::Keyboard::Key
+Numpad0	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Numpad0,      \/\/\/< The numpad 0 key$/;"	e	enum:sf::Keyboard::Key
+Numpad1	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Numpad1,      \/\/\/< The numpad 1 key$/;"	e	enum:sf::Keyboard::Key
+Numpad2	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Numpad2,      \/\/\/< The numpad 2 key$/;"	e	enum:sf::Keyboard::Key
+Numpad3	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Numpad3,      \/\/\/< The numpad 3 key$/;"	e	enum:sf::Keyboard::Key
+Numpad4	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Numpad4,      \/\/\/< The numpad 4 key$/;"	e	enum:sf::Keyboard::Key
+Numpad5	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Numpad5,      \/\/\/< The numpad 5 key$/;"	e	enum:sf::Keyboard::Key
+Numpad6	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Numpad6,      \/\/\/< The numpad 6 key$/;"	e	enum:sf::Keyboard::Key
+Numpad7	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Numpad7,      \/\/\/< The numpad 7 key$/;"	e	enum:sf::Keyboard::Key
+Numpad8	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Numpad8,      \/\/\/< The numpad 8 key$/;"	e	enum:sf::Keyboard::Key
+Numpad9	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Numpad9,      \/\/\/< The numpad 9 key$/;"	e	enum:sf::Keyboard::Key
+O	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        O,            \/\/\/< The O key$/;"	e	enum:sf::Keyboard::Key
+Ok	c:\SFML\include\SFML\Network\Ftp.hpp	/^            Ok                    = 200, \/\/\/< Command ok$/;"	e	enum:sf::Ftp::Response::Status
+Ok	c:\SFML\include\SFML\Network\Http.hpp	/^            Ok             = 200, \/\/\/< Most common code returned when operation was successful$/;"	e	enum:sf::Http::Response::Status
+One	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^        One,              \/\/\/< (1, 1, 1, 1)$/;"	e	enum:sf::BlendMode::Factor
+OneMinusDstAlpha	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^        OneMinusDstAlpha  \/\/\/< (1, 1, 1, 1) - (dst.a, dst.a, dst.a, dst.a)$/;"	e	enum:sf::BlendMode::Factor
+OneMinusDstColor	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^        OneMinusDstColor, \/\/\/< (1, 1, 1, 1) - (dst.r, dst.g, dst.b, dst.a)$/;"	e	enum:sf::BlendMode::Factor
+OneMinusSrcAlpha	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^        OneMinusSrcAlpha, \/\/\/< (1, 1, 1, 1) - (src.a, src.a, src.a, src.a)$/;"	e	enum:sf::BlendMode::Factor
+OneMinusSrcColor	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^        OneMinusSrcColor, \/\/\/< (1, 1, 1, 1) - (src.r, src.g, src.b, src.a)$/;"	e	enum:sf::BlendMode::Factor
+OpeningDataConnection	c:\SFML\include\SFML\Network\Ftp.hpp	/^            OpeningDataConnection       = 150, \/\/\/< File status ok, about to open data connection$/;"	e	enum:sf::Ftp::Response::Status
+Orientation	c:\SFML\include\SFML\Window\Sensor.hpp	/^        Orientation,      \/\/\/< Measures the absolute 3D orientation (degrees)$/;"	e	enum:sf::Sensor::Type
+OutputSoundFile	c:\SFML\include\SFML\Audio\OutputSoundFile.hpp	/^class SFML_AUDIO_API OutputSoundFile : NonCopyable$/;"	c	namespace:sf
+P	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        P,            \/\/\/< The P key$/;"	e	enum:sf::Keyboard::Key
+Packet	c:\SFML\include\SFML\Network\Packet.hpp	/^class SFML_NETWORK_API Packet$/;"	c	namespace:sf
+Page	c:\SFML\include\SFML\Graphics\Font.hpp	/^    struct Page$/;"	s	class:sf::Font
+PageDown	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        PageDown,     \/\/\/< The Page down key$/;"	e	enum:sf::Keyboard::Key
+PageTable	c:\SFML\include\SFML\Graphics\Font.hpp	/^    typedef std::map<unsigned int, Page> PageTable; \/\/\/< Table mapping a character size to its page (texture)$/;"	t	class:sf::Font
+PageTypeUnknown	c:\SFML\include\SFML\Network\Ftp.hpp	/^            PageTypeUnknown         = 551, \/\/\/< Requested action aborted, page type unknown$/;"	e	enum:sf::Ftp::Response::Status
+PageUp	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        PageUp,       \/\/\/< The Page up key$/;"	e	enum:sf::Keyboard::Key
+ParameterNotImplemented	c:\SFML\include\SFML\Network\Ftp.hpp	/^            ParameterNotImplemented = 504, \/\/\/< Command not implemented for that parameter$/;"	e	enum:sf::Ftp::Response::Status
+ParametersUnknown	c:\SFML\include\SFML\Network\Ftp.hpp	/^            ParametersUnknown       = 501, \/\/\/< Syntax error in parameters or arguments$/;"	e	enum:sf::Ftp::Response::Status
+Partial	c:\SFML\include\SFML\Network\Socket.hpp	/^        Partial,      \/\/\/< The socket sent a part of the data$/;"	e	enum:sf::Socket::Status
+PartialContent	c:\SFML\include\SFML\Network\Http.hpp	/^            PartialContent = 206, \/\/\/< The server has sent a part of the resource, as a response to a partial GET request$/;"	e	enum:sf::Http::Response::Status
+Pause	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Pause,        \/\/\/< The Pause key$/;"	e	enum:sf::Keyboard::Key
+Paused	c:\SFML\include\SFML\Audio\SoundSource.hpp	/^        Paused,  \/\/\/< Sound is paused$/;"	e	enum:sf::SoundSource::Status
+PendingPacket	c:\SFML\include\SFML\Network\TcpSocket.hpp	/^    struct PendingPacket$/;"	s	class:sf::TcpSocket
+Period	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Period,       \/\/\/< The . key$/;"	e	enum:sf::Keyboard::Key
+Pixelate	c:\SFML\examples\shader\Shader.cpp	/^    Pixelate() :$/;"	f	class:Pixelate
+Pixelate	c:\SFML\examples\shader\Shader.cpp	/^class Pixelate : public Effect$/;"	c	file:
+Pixels	c:\SFML\include\SFML\Graphics\Texture.hpp	/^        Pixels      \/\/\/< Texture coordinates in range [0 .. size]$/;"	e	enum:sf::Texture::CoordinateType
+Playing	c:\SFML\include\SFML\Audio\SoundSource.hpp	/^        Playing  \/\/\/< Sound is playing$/;"	e	enum:sf::SoundSource::Status
+PointlessCommand	c:\SFML\include\SFML\Network\Ftp.hpp	/^            PointlessCommand      = 202, \/\/\/< Command not implemented$/;"	e	enum:sf::Ftp::Response::Status
+Points	c:\SFML\include\SFML\Graphics\PrimitiveType.hpp	/^    Points,        \/\/\/< List of individual points$/;"	e	enum:sf::PrimitiveType
+Post	c:\SFML\include\SFML\Network\Http.hpp	/^            Post,  \/\/\/< Request in post mode, usually to send data to a page$/;"	e	enum:sf::Http::Request::Method
+PovX	c:\SFML\include\SFML\Window\Joystick.hpp	/^        PovX, \/\/\/< The X axis of the point-of-view hat$/;"	e	enum:sf::Joystick::Axis
+PovY	c:\SFML\include\SFML\Window\Joystick.hpp	/^        PovY  \/\/\/< The Y axis of the point-of-view hat$/;"	e	enum:sf::Joystick::Axis
+PrimitiveType	c:\SFML\include\SFML\Graphics\PrimitiveType.hpp	/^enum PrimitiveType$/;"	g	namespace:sf
+Put	c:\SFML\include\SFML\Network\Http.hpp	/^            Put,   \/\/\/< Request in put mode, useful for a REST API$/;"	e	enum:sf::Http::Request::Method
+Q	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Q,            \/\/\/< The Q key$/;"	e	enum:sf::Keyboard::Key
+Quads	c:\SFML\include\SFML\Graphics\PrimitiveType.hpp	/^    Quads,         \/\/\/< List of individual quads (deprecated, don't work with OpenGL ES)$/;"	e	enum:sf::PrimitiveType
+Quote	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Quote,        \/\/\/< The ' key$/;"	e	enum:sf::Keyboard::Key
+R	c:\SFML\include\SFML\Window\Joystick.hpp	/^        R,    \/\/\/< The R axis$/;"	e	enum:sf::Joystick::Axis
+R	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        R,            \/\/\/< The R key$/;"	e	enum:sf::Keyboard::Key
+RAlt	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        RAlt,         \/\/\/< The right Alt key$/;"	e	enum:sf::Keyboard::Key
+RBracket	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        RBracket,     \/\/\/< The ] key$/;"	e	enum:sf::Keyboard::Key
+RControl	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        RControl,     \/\/\/< The right Control key$/;"	e	enum:sf::Keyboard::Key
+RShift	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        RShift,       \/\/\/< The right Shift key$/;"	e	enum:sf::Keyboard::Key
+RSystem	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        RSystem,      \/\/\/< The right OS specific key: window (Windows and Linux), apple (MacOS X), ...$/;"	e	enum:sf::Keyboard::Key
+RangeNotSatisfiable	c:\SFML\include\SFML\Network\Http.hpp	/^            RangeNotSatisfiable = 407, \/\/\/< The server can't satisfy the partial GET request (with a "Range" header field)$/;"	e	enum:sf::Http::Response::Status
+ReaderFactory	c:\SFML\include\SFML\Audio\SoundFileFactory.hpp	/^    struct ReaderFactory$/;"	s	class:sf::SoundFileFactory
+ReaderFactoryArray	c:\SFML\include\SFML\Audio\SoundFileFactory.hpp	/^    typedef std::vector<ReaderFactory> ReaderFactoryArray;$/;"	t	class:sf::SoundFileFactory
+Rect	c:\SFML\include\SFML\Graphics\Rect.hpp	/^class Rect$/;"	c	namespace:sf
+RectangleShape	c:\SFML\include\SFML\Graphics\RectangleShape.hpp	/^class SFML_GRAPHICS_API RectangleShape : public Shape$/;"	c	namespace:sf
+Red	c:\SFML\include\SFML\Graphics\Color.hpp	/^    static const Color Red;         \/\/\/< Red predefined color$/;"	m	class:sf::Color
+Regular	c:\SFML\include\SFML\Graphics\Text.hpp	/^        Regular       = 0,      \/\/\/< Regular characters, no style$/;"	e	enum:sf::Text::Style
+RenderStates	c:\SFML\include\SFML\Graphics\RenderStates.hpp	/^class SFML_GRAPHICS_API RenderStates$/;"	c	namespace:sf
+RenderTarget	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^class SFML_GRAPHICS_API RenderTarget : NonCopyable$/;"	c	namespace:sf
+RenderTexture	c:\SFML\include\SFML\Graphics\RenderTexture.hpp	/^class SFML_GRAPHICS_API RenderTexture : public RenderTarget$/;"	c	namespace:sf
+RenderWindow	c:\SFML\include\SFML\Graphics\RenderWindow.hpp	/^class SFML_GRAPHICS_API RenderWindow : public Window, public RenderTarget$/;"	c	namespace:sf
+Request	c:\SFML\include\SFML\Network\Http.hpp	/^    class SFML_NETWORK_API Request$/;"	c	class:sf::Http
+ResetContent	c:\SFML\include\SFML\Network\Http.hpp	/^            ResetContent   = 205, \/\/\/< The server informs the client that it should clear the view (form) that caused the request to be sent$/;"	e	enum:sf::Http::Response::Status
+Resize	c:\SFML\include\SFML\Window\WindowStyle.hpp	/^        Resize     = 1 << 1, \/\/\/< Title bar + resizable border + maximize button$/;"	e	enum:sf::Style::__anon10
+Resized	c:\SFML\include\SFML\Window\Event.hpp	/^        Resized,                \/\/\/< The window was resized (data in event.size)$/;"	e	enum:sf::Event::EventType
+ResourceStream	c:\SFML\include\SFML\System\FileInputStream.hpp	/^class SFML_SYSTEM_API ResourceStream;$/;"	v	typeref:class:sf::priv::SFML_SYSTEM_API
+Response	c:\SFML\include\SFML\Network\Ftp.hpp	/^    class SFML_NETWORK_API Response$/;"	c	class:sf::Ftp
+Response	c:\SFML\include\SFML\Network\Http.hpp	/^    class SFML_NETWORK_API Response$/;"	c	class:sf::Http
+RestartMarkerReply	c:\SFML\include\SFML\Network\Ftp.hpp	/^            RestartMarkerReply          = 110, \/\/\/< Restart marker reply$/;"	e	enum:sf::Ftp::Response::Status
+Return	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Return    = Enter         \/\/\/< \\deprecated Use Enter instead$/;"	e	enum:sf::Keyboard::Key
+ReverseSubtract	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^        ReverseSubtract \/\/\/< Pixel = Dst * DstFactor - Src * SrcFactor$/;"	e	enum:sf::BlendMode::Equation
+Right	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Right,        \/\/\/< Right arrow$/;"	e	enum:sf::Keyboard::Key
+Right	c:\SFML\include\SFML\Window\Mouse.hpp	/^        Right,      \/\/\/< The right mouse button$/;"	e	enum:sf::Mouse::Button
+Row	c:\SFML\include\SFML\Graphics\Font.hpp	/^        Row(unsigned int rowTop, unsigned int rowHeight) : width(0), top(rowTop), height(rowHeight) {}$/;"	f	struct:sf::Font::Row
+Row	c:\SFML\include\SFML\Graphics\Font.hpp	/^    struct Row$/;"	s	class:sf::Font
+S	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        S,            \/\/\/< The S key$/;"	e	enum:sf::Keyboard::Key
+SFML_ALRESOURCE_HPP	c:\SFML\include\SFML\Audio\AlResource.hpp	26;"	d
+SFML_API_EXPORT	c:\SFML\include\SFML\Config.hpp	127;"	d
+SFML_API_EXPORT	c:\SFML\include\SFML\Config.hpp	143;"	d
+SFML_API_EXPORT	c:\SFML\include\SFML\Config.hpp	149;"	d
+SFML_API_EXPORT	c:\SFML\include\SFML\Config.hpp	159;"	d
+SFML_API_IMPORT	c:\SFML\include\SFML\Config.hpp	128;"	d
+SFML_API_IMPORT	c:\SFML\include\SFML\Config.hpp	144;"	d
+SFML_API_IMPORT	c:\SFML\include\SFML\Config.hpp	150;"	d
+SFML_API_IMPORT	c:\SFML\include\SFML\Config.hpp	160;"	d
+SFML_AUDIO_API	c:\SFML\include\SFML\Audio\Export.hpp	39;"	d
+SFML_AUDIO_API	c:\SFML\include\SFML\Audio\Export.hpp	43;"	d
+SFML_AUDIO_EXPORT_HPP	c:\SFML\include\SFML\Audio\Export.hpp	26;"	d
+SFML_AUDIO_HPP	c:\SFML\include\SFML\Audio.hpp	26;"	d
+SFML_BLENDMODE_HPP	c:\SFML\include\SFML\Graphics\BlendMode.hpp	26;"	d
+SFML_CIRCLESHAPE_HPP	c:\SFML\include\SFML\Graphics\CircleShape.hpp	26;"	d
+SFML_CLIPBOARD_HPP	c:\SFML\include\SFML\Window\Clipboard.hpp	26;"	d
+SFML_CLOCK_HPP	c:\SFML\include\SFML\System\Clock.hpp	26;"	d
+SFML_COLOR_HPP	c:\SFML\include\SFML\Graphics\Color.hpp	26;"	d
+SFML_CONFIG_HPP	c:\SFML\include\SFML\Config.hpp	26;"	d
+SFML_CONTEXTSETTINGS_HPP	c:\SFML\include\SFML\Window\ContextSettings.hpp	26;"	d
+SFML_CONTEXT_HPP	c:\SFML\include\SFML\Window\Context.hpp	26;"	d
+SFML_CONVEXSHAPE_HPP	c:\SFML\include\SFML\Graphics\ConvexShape.hpp	26;"	d
+SFML_CURSOR_HPP	c:\SFML\include\SFML\Window\Cursor.hpp	26;"	d
+SFML_DEBUG	c:\SFML\include\SFML\Config.hpp	114;"	d
+SFML_DEFINE_DISCRETE_GPU_PREFERENCE	c:\SFML\include\SFML\GpuPreference.hpp	63;"	d
+SFML_DEFINE_DISCRETE_GPU_PREFERENCE	c:\SFML\include\SFML\GpuPreference.hpp	69;"	d
+SFML_DEPRECATED	c:\SFML\include\SFML\Config.hpp	179;"	d
+SFML_DEPRECATED	c:\SFML\include\SFML\Config.hpp	186;"	d
+SFML_DEPRECATED	c:\SFML\include\SFML\Config.hpp	191;"	d
+SFML_DEPRECATED	c:\SFML\include\SFML\Config.hpp	198;"	d
+SFML_DRAWABLE_HPP	c:\SFML\include\SFML\Graphics\Drawable.hpp	26;"	d
+SFML_ERR_HPP	c:\SFML\include\SFML\System\Err.hpp	26;"	d
+SFML_EVENT_HPP	c:\SFML\include\SFML\Window\Event.hpp	26;"	d
+SFML_FILEINPUTSTREAM_HPP	c:\SFML\include\SFML\System\FileInputStream.hpp	26;"	d
+SFML_FONT_HPP	c:\SFML\include\SFML\Graphics\Font.hpp	26;"	d
+SFML_FTP_HPP	c:\SFML\include\SFML\Network\Ftp.hpp	26;"	d
+SFML_GLRESOURCE_HPP	c:\SFML\include\SFML\Window\GlResource.hpp	26;"	d
+SFML_GLSL_HPP	c:\SFML\include\SFML\Graphics\Glsl.hpp	26;"	d
+SFML_GLYPH_HPP	c:\SFML\include\SFML\Graphics\Glyph.hpp	26;"	d
+SFML_GPUPREFERENCE_HPP	c:\SFML\include\SFML\GpuPreference.hpp	26;"	d
+SFML_GRAPHICS_API	c:\SFML\include\SFML\Graphics\Export.hpp	39;"	d
+SFML_GRAPHICS_API	c:\SFML\include\SFML\Graphics\Export.hpp	43;"	d
+SFML_GRAPHICS_EXPORT_HPP	c:\SFML\include\SFML\Graphics\Export.hpp	26;"	d
+SFML_GRAPHICS_HPP	c:\SFML\include\SFML\Graphics.hpp	26;"	d
+SFML_HTTP_HPP	c:\SFML\include\SFML\Network\Http.hpp	26;"	d
+SFML_IMAGE_HPP	c:\SFML\include\SFML\Graphics\Image.hpp	26;"	d
+SFML_INPUTSOUNDFILE_HPP	c:\SFML\include\SFML\Audio\InputSoundFile.hpp	26;"	d
+SFML_INPUTSTREAM_HPP	c:\SFML\include\SFML\System\InputStream.hpp	26;"	d
+SFML_IPADDRESS_HPP	c:\SFML\include\SFML\Network\IpAddress.hpp	26;"	d
+SFML_JOYSTICK_HPP	c:\SFML\include\SFML\Window\Joystick.hpp	26;"	d
+SFML_KEYBOARD_HPP	c:\SFML\include\SFML\Window\Keyboard.hpp	26;"	d
+SFML_LISTENER_HPP	c:\SFML\include\SFML\Audio\Listener.hpp	26;"	d
+SFML_LOCK_HPP	c:\SFML\include\SFML\System\Lock.hpp	26;"	d
+SFML_MAIN_HPP	c:\SFML\include\SFML\Main.hpp	26;"	d
+SFML_MEMORYINPUTSTREAM_HPP	c:\SFML\include\SFML\System\MemoryInputStream.hpp	26;"	d
+SFML_MOUSE_HPP	c:\SFML\include\SFML\Window\Mouse.hpp	26;"	d
+SFML_MUSIC_HPP	c:\SFML\include\SFML\Audio\Music.hpp	26;"	d
+SFML_MUTEX_HPP	c:\SFML\include\SFML\System\Mutex.hpp	26;"	d
+SFML_NATIVEACTIVITY_HPP	c:\SFML\include\SFML\System\NativeActivity.hpp	26;"	d
+SFML_NETWORK_API	c:\SFML\include\SFML\Network\Export.hpp	39;"	d
+SFML_NETWORK_API	c:\SFML\include\SFML\Network\Export.hpp	43;"	d
+SFML_NETWORK_EXPORT_HPP	c:\SFML\include\SFML\Network\Export.hpp	26;"	d
+SFML_NETWORK_HPP	c:\SFML\include\SFML\Network.hpp	26;"	d
+SFML_NONCOPYABLE_HPP	c:\SFML\include\SFML\System\NonCopyable.hpp	26;"	d
+SFML_OPENGL_HPP	c:\SFML\include\SFML\OpenGL.hpp	26;"	d
+SFML_OUTPUTSOUNDFILE_HPP	c:\SFML\include\SFML\Audio\OutputSoundFile.hpp	26;"	d
+SFML_PACKET_HPP	c:\SFML\include\SFML\Network\Packet.hpp	26;"	d
+SFML_PRIMITIVETYPE_HPP	c:\SFML\include\SFML\Graphics\PrimitiveType.hpp	26;"	d
+SFML_RECTANGLESHAPE_HPP	c:\SFML\include\SFML\Graphics\RectangleShape.hpp	26;"	d
+SFML_RECT_HPP	c:\SFML\include\SFML\Graphics\Rect.hpp	26;"	d
+SFML_RENDERSTATES_HPP	c:\SFML\include\SFML\Graphics\RenderStates.hpp	26;"	d
+SFML_RENDERTARGET_HPP	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	26;"	d
+SFML_RENDERTEXTURE_HPP	c:\SFML\include\SFML\Graphics\RenderTexture.hpp	26;"	d
+SFML_RENDERWINDOW_HPP	c:\SFML\include\SFML\Graphics\RenderWindow.hpp	26;"	d
+SFML_SENSOR_HPP	c:\SFML\include\SFML\Window\Sensor.hpp	26;"	d
+SFML_SFML_WINDOW_HPP	c:\SFML\include\SFML\Window.hpp	26;"	d
+SFML_SHADER_HPP	c:\SFML\include\SFML\Graphics\Shader.hpp	26;"	d
+SFML_SHAPE_HPP	c:\SFML\include\SFML\Graphics\Shape.hpp	26;"	d
+SFML_SLEEP_HPP	c:\SFML\include\SFML\System\Sleep.hpp	26;"	d
+SFML_SOCKETHANDLE_HPP	c:\SFML\include\SFML\Network\SocketHandle.hpp	26;"	d
+SFML_SOCKETSELECTOR_HPP	c:\SFML\include\SFML\Network\SocketSelector.hpp	26;"	d
+SFML_SOCKET_HPP	c:\SFML\include\SFML\Network\Socket.hpp	26;"	d
+SFML_SOUNDBUFFERRECORDER_HPP	c:\SFML\include\SFML\Audio\SoundBufferRecorder.hpp	26;"	d
+SFML_SOUNDBUFFER_HPP	c:\SFML\include\SFML\Audio\SoundBuffer.hpp	26;"	d
+SFML_SOUNDFILEFACTORY_HPP	c:\SFML\include\SFML\Audio\SoundFileFactory.hpp	26;"	d
+SFML_SOUNDFILEREADER_HPP	c:\SFML\include\SFML\Audio\SoundFileReader.hpp	26;"	d
+SFML_SOUNDFILEWRITER_HPP	c:\SFML\include\SFML\Audio\SoundFileWriter.hpp	26;"	d
+SFML_SOUNDRECORDER_HPP	c:\SFML\include\SFML\Audio\SoundRecorder.hpp	26;"	d
+SFML_SOUNDSOURCE_HPP	c:\SFML\include\SFML\Audio\SoundSource.hpp	26;"	d
+SFML_SOUNDSTREAM_HPP	c:\SFML\include\SFML\Audio\SoundStream.hpp	26;"	d
+SFML_SOUND_HPP	c:\SFML\include\SFML\Audio\Sound.hpp	26;"	d
+SFML_SPRITE_HPP	c:\SFML\include\SFML\Graphics\Sprite.hpp	26;"	d
+SFML_STRING_HPP	c:\SFML\include\SFML\System\String.hpp	26;"	d
+SFML_SYSTEM_ANDROID	c:\SFML\include\SFML\Config.hpp	77;"	d
+SFML_SYSTEM_API	c:\SFML\include\SFML\System\Export.hpp	39;"	d
+SFML_SYSTEM_API	c:\SFML\include\SFML\System\Export.hpp	43;"	d
+SFML_SYSTEM_EXPORT_HPP	c:\SFML\include\SFML\System\Export.hpp	26;"	d
+SFML_SYSTEM_FREEBSD	c:\SFML\include\SFML\Config.hpp	87;"	d
+SFML_SYSTEM_HPP	c:\SFML\include\SFML\System.hpp	26;"	d
+SFML_SYSTEM_IOS	c:\SFML\include\SFML\Config.hpp	57;"	d
+SFML_SYSTEM_LINUX	c:\SFML\include\SFML\Config.hpp	82;"	d
+SFML_SYSTEM_MACOS	c:\SFML\include\SFML\Config.hpp	62;"	d
+SFML_SYSTEM_OPENBSD	c:\SFML\include\SFML\Config.hpp	92;"	d
+SFML_SYSTEM_WINDOWS	c:\SFML\include\SFML\Config.hpp	44;"	d
+SFML_TCPLISTENER_HPP	c:\SFML\include\SFML\Network\TcpListener.hpp	26;"	d
+SFML_TCPSOCKET_HPP	c:\SFML\include\SFML\Network\TcpSocket.hpp	26;"	d
+SFML_TEXTURE_HPP	c:\SFML\include\SFML\Graphics\Texture.hpp	26;"	d
+SFML_TEXT_HPP	c:\SFML\include\SFML\Graphics\Text.hpp	26;"	d
+SFML_THREADLOCALPTR_HPP	c:\SFML\include\SFML\System\ThreadLocalPtr.hpp	26;"	d
+SFML_THREADLOCAL_HPP	c:\SFML\include\SFML\System\ThreadLocal.hpp	26;"	d
+SFML_THREAD_HPP	c:\SFML\include\SFML\System\Thread.hpp	26;"	d
+SFML_TIME_HPP	c:\SFML\include\SFML\System\Time.hpp	26;"	d
+SFML_TOUCH_HPP	c:\SFML\include\SFML\Window\Touch.hpp	26;"	d
+SFML_TRANSFORMABLE_HPP	c:\SFML\include\SFML\Graphics\Transformable.hpp	26;"	d
+SFML_TRANSFORM_HPP	c:\SFML\include\SFML\Graphics\Transform.hpp	26;"	d
+SFML_UDPSOCKET_HPP	c:\SFML\include\SFML\Network\UdpSocket.hpp	26;"	d
+SFML_UTF_HPP	c:\SFML\include\SFML\System\Utf.hpp	26;"	d
+SFML_VECTOR2_HPP	c:\SFML\include\SFML\System\Vector2.hpp	26;"	d
+SFML_VECTOR3_HPP	c:\SFML\include\SFML\System\Vector3.hpp	26;"	d
+SFML_VERSION_MAJOR	c:\SFML\include\SFML\Config.hpp	32;"	d
+SFML_VERSION_MINOR	c:\SFML\include\SFML\Config.hpp	33;"	d
+SFML_VERSION_PATCH	c:\SFML\include\SFML\Config.hpp	34;"	d
+SFML_VERTEXARRAY_HPP	c:\SFML\include\SFML\Graphics\VertexArray.hpp	26;"	d
+SFML_VERTEXBUFFER_HPP	c:\SFML\include\SFML\Graphics\VertexBuffer.hpp	26;"	d
+SFML_VERTEX_HPP	c:\SFML\include\SFML\Graphics\Vertex.hpp	26;"	d
+SFML_VIDEOMODE_HPP	c:\SFML\include\SFML\Window\VideoMode.hpp	26;"	d
+SFML_VIEW_HPP	c:\SFML\include\SFML\Graphics\View.hpp	26;"	d
+SFML_WINDOWHANDLE_HPP	c:\SFML\include\SFML\Window\WindowHandle.hpp	26;"	d
+SFML_WINDOWSTYLE_HPP	c:\SFML\include\SFML\Window\WindowStyle.hpp	26;"	d
+SFML_WINDOW_API	c:\SFML\include\SFML\Window\Export.hpp	39;"	d
+SFML_WINDOW_API	c:\SFML\include\SFML\Window\Export.hpp	43;"	d
+SFML_WINDOW_EXPORT_HPP	c:\SFML\include\SFML\Window\Export.hpp	26;"	d
+SFML_WINDOW_HPP	c:\SFML\include\SFML\Window\Window.hpp	26;"	d
+STB_PERLIN_IMPLEMENTATION	c:\SFML\examples\island\Island.cpp	5;"	d	file:
+SemiColon	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        SemiColon = Semicolon,    \/\/\/< \\deprecated Use Semicolon instead$/;"	e	enum:sf::Keyboard::Key
+Semicolon	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Semicolon,    \/\/\/< The ; key$/;"	e	enum:sf::Keyboard::Key
+Sensor	c:\SFML\include\SFML\Window\Sensor.hpp	/^class SFML_WINDOW_API Sensor$/;"	c	namespace:sf
+SensorChanged	c:\SFML\include\SFML\Window\Event.hpp	/^        SensorChanged,          \/\/\/< A sensor value changed (data in event.sensor)$/;"	e	enum:sf::Event::EventType
+SensorEvent	c:\SFML\include\SFML\Window\Event.hpp	/^    struct SensorEvent$/;"	s	class:sf::Event
+ServiceNotAvailable	c:\SFML\include\SFML\Network\Http.hpp	/^            ServiceNotAvailable = 503, \/\/\/< The server is temporarily unavailable (overloaded, in maintenance, ...)$/;"	e	enum:sf::Http::Response::Status
+ServiceReady	c:\SFML\include\SFML\Network\Ftp.hpp	/^            ServiceReady          = 220, \/\/\/< Service ready for new user$/;"	e	enum:sf::Ftp::Response::Status
+ServiceReadySoon	c:\SFML\include\SFML\Network\Ftp.hpp	/^            ServiceReadySoon            = 120, \/\/\/< Service ready in N minutes$/;"	e	enum:sf::Ftp::Response::Status
+ServiceUnavailable	c:\SFML\include\SFML\Network\Ftp.hpp	/^            ServiceUnavailable        = 421, \/\/\/< Service not available, closing control connection$/;"	e	enum:sf::Ftp::Response::Status
+Setting	c:\SFML\examples\island\Island.cpp	/^    struct Setting$/;"	s	namespace:__anon1	file:
+Shader	c:\SFML\include\SFML\Graphics\Shader.hpp	/^class SFML_GRAPHICS_API Shader : GlResource, NonCopyable$/;"	c	namespace:sf
+Shape	c:\SFML\include\SFML\Graphics\Shape.hpp	/^class SFML_GRAPHICS_API Shape : public Drawable, public Transformable$/;"	c	namespace:sf
+Size	c:\SFML\include\SFML\Network\TcpSocket.hpp	/^        Uint32            Size;         \/\/\/< Data of packet size$/;"	m	struct:sf::TcpSocket::PendingPacket
+SizeAll	c:\SFML\include\SFML\Window\Cursor.hpp	/^        SizeAll,                \/\/\/< Combination of SizeHorizontal and SizeVertical$/;"	e	enum:sf::Cursor::Type
+SizeBottomLeftTopRight	c:\SFML\include\SFML\Window\Cursor.hpp	/^        SizeBottomLeftTopRight, \/\/\/< Double arrow cursor going from bottom-left to top-right$/;"	e	enum:sf::Cursor::Type
+SizeEvent	c:\SFML\include\SFML\Window\Event.hpp	/^    struct SizeEvent$/;"	s	class:sf::Event
+SizeHorizontal	c:\SFML\include\SFML\Window\Cursor.hpp	/^        SizeHorizontal,         \/\/\/< Horizontal double arrow cursor$/;"	e	enum:sf::Cursor::Type
+SizeReceived	c:\SFML\include\SFML\Network\TcpSocket.hpp	/^        std::size_t       SizeReceived; \/\/\/< Number of size bytes received so far$/;"	m	struct:sf::TcpSocket::PendingPacket
+SizeTopLeftBottomRight	c:\SFML\include\SFML\Window\Cursor.hpp	/^        SizeTopLeftBottomRight, \/\/\/< Double arrow cursor going from top-left to bottom-right$/;"	e	enum:sf::Cursor::Type
+SizeVertical	c:\SFML\include\SFML\Window\Cursor.hpp	/^        SizeVertical,           \/\/\/< Vertical double arrow cursor$/;"	e	enum:sf::Cursor::Type
+Slash	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Slash,        \/\/\/< The \/ key$/;"	e	enum:sf::Keyboard::Key
+Socket	c:\SFML\include\SFML\Network\Socket.hpp	/^class SFML_NETWORK_API Socket : NonCopyable$/;"	c	namespace:sf
+SocketHandle	c:\SFML\include\SFML\Network\SocketHandle.hpp	/^    typedef UINT_PTR SocketHandle;$/;"	t	namespace:sf
+SocketSelector	c:\SFML\include\SFML\Network\SocketSelector.hpp	/^class SFML_NETWORK_API SocketSelector$/;"	c	namespace:sf
+Sound	c:\SFML\include\SFML\Audio\Sound.hpp	/^class SFML_AUDIO_API Sound : public SoundSource$/;"	c	namespace:sf
+SoundBuffer	c:\SFML\include\SFML\Audio\SoundBuffer.hpp	/^class SFML_AUDIO_API SoundBuffer : AlResource$/;"	c	namespace:sf
+SoundBufferRecorder	c:\SFML\include\SFML\Audio\SoundBufferRecorder.hpp	/^class SFML_AUDIO_API SoundBufferRecorder : public SoundRecorder$/;"	c	namespace:sf
+SoundFileFactory	c:\SFML\include\SFML\Audio\SoundFileFactory.hpp	/^class SFML_AUDIO_API SoundFileFactory$/;"	c	namespace:sf
+SoundFileReader	c:\SFML\include\SFML\Audio\SoundFileReader.hpp	/^class SFML_AUDIO_API SoundFileReader$/;"	c	namespace:sf
+SoundFileWriter	c:\SFML\include\SFML\Audio\SoundFileWriter.hpp	/^class SFML_AUDIO_API SoundFileWriter$/;"	c	namespace:sf
+SoundList	c:\SFML\include\SFML\Audio\SoundBuffer.hpp	/^    typedef std::set<Sound*> SoundList; \/\/\/< Set of unique sound instances$/;"	t	class:sf::SoundBuffer
+SoundRecorder	c:\SFML\include\SFML\Audio\SoundRecorder.hpp	/^class SFML_AUDIO_API SoundRecorder : AlResource$/;"	c	namespace:sf
+SoundSource	c:\SFML\include\SFML\Audio\SoundSource.hpp	/^class SFML_AUDIO_API SoundSource : AlResource$/;"	c	namespace:sf
+SoundStream	c:\SFML\include\SFML\Audio\SoundStream.hpp	/^class SFML_AUDIO_API SoundStream : public SoundSource$/;"	c	namespace:sf
+Space	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Space,        \/\/\/< The Space key$/;"	e	enum:sf::Keyboard::Key
+Span	c:\SFML\include\SFML\Audio\Music.hpp	/^        Span()$/;"	f	struct:sf::Music::Span
+Span	c:\SFML\include\SFML\Audio\Music.hpp	/^        Span(T off, T len):$/;"	f	struct:sf::Music::Span
+Span	c:\SFML\include\SFML\Audio\Music.hpp	/^    struct Span$/;"	s	class:sf::Music
+Sprite	c:\SFML\include\SFML\Graphics\Sprite.hpp	/^class SFML_GRAPHICS_API Sprite : public Drawable, public Transformable$/;"	c	namespace:sf
+SrcAlpha	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^        SrcAlpha,         \/\/\/< (src.a, src.a, src.a, src.a)$/;"	e	enum:sf::BlendMode::Factor
+SrcColor	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^        SrcColor,         \/\/\/< (src.r, src.g, src.b, src.a)$/;"	e	enum:sf::BlendMode::Factor
+StatesCache	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^    struct StatesCache$/;"	s	class:sf::RenderTarget
+Static	c:\SFML\include\SFML\Graphics\VertexBuffer.hpp	/^        Static   \/\/\/< Rarely changing data$/;"	e	enum:sf::VertexBuffer::Usage
+Status	c:\SFML\include\SFML\Audio\SoundSource.hpp	/^    enum Status$/;"	g	class:sf::SoundSource
+Status	c:\SFML\include\SFML\Network\Ftp.hpp	/^        enum Status$/;"	g	class:sf::Ftp::Response
+Status	c:\SFML\include\SFML\Network\Http.hpp	/^        enum Status$/;"	g	class:sf::Http::Response
+Status	c:\SFML\include\SFML\Network\Socket.hpp	/^    enum Status$/;"	g	class:sf::Socket
+Stopped	c:\SFML\include\SFML\Audio\SoundSource.hpp	/^        Stopped, \/\/\/< Sound is not playing$/;"	e	enum:sf::SoundSource::Status
+StormBlink	c:\SFML\examples\shader\Shader.cpp	/^    StormBlink() :$/;"	f	class:StormBlink
+StormBlink	c:\SFML\examples\shader\Shader.cpp	/^class StormBlink : public Effect$/;"	c	file:
+Stream	c:\SFML\include\SFML\Graphics\VertexBuffer.hpp	/^        Stream,  \/\/\/< Constantly changing data$/;"	e	enum:sf::VertexBuffer::Usage
+StrikeThrough	c:\SFML\include\SFML\Graphics\Text.hpp	/^        StrikeThrough = 1 << 3  \/\/\/< Strike through characters$/;"	e	enum:sf::Text::Style
+String	c:\SFML\include\SFML\System\String.hpp	/^class SFML_SYSTEM_API String$/;"	c	namespace:sf
+Style	c:\SFML\include\SFML\Graphics\Text.hpp	/^    enum Style$/;"	g	class:sf::Text
+Style	c:\SFML\include\SFML\Window\WindowStyle.hpp	/^namespace Style$/;"	n	namespace:sf
+Subtract	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^        Subtract,       \/\/\/< Pixel = Src * SrcFactor - Dst * DstFactor$/;"	e	enum:sf::BlendMode::Equation
+Subtract	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Subtract,     \/\/\/< The - key (minus, usually from numpad)$/;"	e	enum:sf::Keyboard::Key
+SystemStatus	c:\SFML\include\SFML\Network\Ftp.hpp	/^            SystemStatus          = 211, \/\/\/< System status, or system help reply$/;"	e	enum:sf::Ftp::Response::Status
+SystemType	c:\SFML\include\SFML\Network\Ftp.hpp	/^            SystemType            = 215, \/\/\/< NAME system type, where NAME is an official system name from the list in the Assigned Numbers document$/;"	e	enum:sf::Ftp::Response::Status
+T	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        T,            \/\/\/< The T key$/;"	e	enum:sf::Keyboard::Key
+Tab	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Tab,          \/\/\/< The Tabulation key$/;"	e	enum:sf::Keyboard::Key
+Tcp	c:\SFML\include\SFML\Network\Socket.hpp	/^        Tcp, \/\/\/< TCP protocol$/;"	e	enum:sf::Socket::Type
+TcpListener	c:\SFML\include\SFML\Network\TcpListener.hpp	/^class SFML_NETWORK_API TcpListener : public Socket$/;"	c	namespace:sf
+TcpSocket	c:\SFML\include\SFML\Network\TcpSocket.hpp	/^class SFML_NETWORK_API TcpSocket : public Socket$/;"	c	namespace:sf
+Text	c:\SFML\include\SFML\Graphics\Text.hpp	/^class SFML_GRAPHICS_API Text : public Drawable, public Transformable$/;"	c	namespace:sf
+Text	c:\SFML\include\SFML\Window\Cursor.hpp	/^        Text,                   \/\/\/< I-beam, cursor when hovering over a field allowing text entry$/;"	e	enum:sf::Cursor::Type
+TextEntered	c:\SFML\include\SFML\Window\Event.hpp	/^        TextEntered,            \/\/\/< A character was entered (data in event.text)$/;"	e	enum:sf::Event::EventType
+TextEvent	c:\SFML\include\SFML\Window\Event.hpp	/^    struct TextEvent$/;"	s	class:sf::Event
+Texts	c:\SFML\examples\joystick\Joystick.cpp	/^    typedef std::map<std::string, JoystickObject> Texts;$/;"	t	namespace:__anon2	file:
+Texture	c:\SFML\include\SFML\Graphics\Texture.hpp	/^class SFML_GRAPHICS_API Texture : GlResource$/;"	c	namespace:sf
+TextureTable	c:\SFML\include\SFML\Graphics\Shader.hpp	/^    typedef std::map<int, const Texture*> TextureTable;$/;"	t	class:sf::Shader
+Thread	c:\SFML\include\SFML\System\Thread.hpp	/^class SFML_SYSTEM_API Thread : NonCopyable$/;"	c	namespace:sf
+ThreadLocal	c:\SFML\include\SFML\System\ThreadLocal.hpp	/^class SFML_SYSTEM_API ThreadLocal : NonCopyable$/;"	c	namespace:sf
+ThreadLocalPtr	c:\SFML\include\SFML\System\ThreadLocalPtr.hpp	/^class ThreadLocalPtr : private ThreadLocal$/;"	c	namespace:sf
+Tilde	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Tilde,        \/\/\/< The ~ key$/;"	e	enum:sf::Keyboard::Key
+Time	c:\SFML\include\SFML\System\Time.hpp	/^class SFML_SYSTEM_API Time$/;"	c	namespace:sf
+TimeSpan	c:\SFML\include\SFML\Audio\Music.hpp	/^    typedef Span<Time> TimeSpan;$/;"	t	class:sf::Music
+Titlebar	c:\SFML\include\SFML\Window\WindowStyle.hpp	/^        Titlebar   = 1 << 0, \/\/\/< Title bar + fixed border$/;"	e	enum:sf::Style::__anon10
+Touch	c:\SFML\include\SFML\Window\Touch.hpp	/^class SFML_WINDOW_API Touch$/;"	c	namespace:sf
+TouchBegan	c:\SFML\include\SFML\Window\Event.hpp	/^        TouchBegan,             \/\/\/< A touch event began (data in event.touch)$/;"	e	enum:sf::Event::EventType
+TouchEnded	c:\SFML\include\SFML\Window\Event.hpp	/^        TouchEnded,             \/\/\/< A touch event ended (data in event.touch)$/;"	e	enum:sf::Event::EventType
+TouchEvent	c:\SFML\include\SFML\Window\Event.hpp	/^    struct TouchEvent$/;"	s	class:sf::Event
+TouchMoved	c:\SFML\include\SFML\Window\Event.hpp	/^        TouchMoved,             \/\/\/< A touch moved (data in event.touch)$/;"	e	enum:sf::Event::EventType
+TransferAborted	c:\SFML\include\SFML\Network\Ftp.hpp	/^            TransferAborted           = 426, \/\/\/< Connection closed, transfer aborted$/;"	e	enum:sf::Ftp::Response::Status
+TransferMode	c:\SFML\include\SFML\Network\Ftp.hpp	/^    enum TransferMode$/;"	g	class:sf::Ftp
+Transform	c:\SFML\include\SFML\Graphics\Transform.hpp	/^class SFML_GRAPHICS_API Transform$/;"	c	namespace:sf
+Transformable	c:\SFML\include\SFML\Graphics\Transformable.hpp	/^class SFML_GRAPHICS_API Transformable$/;"	c	namespace:sf
+TransientContextLock	c:\SFML\include\SFML\Window\GlResource.hpp	/^    class SFML_WINDOW_API TransientContextLock : NonCopyable$/;"	c	class:sf::GlResource
+Transparent	c:\SFML\include\SFML\Graphics\Color.hpp	/^    static const Color Transparent; \/\/\/< Transparent (black) predefined color$/;"	m	class:sf::Color
+TriangleFan	c:\SFML\include\SFML\Graphics\PrimitiveType.hpp	/^    TriangleFan,   \/\/\/< List of connected triangles, a point uses the common center and the previous point to form a triangle$/;"	e	enum:sf::PrimitiveType
+TriangleStrip	c:\SFML\include\SFML\Graphics\PrimitiveType.hpp	/^    TriangleStrip, \/\/\/< List of connected triangles, a point uses the two previous points to form a triangle$/;"	e	enum:sf::PrimitiveType
+Triangles	c:\SFML\include\SFML\Graphics\PrimitiveType.hpp	/^    Triangles,     \/\/\/< List of individual triangles$/;"	e	enum:sf::PrimitiveType
+TrianglesFan	c:\SFML\include\SFML\Graphics\PrimitiveType.hpp	/^    TrianglesFan   = TriangleFan    \/\/\/< \\deprecated Use TriangleFan instead$/;"	e	enum:sf::PrimitiveType
+TrianglesStrip	c:\SFML\include\SFML\Graphics\PrimitiveType.hpp	/^    TrianglesStrip = TriangleStrip, \/\/\/< \\deprecated Use TriangleStrip instead$/;"	e	enum:sf::PrimitiveType
+Type	c:\SFML\include\SFML\Graphics\Shader.hpp	/^    enum Type$/;"	g	class:sf::Shader
+Type	c:\SFML\include\SFML\Network\Socket.hpp	/^    enum Type$/;"	g	class:sf::Socket
+Type	c:\SFML\include\SFML\Window\Cursor.hpp	/^    enum Type$/;"	g	class:sf::Cursor
+Type	c:\SFML\include\SFML\Window\Sensor.hpp	/^    enum Type$/;"	g	class:sf::Sensor
+U	c:\SFML\include\SFML\Window\Joystick.hpp	/^        U,    \/\/\/< The U axis$/;"	e	enum:sf::Joystick::Axis
+U	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        U,            \/\/\/< The U key$/;"	e	enum:sf::Keyboard::Key
+Udp	c:\SFML\include\SFML\Network\Socket.hpp	/^        Udp  \/\/\/< UDP protocol$/;"	e	enum:sf::Socket::Type
+UdpSocket	c:\SFML\include\SFML\Network\UdpSocket.hpp	/^class SFML_NETWORK_API UdpSocket : public Socket$/;"	c	namespace:sf
+Uint16	c:\SFML\include\SFML\Config.hpp	/^    typedef unsigned short Uint16;$/;"	t	namespace:sf
+Uint32	c:\SFML\include\SFML\Config.hpp	/^    typedef unsigned int Uint32;$/;"	t	namespace:sf
+Uint64	c:\SFML\include\SFML\Config.hpp	/^        typedef unsigned __int64 Uint64;$/;"	t	namespace:sf
+Uint64	c:\SFML\include\SFML\Config.hpp	/^        typedef unsigned long long Uint64;$/;"	t	namespace:sf
+Uint8	c:\SFML\include\SFML\Config.hpp	/^    typedef unsigned char Uint8;$/;"	t	namespace:sf
+Unauthorized	c:\SFML\include\SFML\Network\Http.hpp	/^            Unauthorized        = 401, \/\/\/< The requested page needs an authentication to be accessed$/;"	e	enum:sf::Http::Response::Status
+Underlined	c:\SFML\include\SFML\Graphics\Text.hpp	/^        Underlined    = 1 << 2, \/\/\/< Underlined characters$/;"	e	enum:sf::Text::Style
+UniformTable	c:\SFML\include\SFML\Graphics\Shader.hpp	/^    typedef std::map<std::string, int> UniformTable;$/;"	t	class:sf::Shader
+Unknown	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Unknown = -1, \/\/\/< Unhandled key$/;"	e	enum:sf::Keyboard::Key
+Up	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Up,           \/\/\/< Up arrow$/;"	e	enum:sf::Keyboard::Key
+Usage	c:\SFML\include\SFML\Graphics\VertexBuffer.hpp	/^    enum Usage$/;"	g	class:sf::VertexBuffer
+UserAcceleration	c:\SFML\include\SFML\Window\Sensor.hpp	/^        UserAcceleration, \/\/\/< Measures the direction and intensity of device acceleration, independent of the gravity (m\/s^2)$/;"	e	enum:sf::Sensor::Type
+Utf	c:\SFML\include\SFML\System\Utf.hpp	/^class Utf<16>$/;"	c	namespace:sf
+Utf	c:\SFML\include\SFML\System\Utf.hpp	/^class Utf<32>$/;"	c	namespace:sf
+Utf	c:\SFML\include\SFML\System\Utf.hpp	/^class Utf<8>$/;"	c	namespace:sf
+Utf16	c:\SFML\include\SFML\System\Utf.hpp	/^typedef Utf<16> Utf16;$/;"	t	namespace:sf
+Utf32	c:\SFML\include\SFML\System\Utf.hpp	/^typedef Utf<32> Utf32;$/;"	t	namespace:sf
+Utf8	c:\SFML\include\SFML\System\Utf.hpp	/^typedef Utf<8>  Utf8;$/;"	t	namespace:sf
+V	c:\SFML\include\SFML\Window\Joystick.hpp	/^        V,    \/\/\/< The V axis$/;"	e	enum:sf::Joystick::Axis
+V	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        V,            \/\/\/< The V key$/;"	e	enum:sf::Keyboard::Key
+Vec2	c:\SFML\include\SFML\Graphics\Glsl.hpp	/^    typedef Vector2<float> Vec2;$/;"	t	namespace:sf::Glsl
+Vec3	c:\SFML\include\SFML\Graphics\Glsl.hpp	/^    typedef Vector3<float> Vec3;$/;"	t	namespace:sf::Glsl
+Vec4	c:\SFML\include\SFML\Graphics\Glsl.hpp	/^    typedef implementation-defined Vec4;$/;"	t	namespace:sf::Glsl
+Vec4	c:\SFML\include\SFML\Graphics\Glsl.hpp	/^    typedef priv::Vector4<float> Vec4;$/;"	t	namespace:sf::Glsl
+Vector2	c:\SFML\include\SFML\System\Vector2.hpp	/^class Vector2$/;"	c	namespace:sf
+Vector2f	c:\SFML\include\SFML\System\Vector2.hpp	/^typedef Vector2<float>        Vector2f;$/;"	t	namespace:sf
+Vector2i	c:\SFML\include\SFML\System\Vector2.hpp	/^typedef Vector2<int>          Vector2i;$/;"	t	namespace:sf
+Vector2u	c:\SFML\include\SFML\System\Vector2.hpp	/^typedef Vector2<unsigned int> Vector2u;$/;"	t	namespace:sf
+Vector3	c:\SFML\include\SFML\System\Vector3.hpp	/^class Vector3$/;"	c	namespace:sf
+Vector3f	c:\SFML\include\SFML\System\Vector3.hpp	/^typedef Vector3<float> Vector3f;$/;"	t	namespace:sf
+Vector3i	c:\SFML\include\SFML\System\Vector3.hpp	/^typedef Vector3<int>   Vector3i;$/;"	t	namespace:sf
+VersionNotSupported	c:\SFML\include\SFML\Network\Http.hpp	/^            VersionNotSupported = 505, \/\/\/< The server doesn't support the requested HTTP version$/;"	e	enum:sf::Http::Response::Status
+Vertex	c:\SFML\include\SFML\Graphics\Shader.hpp	/^        Vertex,   \/\/\/< %Vertex shader$/;"	e	enum:sf::Shader::Type
+Vertex	c:\SFML\include\SFML\Graphics\Vertex.hpp	/^class SFML_GRAPHICS_API Vertex$/;"	c	namespace:sf
+VertexArray	c:\SFML\include\SFML\Graphics\VertexArray.hpp	/^class SFML_GRAPHICS_API VertexArray : public Drawable$/;"	c	namespace:sf
+VertexBuffer	c:\SFML\include\SFML\Graphics\VertexBuffer.hpp	/^class SFML_GRAPHICS_API VertexBuffer : public Drawable, private GlResource$/;"	c	namespace:sf
+VertexCacheSize	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^        enum {VertexCacheSize = 4};$/;"	e	enum:sf::RenderTarget::StatesCache::__anon5
+VerticalWheel	c:\SFML\include\SFML\Window\Mouse.hpp	/^        VerticalWheel,  \/\/\/< The vertical mouse wheel$/;"	e	enum:sf::Mouse::Wheel
+VideoMode	c:\SFML\include\SFML\Window\VideoMode.hpp	/^class SFML_WINDOW_API VideoMode$/;"	c	namespace:sf
+View	c:\SFML\include\SFML\Graphics\View.hpp	/^class SFML_GRAPHICS_API View$/;"	c	namespace:sf
+W	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        W,            \/\/\/< The W key$/;"	e	enum:sf::Keyboard::Key
+Wait	c:\SFML\include\SFML\Window\Cursor.hpp	/^        Wait,                   \/\/\/< Busy cursor$/;"	e	enum:sf::Cursor::Type
+WaveBlur	c:\SFML\examples\shader\Shader.cpp	/^    WaveBlur() :$/;"	f	class:WaveBlur
+WaveBlur	c:\SFML\examples\shader\Shader.cpp	/^class WaveBlur : public Effect$/;"	c	file:
+Wheel	c:\SFML\include\SFML\Window\Mouse.hpp	/^    enum Wheel$/;"	g	class:sf::Mouse
+White	c:\SFML\include\SFML\Graphics\Color.hpp	/^    static const Color White;       \/\/\/< White predefined color$/;"	m	class:sf::Color
+Window	c:\SFML\include\SFML\Window\Window.hpp	/^class SFML_WINDOW_API Window : GlResource, NonCopyable$/;"	c	namespace:sf
+WindowHandle	c:\SFML\include\SFML\Window\WindowHandle.hpp	/^    typedef HWND__* WindowHandle;$/;"	t	namespace:sf
+WorkItem	c:\SFML\examples\island\Island.cpp	/^    struct WorkItem$/;"	s	namespace:__anon1	file:
+WriterFactory	c:\SFML\include\SFML\Audio\SoundFileFactory.hpp	/^    struct WriterFactory$/;"	s	class:sf::SoundFileFactory
+WriterFactoryArray	c:\SFML\include\SFML\Audio\SoundFileFactory.hpp	/^    typedef std::vector<WriterFactory> WriterFactoryArray;$/;"	t	class:sf::SoundFileFactory
+X	c:\SFML\include\SFML\Window\Joystick.hpp	/^        X,    \/\/\/< The X axis$/;"	e	enum:sf::Joystick::Axis
+X	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        X,            \/\/\/< The X key$/;"	e	enum:sf::Keyboard::Key
+XButton1	c:\SFML\include\SFML\Window\Mouse.hpp	/^        XButton1,   \/\/\/< The first extra mouse button$/;"	e	enum:sf::Mouse::Button
+XButton2	c:\SFML\include\SFML\Window\Mouse.hpp	/^        XButton2,   \/\/\/< The second extra mouse button$/;"	e	enum:sf::Mouse::Button
+Y	c:\SFML\include\SFML\Window\Joystick.hpp	/^        Y,    \/\/\/< The Y axis$/;"	e	enum:sf::Joystick::Axis
+Y	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Y,            \/\/\/< The Y key$/;"	e	enum:sf::Keyboard::Key
+Yellow	c:\SFML\include\SFML\Graphics\Color.hpp	/^    static const Color Yellow;      \/\/\/< Yellow predefined color$/;"	m	class:sf::Color
+Z	c:\SFML\include\SFML\Window\Joystick.hpp	/^        Z,    \/\/\/< The Z axis$/;"	e	enum:sf::Joystick::Axis
+Z	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Z,            \/\/\/< The Z key$/;"	e	enum:sf::Keyboard::Key
+Zero	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^        Zero,             \/\/\/< (0, 0, 0, 0)$/;"	e	enum:sf::BlendMode::Factor
+Zero	c:\SFML\include\SFML\System\Time.hpp	/^    static const Time Zero; \/\/\/< Predefined "zero" time value$/;"	m	class:sf::Time
+_USE_MATH_DEFINES	.\stdlibs.h	5;"	d
+a	c:\SFML\include\SFML\Graphics\Color.hpp	/^    Uint8 a; \/\/\/< Alpha (opacity) component$/;"	m	class:sf::Color
+advance	c:\SFML\include\SFML\Graphics\Glyph.hpp	/^    float     advance;     \/\/\/< Offset to move horizontally to the next character$/;"	m	class:sf::Glyph
+alphaDstFactor	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^    Factor   alphaDstFactor; \/\/\/< Destination blending factor for the alpha channel$/;"	m	struct:sf::BlendMode
+alphaEquation	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^    Equation alphaEquation;  \/\/\/< Blending equation for the alpha channel$/;"	m	struct:sf::BlendMode
+alphaSrcFactor	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^    Factor   alphaSrcFactor; \/\/\/< Source blending factor for the alpha channel$/;"	m	struct:sf::BlendMode
+alt	c:\SFML\include\SFML\Window\Event.hpp	/^        bool          alt;     \/\/\/< Is the Alt key pressed?$/;"	m	struct:sf::Event::KeyEvent
+antialiasingLevel	c:\SFML\include\SFML\Window\ContextSettings.hpp	/^    unsigned int antialiasingLevel; \/\/\/< Level of antialiasing$/;"	m	struct:sf::ContextSettings
+attributeFlags	c:\SFML\include\SFML\Window\ContextSettings.hpp	/^    Uint32       attributeFlags;    \/\/\/< The attribute flags to create the context with$/;"	m	struct:sf::ContextSettings
+audioData	c:\SFML\examples\voip\Client.cpp	/^const sf::Uint8 audioData   = 1;$/;"	v
+audioData	c:\SFML\examples\voip\Server.cpp	/^const sf::Uint8 audioData   = 1;$/;"	v
+axis	c:\SFML\include\SFML\Window\Event.hpp	/^        Joystick::Axis axis;       \/\/\/< Axis on which the joystick moved$/;"	m	struct:sf::Event::JoystickMoveEvent
+axislabels	c:\SFML\examples\joystick\Joystick.cpp	/^    const char* axislabels[] = {"X", "Y", "Z", "R", "U", "V", "PovX", "PovY"};$/;"	v
+b	c:\SFML\include\SFML\Graphics\Color.hpp	/^    Uint8 b; \/\/\/< Blue component$/;"	m	class:sf::Color
+bitsPerPixel	c:\SFML\include\SFML\Window\VideoMode.hpp	/^    unsigned int bitsPerPixel; \/\/\/< Video mode pixel depth, in bits per pixels$/;"	m	class:sf::VideoMode
+blendMode	c:\SFML\include\SFML\Graphics\RenderStates.hpp	/^    BlendMode      blendMode; \/\/\/< Blending mode$/;"	m	class:sf::RenderStates
+blockCount	c:\SFML\examples\island\Island.cpp	/^    const unsigned int blockCount = 32;$/;"	v
+bounds	c:\SFML\include\SFML\Graphics\Glyph.hpp	/^    FloatRect bounds;      \/\/\/< Bounding rectangle of the glyph, in coordinates relative to the baseline$/;"	m	class:sf::Glyph
+bufferUploadPending	c:\SFML\examples\island\Island.cpp	/^    bool bufferUploadPending = false;$/;"	v
+button	c:\SFML\examples\win32\Win32.cpp	/^HWND button;$/;"	v
+button	c:\SFML\include\SFML\Window\Event.hpp	/^        Mouse::Button button; \/\/\/< Code of the button that has been pressed$/;"	m	struct:sf::Event::MouseButtonEvent
+button	c:\SFML\include\SFML\Window\Event.hpp	/^        unsigned int button;     \/\/\/< Index of the button that has been pressed (in range [0 .. Joystick::ButtonCount - 1])$/;"	m	struct:sf::Event::JoystickButtonEvent
+calc_frames_per_second	.\global.cpp	/^pair<float, float> global::calc_frames_per_second($/;"	f	class:global
+channelCount	c:\SFML\include\SFML\Audio\SoundFileReader.hpp	/^        unsigned int channelCount; \/\/\/< Number of channels of the sound$/;"	m	struct:sf::SoundFileReader::Info
+check	c:\SFML\include\SFML\Audio\SoundFileFactory.hpp	/^        bool (*check)(InputStream&);$/;"	m	struct:sf::SoundFileFactory::ReaderFactory
+check	c:\SFML\include\SFML\Audio\SoundFileFactory.hpp	/^        bool (*check)(const std::string&);$/;"	m	struct:sf::SoundFileFactory::WriterFactory
+check_for_window_close	.\global.cpp	/^bool global::check_for_window_close(RenderWindow& window, Event& event) {$/;"	f	class:global
+code	c:\SFML\include\SFML\Window\Event.hpp	/^        Keyboard::Key code;    \/\/\/< Code of the key that has been pressed$/;"	m	struct:sf::Event::KeyEvent
+color	c:\SFML\include\SFML\Graphics\Vertex.hpp	/^    Color     color;     \/\/\/< Color of the vertex$/;"	m	class:sf::Vertex
+colorDstFactor	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^    Factor   colorDstFactor; \/\/\/< Destination blending factor for the color channels$/;"	m	struct:sf::BlendMode
+colorEquation	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^    Equation colorEquation;  \/\/\/< Blending equation for the color channels$/;"	m	struct:sf::BlendMode
+colorSrcFactor	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^    Factor   colorSrcFactor; \/\/\/< Source blending factor for the color channels$/;"	m	struct:sf::BlendMode
+computeNormal	c:\SFML\examples\island\Island.cpp	/^sf::Vector2f computeNormal(int x, int y, float left, float right, float bottom, float top)$/;"	f
+control	c:\SFML\include\SFML\Window\Event.hpp	/^        bool          control; \/\/\/< Is the Control key pressed?$/;"	m	struct:sf::Event::KeyEvent
+create	c:\SFML\include\SFML\Audio\SoundFileFactory.hpp	/^        SoundFileReader* (*create)();$/;"	m	struct:sf::SoundFileFactory::ReaderFactory
+create	c:\SFML\include\SFML\Audio\SoundFileFactory.hpp	/^        SoundFileWriter* (*create)();$/;"	m	struct:sf::SoundFileFactory::WriterFactory
+create_log_file	.\global.cpp	/^unique_ptr<fstream> global::create_log_file(const string currDateTime) {$/;"	f	class:global
+create_window	.\global.cpp	/^unique_ptr<RenderWindow> global::create_window() {$/;"	f	class:global
+delta	c:\SFML\include\SFML\Window\Event.hpp	/^        float        delta; \/\/\/< Wheel offset (positive is up\/left, negative is down\/right). High-precision mice may use non-integral offsets.$/;"	m	struct:sf::Event::MouseWheelScrollEvent
+delta	c:\SFML\include\SFML\Window\Event.hpp	/^        int delta; \/\/\/< Number of ticks the wheel has moved (positive is up, negative is down)$/;"	m	struct:sf::Event::MouseWheelEvent
+depthBits	c:\SFML\include\SFML\Window\ContextSettings.hpp	/^    unsigned int depthBits;         \/\/\/< Bits of the depth buffer$/;"	m	struct:sf::ContextSettings
+doClient	c:\SFML\examples\voip\Client.cpp	/^void doClient(unsigned short port)$/;"	f
+doServer	c:\SFML\examples\voip\Server.cpp	/^void doServer(unsigned short port)$/;"	f
+draw	c:\SFML\examples\shader\Effect.hpp	/^    void draw(sf::RenderTarget& target, sf::RenderStates states) const$/;"	f	class:Effect
+edgeDropoffExponent	c:\SFML\examples\island\Island.cpp	/^    float edgeDropoffExponent = 1.5f;$/;"	v
+edgeFactor	c:\SFML\examples\island\Island.cpp	/^    float edgeFactor = 0.9f;$/;"	v
+enable	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^        bool      enable;         \/\/\/< Is the cache enabled?$/;"	m	struct:sf::RenderTarget::StatesCache
+endOfStream	c:\SFML\examples\voip\Client.cpp	/^const sf::Uint8 endOfStream = 2;$/;"	v
+endOfStream	c:\SFML\examples\voip\Server.cpp	/^const sf::Uint8 endOfStream = 2;$/;"	v
+family	c:\SFML\include\SFML\Graphics\Font.hpp	/^        std::string family; \/\/\/< The font family$/;"	m	struct:sf::Font::Info
+finger	c:\SFML\include\SFML\Window\Event.hpp	/^        unsigned int finger; \/\/\/< Index of the finger in case of multi-touch events$/;"	m	struct:sf::Event::TouchEvent
+ftStep	.\global.h	/^const float ftStep = 16.f;  \/\/ fixed update interval in ms$/;"	v
+g	c:\SFML\include\SFML\Graphics\Color.hpp	/^    Uint8 g; \/\/\/< Green component$/;"	m	class:sf::Color
+generateTerrain	c:\SFML\examples\island\Island.cpp	/^void generateTerrain(sf::Vertex* buffer)$/;"	f
+getElevation	c:\SFML\examples\island\Island.cpp	/^float getElevation(float x, float y)$/;"	f
+getFont	c:\SFML\examples\shader\Effect.hpp	/^    static const sf::Font& getFont()$/;"	f	class:Effect
+getHighlandsTerrainColor	c:\SFML\examples\island\Island.cpp	/^sf::Color getHighlandsTerrainColor(float elevation, float moisture)$/;"	f
+getLowlandsTerrainColor	c:\SFML\examples\island\Island.cpp	/^sf::Color getLowlandsTerrainColor(float moisture)$/;"	f
+getMoisture	c:\SFML\examples\island\Island.cpp	/^float getMoisture(float x, float y)$/;"	f
+getName	c:\SFML\examples\shader\Effect.hpp	/^    const std::string& getName() const$/;"	f	class:Effect
+getSnowcapTerrainColor	c:\SFML\examples\island\Island.cpp	/^sf::Color getSnowcapTerrainColor(float elevation, float moisture)$/;"	f
+getTerrainColor	c:\SFML\examples\island\Island.cpp	/^sf::Color getTerrainColor(float elevation, float moisture)$/;"	f
+glStatesSet	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^        bool      glStatesSet;    \/\/\/< Are our internal GL states set yet?$/;"	m	struct:sf::RenderTarget::StatesCache
+global	.\global.h	/^namespace global {$/;"	n
+glyphs	c:\SFML\include\SFML\Graphics\Font.hpp	/^        GlyphTable       glyphs;  \/\/\/< Table mapping code points to their corresponding glyph$/;"	m	struct:sf::Font::Page
+handle_keyboard_input	.\global.cpp	/^void global::handle_keyboard_input(float timer, const float maxTime) {$/;"	f	class:global
+height	c:\SFML\include\SFML\Graphics\Font.hpp	/^        unsigned int height; \/\/\/< Height of the row$/;"	m	struct:sf::Font::Row
+height	c:\SFML\include\SFML\Graphics\Rect.hpp	/^    T height; \/\/\/< Height of the rectangle$/;"	m	class:sf::Rect
+height	c:\SFML\include\SFML\Window\Event.hpp	/^        unsigned int height; \/\/\/< New height, in pixels$/;"	m	struct:sf::Event::SizeEvent
+height	c:\SFML\include\SFML\Window\VideoMode.hpp	/^    unsigned int height;       \/\/\/< Video mode height, in pixels$/;"	m	class:sf::VideoMode
+heightBase	c:\SFML\examples\island\Island.cpp	/^    float heightBase = 0.0f;$/;"	v
+heightFactor	c:\SFML\examples\island\Island.cpp	/^    float heightFactor = windowHeight \/ 2.0f;$/;"	v
+heightFlatten	c:\SFML\examples\island\Island.cpp	/^    float heightFlatten = 3.0f;$/;"	v
+high_res_clock	.\global.cpp	/^typedef chrono::high_resolution_clock high_res_clock;$/;"	t	file:
+high_res_clock	.\main1.cpp	/^typedef chrono::high_resolution_clock high_res_clock;$/;"	t	file:
+index	c:\SFML\examples\island\Island.cpp	/^        unsigned int index;$/;"	m	struct:__anon1::WorkItem	file:
+joystickButton	c:\SFML\include\SFML\Window\Event.hpp	/^        JoystickButtonEvent   joystickButton;    \/\/\/< Joystick button event parameters (Event::JoystickButtonPressed, Event::JoystickButtonReleased)$/;"	m	union:sf::Event::__anon8
+joystickConnect	c:\SFML\include\SFML\Window\Event.hpp	/^        JoystickConnectEvent  joystickConnect;   \/\/\/< Joystick (dis)connect event parameters (Event::JoystickConnected, Event::JoystickDisconnected)$/;"	m	union:sf::Event::__anon8
+joystickId	c:\SFML\include\SFML\Window\Event.hpp	/^        unsigned int   joystickId; \/\/\/< Index of the joystick (in range [0 .. Joystick::Count - 1])$/;"	m	struct:sf::Event::JoystickMoveEvent
+joystickId	c:\SFML\include\SFML\Window\Event.hpp	/^        unsigned int joystickId; \/\/\/< Index of the joystick (in range [0 .. Joystick::Count - 1])$/;"	m	struct:sf::Event::JoystickButtonEvent
+joystickId	c:\SFML\include\SFML\Window\Event.hpp	/^        unsigned int joystickId; \/\/\/< Index of the joystick (in range [0 .. Joystick::Count - 1])$/;"	m	struct:sf::Event::JoystickConnectEvent
+joystickMove	c:\SFML\include\SFML\Window\Event.hpp	/^        JoystickMoveEvent     joystickMove;      \/\/\/< Joystick move event parameters (Event::JoystickMoved)$/;"	m	union:sf::Event::__anon8
+key	c:\SFML\include\SFML\Window\Event.hpp	/^        KeyEvent              key;               \/\/\/< Key event parameters (Event::KeyPressed, Event::KeyReleased)$/;"	m	union:sf::Event::__anon8
+keyInputStep	.\global.h	/^const float keyInputStep = ftStep;$/;"	v
+label	c:\SFML\examples\joystick\Joystick.cpp	/^        sf::Text label;$/;"	m	struct:__anon2::JoystickObject	file:
+lastBlendMode	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^        BlendMode lastBlendMode;  \/\/\/< Cached blending mode$/;"	m	struct:sf::RenderTarget::StatesCache
+lastTextureId	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^        Uint64    lastTextureId;  \/\/\/< Cached texture$/;"	m	struct:sf::RenderTarget::StatesCache
+left	c:\SFML\include\SFML\Graphics\Rect.hpp	/^    T left;   \/\/\/< Left coordinate of the rectangle$/;"	m	class:sf::Rect
+length	c:\SFML\include\SFML\Audio\Music.hpp	/^        T length; \/\/\/< The length of the time range$/;"	m	struct:sf::Music::Span
+lightFactor	c:\SFML\examples\island\Island.cpp	/^    float lightFactor = 0.7f;$/;"	v
+load	c:\SFML\examples\shader\Effect.hpp	/^    void load()$/;"	f	class:Effect
+m_actualSize	c:\SFML\include\SFML\Graphics\Texture.hpp	/^    Vector2u     m_actualSize;    \/\/\/< Actual texture size (can be greater than public size because of padding)$/;"	m	class:sf::Texture
+m_address	c:\SFML\include\SFML\Network\IpAddress.hpp	/^    Uint32 m_address; \/\/\/< Address stored as an unsigned 32 bits integer$/;"	m	class:sf::IpAddress
+m_backgroundSprite	c:\SFML\examples\shader\Shader.cpp	/^    sf::Sprite m_backgroundSprite;$/;"	m	class:Edge	file:
+m_backgroundTexture	c:\SFML\examples\shader\Shader.cpp	/^    sf::Texture m_backgroundTexture;$/;"	m	class:Edge	file:
+m_body	c:\SFML\include\SFML\Network\Http.hpp	/^        std::string  m_body;         \/\/\/< Body of the request$/;"	m	class:sf::Http::Request
+m_body	c:\SFML\include\SFML\Network\Http.hpp	/^        std::string  m_body;         \/\/\/< Body of the response$/;"	m	class:sf::Http::Response
+m_bounds	c:\SFML\include\SFML\Graphics\Shape.hpp	/^    FloatRect      m_bounds;           \/\/\/< Bounding rectangle of the whole shape (outline + fill)$/;"	m	class:sf::Shape
+m_bounds	c:\SFML\include\SFML\Graphics\Text.hpp	/^    mutable FloatRect   m_bounds;              \/\/\/< Bounding rectangle of the text (in local coordinates)$/;"	m	class:sf::Text
+m_buffer	c:\SFML\include\SFML\Audio\Sound.hpp	/^    const SoundBuffer* m_buffer; \/\/\/< Sound buffer bound to the source$/;"	m	class:sf::Sound
+m_buffer	c:\SFML\include\SFML\Audio\SoundBuffer.hpp	/^    unsigned int       m_buffer;   \/\/\/< OpenAL buffer identifier$/;"	m	class:sf::SoundBuffer
+m_buffer	c:\SFML\include\SFML\Audio\SoundBufferRecorder.hpp	/^    SoundBuffer        m_buffer;  \/\/\/< Sound buffer that will contain the recorded data$/;"	m	class:sf::SoundBufferRecorder
+m_buffer	c:\SFML\include\SFML\Graphics\VertexBuffer.hpp	/^    unsigned int  m_buffer;        \/\/\/< Internal buffer identifier$/;"	m	class:sf::VertexBuffer
+m_buffer	c:\SFML\include\SFML\Network\UdpSocket.hpp	/^    std::vector<char> m_buffer; \/\/\/< Temporary buffer holding the received data in Receive(Packet)$/;"	m	class:sf::UdpSocket
+m_bufferSeeks	c:\SFML\include\SFML\Audio\SoundStream.hpp	/^    Int64         m_bufferSeeks[BufferCount]; \/\/\/< If buffer is an "end buffer", holds next seek position, else NoLoop. For play offset calculation.$/;"	m	class:sf::SoundStream
+m_buffers	c:\SFML\include\SFML\Audio\SoundStream.hpp	/^    unsigned int  m_buffers[BufferCount];     \/\/\/< Sound buffers used to store temporary audio data$/;"	m	class:sf::SoundStream
+m_cache	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^    StatesCache m_cache;       \/\/\/< Render states cache$/;"	m	class:sf::RenderTarget
+m_cacheId	c:\SFML\include\SFML\Graphics\Texture.hpp	/^    Uint64       m_cacheId;       \/\/\/< Unique number that identifies the texture to the render target's cache$/;"	m	class:sf::Texture
+m_center	c:\SFML\include\SFML\Graphics\View.hpp	/^    Vector2f          m_center;              \/\/\/< Center of the view, in scene coordinates$/;"	m	class:sf::View
+m_channelCount	c:\SFML\include\SFML\Audio\InputSoundFile.hpp	/^    unsigned int     m_channelCount; \/\/\/< Number of channels of the sound$/;"	m	class:sf::InputSoundFile
+m_channelCount	c:\SFML\include\SFML\Audio\SoundRecorder.hpp	/^    unsigned int       m_channelCount;       \/\/\/< Number of recording channels$/;"	m	class:sf::SoundRecorder
+m_channelCount	c:\SFML\include\SFML\Audio\SoundStream.hpp	/^    unsigned int  m_channelCount;             \/\/\/< Number of channels (1 = mono, 2 = stereo, ...)$/;"	m	class:sf::SoundStream
+m_characterSize	c:\SFML\include\SFML\Graphics\Text.hpp	/^    unsigned int        m_characterSize;       \/\/\/< Base size of characters, in pixels$/;"	m	class:sf::Text
+m_client	c:\SFML\examples\voip\Server.cpp	/^    sf::TcpSocket          m_client;$/;"	m	class:NetworkAudioStream	file:
+m_clock	c:\SFML\include\SFML\Window\Window.hpp	/^    Clock             m_clock;          \/\/\/< Clock for measuring the elapsed time between frames$/;"	m	class:sf::Window
+m_commandSocket	c:\SFML\include\SFML\Network\Ftp.hpp	/^    TcpSocket   m_commandSocket; \/\/\/< Socket holding the control connection with the server$/;"	m	class:sf::Ftp
+m_connection	c:\SFML\include\SFML\Network\Http.hpp	/^    TcpSocket      m_connection; \/\/\/< Connection to the host$/;"	m	class:sf::Http
+m_context	c:\SFML\include\SFML\Window\Context.hpp	/^    priv::GlContext* m_context; \/\/\/< Internal OpenGL context$/;"	m	class:sf::Context
+m_context	c:\SFML\include\SFML\Window\Window.hpp	/^    priv::GlContext*  m_context;        \/\/\/< Platform-specific implementation of the OpenGL context$/;"	m	class:sf::Window
+m_currentTexture	c:\SFML\include\SFML\Graphics\Shader.hpp	/^    int          m_currentTexture; \/\/\/< Location of the current texture in the shader$/;"	m	class:sf::Shader
+m_data	c:\SFML\include\SFML\Network\Packet.hpp	/^    std::vector<char> m_data;    \/\/\/< Data stored in the packet$/;"	m	class:sf::Packet
+m_data	c:\SFML\include\SFML\System\MemoryInputStream.hpp	/^    const char* m_data;   \/\/\/< Pointer to the data in memory$/;"	m	class:sf::MemoryInputStream
+m_defaultView	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^    View        m_defaultView; \/\/\/< Default view$/;"	m	class:sf::RenderTarget
+m_deviceName	c:\SFML\include\SFML\Audio\SoundRecorder.hpp	/^    std::string        m_deviceName;         \/\/\/< Name of the audio capture device$/;"	m	class:sf::SoundRecorder
+m_directory	c:\SFML\include\SFML\Network\Ftp.hpp	/^        std::string m_directory; \/\/\/< Directory extracted from the response message$/;"	m	class:sf::Ftp::DirectoryResponse
+m_duration	c:\SFML\include\SFML\Audio\SoundBuffer.hpp	/^    Time               m_duration; \/\/\/< Sound duration$/;"	m	class:sf::SoundBuffer
+m_entities	c:\SFML\examples\shader\Shader.cpp	/^    std::vector<sf::Sprite> m_entities;$/;"	m	class:Edge	file:
+m_entityTexture	c:\SFML\examples\shader\Shader.cpp	/^    sf::Texture m_entityTexture;$/;"	m	class:Edge	file:
+m_entryPoint	c:\SFML\include\SFML\System\Thread.hpp	/^    priv::ThreadFunc* m_entryPoint; \/\/\/< Abstraction of the function to run$/;"	m	class:sf::Thread
+m_face	c:\SFML\include\SFML\Graphics\Font.hpp	/^    void*                      m_face;        \/\/\/< Pointer to the internal font face (it is typeless to avoid exposing implementation details)$/;"	m	class:sf::Font
+m_fboAttachment	c:\SFML\include\SFML\Graphics\Texture.hpp	/^    bool         m_fboAttachment; \/\/\/< Is this texture owned by a framebuffer object?$/;"	m	class:sf::Texture
+m_fields	c:\SFML\include\SFML\Network\Http.hpp	/^        FieldTable   m_fields;       \/\/\/< Fields of the header associated to their value$/;"	m	class:sf::Http::Request
+m_fields	c:\SFML\include\SFML\Network\Http.hpp	/^        FieldTable   m_fields;       \/\/\/< Fields of the header$/;"	m	class:sf::Http::Response
+m_file	c:\SFML\include\SFML\Audio\Music.hpp	/^    InputSoundFile     m_file;     \/\/\/< The streamed music file$/;"	m	class:sf::Music
+m_file	c:\SFML\include\SFML\System\FileInputStream.hpp	/^    priv::ResourceStream* m_file;$/;"	m	class:sf::FileInputStream
+m_file	c:\SFML\include\SFML\System\FileInputStream.hpp	/^    std::FILE* m_file; \/\/\/< stdio file stream$/;"	m	class:sf::FileInputStream
+m_fillColor	c:\SFML\include\SFML\Graphics\Shape.hpp	/^    Color          m_fillColor;        \/\/\/< Fill color$/;"	m	class:sf::Shape
+m_fillColor	c:\SFML\include\SFML\Graphics\Text.hpp	/^    Color               m_fillColor;           \/\/\/< Text fill color$/;"	m	class:sf::Text
+m_font	c:\SFML\include\SFML\Graphics\Text.hpp	/^    const Font*         m_font;                \/\/\/< Font used to display the string$/;"	m	class:sf::Text
+m_fontTextureId	c:\SFML\include\SFML\Graphics\Text.hpp	/^    mutable Uint64      m_fontTextureId;       \/\/\/< The font texture id$/;"	m	class:sf::Text
+m_format	c:\SFML\include\SFML\Audio\SoundStream.hpp	/^    Uint32        m_format;                   \/\/\/< Format of the internal sound buffers$/;"	m	class:sf::SoundStream
+m_frameTimeLimit	c:\SFML\include\SFML\Window\Window.hpp	/^    Time              m_frameTimeLimit; \/\/\/< Current framerate limit$/;"	m	class:sf::Window
+m_geometryNeedUpdate	c:\SFML\include\SFML\Graphics\Text.hpp	/^    mutable bool        m_geometryNeedUpdate;  \/\/\/< Does the geometry need to be recomputed?$/;"	m	class:sf::Text
+m_hasFinished	c:\SFML\examples\voip\Server.cpp	/^    bool                   m_hasFinished;$/;"	m	class:NetworkAudioStream	file:
+m_hasMipmap	c:\SFML\include\SFML\Graphics\Texture.hpp	/^    bool         m_hasMipmap;     \/\/\/< Has the mipmap been generated?$/;"	m	class:sf::Texture
+m_host	c:\SFML\examples\voip\Client.cpp	/^    sf::IpAddress  m_host;   \/\/\/< Address of the remote host$/;"	m	class:NetworkRecorder	file:
+m_host	c:\SFML\include\SFML\Network\Http.hpp	/^    IpAddress      m_host;       \/\/\/< Web host address$/;"	m	class:sf::Http
+m_hostName	c:\SFML\include\SFML\Network\Http.hpp	/^    std::string    m_hostName;   \/\/\/< Web host name$/;"	m	class:sf::Http
+m_id	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^    Uint64      m_id;          \/\/\/< Unique number that identifies the RenderTarget$/;"	m	class:sf::RenderTarget
+m_impl	c:\SFML\include\SFML\Graphics\RenderTexture.hpp	/^    priv::RenderTextureImpl* m_impl;    \/\/\/< Platform\/hardware specific implementation$/;"	m	class:sf::RenderTexture
+m_impl	c:\SFML\include\SFML\Network\SocketSelector.hpp	/^    SocketSelectorImpl* m_impl; \/\/\/< Opaque pointer to the implementation (which requires OS-specific types)$/;"	m	class:sf::SocketSelector
+m_impl	c:\SFML\include\SFML\System\Thread.hpp	/^    priv::ThreadImpl* m_impl;       \/\/\/< OS-specific implementation of the thread$/;"	m	class:sf::Thread
+m_impl	c:\SFML\include\SFML\System\ThreadLocal.hpp	/^    priv::ThreadLocalImpl* m_impl; \/\/\/< Pointer to the OS specific implementation$/;"	m	class:sf::ThreadLocal
+m_impl	c:\SFML\include\SFML\Window\Cursor.hpp	/^    priv::CursorImpl* m_impl; \/\/\/< Platform-specific implementation of the cursor$/;"	m	class:sf::Cursor
+m_impl	c:\SFML\include\SFML\Window\Window.hpp	/^    priv::WindowImpl* m_impl;           \/\/\/< Platform-specific implementation of the window$/;"	m	class:sf::Window
+m_info	c:\SFML\include\SFML\Graphics\Font.hpp	/^    Info                       m_info;        \/\/\/< Information about the font$/;"	m	class:sf::Font
+m_insideBounds	c:\SFML\include\SFML\Graphics\Shape.hpp	/^    FloatRect      m_insideBounds;     \/\/\/< Bounding rectangle of the inside (fill)$/;"	m	class:sf::Shape
+m_invTransformUpdated	c:\SFML\include\SFML\Graphics\View.hpp	/^    mutable bool      m_invTransformUpdated; \/\/\/< Internal state telling if the inverse transform needs to be updated$/;"	m	class:sf::View
+m_inverseTransform	c:\SFML\include\SFML\Graphics\Transformable.hpp	/^    mutable Transform m_inverseTransform;           \/\/\/< Combined transformation of the object$/;"	m	class:sf::Transformable
+m_inverseTransform	c:\SFML\include\SFML\Graphics\View.hpp	/^    mutable Transform m_inverseTransform;    \/\/\/< Precomputed inverse projection transform corresponding to the view$/;"	m	class:sf::View
+m_inverseTransformNeedUpdate	c:\SFML\include\SFML\Graphics\Transformable.hpp	/^    mutable bool      m_inverseTransformNeedUpdate; \/\/\/< Does the transform need to be recomputed?$/;"	m	class:sf::Transformable
+m_isBlocking	c:\SFML\include\SFML\Network\Socket.hpp	/^    bool         m_isBlocking; \/\/\/< Current blocking mode of the socket$/;"	m	class:sf::Socket
+m_isCapturing	c:\SFML\include\SFML\Audio\SoundRecorder.hpp	/^    bool               m_isCapturing;        \/\/\/< Capturing state$/;"	m	class:sf::SoundRecorder
+m_isLoaded	c:\SFML\examples\shader\Effect.hpp	/^    bool m_isLoaded;$/;"	m	class:Effect
+m_isRepeated	c:\SFML\include\SFML\Graphics\Texture.hpp	/^    bool         m_isRepeated;    \/\/\/< Is the texture in repeat mode?$/;"	m	class:sf::Texture
+m_isSmooth	c:\SFML\include\SFML\Graphics\Texture.hpp	/^    bool         m_isSmooth;      \/\/\/< Status of the smooth filter$/;"	m	class:sf::Texture
+m_isStreaming	c:\SFML\include\SFML\Audio\SoundStream.hpp	/^    bool          m_isStreaming;              \/\/\/< Streaming state (true = playing, false = stopped)$/;"	m	class:sf::SoundStream
+m_isValid	c:\SFML\include\SFML\Network\Packet.hpp	/^    bool              m_isValid; \/\/\/< Reading state of the packet$/;"	m	class:sf::Packet
+m_letterSpacingFactor	c:\SFML\include\SFML\Graphics\Text.hpp	/^    float               m_letterSpacingFactor; \/\/\/< Spacing factor between letters$/;"	m	class:sf::Text
+m_library	c:\SFML\include\SFML\Graphics\Font.hpp	/^    void*                      m_library;     \/\/\/< Pointer to the internal library interface (it is typeless to avoid exposing implementation details)$/;"	m	class:sf::Font
+m_lineSpacingFactor	c:\SFML\include\SFML\Graphics\Text.hpp	/^    float               m_lineSpacingFactor;   \/\/\/< Spacing factor between lines$/;"	m	class:sf::Text
+m_listener	c:\SFML\examples\voip\Server.cpp	/^    sf::TcpListener        m_listener;$/;"	m	class:NetworkAudioStream	file:
+m_listing	c:\SFML\include\SFML\Network\Ftp.hpp	/^        std::vector<std::string> m_listing; \/\/\/< Directory\/file names extracted from the data$/;"	m	class:sf::Ftp::ListingResponse
+m_logoTexture	c:\SFML\examples\shader\Shader.cpp	/^    sf::Texture m_logoTexture;$/;"	m	class:Geometry	file:
+m_loop	c:\SFML\include\SFML\Audio\SoundStream.hpp	/^    bool          m_loop;                     \/\/\/< Loop flag (true to loop, false to play once)$/;"	m	class:sf::SoundStream
+m_loopSpan	c:\SFML\include\SFML\Audio\Music.hpp	/^    Span<Uint64>       m_loopSpan; \/\/\/< Loop Range Specifier$/;"	m	class:sf::Music
+m_majorVersion	c:\SFML\include\SFML\Network\Http.hpp	/^        unsigned int m_majorVersion; \/\/\/< Major HTTP version$/;"	m	class:sf::Http::Request
+m_majorVersion	c:\SFML\include\SFML\Network\Http.hpp	/^        unsigned int m_majorVersion; \/\/\/< Major HTTP version$/;"	m	class:sf::Http::Response
+m_matrix	c:\SFML\include\SFML\Graphics\Transform.hpp	/^    float m_matrix[16]; \/\/\/< 4x4 matrix defining the transformation$/;"	m	class:sf::Transform
+m_message	c:\SFML\include\SFML\Network\Ftp.hpp	/^        std::string m_message; \/\/\/< Last message received from the server$/;"	m	class:sf::Ftp::Response
+m_method	c:\SFML\include\SFML\Network\Http.hpp	/^        Method       m_method;       \/\/\/< Method to use for the request$/;"	m	class:sf::Http::Request
+m_microseconds	c:\SFML\include\SFML\System\Time.hpp	/^    Int64 m_microseconds; \/\/\/< Time value stored as microseconds$/;"	m	class:sf::Time
+m_minorVersion	c:\SFML\include\SFML\Network\Http.hpp	/^        unsigned int m_minorVersion; \/\/\/< Minor HTTP version$/;"	m	class:sf::Http::Request
+m_minorVersion	c:\SFML\include\SFML\Network\Http.hpp	/^        unsigned int m_minorVersion; \/\/\/< Minor HTTP version$/;"	m	class:sf::Http::Response
+m_mutex	c:\SFML\examples\voip\Server.cpp	/^    sf::Mutex              m_mutex;$/;"	m	class:NetworkAudioStream	file:
+m_mutex	c:\SFML\include\SFML\Audio\Music.hpp	/^    Mutex              m_mutex;    \/\/\/< Mutex protecting the data$/;"	m	class:sf::Music
+m_mutex	c:\SFML\include\SFML\System\Lock.hpp	/^    Mutex& m_mutex; \/\/\/< Mutex to lock \/ unlock$/;"	m	class:sf::Lock
+m_mutexImpl	c:\SFML\include\SFML\System\Mutex.hpp	/^    priv::MutexImpl* m_mutexImpl; \/\/\/< OS-specific implementation$/;"	m	class:sf::Mutex
+m_name	c:\SFML\examples\shader\Effect.hpp	/^    std::string m_name;$/;"	m	class:Effect
+m_offset	c:\SFML\examples\voip\Server.cpp	/^    std::size_t            m_offset;$/;"	m	class:NetworkAudioStream	file:
+m_offset	c:\SFML\include\SFML\System\MemoryInputStream.hpp	/^    Int64       m_offset; \/\/\/< Current reading position$/;"	m	class:sf::MemoryInputStream
+m_origin	c:\SFML\include\SFML\Graphics\Transformable.hpp	/^    Vector2f          m_origin;                     \/\/\/< Origin of translation\/rotation\/scaling of the object$/;"	m	class:sf::Transformable
+m_outlineColor	c:\SFML\include\SFML\Graphics\Shape.hpp	/^    Color          m_outlineColor;     \/\/\/< Outline color$/;"	m	class:sf::Shape
+m_outlineColor	c:\SFML\include\SFML\Graphics\Text.hpp	/^    Color               m_outlineColor;        \/\/\/< Text outline color$/;"	m	class:sf::Text
+m_outlineThickness	c:\SFML\include\SFML\Graphics\Shape.hpp	/^    float          m_outlineThickness; \/\/\/< Thickness of the shape's outline$/;"	m	class:sf::Shape
+m_outlineThickness	c:\SFML\include\SFML\Graphics\Text.hpp	/^    float               m_outlineThickness;    \/\/\/< Thickness of the text's outline$/;"	m	class:sf::Text
+m_outlineVertices	c:\SFML\include\SFML\Graphics\Shape.hpp	/^    VertexArray    m_outlineVertices;  \/\/\/< Vertex array containing the outline geometry$/;"	m	class:sf::Shape
+m_outlineVertices	c:\SFML\include\SFML\Graphics\Text.hpp	/^    mutable VertexArray m_outlineVertices;     \/\/\/< Vertex array containing the outline geometry$/;"	m	class:sf::Text
+m_pages	c:\SFML\include\SFML\Graphics\Font.hpp	/^    mutable PageTable          m_pages;       \/\/\/< Table containing the glyphs pages by character size$/;"	m	class:sf::Font
+m_pendingPacket	c:\SFML\include\SFML\Network\TcpSocket.hpp	/^    PendingPacket m_pendingPacket; \/\/\/< Temporary data of the packet currently being received$/;"	m	class:sf::TcpSocket
+m_pixelBuffer	c:\SFML\include\SFML\Graphics\Font.hpp	/^    mutable std::vector<Uint8> m_pixelBuffer; \/\/\/< Pixel buffer holding a glyph's pixels before being written to the texture$/;"	m	class:sf::Font
+m_pixels	c:\SFML\include\SFML\Graphics\Image.hpp	/^    std::vector<Uint8> m_pixels; \/\/\/< Pixels of the image$/;"	m	class:sf::Image
+m_pixelsFlipped	c:\SFML\include\SFML\Graphics\Texture.hpp	/^    mutable bool m_pixelsFlipped; \/\/\/< To work around the inconsistency in Y orientation$/;"	m	class:sf::Texture
+m_pointCloud	c:\SFML\examples\shader\Shader.cpp	/^    sf::VertexArray m_pointCloud;$/;"	m	class:Geometry	file:
+m_pointCount	c:\SFML\include\SFML\Graphics\CircleShape.hpp	/^    std::size_t m_pointCount; \/\/\/< Number of points composing the circle$/;"	m	class:sf::CircleShape
+m_points	c:\SFML\examples\shader\Shader.cpp	/^    sf::VertexArray m_points;$/;"	m	class:StormBlink	file:
+m_points	c:\SFML\include\SFML\Graphics\ConvexShape.hpp	/^    std::vector<Vector2f> m_points; \/\/\/< Points composing the convex polygon$/;"	m	class:sf::ConvexShape
+m_port	c:\SFML\examples\voip\Client.cpp	/^    unsigned short m_port;   \/\/\/< Remote port$/;"	m	class:NetworkRecorder	file:
+m_port	c:\SFML\include\SFML\Network\Http.hpp	/^    unsigned short m_port;       \/\/\/< Port used for connection with host$/;"	m	class:sf::Http
+m_position	c:\SFML\include\SFML\Graphics\Transformable.hpp	/^    Vector2f          m_position;                   \/\/\/< Position of the object in the 2D world$/;"	m	class:sf::Transformable
+m_primitiveType	c:\SFML\include\SFML\Graphics\VertexArray.hpp	/^    PrimitiveType       m_primitiveType; \/\/\/< Type of primitives to draw$/;"	m	class:sf::VertexArray
+m_primitiveType	c:\SFML\include\SFML\Graphics\VertexBuffer.hpp	/^    PrimitiveType m_primitiveType; \/\/\/< Type of primitives to draw$/;"	m	class:sf::VertexBuffer
+m_processingInterval	c:\SFML\include\SFML\Audio\SoundRecorder.hpp	/^    Time               m_processingInterval; \/\/\/< Time period between calls to onProcessSamples$/;"	m	class:sf::SoundRecorder
+m_radius	c:\SFML\include\SFML\Graphics\CircleShape.hpp	/^    float       m_radius;     \/\/\/< Radius of the circle$/;"	m	class:sf::CircleShape
+m_readPos	c:\SFML\include\SFML\Network\Packet.hpp	/^    std::size_t       m_readPos; \/\/\/< Current reading position in the packet$/;"	m	class:sf::Packet
+m_reader	c:\SFML\include\SFML\Audio\InputSoundFile.hpp	/^    SoundFileReader* m_reader;       \/\/\/< Reader that handles I\/O on the file's format$/;"	m	class:sf::InputSoundFile
+m_receiveBuffer	c:\SFML\include\SFML\Network\Ftp.hpp	/^    std::string m_receiveBuffer; \/\/\/< Received command data that is yet to be processed$/;"	m	class:sf::Ftp
+m_refCount	c:\SFML\include\SFML\Graphics\Font.hpp	/^    int*                       m_refCount;    \/\/\/< Reference counter used by implicit sharing$/;"	m	class:sf::Font
+m_rotation	c:\SFML\include\SFML\Graphics\Transformable.hpp	/^    float             m_rotation;                   \/\/\/< Orientation of the object, in degrees$/;"	m	class:sf::Transformable
+m_rotation	c:\SFML\include\SFML\Graphics\View.hpp	/^    float             m_rotation;            \/\/\/< Angle of rotation of the view rectangle, in degrees$/;"	m	class:sf::View
+m_sRgb	c:\SFML\include\SFML\Graphics\Texture.hpp	/^    bool         m_sRgb;          \/\/\/< Should the texture source be converted from sRGB?$/;"	m	class:sf::Texture
+m_sampleCount	c:\SFML\include\SFML\Audio\InputSoundFile.hpp	/^    Uint64           m_sampleCount;  \/\/\/< Total number of samples in the file$/;"	m	class:sf::InputSoundFile
+m_sampleOffset	c:\SFML\include\SFML\Audio\InputSoundFile.hpp	/^    Uint64           m_sampleOffset; \/\/\/< Sample Read Position$/;"	m	class:sf::InputSoundFile
+m_sampleRate	c:\SFML\include\SFML\Audio\InputSoundFile.hpp	/^    unsigned int     m_sampleRate;   \/\/\/< Number of samples per second$/;"	m	class:sf::InputSoundFile
+m_sampleRate	c:\SFML\include\SFML\Audio\SoundRecorder.hpp	/^    unsigned int       m_sampleRate;         \/\/\/< Sample rate$/;"	m	class:sf::SoundRecorder
+m_sampleRate	c:\SFML\include\SFML\Audio\SoundStream.hpp	/^    unsigned int  m_sampleRate;               \/\/\/< Frequency (samples \/ second)$/;"	m	class:sf::SoundStream
+m_samples	c:\SFML\examples\voip\Server.cpp	/^    std::vector<sf::Int16> m_samples;$/;"	m	class:NetworkAudioStream	file:
+m_samples	c:\SFML\include\SFML\Audio\Music.hpp	/^    std::vector<Int16> m_samples;  \/\/\/< Temporary buffer of samples$/;"	m	class:sf::Music
+m_samples	c:\SFML\include\SFML\Audio\SoundBuffer.hpp	/^    std::vector<Int16> m_samples;  \/\/\/< Samples buffer$/;"	m	class:sf::SoundBuffer
+m_samples	c:\SFML\include\SFML\Audio\SoundBufferRecorder.hpp	/^    std::vector<Int16> m_samples; \/\/\/< Temporary sample buffer to hold the recorded data$/;"	m	class:sf::SoundBufferRecorder
+m_samples	c:\SFML\include\SFML\Audio\SoundRecorder.hpp	/^    std::vector<Int16> m_samples;            \/\/\/< Buffer to store captured samples$/;"	m	class:sf::SoundRecorder
+m_samplesProcessed	c:\SFML\include\SFML\Audio\SoundStream.hpp	/^    Uint64        m_samplesProcessed;         \/\/\/< Number of buffers processed since beginning of the stream$/;"	m	class:sf::SoundStream
+m_scale	c:\SFML\include\SFML\Graphics\Transformable.hpp	/^    Vector2f          m_scale;                      \/\/\/< Scale of the object$/;"	m	class:sf::Transformable
+m_sendPos	c:\SFML\include\SFML\Network\Packet.hpp	/^    std::size_t       m_sendPos; \/\/\/< Current send position in the packet (for handling partial sends)$/;"	m	class:sf::Packet
+m_shader	c:\SFML\examples\shader\Shader.cpp	/^    sf::Shader m_shader;$/;"	m	class:Edge	file:
+m_shader	c:\SFML\examples\shader\Shader.cpp	/^    sf::Shader m_shader;$/;"	m	class:Geometry	file:
+m_shader	c:\SFML\examples\shader\Shader.cpp	/^    sf::Shader m_shader;$/;"	m	class:Pixelate	file:
+m_shader	c:\SFML\examples\shader\Shader.cpp	/^    sf::Shader m_shader;$/;"	m	class:StormBlink	file:
+m_shader	c:\SFML\examples\shader\Shader.cpp	/^    sf::Shader m_shader;$/;"	m	class:WaveBlur	file:
+m_shaderProgram	c:\SFML\include\SFML\Graphics\Shader.hpp	/^    unsigned int m_shaderProgram;  \/\/\/< OpenGL identifier for the program$/;"	m	class:sf::Shader
+m_size	c:\SFML\include\SFML\Graphics\Image.hpp	/^    Vector2u           m_size;   \/\/\/< Image size$/;"	m	class:sf::Image
+m_size	c:\SFML\include\SFML\Graphics\RectangleShape.hpp	/^    Vector2f m_size; \/\/\/< Size of the rectangle$/;"	m	class:sf::RectangleShape
+m_size	c:\SFML\include\SFML\Graphics\Texture.hpp	/^    Vector2u     m_size;          \/\/\/< Public texture size$/;"	m	class:sf::Texture
+m_size	c:\SFML\include\SFML\Graphics\VertexBuffer.hpp	/^    std::size_t   m_size;          \/\/\/< Size in Vertexes of the currently allocated buffer$/;"	m	class:sf::VertexBuffer
+m_size	c:\SFML\include\SFML\Graphics\View.hpp	/^    Vector2f          m_size;                \/\/\/< Size of the view, in scene coordinates$/;"	m	class:sf::View
+m_size	c:\SFML\include\SFML\System\MemoryInputStream.hpp	/^    Int64       m_size;   \/\/\/< Total size of the data$/;"	m	class:sf::MemoryInputStream
+m_size	c:\SFML\include\SFML\Window\Window.hpp	/^    Vector2u          m_size;           \/\/\/< Current size of the window$/;"	m	class:sf::Window
+m_socket	c:\SFML\examples\voip\Client.cpp	/^    sf::TcpSocket  m_socket; \/\/\/< Socket used to communicate with the server$/;"	m	class:NetworkRecorder	file:
+m_socket	c:\SFML\include\SFML\Network\Socket.hpp	/^    SocketHandle m_socket;     \/\/\/< Socket descriptor$/;"	m	class:sf::Socket
+m_sounds	c:\SFML\include\SFML\Audio\SoundBuffer.hpp	/^    mutable SoundList  m_sounds;   \/\/\/< List of sounds that are using this buffer$/;"	m	class:sf::SoundBuffer
+m_source	c:\SFML\include\SFML\Audio\SoundSource.hpp	/^    unsigned int m_source; \/\/\/< OpenAL source identifier$/;"	m	class:sf::SoundSource
+m_sprite	c:\SFML\examples\shader\Shader.cpp	/^    sf::Sprite m_sprite;$/;"	m	class:Pixelate	file:
+m_startTime	c:\SFML\include\SFML\System\Clock.hpp	/^    Time m_startTime; \/\/\/< Time of last reset, in microseconds$/;"	m	class:sf::Clock
+m_status	c:\SFML\include\SFML\Network\Ftp.hpp	/^        Status      m_status;  \/\/\/< Status code returned from the server$/;"	m	class:sf::Ftp::Response
+m_status	c:\SFML\include\SFML\Network\Http.hpp	/^        Status       m_status;       \/\/\/< Status code$/;"	m	class:sf::Http::Response
+m_stream	c:\SFML\include\SFML\Audio\InputSoundFile.hpp	/^    InputStream*     m_stream;       \/\/\/< Input stream used to access the file's data$/;"	m	class:sf::InputSoundFile
+m_stream	c:\SFML\include\SFML\Graphics\Font.hpp	/^    void*                      m_stream; \/\/\/< Asset file streamer (if loaded from file)$/;"	m	class:sf::Font
+m_streamOwned	c:\SFML\include\SFML\Audio\InputSoundFile.hpp	/^    bool             m_streamOwned;  \/\/\/< Is the stream internal or external?$/;"	m	class:sf::InputSoundFile
+m_streamRec	c:\SFML\include\SFML\Graphics\Font.hpp	/^    void*                      m_streamRec;   \/\/\/< Pointer to the stream rec instance (it is typeless to avoid exposing implementation details)$/;"	m	class:sf::Font
+m_string	c:\SFML\include\SFML\Graphics\Text.hpp	/^    String              m_string;              \/\/\/< String to display$/;"	m	class:sf::Text
+m_string	c:\SFML\include\SFML\System\String.hpp	/^    std::basic_string<Uint32> m_string; \/\/\/< Internal string of UTF-32 characters$/;"	m	class:sf::String
+m_stroker	c:\SFML\include\SFML\Graphics\Font.hpp	/^    void*                      m_stroker;     \/\/\/< Pointer to the stroker (it is typeless to avoid exposing implementation details)$/;"	m	class:sf::Font
+m_style	c:\SFML\include\SFML\Graphics\Text.hpp	/^    Uint32              m_style;               \/\/\/< Text style (see Style enum)$/;"	m	class:sf::Text
+m_surface	c:\SFML\examples\shader\Shader.cpp	/^    sf::RenderTexture m_surface;$/;"	m	class:Edge	file:
+m_tempBuffer	c:\SFML\examples\voip\Server.cpp	/^    std::vector<sf::Int16> m_tempBuffer;$/;"	m	class:NetworkAudioStream	file:
+m_text	c:\SFML\examples\shader\Shader.cpp	/^    sf::Text m_text;$/;"	m	class:WaveBlur	file:
+m_texture	c:\SFML\examples\shader\Shader.cpp	/^    sf::Texture m_texture;$/;"	m	class:Pixelate	file:
+m_texture	c:\SFML\include\SFML\Graphics\RenderTexture.hpp	/^    Texture                  m_texture; \/\/\/< Target texture to draw on$/;"	m	class:sf::RenderTexture
+m_texture	c:\SFML\include\SFML\Graphics\Shape.hpp	/^    const Texture* m_texture;          \/\/\/< Texture of the shape$/;"	m	class:sf::Shape
+m_texture	c:\SFML\include\SFML\Graphics\Sprite.hpp	/^    const Texture* m_texture;     \/\/\/< Texture of the sprite$/;"	m	class:sf::Sprite
+m_texture	c:\SFML\include\SFML\Graphics\Texture.hpp	/^    unsigned int m_texture;       \/\/\/< Internal texture identifier$/;"	m	class:sf::Texture
+m_textureRect	c:\SFML\include\SFML\Graphics\Shape.hpp	/^    IntRect        m_textureRect;      \/\/\/< Rectangle defining the area of the source texture to display$/;"	m	class:sf::Shape
+m_textureRect	c:\SFML\include\SFML\Graphics\Sprite.hpp	/^    IntRect        m_textureRect; \/\/\/< Rectangle defining the area of the source texture to display$/;"	m	class:sf::Sprite
+m_textures	c:\SFML\include\SFML\Graphics\Shader.hpp	/^    TextureTable m_textures;       \/\/\/< Texture variables in the shader, mapped to their location$/;"	m	class:sf::Shader
+m_thread	c:\SFML\include\SFML\Audio\SoundRecorder.hpp	/^    Thread             m_thread;             \/\/\/< Thread running the background recording task$/;"	m	class:sf::SoundRecorder
+m_thread	c:\SFML\include\SFML\Audio\SoundStream.hpp	/^    Thread        m_thread;                   \/\/\/< Thread running the background tasks$/;"	m	class:sf::SoundStream
+m_threadMutex	c:\SFML\include\SFML\Audio\SoundStream.hpp	/^    mutable Mutex m_threadMutex;              \/\/\/< Thread mutex$/;"	m	class:sf::SoundStream
+m_threadStartState	c:\SFML\include\SFML\Audio\SoundStream.hpp	/^    Status        m_threadStartState;         \/\/\/< State the thread starts in (Playing, Paused, Stopped)$/;"	m	class:sf::SoundStream
+m_transform	c:\SFML\examples\shader\Shader.cpp	/^    sf::Transform m_transform;$/;"	m	class:Geometry	file:
+m_transform	c:\SFML\include\SFML\Graphics\Transformable.hpp	/^    mutable Transform m_transform;                  \/\/\/< Combined transformation of the object$/;"	m	class:sf::Transformable
+m_transform	c:\SFML\include\SFML\Graphics\View.hpp	/^    mutable Transform m_transform;           \/\/\/< Precomputed projection transform corresponding to the view$/;"	m	class:sf::View
+m_transformNeedUpdate	c:\SFML\include\SFML\Graphics\Transformable.hpp	/^    mutable bool      m_transformNeedUpdate;        \/\/\/< Does the transform need to be recomputed?$/;"	m	class:sf::Transformable
+m_transformUpdated	c:\SFML\include\SFML\Graphics\View.hpp	/^    mutable bool      m_transformUpdated;    \/\/\/< Internal state telling if the transform needs to be updated$/;"	m	class:sf::View
+m_type	c:\SFML\include\SFML\Network\Socket.hpp	/^    Type         m_type;       \/\/\/< Type of the socket (TCP or UDP)$/;"	m	class:sf::Socket
+m_uniforms	c:\SFML\include\SFML\Graphics\Shader.hpp	/^    UniformTable m_uniforms;       \/\/\/< Parameters location cache$/;"	m	class:sf::Shader
+m_uri	c:\SFML\include\SFML\Network\Http.hpp	/^        std::string  m_uri;          \/\/\/< Target URI of the request$/;"	m	class:sf::Http::Request
+m_usage	c:\SFML\include\SFML\Graphics\VertexBuffer.hpp	/^    Usage         m_usage;         \/\/\/< How this vertex buffer is to be used$/;"	m	class:sf::VertexBuffer
+m_valid	c:\SFML\include\SFML\Network\IpAddress.hpp	/^    bool   m_valid;   \/\/\/< Is the address valid?$/;"	m	class:sf::IpAddress
+m_vertices	c:\SFML\include\SFML\Graphics\Shape.hpp	/^    VertexArray    m_vertices;         \/\/\/< Vertex array containing the fill geometry$/;"	m	class:sf::Shape
+m_vertices	c:\SFML\include\SFML\Graphics\Sprite.hpp	/^    Vertex         m_vertices[4]; \/\/\/< Vertices defining the sprite's geometry$/;"	m	class:sf::Sprite
+m_vertices	c:\SFML\include\SFML\Graphics\Text.hpp	/^    mutable VertexArray m_vertices;            \/\/\/< Vertex array containing the fill geometry$/;"	m	class:sf::Text
+m_vertices	c:\SFML\include\SFML\Graphics\VertexArray.hpp	/^    std::vector<Vertex> m_vertices;      \/\/\/< Vertices contained in the array$/;"	m	class:sf::VertexArray
+m_view	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^    View        m_view;        \/\/\/< Current view$/;"	m	class:sf::RenderTarget
+m_viewport	c:\SFML\include\SFML\Graphics\View.hpp	/^    FloatRect         m_viewport;            \/\/\/< Viewport rectangle, expressed as a factor of the render-target's size$/;"	m	class:sf::View
+m_writer	c:\SFML\include\SFML\Audio\OutputSoundFile.hpp	/^    SoundFileWriter* m_writer; \/\/\/< Writer that handles I\/O on the file's format$/;"	m	class:sf::OutputSoundFile
+main	.\main1.cpp	/^int main() {$/;"	f
+main	c:\SFML\examples\ftp\Ftp.cpp	/^int main()$/;"	f
+main	c:\SFML\examples\island\Island.cpp	/^int main()$/;"	f
+main	c:\SFML\examples\joystick\Joystick.cpp	/^int main()$/;"	f
+main	c:\SFML\examples\opengl\OpenGL.cpp	/^int main()$/;"	f
+main	c:\SFML\examples\pong\Pong.cpp	/^int main()$/;"	f
+main	c:\SFML\examples\shader\Shader.cpp	/^int main()$/;"	f
+main	c:\SFML\examples\sockets\Sockets.cpp	/^int main()$/;"	f
+main	c:\SFML\examples\sound-capture\SoundCapture.cpp	/^int main()$/;"	f
+main	c:\SFML\examples\sound\Sound.cpp	/^int main()$/;"	f
+main	c:\SFML\examples\voip\VoIP.cpp	/^int main()$/;"	f
+main	c:\SFML\examples\win32\Win32.cpp	/^int main()$/;"	f
+main	c:\SFML\examples\window\Window.cpp	/^int main()$/;"	f
+main	c:\SFML\include\SFML\Main.hpp	38;"	d
+majorVersion	c:\SFML\include\SFML\Window\ContextSettings.hpp	/^    unsigned int majorVersion;      \/\/\/< Major number of the context version to create$/;"	m	struct:sf::ContextSettings
+minorVersion	c:\SFML\include\SFML\Window\ContextSettings.hpp	/^    unsigned int minorVersion;      \/\/\/< Minor number of the context version to create$/;"	m	struct:sf::ContextSettings
+mouseButton	c:\SFML\include\SFML\Window\Event.hpp	/^        MouseButtonEvent      mouseButton;       \/\/\/< Mouse button event parameters (Event::MouseButtonPressed, Event::MouseButtonReleased)$/;"	m	union:sf::Event::__anon8
+mouseMove	c:\SFML\include\SFML\Window\Event.hpp	/^        MouseMoveEvent        mouseMove;         \/\/\/< Mouse move event parameters (Event::MouseMoved)$/;"	m	union:sf::Event::__anon8
+mouseWheel	c:\SFML\include\SFML\Window\Event.hpp	/^        MouseWheelEvent       mouseWheel;        \/\/\/< Mouse wheel event parameters (Event::MouseWheelMoved) (deprecated)$/;"	m	union:sf::Event::__anon8
+mouseWheelScroll	c:\SFML\include\SFML\Window\Event.hpp	/^        MouseWheelScrollEvent mouseWheelScroll;  \/\/\/< Mouse wheel event parameters (Event::MouseWheelScrolled)$/;"	m	union:sf::Event::__anon8
+name	c:\SFML\examples\island\Island.cpp	/^        const char* name;$/;"	m	struct:__anon1::Setting	file:
+name	c:\SFML\include\SFML\Window\Joystick.hpp	/^        String       name;      \/\/\/< Name of the joystick$/;"	m	struct:sf::Joystick::Identification
+nextRow	c:\SFML\include\SFML\Graphics\Font.hpp	/^        unsigned int     nextRow; \/\/\/< Y position of the next new row in the texture$/;"	m	struct:sf::Font::Page
+offset	c:\SFML\include\SFML\Audio\Music.hpp	/^        T offset; \/\/\/< The beginning offset of the time range$/;"	m	struct:sf::Music::Span
+onDraw	c:\SFML\examples\shader\Shader.cpp	/^    void onDraw(sf::RenderTarget& target, sf::RenderStates states) const$/;"	f	class:Edge
+onDraw	c:\SFML\examples\shader\Shader.cpp	/^    void onDraw(sf::RenderTarget& target, sf::RenderStates states) const$/;"	f	class:Geometry
+onDraw	c:\SFML\examples\shader\Shader.cpp	/^    void onDraw(sf::RenderTarget& target, sf::RenderStates states) const$/;"	f	class:Pixelate
+onDraw	c:\SFML\examples\shader\Shader.cpp	/^    void onDraw(sf::RenderTarget& target, sf::RenderStates states) const$/;"	f	class:StormBlink
+onDraw	c:\SFML\examples\shader\Shader.cpp	/^    void onDraw(sf::RenderTarget& target, sf::RenderStates states) const$/;"	f	class:WaveBlur
+onEvent	c:\SFML\examples\win32\Win32.cpp	/^LRESULT CALLBACK onEvent(HWND handle, UINT message, WPARAM wParam, LPARAM lParam)$/;"	f
+onGetData	c:\SFML\examples\voip\Server.cpp	/^    virtual bool onGetData(sf::SoundStream::Chunk& data)$/;"	f	class:NetworkAudioStream	file:
+onLoad	c:\SFML\examples\shader\Shader.cpp	/^    bool onLoad()$/;"	f	class:Edge
+onLoad	c:\SFML\examples\shader\Shader.cpp	/^    bool onLoad()$/;"	f	class:Geometry
+onLoad	c:\SFML\examples\shader\Shader.cpp	/^    bool onLoad()$/;"	f	class:Pixelate
+onLoad	c:\SFML\examples\shader\Shader.cpp	/^    bool onLoad()$/;"	f	class:StormBlink
+onLoad	c:\SFML\examples\shader\Shader.cpp	/^    bool onLoad()$/;"	f	class:WaveBlur
+onProcessSamples	c:\SFML\examples\voip\Client.cpp	/^    virtual bool onProcessSamples(const sf::Int16* samples, std::size_t sampleCount)$/;"	f	class:NetworkRecorder	file:
+onSeek	c:\SFML\examples\voip\Server.cpp	/^    virtual void onSeek(sf::Time timeOffset)$/;"	f	class:NetworkAudioStream	file:
+onStart	c:\SFML\examples\voip\Client.cpp	/^    virtual bool onStart()$/;"	f	class:NetworkRecorder	file:
+onStop	c:\SFML\examples\voip\Client.cpp	/^    virtual void onStop()$/;"	f	class:NetworkRecorder	file:
+onUpdate	c:\SFML\examples\shader\Shader.cpp	/^    void onUpdate(float time, float x, float y)$/;"	f	class:Edge
+onUpdate	c:\SFML\examples\shader\Shader.cpp	/^    void onUpdate(float time, float x, float y)$/;"	f	class:Geometry
+onUpdate	c:\SFML\examples\shader\Shader.cpp	/^    void onUpdate(float time, float x, float y)$/;"	f	class:StormBlink
+onUpdate	c:\SFML\examples\shader\Shader.cpp	/^    void onUpdate(float time, float x, float y)$/;"	f	class:WaveBlur
+onUpdate	c:\SFML\examples\shader\Shader.cpp	/^    void onUpdate(float, float x, float y)$/;"	f	class:Pixelate
+operator <<	c:\SFML\examples\ftp\Ftp.cpp	/^std::ostream& operator <<(std::ostream& stream, const sf::Ftp::Response& response)$/;"	f
+pendingWorkCount	c:\SFML\examples\island\Island.cpp	/^    int pendingWorkCount = 0;$/;"	v
+perlinFrequency	c:\SFML\examples\island\Island.cpp	/^    float perlinFrequency = 7.0f;$/;"	v
+perlinFrequencyBase	c:\SFML\examples\island\Island.cpp	/^    float perlinFrequencyBase = 4.0f;$/;"	v
+perlinOctaves	c:\SFML\examples\island\Island.cpp	/^    const int perlinOctaves = 3;$/;"	v
+playMusic	c:\SFML\examples\sound\Sound.cpp	/^void playMusic(const std::string& filename)$/;"	f
+playSound	c:\SFML\examples\sound\Sound.cpp	/^void playSound()$/;"	f
+position	c:\SFML\include\SFML\Graphics\Vertex.hpp	/^    Vector2f  position;  \/\/\/< 2D position of the vertex$/;"	m	class:sf::Vertex
+position	c:\SFML\include\SFML\Window\Event.hpp	/^        float          position;   \/\/\/< New position on the axis (in range [-100 .. 100])$/;"	m	struct:sf::Event::JoystickMoveEvent
+priv	c:\SFML\include\SFML\Graphics\Glsl.hpp	/^namespace priv$/;"	n	namespace:sf
+priv	c:\SFML\include\SFML\Graphics\RenderTexture.hpp	/^namespace priv$/;"	n	namespace:sf
+priv	c:\SFML\include\SFML\System\FileInputStream.hpp	/^namespace priv$/;"	n	namespace:sf
+priv	c:\SFML\include\SFML\System\Mutex.hpp	/^namespace priv$/;"	n	namespace:sf
+priv	c:\SFML\include\SFML\System\Thread.hpp	/^namespace priv$/;"	n	namespace:sf
+priv	c:\SFML\include\SFML\System\ThreadLocal.hpp	/^namespace priv$/;"	n	namespace:sf
+priv	c:\SFML\include\SFML\Window\Context.hpp	/^namespace priv$/;"	n	namespace:sf
+priv	c:\SFML\include\SFML\Window\Cursor.hpp	/^namespace priv$/;"	n	namespace:sf
+priv	c:\SFML\include\SFML\Window\Window.hpp	/^namespace priv$/;"	n	namespace:sf
+processWorkItem	c:\SFML\examples\island\Island.cpp	/^void processWorkItem(std::vector<sf::Vertex>& vertices, const WorkItem& workItem)$/;"	f
+productId	c:\SFML\include\SFML\Window\Joystick.hpp	/^        unsigned int productId; \/\/\/< Product identifier$/;"	m	struct:sf::Joystick::Identification
+r	c:\SFML\include\SFML\Graphics\Color.hpp	/^    Uint8 r; \/\/\/< Red component$/;"	m	class:sf::Color
+rand_engine	.\global.h	/^inline std::default_random_engine rand_engine;$/;"	v
+receiveLoop	c:\SFML\examples\voip\Server.cpp	/^    void receiveLoop()$/;"	f	class:NetworkAudioStream	file:
+resolutionX	c:\SFML\examples\island\Island.cpp	/^    const unsigned int resolutionX = 800;$/;"	v
+resolutionY	c:\SFML\examples\island\Island.cpp	/^    const unsigned int resolutionY = 600;$/;"	v
+return_current_time_and_date	.\global.cpp	/^const string global::return_current_time_and_date() {$/;"	f	class:global
+rows	c:\SFML\include\SFML\Graphics\Font.hpp	/^        std::vector<Row> rows;    \/\/\/< List containing the position of all the existing rows$/;"	m	struct:sf::Font::Page
+runTcpClient	c:\SFML\examples\sockets\TCP.cpp	/^void runTcpClient(unsigned short port)$/;"	f
+runTcpServer	c:\SFML\examples\sockets\TCP.cpp	/^void runTcpServer(unsigned short port)$/;"	f
+runUdpClient	c:\SFML\examples\sockets\UDP.cpp	/^void runUdpClient(unsigned short port)$/;"	f
+runUdpServer	c:\SFML\examples\sockets\UDP.cpp	/^void runUdpServer(unsigned short port)$/;"	f
+sRgbCapable	c:\SFML\include\SFML\Window\ContextSettings.hpp	/^    bool         sRgbCapable;       \/\/\/< Whether the context framebuffer is sRGB capable$/;"	m	struct:sf::ContextSettings
+s_font	c:\SFML\examples\shader\Effect.hpp	/^    static const sf::Font* s_font;$/;"	m	class:Effect
+s_font	c:\SFML\examples\shader\Shader.cpp	/^const sf::Font* Effect::s_font = NULL;$/;"	m	class:Effect	file:
+s_readers	c:\SFML\include\SFML\Audio\SoundFileFactory.hpp	/^    static ReaderFactoryArray s_readers; \/\/\/< List of all registered readers$/;"	m	class:sf::SoundFileFactory
+s_writers	c:\SFML\include\SFML\Audio\SoundFileFactory.hpp	/^    static WriterFactoryArray s_writers; \/\/\/< List of all registered writers$/;"	m	class:sf::SoundFileFactory
+sampleCount	c:\SFML\include\SFML\Audio\SoundFileReader.hpp	/^        Uint64       sampleCount;  \/\/\/< Total number of samples in the file$/;"	m	struct:sf::SoundFileReader::Info
+sampleCount	c:\SFML\include\SFML\Audio\SoundStream.hpp	/^        std::size_t  sampleCount; \/\/\/< Number of samples pointed by Samples$/;"	m	struct:sf::SoundStream::Chunk
+sampleRate	c:\SFML\include\SFML\Audio\SoundFileReader.hpp	/^        unsigned int sampleRate;   \/\/\/< Samples rate of the sound, in samples per second$/;"	m	struct:sf::SoundFileReader::Info
+samples	c:\SFML\include\SFML\Audio\SoundStream.hpp	/^        const Int16* samples;     \/\/\/< Pointer to the audio samples$/;"	m	struct:sf::SoundStream::Chunk
+sensor	c:\SFML\include\SFML\Window\Event.hpp	/^        SensorEvent           sensor;            \/\/\/< Sensor event parameters (Event::SensorChanged)$/;"	m	union:sf::Event::__anon8
+set	c:\SFML\examples\joystick\Joystick.cpp	/^    void set(const char* label, const T& value)$/;"	f	namespace:__anon2
+setFont	c:\SFML\examples\shader\Effect.hpp	/^    static void setFont(const sf::Font& font)$/;"	f	class:Effect
+sf	c:\SFML\include\SFML\Audio\AlResource.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Audio\InputSoundFile.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Audio\Listener.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Audio\Music.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Audio\OutputSoundFile.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Audio\Sound.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Audio\SoundBuffer.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Audio\SoundBufferRecorder.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Audio\SoundFileFactory.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Audio\SoundFileReader.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Audio\SoundFileWriter.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Audio\SoundRecorder.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Audio\SoundSource.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Audio\SoundStream.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Config.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Graphics\CircleShape.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Graphics\Color.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Graphics\ConvexShape.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Graphics\Drawable.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Graphics\Font.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Graphics\Glsl.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Graphics\Glyph.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Graphics\Image.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Graphics\PrimitiveType.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Graphics\Rect.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Graphics\RectangleShape.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Graphics\RenderStates.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Graphics\RenderTexture.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Graphics\RenderWindow.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Graphics\Shader.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Graphics\Shape.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Graphics\Sprite.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Graphics\Text.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Graphics\Texture.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Graphics\Transform.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Graphics\Transformable.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Graphics\Vertex.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Graphics\VertexArray.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Graphics\VertexBuffer.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Graphics\View.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Network\Ftp.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Network\Http.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Network\IpAddress.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Network\Packet.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Network\Socket.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Network\SocketHandle.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Network\SocketSelector.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Network\TcpListener.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Network\TcpSocket.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Network\UdpSocket.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\System\Clock.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\System\Err.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\System\FileInputStream.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\System\InputStream.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\System\Lock.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\System\MemoryInputStream.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\System\Mutex.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\System\NativeActivity.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\System\NonCopyable.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\System\Sleep.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\System\String.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\System\Thread.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\System\ThreadLocal.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\System\ThreadLocalPtr.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\System\Time.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\System\Utf.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\System\Vector2.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\System\Vector3.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Window\Clipboard.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Window\Context.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Window\ContextSettings.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Window\Cursor.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Window\Event.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Window\GlResource.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Window\Joystick.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Window\Keyboard.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Window\Mouse.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Window\Sensor.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Window\Touch.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Window\VideoMode.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Window\Window.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Window\WindowHandle.hpp	/^namespace sf$/;"	n
+sf	c:\SFML\include\SFML\Window\WindowStyle.hpp	/^namespace sf$/;"	n
+shader	c:\SFML\include\SFML\Graphics\RenderStates.hpp	/^    const Shader*  shader;    \/\/\/< Shader$/;"	m	class:sf::RenderStates
+shift	c:\SFML\include\SFML\Window\Event.hpp	/^        bool          shift;   \/\/\/< Is the Shift key pressed?$/;"	m	struct:sf::Event::KeyEvent
+size	c:\SFML\include\SFML\Window\Event.hpp	/^        SizeEvent             size;              \/\/\/< Size event parameters (Event::Resized)$/;"	m	union:sf::Event::__anon8
+snowcapHeight	c:\SFML\examples\island\Island.cpp	/^    float snowcapHeight = 0.6f;$/;"	v
+sstr	c:\SFML\examples\joystick\Joystick.cpp	/^    std::ostringstream sstr;$/;"	v
+start	c:\SFML\examples\voip\Server.cpp	/^    void start(unsigned short port)$/;"	f	class:NetworkAudioStream
+stencilBits	c:\SFML\include\SFML\Window\ContextSettings.hpp	/^    unsigned int stencilBits;       \/\/\/< Bits of the stencil buffer$/;"	m	struct:sf::ContextSettings
+system	c:\SFML\include\SFML\Window\Event.hpp	/^        bool          system;  \/\/\/< Is the System key pressed?$/;"	m	struct:sf::Event::KeyEvent
+targetBuffer	c:\SFML\examples\island\Island.cpp	/^        sf::Vertex* targetBuffer;$/;"	m	struct:__anon1::WorkItem	file:
+texCoords	c:\SFML\include\SFML\Graphics\Vertex.hpp	/^    Vector2f  texCoords; \/\/\/< Coordinates of the texture's pixel to map to the vertex$/;"	m	class:sf::Vertex
+texCoordsArrayEnabled	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^        bool      texCoordsArrayEnabled; \/\/\/< Is GL_TEXTURE_COORD_ARRAY client state enabled?$/;"	m	struct:sf::RenderTarget::StatesCache
+text	c:\SFML\include\SFML\Window\Event.hpp	/^        TextEvent             text;              \/\/\/< Text event parameters (Event::TextEntered)$/;"	m	union:sf::Event::__anon8
+texts	c:\SFML\examples\joystick\Joystick.cpp	/^    Texts texts;$/;"	v
+texture	c:\SFML\include\SFML\Graphics\Font.hpp	/^        Texture          texture; \/\/\/< Texture containing the pixels of the glyphs$/;"	m	struct:sf::Font::Page
+texture	c:\SFML\include\SFML\Graphics\RenderStates.hpp	/^    const Texture* texture;   \/\/\/< Texture$/;"	m	class:sf::RenderStates
+textureRect	c:\SFML\include\SFML\Graphics\Glyph.hpp	/^    IntRect   textureRect; \/\/\/< Texture coordinates of the glyph inside the font's texture$/;"	m	class:sf::Glyph
+threadCount	c:\SFML\examples\island\Island.cpp	/^    const unsigned int threadCount = 4;$/;"	v
+threadFunction	c:\SFML\examples\island\Island.cpp	/^void threadFunction()$/;"	f
+threads	c:\SFML\examples\island\Island.cpp	/^    std::vector<sf::Thread*> threads;$/;"	v
+threshold	c:\SFML\examples\joystick\Joystick.cpp	/^    float threshold = 0.1f;$/;"	v
+toggleFolder	c:\SFML\doc\html\dynsections.js	/^function toggleFolder(id)$/;"	f
+toggleInherit	c:\SFML\doc\html\dynsections.js	/^function toggleInherit(id)$/;"	f
+toggleLevel	c:\SFML\doc\html\dynsections.js	/^function toggleLevel(level)$/;"	f
+toggleVisibility	c:\SFML\doc\html\dynsections.js	/^function toggleVisibility(linkObj)$/;"	f
+top	c:\SFML\include\SFML\Graphics\Font.hpp	/^        unsigned int top;    \/\/\/< Y position of the row into the texture$/;"	m	struct:sf::Font::Row
+top	c:\SFML\include\SFML\Graphics\Rect.hpp	/^    T top;    \/\/\/< Top coordinate of the rectangle$/;"	m	class:sf::Rect
+touch	c:\SFML\include\SFML\Window\Event.hpp	/^        TouchEvent            touch;             \/\/\/< Touch events parameters (Event::TouchBegan, Event::TouchMoved, Event::TouchEnded)$/;"	m	union:sf::Event::__anon8
+transform	c:\SFML\include\SFML\Graphics\RenderStates.hpp	/^    Transform      transform; \/\/\/< Transform$/;"	m	class:sf::RenderStates
+type	c:\SFML\include\SFML\Window\Event.hpp	/^        Sensor::Type type; \/\/\/< Type of the sensor$/;"	m	struct:sf::Event::SensorEvent
+type	c:\SFML\include\SFML\Window\Event.hpp	/^    EventType type; \/\/\/< Type of the event$/;"	m	class:sf::Event
+unicode	c:\SFML\include\SFML\Window\Event.hpp	/^        Uint32 unicode; \/\/\/< UTF-32 Unicode value of the character$/;"	m	struct:sf::Event::TextEvent
+update	c:\SFML\examples\shader\Effect.hpp	/^    void update(float time, float x, float y)$/;"	f	class:Effect
+updateAxes	c:\SFML\examples\joystick\Joystick.cpp	/^    void updateAxes(unsigned int index)$/;"	f	namespace:__anon2
+updateButtons	c:\SFML\examples\joystick\Joystick.cpp	/^    void updateButtons(unsigned int index)$/;"	f	namespace:__anon2
+updateIdentification	c:\SFML\examples\joystick\Joystick.cpp	/^    void updateIdentification(unsigned int index)$/;"	f	namespace:__anon2
+updateStripes	c:\SFML\doc\html\dynsections.js	/^function updateStripes()$/;"	f
+updateValues	c:\SFML\examples\joystick\Joystick.cpp	/^    void updateValues(unsigned int index)$/;"	f	namespace:__anon2
+useVertexCache	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^        bool      useVertexCache; \/\/\/< Did we previously use the vertex cache?$/;"	m	struct:sf::RenderTarget::StatesCache
+value	c:\SFML\examples\island\Island.cpp	/^        float* value;$/;"	m	struct:__anon1::Setting	file:
+value	c:\SFML\examples\joystick\Joystick.cpp	/^        sf::Text value;$/;"	m	struct:__anon2::JoystickObject	file:
+vendorId	c:\SFML\include\SFML\Window\Joystick.hpp	/^        unsigned int vendorId;  \/\/\/< Manufacturer identifier$/;"	m	struct:sf::Joystick::Identification
+vertexCache	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^        Vertex    vertexCache[VertexCacheSize]; \/\/\/< Pre-transformed vertices cache$/;"	m	struct:sf::RenderTarget::StatesCache
+viewChanged	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^        bool      viewChanged;    \/\/\/< Has the current view changed since last draw?$/;"	m	struct:sf::RenderTarget::StatesCache
+wheel	c:\SFML\include\SFML\Window\Event.hpp	/^        Mouse::Wheel wheel; \/\/\/< Which wheel (for mice with multiple ones)$/;"	m	struct:sf::Event::MouseWheelScrollEvent
+width	c:\SFML\include\SFML\Graphics\Font.hpp	/^        unsigned int width;  \/\/\/< Current width of the row$/;"	m	struct:sf::Font::Row
+width	c:\SFML\include\SFML\Graphics\Rect.hpp	/^    T width;  \/\/\/< Width of the rectangle$/;"	m	class:sf::Rect
+width	c:\SFML\include\SFML\Window\Event.hpp	/^        unsigned int width;  \/\/\/< New width, in pixels$/;"	m	struct:sf::Event::SizeEvent
+width	c:\SFML\include\SFML\Window\VideoMode.hpp	/^    unsigned int width;        \/\/\/< Video mode width, in pixels$/;"	m	class:sf::VideoMode
+windowHeight	c:\SFML\examples\island\Island.cpp	/^    const unsigned int windowHeight = 600;$/;"	v
+windowWidth	c:\SFML\examples\island\Island.cpp	/^    const unsigned int windowWidth = 800;$/;"	v
+workPending	c:\SFML\examples\island\Island.cpp	/^    bool workPending = true;$/;"	v
+workQueue	c:\SFML\examples\island\Island.cpp	/^    std::deque<WorkItem> workQueue;$/;"	v
+workQueueMutex	c:\SFML\examples\island\Island.cpp	/^    sf::Mutex workQueueMutex;$/;"	v
+x	c:\SFML\include\SFML\System\Vector2.hpp	/^    T x; \/\/\/< X coordinate of the vector$/;"	m	class:sf::Vector2
+x	c:\SFML\include\SFML\System\Vector3.hpp	/^    T x; \/\/\/< X coordinate of the vector$/;"	m	class:sf::Vector3
+x	c:\SFML\include\SFML\Window\Event.hpp	/^        float x;           \/\/\/< Current value of the sensor on X axis$/;"	m	struct:sf::Event::SensorEvent
+x	c:\SFML\include\SFML\Window\Event.hpp	/^        int           x;      \/\/\/< X position of the mouse pointer, relative to the left of the owner window$/;"	m	struct:sf::Event::MouseButtonEvent
+x	c:\SFML\include\SFML\Window\Event.hpp	/^        int          x;     \/\/\/< X position of the mouse pointer, relative to the left of the owner window$/;"	m	struct:sf::Event::MouseWheelScrollEvent
+x	c:\SFML\include\SFML\Window\Event.hpp	/^        int x;               \/\/\/< X position of the touch, relative to the left of the owner window$/;"	m	struct:sf::Event::TouchEvent
+x	c:\SFML\include\SFML\Window\Event.hpp	/^        int x;     \/\/\/< X position of the mouse pointer, relative to the left of the owner window$/;"	m	struct:sf::Event::MouseWheelEvent
+x	c:\SFML\include\SFML\Window\Event.hpp	/^        int x; \/\/\/< X position of the mouse pointer, relative to the left of the owner window$/;"	m	struct:sf::Event::MouseMoveEvent
+y	c:\SFML\include\SFML\System\Vector2.hpp	/^    T y; \/\/\/< Y coordinate of the vector$/;"	m	class:sf::Vector2
+y	c:\SFML\include\SFML\System\Vector3.hpp	/^    T y; \/\/\/< Y coordinate of the vector$/;"	m	class:sf::Vector3
+y	c:\SFML\include\SFML\Window\Event.hpp	/^        float y;           \/\/\/< Current value of the sensor on Y axis$/;"	m	struct:sf::Event::SensorEvent
+y	c:\SFML\include\SFML\Window\Event.hpp	/^        int           y;      \/\/\/< Y position of the mouse pointer, relative to the top of the owner window$/;"	m	struct:sf::Event::MouseButtonEvent
+y	c:\SFML\include\SFML\Window\Event.hpp	/^        int          y;     \/\/\/< Y position of the mouse pointer, relative to the top of the owner window$/;"	m	struct:sf::Event::MouseWheelScrollEvent
+y	c:\SFML\include\SFML\Window\Event.hpp	/^        int y;               \/\/\/< Y position of the touch, relative to the top of the owner window$/;"	m	struct:sf::Event::TouchEvent
+y	c:\SFML\include\SFML\Window\Event.hpp	/^        int y;     \/\/\/< Y position of the mouse pointer, relative to the top of the owner window$/;"	m	struct:sf::Event::MouseWheelEvent
+y	c:\SFML\include\SFML\Window\Event.hpp	/^        int y; \/\/\/< Y position of the mouse pointer, relative to the top of the owner window$/;"	m	struct:sf::Event::MouseMoveEvent
+z	c:\SFML\include\SFML\System\Vector3.hpp	/^    T z; \/\/\/< Z coordinate of the vector$/;"	m	class:sf::Vector3
+z	c:\SFML\include\SFML\Window\Event.hpp	/^        float z;           \/\/\/< Current value of the sensor on Z axis$/;"	m	struct:sf::Event::SensorEvent
+~Drawable	c:\SFML\include\SFML\Graphics\Drawable.hpp	/^    virtual ~Drawable() {}$/;"	f	class:sf::Drawable
+~Effect	c:\SFML\examples\shader\Effect.hpp	/^    virtual ~Effect()$/;"	f	class:Effect
+~InputStream	c:\SFML\include\SFML\System\InputStream.hpp	/^    virtual ~InputStream() {}$/;"	f	class:sf::InputStream
+~NetworkRecorder	c:\SFML\examples\voip\Client.cpp	/^    ~NetworkRecorder()$/;"	f	class:NetworkRecorder
+~NonCopyable	c:\SFML\include\SFML\System\NonCopyable.hpp	/^    ~NonCopyable() {}$/;"	f	class:sf::NonCopyable
+~SoundFileReader	c:\SFML\include\SFML\Audio\SoundFileReader.hpp	/^    virtual ~SoundFileReader() {}$/;"	f	class:sf::SoundFileReader
+~SoundFileWriter	c:\SFML\include\SFML\Audio\SoundFileWriter.hpp	/^    virtual ~SoundFileWriter() {}$/;"	f	class:sf::SoundFileWriter
