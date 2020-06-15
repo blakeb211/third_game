@@ -4,20 +4,12 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.7	//
-_USE_MATH_DEFINES	..\include\stdlibs.h	5;"	d
-calc_frames_per_second	.\main1.cpp	/^pair<float, float> calc_frames_per_second($/;"	f
-calc_frames_per_second	main1.cpp	/^pair<float, float> calc_frames_per_second($/;"	f
-check_for_window_close	.\main1.cpp	/^bool check_for_window_close(RenderWindow& window, Event& event) {$/;"	f
-check_for_window_close	main1.cpp	/^bool check_for_window_close(RenderWindow& window, Event& event) {$/;"	f
-check_keyboard_input	.\main1.cpp	/^void check_keyboard_input() {$/;"	f
-check_keyboard_input	main1.cpp	/^void check_keyboard_input() {$/;"	f
-create_log_file	.\main1.cpp	/^unique_ptr<fstream> create_log_file(const string currDateTime) {$/;"	f
-create_log_file	main1.cpp	/^unique_ptr<fstream> create_log_file(const string currDateTime) {$/;"	f
-create_window	.\main1.cpp	/^unique_ptr<RenderWindow> create_window() {$/;"	f
-create_window	main1.cpp	/^unique_ptr<RenderWindow> create_window() {$/;"	f
-high_res_clock	.\main1.cpp	/^typedef chrono::high_resolution_clock high_res_clock;$/;"	t	file:
+calc_frames_per_second	global.cpp	/^pair<float, float> global::calc_frames_per_second($/;"	f	class:global
+check_for_window_close	global.cpp	/^bool global::check_for_window_close(RenderWindow& window, Event& event) {$/;"	f	class:global
+create_log_file	global.cpp	/^unique_ptr<fstream> global::create_log_file(const string currDateTime) {$/;"	f	class:global
+create_window	global.cpp	/^unique_ptr<RenderWindow> global::create_window() {$/;"	f	class:global
+handle_keyboard_input	global.cpp	/^void global::handle_keyboard_input(float timer, const float maxTime) {$/;"	f	class:global
+high_res_clock	global.cpp	/^typedef chrono::high_resolution_clock high_res_clock;$/;"	t	file:
 high_res_clock	main1.cpp	/^typedef chrono::high_resolution_clock high_res_clock;$/;"	t	file:
-main	.\main1.cpp	/^int main() {$/;"	f
 main	main1.cpp	/^int main() {$/;"	f
-return_current_time_and_date	.\main1.cpp	/^const string return_current_time_and_date() {$/;"	f
-return_current_time_and_date	main1.cpp	/^const string return_current_time_and_date() {$/;"	f
+return_current_time_and_date	global.cpp	/^const std::string return_current_time_and_date() {$/;"	f
