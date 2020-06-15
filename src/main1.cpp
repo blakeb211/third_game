@@ -16,8 +16,9 @@ vector<RectangleShape> shapes;
 void rotated_rectange_init() {
   for (int i = 0; i < 10; i++) {
     RectangleShape r;
-    r.setSize(Vec2(rand_engine() % 50, rand_engine() % 50));
-    r.setPosition(Vec2(rand_engine() % 500, rand_engine() % 700));
+    r.setOrigin(Vec2(winWidth / 2.f, winHeight / 2.f));
+    r.setSize(Vec2(50 + rand_engine() % 50, 50 + rand_engine() % 50));
+    r.setPosition(Vec2(500 + rand_engine() % 50, 360 + rand_engine() % 50));
     r.setFillColor(Color(rand_engine() % 250, rand_engine() % 250,
                          rand_engine() % 250, rand_engine() % 250));
     r.setOrigin(Vec2(0.f, 0.f));
@@ -27,7 +28,7 @@ void rotated_rectange_init() {
 
 void rotated_rectange_update() {
   for (auto& r : shapes) {
-    r.move(Vec2(-2.f + rand_engine() % 5, -3.f + rand_engine() % 5));
+    r.rotate(rand_engine() % 3); 
   }
 }
 
@@ -68,14 +69,15 @@ int main() {
 
     // Frame Timings
     frameCounter++;
-    auto timings = calc_frames_per_second(timePoint1);
-    auto fps_string = "FPS: " + to_string(static_cast<int>(timings.first));
+    auto fps_string = "FPS: " + to_string(lastFPS);
     window->setTitle(fps_string);
-    ftAccum += timings.second;
-    keyTimeAccum += timings.second;
     if (frameCounter % 400 == 0) {
       *log_file << fps_string << "\n";
     }
+    auto timings = calc_frames_per_second(timePoint1);
+    lastFPS = static_cast<int>(timings.first);
+    ftAccum += timings.second;
+    keyTimeAccum += timings.second;
   }
 
   log_file->close();

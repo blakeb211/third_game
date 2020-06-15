@@ -7,7 +7,7 @@ typedef chrono::high_resolution_clock high_res_clock;
 // free function to create a window
 unique_ptr<RenderWindow> global::create_window() {
   const ContextSettings cs(0, 0, 2, 4, 4, ContextSettings::Default, true);
-  auto window = make_unique<RenderWindow>(VideoMode(1024, 768), "Iteration 3",
+  auto window = make_unique<RenderWindow>(VideoMode(global::winWidth, global::winHeight), "Iteration 3",
                                           Style::Close, cs);
   window->setVerticalSyncEnabled(true);  // prevent screen tearing
   return move(window);

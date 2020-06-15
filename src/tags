@@ -638,6 +638,7 @@ Utf32	c:\SFML\include\SFML\System\Utf.hpp	/^typedef Utf<32> Utf32;$/;"	t	namespa
 Utf8	c:\SFML\include\SFML\System\Utf.hpp	/^typedef Utf<8>  Utf8;$/;"	t	namespace:sf
 V	c:\SFML\include\SFML\Window\Joystick.hpp	/^        V,    \/\/\/< The V axis$/;"	e	enum:sf::Joystick::Axis
 V	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        V,            \/\/\/< The V key$/;"	e	enum:sf::Keyboard::Key
+Vec2	.\main1.cpp	/^typedef Vector2f Vec2;$/;"	t	file:
 Vec2	c:\SFML\include\SFML\Graphics\Glsl.hpp	/^    typedef Vector2<float> Vec2;$/;"	t	namespace:sf::Glsl
 Vec3	c:\SFML\include\SFML\Graphics\Glsl.hpp	/^    typedef Vector3<float> Vec3;$/;"	t	namespace:sf::Glsl
 Vec4	c:\SFML\include\SFML\Graphics\Glsl.hpp	/^    typedef implementation-defined Vec4;$/;"	t	namespace:sf::Glsl
@@ -745,7 +746,7 @@ getTerrainColor	c:\SFML\examples\island\Island.cpp	/^sf::Color getTerrainColor(f
 glStatesSet	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^        bool      glStatesSet;    \/\/\/< Are our internal GL states set yet?$/;"	m	struct:sf::RenderTarget::StatesCache
 global	.\global.h	/^namespace global {$/;"	n
 glyphs	c:\SFML\include\SFML\Graphics\Font.hpp	/^        GlyphTable       glyphs;  \/\/\/< Table mapping code points to their corresponding glyph$/;"	m	struct:sf::Font::Page
-handle_keyboard_input	.\global.cpp	/^void global::handle_keyboard_input(float timer, const float maxTime) {$/;"	f	class:global
+handle_keyboard_input	.\global.cpp	/^bool global::handle_keyboard_input(float timer, const float maxTime, RenderWindow& window) {$/;"	f	class:global
 height	c:\SFML\include\SFML\Graphics\Font.hpp	/^        unsigned int height; \/\/\/< Height of the row$/;"	m	struct:sf::Font::Row
 height	c:\SFML\include\SFML\Graphics\Rect.hpp	/^    T height; \/\/\/< Height of the rectangle$/;"	m	class:sf::Rect
 height	c:\SFML\include\SFML\Window\Event.hpp	/^        unsigned int height; \/\/\/< New height, in pixels$/;"	m	struct:sf::Event::SizeEvent
@@ -766,6 +767,7 @@ key	c:\SFML\include\SFML\Window\Event.hpp	/^        KeyEvent              key;  
 keyInputStep	.\global.h	/^const float keyInputStep = ftStep;$/;"	v
 label	c:\SFML\examples\joystick\Joystick.cpp	/^        sf::Text label;$/;"	m	struct:__anon2::JoystickObject	file:
 lastBlendMode	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^        BlendMode lastBlendMode;  \/\/\/< Cached blending mode$/;"	m	struct:sf::RenderTarget::StatesCache
+lastFPS	.\global.h	/^inline unsigned int lastFPS = 0; $/;"	v
 lastTextureId	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^        Uint64    lastTextureId;  \/\/\/< Cached texture$/;"	m	struct:sf::RenderTarget::StatesCache
 left	c:\SFML\include\SFML\Graphics\Rect.hpp	/^    T left;   \/\/\/< Left coordinate of the rectangle$/;"	m	class:sf::Rect
 length	c:\SFML\include\SFML\Audio\Music.hpp	/^        T length; \/\/\/< The length of the time range$/;"	m	struct:sf::Music::Span
@@ -1046,6 +1048,8 @@ receiveLoop	c:\SFML\examples\voip\Server.cpp	/^    void receiveLoop()$/;"	f	clas
 resolutionX	c:\SFML\examples\island\Island.cpp	/^    const unsigned int resolutionX = 800;$/;"	v
 resolutionY	c:\SFML\examples\island\Island.cpp	/^    const unsigned int resolutionY = 600;$/;"	v
 return_current_time_and_date	.\global.cpp	/^const string global::return_current_time_and_date() {$/;"	f	class:global
+rotated_rectange_init	.\main1.cpp	/^void rotated_rectange_init() {$/;"	f
+rotated_rectange_update	.\main1.cpp	/^void rotated_rectange_update() {$/;"	f
 rows	c:\SFML\include\SFML\Graphics\Font.hpp	/^        std::vector<Row> rows;    \/\/\/< List containing the position of all the existing rows$/;"	m	struct:sf::Font::Page
 runTcpClient	c:\SFML\examples\sockets\TCP.cpp	/^void runTcpClient(unsigned short port)$/;"	f
 runTcpServer	c:\SFML\examples\sockets\TCP.cpp	/^void runTcpServer(unsigned short port)$/;"	f
@@ -1149,6 +1153,7 @@ sf	c:\SFML\include\SFML\Window\Window.hpp	/^namespace sf$/;"	n
 sf	c:\SFML\include\SFML\Window\WindowHandle.hpp	/^namespace sf$/;"	n
 sf	c:\SFML\include\SFML\Window\WindowStyle.hpp	/^namespace sf$/;"	n
 shader	c:\SFML\include\SFML\Graphics\RenderStates.hpp	/^    const Shader*  shader;    \/\/\/< Shader$/;"	m	class:sf::RenderStates
+shapes	.\main1.cpp	/^vector<RectangleShape> shapes;$/;"	v
 shift	c:\SFML\include\SFML\Window\Event.hpp	/^        bool          shift;   \/\/\/< Is the Shift key pressed?$/;"	m	struct:sf::Event::KeyEvent
 size	c:\SFML\include\SFML\Window\Event.hpp	/^        SizeEvent             size;              \/\/\/< Size event parameters (Event::Resized)$/;"	m	union:sf::Event::__anon8
 snowcapHeight	c:\SFML\examples\island\Island.cpp	/^    float snowcapHeight = 0.6f;$/;"	v
@@ -1196,6 +1201,8 @@ width	c:\SFML\include\SFML\Graphics\Font.hpp	/^        unsigned int width;  \/\/
 width	c:\SFML\include\SFML\Graphics\Rect.hpp	/^    T width;  \/\/\/< Width of the rectangle$/;"	m	class:sf::Rect
 width	c:\SFML\include\SFML\Window\Event.hpp	/^        unsigned int width;  \/\/\/< New width, in pixels$/;"	m	struct:sf::Event::SizeEvent
 width	c:\SFML\include\SFML\Window\VideoMode.hpp	/^    unsigned int width;        \/\/\/< Video mode width, in pixels$/;"	m	class:sf::VideoMode
+winHeight	.\global.h	/^const unsigned int winHeight = 768;$/;"	v
+winWidth	.\global.h	/^const unsigned int winWidth = 1024;$/;"	v
 windowHeight	c:\SFML\examples\island\Island.cpp	/^    const unsigned int windowHeight = 600;$/;"	v
 windowWidth	c:\SFML\examples\island\Island.cpp	/^    const unsigned int windowWidth = 800;$/;"	v
 workPending	c:\SFML\examples\island\Island.cpp	/^    bool workPending = true;$/;"	v

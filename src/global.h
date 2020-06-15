@@ -9,8 +9,11 @@ namespace global {
 //
 // constants
 //
+const unsigned int winWidth = 1024;
+const unsigned int winHeight = 768;
 const float ftStep = 16.f;  // fixed update interval in ms
 const float keyInputStep = ftStep;
+inline unsigned int lastFPS = 0; 
 inline std::default_random_engine rand_engine;
 //
 // free functions

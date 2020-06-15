@@ -10,8 +10,7 @@ READ THROUGH MY CODE
 READ THROUGH SFML API AGAIN
 
 
-Simplify wall building - test drawing rotated
-ability to draw hitboxes and rotated hitboxes for walls
+HAVE TO USE AXIS ALIGNED COLLISION DETECTION
 WRITE AND TEST COLLISION SYSTEM
 WRITE AND TEST AI SYSTEM
 WRITE AND TEST FREE PIXELS 
