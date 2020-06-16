@@ -4,6 +4,7 @@
 #include <SFML/System.hpp>
 
 #include "global.h"
+// #include "entity.h"
 
 using namespace std;
 using namespace sf;
@@ -14,11 +15,11 @@ typedef Vector2f Vec2;
 vector<RectangleShape> shapes;
 
 void rotated_rectange_init() {
-  for (int i = 0; i < 10; i++) {
+  for (int i = 0; i < 1000; i++) {
     RectangleShape r;
     r.setOrigin(Vec2(winWidth / 2.f, winHeight / 2.f));
-    r.setSize(Vec2(50 + rand_engine() % 50, 50 + rand_engine() % 50));
-    r.setPosition(Vec2(500 + rand_engine() % 50, 360 + rand_engine() % 50));
+    r.setSize(Vec2(30 + rand_engine() % 60, 30 + rand_engine() % 60));
+    r.setPosition(Vec2(500 + rand_engine() % 100, 360 + rand_engine() % 100));
     r.setFillColor(Color(rand_engine() % 250, rand_engine() % 250,
                          rand_engine() % 250, rand_engine() % 250));
     r.setOrigin(Vec2(0.f, 0.f));
@@ -31,6 +32,9 @@ void rotated_rectange_update() {
     r.rotate(rand_engine() % 3);
   }
 }
+
+
+
 
 int main() {
   // Initialization

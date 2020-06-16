@@ -1,14 +1,22 @@
 #include "global.h"
+
 #include "stdlibs.h"
 using namespace std;
 using namespace sf;
 typedef chrono::high_resolution_clock high_res_clock;
 
+// free function to set position of entity
+void global::move_entity(IEntity& e, const Vec2 offset) {
+  for(int i = 0; i < e.frags.size(); i++) {
+    e.frags[i].move(offset);
+  }
+}
 // free function to create a window
 unique_ptr<RenderWindow> global::create_window() {
   const ContextSettings cs(0, 0, 2, 4, 4, ContextSettings::Default, true);
-  auto window = make_unique<RenderWindow>(VideoMode(global::winWidth, global::winHeight), "Iteration 3",
-                                          Style::Close, cs);
+  auto window =
+      make_unique<RenderWindow>(VideoMode(global::winWidth, global::winHeight),
+                                "Iteration 3", Style::Close, cs);
   window->setVerticalSyncEnabled(true);  // prevent screen tearing
   return move(window);
 }
@@ -40,11 +48,12 @@ bool global::check_for_window_close(RenderWindow& window, Event& event) {
 }
 
 // get user input
-bool global::handle_keyboard_input(float timer, const float maxTime, RenderWindow& window) {
-  if (timer < maxTime) return false; // don't exit main game loop
+bool global::handle_keyboard_input(float timer, const float maxTime,
+                                   RenderWindow& window) {
+  if (timer < maxTime) return false;  // don't exit main game loop
   if (Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
     window.close();
-    return true; // exit main game loop
+    return true;  // exit main game loop
   }
   if (Keyboard::isKeyPressed(sf::Keyboard::Left)) {
     cerr << "Left key pressed" << endl;
@@ -59,7 +68,7 @@ bool global::handle_keyboard_input(float timer, const float maxTime, RenderWindo
     cerr << "LShift key pressed" << endl;
   }
   timer = 0.f;
-  return false; // don't exit the main game loop
+  return false;  // don't exit the main game loop
 }
 
 // free function to get current date and time as string
@@ -94,3 +103,15 @@ unique_ptr<fstream> global::create_log_file(const string currDateTime) {
   return make_unique<fstream>(log_file_name, ios::out);
 }
 
+float global::calc_dist(const sf::Vector2f& va, const sf::Vector2f& vb) {
+  return sqrt(pow(va.x - vb.x, 2) + pow(va.y - vb.y, 2));
+}
+
+shared_ptr<IEntity> global::get_entity_with_id(unsigned int _id) {
+  for (auto& e : global::entity) {
+    if (e->id == _id) {
+      return e;
+    }
+  }
+  throw exception("no entity with that id was found by get_entity_with_id()");
+}

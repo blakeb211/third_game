@@ -3,14 +3,16 @@ KEEP IT SIMPLE STUPID
 Purpose of project: Re-Write Second Shooter to run faster and have the explosion
                     and enemy AI effects that I want
 
+add a quadtree from codinggame video
+update cmake and start using it to build
 
-Put third game on a private github repository
 READ THROUGH 3 OTHER GAME CODES
 READ THROUGH MY CODE
 READ THROUGH SFML API AGAIN
 
 
 HAVE TO USE AXIS ALIGNED COLLISION DETECTION
+LOOK INTO QUAD TREES
 WRITE AND TEST COLLISION SYSTEM
 WRITE AND TEST AI SYSTEM
 WRITE AND TEST FREE PIXELS 

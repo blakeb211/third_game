@@ -32,9 +32,15 @@ BlendMode	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^struct SFML_GRAPHICS_API
 Blue	c:\SFML\include\SFML\Graphics\Color.hpp	/^    static const Color Blue;        \/\/\/< Blue predefined color$/;"	m	class:sf::Color
 Bold	c:\SFML\include\SFML\Graphics\Text.hpp	/^        Bold          = 1 << 0, \/\/\/< Bold characters$/;"	e	enum:sf::Text::Style
 BoolType	c:\SFML\include\SFML\Network\Packet.hpp	/^    typedef bool (Packet::*BoolType)(std::size_t);$/;"	t	class:sf::Packet
+BouncyWall	.\entity.cpp	/^BouncyWall::BouncyWall(Vec2 start, Vec2 end) { }$/;"	f	class:BouncyWall
+BouncyWall	.\entity.h	/^  BouncyWall = 3,$/;"	m	struct:EType
+BouncyWall	.\entity.h	/^struct BouncyWall : IEntity {$/;"	s	struct:EType
+BreakableWall	.\entity.h	/^  BreakableWall = 4,$/;"	m	struct:EType
 Broadcast	c:\SFML\include\SFML\Network\IpAddress.hpp	/^    static const IpAddress Broadcast; \/\/\/< The "broadcast" address (for sending UDP messages to everyone on a local network)$/;"	m	class:sf::IpAddress
 BufferCount	c:\SFML\include\SFML\Audio\SoundStream.hpp	/^        BufferCount = 3,    \/\/\/< Number of audio buffers used by the streaming loop$/;"	e	enum:sf::SoundStream::__anon4
 BufferRetries	c:\SFML\include\SFML\Audio\SoundStream.hpp	/^        BufferRetries = 2   \/\/\/< Number of retries (excluding initial try) for onGetData()$/;"	e	enum:sf::SoundStream::__anon4
+Builder	.\builder.h	/^namespace Builder {$/;"	n
+Bullet	.\entity.h	/^  Bullet = 2,$/;"	m	struct:EType
 Button	c:\SFML\include\SFML\Window\Mouse.hpp	/^    enum Button$/;"	g	class:sf::Mouse
 ButtonCount	c:\SFML\include\SFML\Window\Joystick.hpp	/^        ButtonCount = 32, \/\/\/< Maximum number of supported buttons$/;"	e	enum:sf::Joystick::__anon9
 ButtonCount	c:\SFML\include\SFML\Window\Mouse.hpp	/^        ButtonCount \/\/\/< Keep last -- the total number of mouse buttons$/;"	e	enum:sf::Mouse::Button
@@ -100,12 +106,16 @@ DstColor	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^        DstColor,        
 Dynamic	c:\SFML\include\SFML\Graphics\VertexBuffer.hpp	/^        Dynamic, \/\/\/< Occasionally changing data$/;"	e	enum:sf::VertexBuffer::Usage
 E	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        E,            \/\/\/< The E key$/;"	e	enum:sf::Keyboard::Key
 EFFECT_HPP	c:\SFML\examples\shader\Effect.hpp	2;"	d
+EType	.\entity.h	/^enum struct EType {$/;"	s
 Ebcdic	c:\SFML\include\SFML\Network\Ftp.hpp	/^        Ebcdic  \/\/\/< Text mode using EBCDIC encoding$/;"	e	enum:sf::Ftp::TransferMode
 Edge	c:\SFML\examples\shader\Shader.cpp	/^    Edge() :$/;"	f	class:Edge
 Edge	c:\SFML\examples\shader\Shader.cpp	/^class Edge : public Effect$/;"	c	file:
 Effect	c:\SFML\examples\shader\Effect.hpp	/^    Effect(const std::string& name) :$/;"	f	class:Effect
 Effect	c:\SFML\examples\shader\Effect.hpp	/^class Effect : public sf::Drawable$/;"	c
 End	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        End,          \/\/\/< The End key$/;"	e	enum:sf::Keyboard::Key
+Enemy	.\entity.cpp	/^Enemy::Enemy(unsigned int enemy_type) {}$/;"	f	class:Enemy
+Enemy	.\entity.h	/^  Enemy = 5$/;"	m	struct:EType
+Enemy	.\entity.h	/^struct Enemy : IEntity, ICanShoot, IEnemy {$/;"	s	struct:EType
 Enter	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Enter,        \/\/\/< The Enter\/Return keys$/;"	e	enum:sf::Keyboard::Key
 EnteringPassiveMode	c:\SFML\include\SFML\Network\Ftp.hpp	/^            EnteringPassiveMode   = 227, \/\/\/< Entering passive mode$/;"	e	enum:sf::Ftp::Response::Status
 Equal	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Equal,        \/\/\/< The = key$/;"	e	enum:sf::Keyboard::Key
@@ -142,6 +152,8 @@ FilenameNotAllowed	c:\SFML\include\SFML\Network\Ftp.hpp	/^            FilenameNo
 FloatRect	c:\SFML\include\SFML\Graphics\Rect.hpp	/^typedef Rect<float> FloatRect;$/;"	t	namespace:sf
 Font	c:\SFML\include\SFML\Graphics\Font.hpp	/^class SFML_GRAPHICS_API Font$/;"	c	namespace:sf
 Forbidden	c:\SFML\include\SFML\Network\Http.hpp	/^            Forbidden           = 403, \/\/\/< The requested page cannot be accessed at all, even with authentication$/;"	e	enum:sf::Http::Response::Status
+Frag	.\entity.cpp	/^Frag::Frag(float mX, float mY, sf::Color c = sf::Color::White)$/;"	f	class:Frag
+Frag	.\entity.h	/^struct Frag : sf::RectangleShape {$/;"	s	struct:EType
 Fragment	c:\SFML\include\SFML\Graphics\Shader.hpp	/^        Fragment  \/\/\/< Fragment (pixel) shader$/;"	e	enum:sf::Shader::Type
 Ftp	c:\SFML\include\SFML\Network\Ftp.hpp	/^class SFML_NETWORK_API Ftp : NonCopyable$/;"	c	namespace:sf
 Fullscreen	c:\SFML\include\SFML\Window\WindowStyle.hpp	/^        Fullscreen = 1 << 3, \/\/\/< Fullscreen mode (this flag and all others are mutually exclusive)$/;"	e	enum:sf::Style::__anon10
@@ -172,6 +184,10 @@ HorizontalWheel	c:\SFML\include\SFML\Window\Mouse.hpp	/^        HorizontalWheel 
 Http	c:\SFML\include\SFML\Network\Http.hpp	/^class SFML_NETWORK_API Http : NonCopyable$/;"	c	namespace:sf
 Hyphen	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Hyphen,       \/\/\/< The - key (hyphen)$/;"	e	enum:sf::Keyboard::Key
 I	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        I,            \/\/\/< The I key$/;"	e	enum:sf::Keyboard::Key
+ICanShoot	.\entity.cpp	/^ICanShoot::ICanShoot() : timerMax{3.0f} {}$/;"	f	class:ICanShoot
+ICanShoot	.\entity.h	/^struct ICanShoot {  \/\/ players and enemies$/;"	s	struct:EType
+IEnemy	.\entity.h	/^struct IEnemy {$/;"	s	struct:EType
+IEntity	.\entity.h	/^struct IEntity {$/;"	s	struct:EType
 Identification	c:\SFML\include\SFML\Window\Joystick.hpp	/^    struct SFML_WINDOW_API Identification$/;"	s	class:sf::Joystick
 Identity	c:\SFML\include\SFML\Graphics\Transform.hpp	/^    static const Transform Identity; \/\/\/< The identity transform (does nothing)$/;"	m	class:sf::Transform
 Image	c:\SFML\include\SFML\Graphics\Image.hpp	/^class SFML_GRAPHICS_API Image$/;"	c	namespace:sf
@@ -338,6 +354,8 @@ Period	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Period,       \/\/\/< 
 Pixelate	c:\SFML\examples\shader\Shader.cpp	/^    Pixelate() :$/;"	f	class:Pixelate
 Pixelate	c:\SFML\examples\shader\Shader.cpp	/^class Pixelate : public Effect$/;"	c	file:
 Pixels	c:\SFML\include\SFML\Graphics\Texture.hpp	/^        Pixels      \/\/\/< Texture coordinates in range [0 .. size]$/;"	e	enum:sf::Texture::CoordinateType
+Player	.\entity.h	/^  Player = 1,$/;"	m	struct:EType
+Player	.\entity.h	/^struct Player : IEntity, ICanShoot {$/;"	s	struct:EType
 Playing	c:\SFML\include\SFML\Audio\SoundSource.hpp	/^        Playing  \/\/\/< Sound is playing$/;"	e	enum:sf::SoundSource::Status
 PointlessCommand	c:\SFML\include\SFML\Network\Ftp.hpp	/^            PointlessCommand      = 202, \/\/\/< Command not implemented$/;"	e	enum:sf::Ftp::Response::Status
 Points	c:\SFML\include\SFML\Graphics\PrimitiveType.hpp	/^    Points,        \/\/\/< List of individual points$/;"	e	enum:sf::PrimitiveType
@@ -683,6 +701,14 @@ Zero	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^        Zero,             \/\
 Zero	c:\SFML\include\SFML\System\Time.hpp	/^    static const Time Zero; \/\/\/< Predefined "zero" time value$/;"	m	class:sf::Time
 _USE_MATH_DEFINES	.\stdlibs.h	5;"	d
 a	c:\SFML\include\SFML\Graphics\Color.hpp	/^    Uint8 a; \/\/\/< Alpha (opacity) component$/;"	m	class:sf::Color
+add_bullet1_frags	.\builder.cpp	/^void Builder::add_bullet1_frags(IEntity& e) {$/;"	f	class:Builder
+add_bullet2_frags	.\builder.cpp	/^void Builder::add_bullet2_frags(IEntity& e) {$/;"	f	class:Builder
+add_enemy1_frags	.\builder.cpp	/^void Builder::add_enemy1_frags(IEntity& e) {$/;"	f	class:Builder
+add_enemy2_frags	.\builder.cpp	/^void Builder::add_enemy2_frags(IEntity& e) {$/;"	f	class:Builder
+add_enemy3_frags	.\builder.cpp	/^void Builder::add_enemy3_frags(IEntity& e) {$/;"	f	class:Builder
+add_enemy4_frags	.\builder.cpp	/^void Builder::add_enemy4_frags(IEntity& e) {$/;"	f	class:Builder
+add_player_frags	.\builder.cpp	/^void Builder::add_player_frags(IEntity& e) {$/;"	f	class:Builder
+add_wall_frags	.\builder.cpp	/^void Builder::add_wall_frags(IEntity& e, Vec2 start, Vec2 end,$/;"	f	class:Builder
 advance	c:\SFML\include\SFML\Graphics\Glyph.hpp	/^    float     advance;     \/\/\/< Offset to move horizontally to the next character$/;"	m	class:sf::Glyph
 alphaDstFactor	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^    Factor   alphaDstFactor; \/\/\/< Destination blending factor for the alpha channel$/;"	m	struct:sf::BlendMode
 alphaEquation	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^    Equation alphaEquation;  \/\/\/< Blending equation for the alpha channel$/;"	m	struct:sf::BlendMode
@@ -695,20 +721,28 @@ audioData	c:\SFML\examples\voip\Server.cpp	/^const sf::Uint8 audioData   = 1;$/;
 axis	c:\SFML\include\SFML\Window\Event.hpp	/^        Joystick::Axis axis;       \/\/\/< Axis on which the joystick moved$/;"	m	struct:sf::Event::JoystickMoveEvent
 axislabels	c:\SFML\examples\joystick\Joystick.cpp	/^    const char* axislabels[] = {"X", "Y", "Z", "R", "U", "V", "PovX", "PovY"};$/;"	v
 b	c:\SFML\include\SFML\Graphics\Color.hpp	/^    Uint8 b; \/\/\/< Blue component$/;"	m	class:sf::Color
+bW	.\global.h	/^const unsigned int bW = blockWidth;$/;"	v
 bitsPerPixel	c:\SFML\include\SFML\Window\VideoMode.hpp	/^    unsigned int bitsPerPixel; \/\/\/< Video mode pixel depth, in bits per pixels$/;"	m	class:sf::VideoMode
 blendMode	c:\SFML\include\SFML\Graphics\RenderStates.hpp	/^    BlendMode      blendMode; \/\/\/< Blending mode$/;"	m	class:sf::RenderStates
 blockCount	c:\SFML\examples\island\Island.cpp	/^    const unsigned int blockCount = 32;$/;"	v
+blockWidth	.\global.h	/^const unsigned int blockWidth = 5;$/;"	v
 bounds	c:\SFML\include\SFML\Graphics\Glyph.hpp	/^    FloatRect bounds;      \/\/\/< Bounding rectangle of the glyph, in coordinates relative to the baseline$/;"	m	class:sf::Glyph
 bufferUploadPending	c:\SFML\examples\island\Island.cpp	/^    bool bufferUploadPending = false;$/;"	v
+build_level	.\builder.cpp	/^void Builder::build_level(unsigned int& levelId) {$/;"	f	class:Builder
 button	c:\SFML\examples\win32\Win32.cpp	/^HWND button;$/;"	v
 button	c:\SFML\include\SFML\Window\Event.hpp	/^        Mouse::Button button; \/\/\/< Code of the button that has been pressed$/;"	m	struct:sf::Event::MouseButtonEvent
 button	c:\SFML\include\SFML\Window\Event.hpp	/^        unsigned int button;     \/\/\/< Index of the button that has been pressed (in range [0 .. Joystick::ButtonCount - 1])$/;"	m	struct:sf::Event::JoystickButtonEvent
+calc_dist	.\global.cpp	/^float global::calc_dist(const sf::Vector2f& va, const sf::Vector2f& vb) {$/;"	f	class:global
 calc_frames_per_second	.\global.cpp	/^pair<float, float> global::calc_frames_per_second($/;"	f	class:global
+canShoot	.\entity.h	/^  bool canShoot;$/;"	m	struct:EType::ICanShoot
 channelCount	c:\SFML\include\SFML\Audio\SoundFileReader.hpp	/^        unsigned int channelCount; \/\/\/< Number of channels of the sound$/;"	m	struct:sf::SoundFileReader::Info
 check	c:\SFML\include\SFML\Audio\SoundFileFactory.hpp	/^        bool (*check)(InputStream&);$/;"	m	struct:sf::SoundFileFactory::ReaderFactory
 check	c:\SFML\include\SFML\Audio\SoundFileFactory.hpp	/^        bool (*check)(const std::string&);$/;"	m	struct:sf::SoundFileFactory::WriterFactory
 check_for_window_close	.\global.cpp	/^bool global::check_for_window_close(RenderWindow& window, Event& event) {$/;"	f	class:global
 code	c:\SFML\include\SFML\Window\Event.hpp	/^        Keyboard::Key code;    \/\/\/< Code of the key that has been pressed$/;"	m	struct:sf::Event::KeyEvent
+collideWith	.\entity.cpp	/^void collideWith(IEntity& e, unsigned int ivox, Vec2 voxPos) {}$/;"	f
+collide_with	.\entity.cpp	/^void BouncyWall::collide_with(IEntity& e, unsigned int ivox, Vec2 voxPos) {}$/;"	f	class:BouncyWall
+collide_with	.\entity.cpp	/^void Enemy::collide_with(IEntity& e, unsigned int ivox, Vec2 voxPos) {}$/;"	f	class:Enemy
 color	c:\SFML\include\SFML\Graphics\Vertex.hpp	/^    Color     color;     \/\/\/< Color of the vertex$/;"	m	class:sf::Vertex
 colorDstFactor	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^    Factor   colorDstFactor; \/\/\/< Destination blending factor for the color channels$/;"	m	struct:sf::BlendMode
 colorEquation	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^    Equation colorEquation;  \/\/\/< Blending equation for the color channels$/;"	m	struct:sf::BlendMode
@@ -719,19 +753,29 @@ create	c:\SFML\include\SFML\Audio\SoundFileFactory.hpp	/^        SoundFileReader
 create	c:\SFML\include\SFML\Audio\SoundFileFactory.hpp	/^        SoundFileWriter* (*create)();$/;"	m	struct:sf::SoundFileFactory::WriterFactory
 create_log_file	.\global.cpp	/^unique_ptr<fstream> global::create_log_file(const string currDateTime) {$/;"	f	class:global
 create_window	.\global.cpp	/^unique_ptr<RenderWindow> global::create_window() {$/;"	f	class:global
+currPathPoint	.\entity.h	/^  unsigned int currPathPoint;$/;"	m	struct:EType::IEnemy
+currTimer	.\entity.h	/^  float currTimer;$/;"	m	struct:EType::ICanShoot
 delta	c:\SFML\include\SFML\Window\Event.hpp	/^        float        delta; \/\/\/< Wheel offset (positive is up\/left, negative is down\/right). High-precision mice may use non-integral offsets.$/;"	m	struct:sf::Event::MouseWheelScrollEvent
 delta	c:\SFML\include\SFML\Window\Event.hpp	/^        int delta; \/\/\/< Number of ticks the wheel has moved (positive is up, negative is down)$/;"	m	struct:sf::Event::MouseWheelEvent
 depthBits	c:\SFML\include\SFML\Window\ContextSettings.hpp	/^    unsigned int depthBits;         \/\/\/< Bits of the depth buffer$/;"	m	struct:sf::ContextSettings
 doClient	c:\SFML\examples\voip\Client.cpp	/^void doClient(unsigned short port)$/;"	f
 doServer	c:\SFML\examples\voip\Server.cpp	/^void doServer(unsigned short port)$/;"	f
 draw	c:\SFML\examples\shader\Effect.hpp	/^    void draw(sf::RenderTarget& target, sf::RenderStates states) const$/;"	f	class:Effect
+dvel	.\entity.h	/^  Vec2 dvel;$/;"	m	struct:EType::Frag
+dvel	.\entity.h	/^  Vec2 dvel;$/;"	m	struct:EType::IEntity
 edgeDropoffExponent	c:\SFML\examples\island\Island.cpp	/^    float edgeDropoffExponent = 1.5f;$/;"	v
 edgeFactor	c:\SFML\examples\island\Island.cpp	/^    float edgeFactor = 0.9f;$/;"	v
 enable	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^        bool      enable;         \/\/\/< Is the cache enabled?$/;"	m	struct:sf::RenderTarget::StatesCache
 endOfStream	c:\SFML\examples\voip\Client.cpp	/^const sf::Uint8 endOfStream = 2;$/;"	v
 endOfStream	c:\SFML\examples\voip\Server.cpp	/^const sf::Uint8 endOfStream = 2;$/;"	v
+entity	.\global.h	/^inline std::vector<std::shared_ptr<IEntity>> entity;$/;"	v
+entityCounter	.\global.h	/^inline unsigned int entityCounter = 0;$/;"	v
+erase_dead_frags	.\entity.cpp	/^void IEntity::erase_dead_frags() {}$/;"	f	class:IEntity
 family	c:\SFML\include\SFML\Graphics\Font.hpp	/^        std::string family; \/\/\/< The font family$/;"	m	struct:sf::Font::Info
 finger	c:\SFML\include\SFML\Window\Event.hpp	/^        unsigned int finger; \/\/\/< Index of the finger in case of multi-touch events$/;"	m	struct:sf::Event::TouchEvent
+fire_shot	.\entity.cpp	/^void Enemy::fire_shot() {}$/;"	f	class:Enemy
+fire_shot	.\entity.cpp	/^void fire_shot() {}$/;"	f
+frags	.\entity.h	/^  std::vector<Frag> frags;$/;"	m	struct:EType::IEntity
 ftStep	.\global.h	/^const float ftStep = 16.f;  \/\/ fixed update interval in ms$/;"	v
 g	c:\SFML\include\SFML\Graphics\Color.hpp	/^    Uint8 g; \/\/\/< Green component$/;"	m	class:sf::Color
 generateTerrain	c:\SFML\examples\island\Island.cpp	/^void generateTerrain(sf::Vertex* buffer)$/;"	f
@@ -743,10 +787,14 @@ getMoisture	c:\SFML\examples\island\Island.cpp	/^float getMoisture(float x, floa
 getName	c:\SFML\examples\shader\Effect.hpp	/^    const std::string& getName() const$/;"	f	class:Effect
 getSnowcapTerrainColor	c:\SFML\examples\island\Island.cpp	/^sf::Color getSnowcapTerrainColor(float elevation, float moisture)$/;"	f
 getTerrainColor	c:\SFML\examples\island\Island.cpp	/^sf::Color getTerrainColor(float elevation, float moisture)$/;"	f
+get_entity_with_id	.\global.cpp	/^IEntity& get_entity_with_id(unsigned int _id) {$/;"	f
+get_health	.\entity.cpp	/^unsigned int IEntity::get_health() { return frags.size(); }$/;"	f	class:IEntity
 glStatesSet	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^        bool      glStatesSet;    \/\/\/< Are our internal GL states set yet?$/;"	m	struct:sf::RenderTarget::StatesCache
 global	.\global.h	/^namespace global {$/;"	n
 glyphs	c:\SFML\include\SFML\Graphics\Font.hpp	/^        GlyphTable       glyphs;  \/\/\/< Table mapping code points to their corresponding glyph$/;"	m	struct:sf::Font::Page
-handle_keyboard_input	.\global.cpp	/^bool global::handle_keyboard_input(float timer, const float maxTime, RenderWindow& window) {$/;"	f	class:global
+handle_keyboard_input	.\global.cpp	/^bool global::handle_keyboard_input(float timer, const float maxTime,$/;"	f	class:global
+health	.\entity.h	/^  std::optional<int> health;  \/\/ voxel health$/;"	m	struct:EType::Frag
+healthCutoff	.\entity.h	/^  unsigned int healthCutoff;$/;"	m	struct:EType::IEntity
 height	c:\SFML\include\SFML\Graphics\Font.hpp	/^        unsigned int height; \/\/\/< Height of the row$/;"	m	struct:sf::Font::Row
 height	c:\SFML\include\SFML\Graphics\Rect.hpp	/^    T height; \/\/\/< Height of the rectangle$/;"	m	class:sf::Rect
 height	c:\SFML\include\SFML\Window\Event.hpp	/^        unsigned int height; \/\/\/< New height, in pixels$/;"	m	struct:sf::Event::SizeEvent
@@ -756,6 +804,8 @@ heightFactor	c:\SFML\examples\island\Island.cpp	/^    float heightFactor = windo
 heightFlatten	c:\SFML\examples\island\Island.cpp	/^    float heightFlatten = 3.0f;$/;"	v
 high_res_clock	.\global.cpp	/^typedef chrono::high_resolution_clock high_res_clock;$/;"	t	file:
 high_res_clock	.\main1.cpp	/^typedef chrono::high_resolution_clock high_res_clock;$/;"	t	file:
+hitbox	.\entity.h	/^  sf::Rect<float> hitbox;$/;"	m	struct:EType::IEntity
+id	.\entity.h	/^  unsigned int id;$/;"	m	struct:EType::IEntity
 index	c:\SFML\examples\island\Island.cpp	/^        unsigned int index;$/;"	m	struct:__anon1::WorkItem	file:
 joystickButton	c:\SFML\include\SFML\Window\Event.hpp	/^        JoystickButtonEvent   joystickButton;    \/\/\/< Joystick button event parameters (Event::JoystickButtonPressed, Event::JoystickButtonReleased)$/;"	m	union:sf::Event::__anon8
 joystickConnect	c:\SFML\include\SFML\Window\Event.hpp	/^        JoystickConnectEvent  joystickConnect;   \/\/\/< Joystick (dis)connect event parameters (Event::JoystickConnected, Event::JoystickDisconnected)$/;"	m	union:sf::Event::__anon8
@@ -997,6 +1047,7 @@ mouseButton	c:\SFML\include\SFML\Window\Event.hpp	/^        MouseButtonEvent    
 mouseMove	c:\SFML\include\SFML\Window\Event.hpp	/^        MouseMoveEvent        mouseMove;         \/\/\/< Mouse move event parameters (Event::MouseMoved)$/;"	m	union:sf::Event::__anon8
 mouseWheel	c:\SFML\include\SFML\Window\Event.hpp	/^        MouseWheelEvent       mouseWheel;        \/\/\/< Mouse wheel event parameters (Event::MouseWheelMoved) (deprecated)$/;"	m	union:sf::Event::__anon8
 mouseWheelScroll	c:\SFML\include\SFML\Window\Event.hpp	/^        MouseWheelScrollEvent mouseWheelScroll;  \/\/\/< Mouse wheel event parameters (Event::MouseWheelScrolled)$/;"	m	union:sf::Event::__anon8
+move_entity	.\global.cpp	/^void global::move_entity(IEntity& e, const Vec2 offset) {$/;"	f	class:global
 name	c:\SFML\examples\island\Island.cpp	/^        const char* name;$/;"	m	struct:__anon1::Setting	file:
 name	c:\SFML\include\SFML\Window\Joystick.hpp	/^        String       name;      \/\/\/< Name of the joystick$/;"	m	struct:sf::Joystick::Identification
 nextRow	c:\SFML\include\SFML\Graphics\Font.hpp	/^        unsigned int     nextRow; \/\/\/< Y position of the next new row in the texture$/;"	m	struct:sf::Font::Page
@@ -1023,6 +1074,7 @@ onUpdate	c:\SFML\examples\shader\Shader.cpp	/^    void onUpdate(float time, floa
 onUpdate	c:\SFML\examples\shader\Shader.cpp	/^    void onUpdate(float time, float x, float y)$/;"	f	class:WaveBlur
 onUpdate	c:\SFML\examples\shader\Shader.cpp	/^    void onUpdate(float, float x, float y)$/;"	f	class:Pixelate
 operator <<	c:\SFML\examples\ftp\Ftp.cpp	/^std::ostream& operator <<(std::ostream& stream, const sf::Ftp::Response& response)$/;"	f
+path	.\entity.h	/^  std::vector<Vec2> path;$/;"	m	struct:EType::IEnemy
 pendingWorkCount	c:\SFML\examples\island\Island.cpp	/^    int pendingWorkCount = 0;$/;"	v
 perlinFrequency	c:\SFML\examples\island\Island.cpp	/^    float perlinFrequency = 7.0f;$/;"	v
 perlinFrequencyBase	c:\SFML\examples\island\Island.cpp	/^    float perlinFrequencyBase = 4.0f;$/;"	v
@@ -1173,6 +1225,7 @@ threadCount	c:\SFML\examples\island\Island.cpp	/^    const unsigned int threadCo
 threadFunction	c:\SFML\examples\island\Island.cpp	/^void threadFunction()$/;"	f
 threads	c:\SFML\examples\island\Island.cpp	/^    std::vector<sf::Thread*> threads;$/;"	v
 threshold	c:\SFML\examples\joystick\Joystick.cpp	/^    float threshold = 0.1f;$/;"	v
+timerMax	.\entity.h	/^  const float timerMax;$/;"	m	struct:EType::ICanShoot
 toggleFolder	c:\SFML\doc\html\dynsections.js	/^function toggleFolder(id)$/;"	f
 toggleInherit	c:\SFML\doc\html\dynsections.js	/^function toggleInherit(id)$/;"	f
 toggleLevel	c:\SFML\doc\html\dynsections.js	/^function toggleLevel(level)$/;"	f
@@ -1181,9 +1234,13 @@ top	c:\SFML\include\SFML\Graphics\Font.hpp	/^        unsigned int top;    \/\/\/
 top	c:\SFML\include\SFML\Graphics\Rect.hpp	/^    T top;    \/\/\/< Top coordinate of the rectangle$/;"	m	class:sf::Rect
 touch	c:\SFML\include\SFML\Window\Event.hpp	/^        TouchEvent            touch;             \/\/\/< Touch events parameters (Event::TouchBegan, Event::TouchMoved, Event::TouchEnded)$/;"	m	union:sf::Event::__anon8
 transform	c:\SFML\include\SFML\Graphics\RenderStates.hpp	/^    Transform      transform; \/\/\/< Transform$/;"	m	class:sf::RenderStates
+type	.\entity.h	/^  EType type;$/;"	m	struct:EType::IEntity
 type	c:\SFML\include\SFML\Window\Event.hpp	/^        Sensor::Type type; \/\/\/< Type of the sensor$/;"	m	struct:sf::Event::SensorEvent
 type	c:\SFML\include\SFML\Window\Event.hpp	/^    EventType type; \/\/\/< Type of the event$/;"	m	class:sf::Event
 unicode	c:\SFML\include\SFML\Window\Event.hpp	/^        Uint32 unicode; \/\/\/< UTF-32 Unicode value of the character$/;"	m	struct:sf::Event::TextEvent
+update	.\entity.cpp	/^void BouncyWall::update(FrameTime ftStep) {}$/;"	f	class:BouncyWall
+update	.\entity.cpp	/^void Enemy::update(FrameTime ftStep) {}$/;"	f	class:Enemy
+update	.\entity.cpp	/^void Player::update(FrameTime ftStep) {}$/;"	f	class:Player
 update	c:\SFML\examples\shader\Effect.hpp	/^    void update(float time, float x, float y)$/;"	f	class:Effect
 updateAxes	c:\SFML\examples\joystick\Joystick.cpp	/^    void updateAxes(unsigned int index)$/;"	f	namespace:__anon2
 updateButtons	c:\SFML\examples\joystick\Joystick.cpp	/^    void updateButtons(unsigned int index)$/;"	f	namespace:__anon2
@@ -1193,6 +1250,8 @@ updateValues	c:\SFML\examples\joystick\Joystick.cpp	/^    void updateValues(unsi
 useVertexCache	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^        bool      useVertexCache; \/\/\/< Did we previously use the vertex cache?$/;"	m	struct:sf::RenderTarget::StatesCache
 value	c:\SFML\examples\island\Island.cpp	/^        float* value;$/;"	m	struct:__anon1::Setting	file:
 value	c:\SFML\examples\joystick\Joystick.cpp	/^        sf::Text value;$/;"	m	struct:__anon2::JoystickObject	file:
+vel	.\entity.h	/^  Vec2 vel;$/;"	m	struct:EType::Frag
+vel	.\entity.h	/^  Vec2 vel;$/;"	m	struct:EType::IEntity
 vendorId	c:\SFML\include\SFML\Window\Joystick.hpp	/^        unsigned int vendorId;  \/\/\/< Manufacturer identifier$/;"	m	struct:sf::Joystick::Identification
 vertexCache	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^        Vertex    vertexCache[VertexCacheSize]; \/\/\/< Pre-transformed vertices cache$/;"	m	struct:sf::RenderTarget::StatesCache
 viewChanged	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^        bool      viewChanged;    \/\/\/< Has the current view changed since last draw?$/;"	m	struct:sf::RenderTarget::StatesCache
