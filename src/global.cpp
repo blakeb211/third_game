@@ -11,6 +11,11 @@ void global::move_entity(IEntity& e, const Vec2 offset) {
     e.frags[i].move(offset);
   }
 }
+
+// free function to get a new entity id
+unsigned int global::get_new_entity_id() {
+  return entityCounter++; 
+}
 // free function to create a window
 unique_ptr<RenderWindow> global::create_window() {
   const ContextSettings cs(0, 0, 2, 4, 4, ContextSettings::Default, true);

@@ -13,7 +13,7 @@
 #include "stdlibs.h"
 #include "entity.h"
 
-namespace Builder {
+namespace builder {
 
 void add_player_frags(IEntity & e);
 void add_bullet1_frags(IEntity & e);

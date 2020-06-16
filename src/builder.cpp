@@ -11,7 +11,7 @@ using namespace global;
 using Vec2 = Vector2<float>;
 
 
-void Builder::add_wall_frags(IEntity& e, Vec2 start, Vec2 end,
+void builder::add_wall_frags(IEntity& e, Vec2 start, Vec2 end,
                              Color c = Color(210, 55, 70, 255)) {
   // create a vector from start to end
   Vec2 wallPath = end - start;
@@ -27,7 +27,7 @@ void Builder::add_wall_frags(IEntity& e, Vec2 start, Vec2 end,
   cout << "exited build_wall1 while loop" << endl;
 }
 
-void Builder::build_level(unsigned int& levelId) {
+void builder::build_level(unsigned int& levelId) {
   // open the file levelN_data.txt
   cout << "opening level loading input file" << endl;
   ifstream in_file("level" + to_string(levelId) + "_data.txt", ios::in);
@@ -60,7 +60,7 @@ void Builder::build_level(unsigned int& levelId) {
               entity.push_back(make_shared<Enemy>(4));
               break;
             default:
-              throw exception("switch in Builder::build_level failed");
+              throw exception("switch in builder::build_level failed");
               break;
           };
           cout << "enemy  was added to  entity" << endl;
@@ -87,7 +87,7 @@ void Builder::build_level(unsigned int& levelId) {
         ss >> x;
         if (ss.bad())
           throw exception(
-              "sstring stream accessed when bad in Builder::build_level");
+              "sstring stream accessed when bad in builder::build_level");
         ss >> y;
         ss >> c;
         assert(x * winWidth <= winWidth);
@@ -147,14 +147,14 @@ void Builder::build_level(unsigned int& levelId) {
   assert(enemyCount == pathCount);
 }
 
-void Builder::add_player_frags(IEntity& e) {
+void builder::add_player_frags(IEntity& e) {
   e.frags.emplace_back(0.f, 0.f, Color::White);
   e.frags.emplace_back(0.f + 1.f * bW, 0.f, Color::White);
   e.frags.emplace_back(0.f + 2.f * bW, 0.f, Color::White);
   e.frags.emplace_back(0.f + 1.f * bW, 0.f - 1.f * bW, Color::Cyan);
 }
 
-void Builder::add_bullet1_frags(IEntity& e) {
+void builder::add_bullet1_frags(IEntity& e) {
   e.frags.emplace_back(1.f * bW, 0.f * bW, Color(209, 181, 190, 255));
   e.frags.emplace_back(0.f * bW, 1.f * bW, Color(209, 181, 190, 255));
   e.frags.emplace_back(1.f * bW, 1.f * bW, Color(209, 181, 190, 255));
@@ -162,7 +162,7 @@ void Builder::add_bullet1_frags(IEntity& e) {
   e.frags.emplace_back(1.f * bW, 2.f * bW, Color(209, 181, 190, 255));
 }
 
-void Builder::add_bullet2_frags(IEntity& e) {
+void builder::add_bullet2_frags(IEntity& e) {
   e.frags.emplace_back(2.f * bW, 0.f * bW, Color(112, 1, 209, 255));
   e.frags.emplace_back(3.f * bW, 0.f * bW, Color(112, 1, 209, 255));
   e.frags.emplace_back(1.f * bW, 1.f * bW, Color(112, 1, 209, 255));
@@ -175,7 +175,7 @@ void Builder::add_bullet2_frags(IEntity& e) {
   e.frags.emplace_back(5.f * bW, 3.f * bW, Color(112, 1, 209, 255));
 }
 
-void Builder::add_enemy1_frags(IEntity& e) {
+void builder::add_enemy1_frags(IEntity& e) {
   e.frags.emplace_back(9.f * bW, 0.f * bW, Color::Cyan);
   e.frags.emplace_back(10.f * bW, 0.f * bW, Color::Cyan);
   e.frags.emplace_back(11.f * bW, 0.f * bW, Color::Cyan);
@@ -232,7 +232,7 @@ void Builder::add_enemy1_frags(IEntity& e) {
   e.frags.emplace_back(15.f * bW, 7.f * bW, Color::Cyan);
 }
 
-void Builder::add_enemy2_frags(IEntity& e) {
+void builder::add_enemy2_frags(IEntity& e) {
   e.frags.emplace_back(3.f * bW, 0.f * bW, Color::Magenta);
   e.frags.emplace_back(4.f * bW, 0.f * bW, Color::Magenta);
   e.frags.emplace_back(17.f * bW, 0.f * bW, Color::Magenta);
@@ -309,7 +309,7 @@ void Builder::add_enemy2_frags(IEntity& e) {
   e.frags.emplace_back(17.f * bW, 7.f * bW, Color::Magenta);
 }
 
-void Builder::add_enemy3_frags(IEntity& e) {
+void builder::add_enemy3_frags(IEntity& e) {
   e.frags.emplace_back(9.f * bW, 0.f * bW, Color::Red + Color::Yellow);
   e.frags.emplace_back(10.f * bW, 0.f * bW, Color::Red + Color::Yellow);
   e.frags.emplace_back(11.f * bW, 0.f * bW, Color::Red + Color::Yellow);
@@ -388,7 +388,7 @@ void Builder::add_enemy3_frags(IEntity& e) {
   e.frags.emplace_back(19.f * bW, 7.f * bW, Color::Red + Color::Yellow);
 }
 
-void Builder::add_enemy4_frags(IEntity& e) {
+void builder::add_enemy4_frags(IEntity& e) {
   e.frags.emplace_back(9.f * bW, 0.f * bW, Color(255, 140, 0, 245));
   e.frags.emplace_back(10.f * bW, 0.f * bW, Color(255, 140, 0, 245));
   e.frags.emplace_back(11.f * bW, 0.f * bW, Color(255, 140, 0, 245));

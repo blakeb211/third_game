@@ -15,6 +15,7 @@ enum struct EType {
 };
 
 struct Frag : sf::RectangleShape {
+  Frag();
   Frag(float mX, float mY, sf::Color c);
   // member data
   Vec2 vel;
@@ -40,13 +41,12 @@ struct IEntity {
 };
 
 struct ICanShoot {  // players and enemies
-  ICanShoot();
   // pure virtuals
   virtual void fire_shot() = 0;
   // data
   bool canShoot;
   float currTimer;
-  const float timerMax;
+  float timerMax;
 };
 
 struct IEnemy {
@@ -72,6 +72,7 @@ struct BouncyWall : IEntity {
 };
 
 struct Player : IEntity, ICanShoot {
+  Player();
   void update(FrameTime ftStep);
   void collide_with(IEntity& e, unsigned int ivox, Vec2 voxPos);
   void fire_shot();

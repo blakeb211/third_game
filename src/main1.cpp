@@ -33,8 +33,15 @@ void rotated_rectange_update() {
   }
 }
 
+void init_player_test() {
+  entity.push_back(make_shared<Player>());
+  cout << "init player test running" << endl;
+  cout << "entity.size() = " << entity.size() << endl;
+  cout << "entity[0].frags.size() = " << get_entity_with_id(0)->frags.size() << endl;
+}
 
-
+void update_player_test() {
+}
 
 int main() {
   // Initialization
@@ -46,9 +53,10 @@ int main() {
   size_t frameCounter = 0;
 
   //
+  //initialize demo
   //
-  //
-  rotated_rectange_init();
+  //rotated_rectange_init();
+  init_player_test();
 
 
   while (window->isOpen()) {
@@ -64,8 +72,13 @@ int main() {
     if (ftAccum >= ftStep) {
       // Draw Phase
       window->clear(Color::Black);
-      for (const auto& r : shapes) {
-        window->draw(r);
+      for (const auto & s : shapes) {
+        window->draw(s);
+      }
+      for (const auto& e : entity) {
+        for (const auto& f : e->frags) {
+          window->draw(f);
+        }
       }
       window->display();
     }

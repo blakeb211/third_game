@@ -26,6 +26,9 @@ inline unsigned int entityCounter = 0;
 // move entity's pos variable and all its frags with it
 void move_entity(IEntity& e, const Vec2 offset);
 
+// get a new unique entity id
+unsigned int get_new_entity_id();
+
 // create a window
 std::unique_ptr<sf::RenderWindow> create_window();
 

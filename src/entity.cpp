@@ -3,37 +3,56 @@
 /* */
 #include "stdlibs.h"
 /* */
+#include "builder.h"
 #include "entity.h"
-using Vec2 = sf::Vector2<float>;
+#include "global.h"
 using FrameTime = float;
 
 using namespace std;
 using namespace sf;
 
-// Frag constructor
+// Frag constructors
+Frag::Frag() { }
 Frag::Frag(float mX, float mY, sf::Color c = sf::Color::White)
-    : vel{0.f, 0.f}, dvel{vel}, health{nullopt} {}
+    : vel{0.f, 0.f}, dvel{vel}, health{nullopt} {
+      setOrigin(global::bW / 2.f, global::bW / 2.f);
+      setPosition(Vec2(mX, mY));
+      setFillColor(c);
+    }
 
 // member functions
 unsigned int IEntity::get_health() { return frags.size(); }
 void IEntity::erase_dead_frags() {}
 
-ICanShoot::ICanShoot() : timerMax{3.0f} {}
-
 //
 // BouncyWall Definitions
 //
 // wall is just a non-moving entity with optional health
-BouncyWall::BouncyWall(Vec2 start, Vec2 end) { }
+BouncyWall::BouncyWall(Vec2 start, Vec2 end) {}
 void BouncyWall::update(FrameTime ftStep) {}
 void BouncyWall::collide_with(IEntity& e, unsigned int ivox, Vec2 voxPos) {}
 
 //
 // Player Definitions
 //
+Player::Player() {
+  // initialize members
+  id = global::get_new_entity_id();
+  type = EType::Player;
+  frags.resize(15);
+  builder::add_player_frags(*this);
+  healthCutoff = 3;
+  vel = Vec2(0.f, 0.f);
+  dvel = Vec2(0.f, 0.f);
+  sf::Rect<float> hitbox;
+  // data
+  canShoot = false;
+  currTimer = 0.f;
+  timerMax = 0.f;
+}
 void Player::update(FrameTime ftStep) {}
-void collideWith(IEntity& e, unsigned int ivox, Vec2 voxPos) {}
-void fire_shot() {}
+void Player::collide_with(IEntity& e, unsigned int ivox, Vec2 voxPos) {}
+void Player::fire_shot() {}
 
 //
 // Enemy Definitions

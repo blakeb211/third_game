@@ -184,7 +184,6 @@ HorizontalWheel	c:\SFML\include\SFML\Window\Mouse.hpp	/^        HorizontalWheel 
 Http	c:\SFML\include\SFML\Network\Http.hpp	/^class SFML_NETWORK_API Http : NonCopyable$/;"	c	namespace:sf
 Hyphen	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Hyphen,       \/\/\/< The - key (hyphen)$/;"	e	enum:sf::Keyboard::Key
 I	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        I,            \/\/\/< The I key$/;"	e	enum:sf::Keyboard::Key
-ICanShoot	.\entity.cpp	/^ICanShoot::ICanShoot() : timerMax{3.0f} {}$/;"	f	class:ICanShoot
 ICanShoot	.\entity.h	/^struct ICanShoot {  \/\/ players and enemies$/;"	s	struct:EType
 IEnemy	.\entity.h	/^struct IEnemy {$/;"	s	struct:EType
 IEntity	.\entity.h	/^struct IEntity {$/;"	s	struct:EType
@@ -354,6 +353,7 @@ Period	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Period,       \/\/\/< 
 Pixelate	c:\SFML\examples\shader\Shader.cpp	/^    Pixelate() :$/;"	f	class:Pixelate
 Pixelate	c:\SFML\examples\shader\Shader.cpp	/^class Pixelate : public Effect$/;"	c	file:
 Pixels	c:\SFML\include\SFML\Graphics\Texture.hpp	/^        Pixels      \/\/\/< Texture coordinates in range [0 .. size]$/;"	e	enum:sf::Texture::CoordinateType
+Player	.\entity.cpp	/^Player::Player() {$/;"	f	class:Player
 Player	.\entity.h	/^  Player = 1,$/;"	m	struct:EType
 Player	.\entity.h	/^struct Player : IEntity, ICanShoot {$/;"	s	struct:EType
 Playing	c:\SFML\include\SFML\Audio\SoundSource.hpp	/^        Playing  \/\/\/< Sound is playing$/;"	e	enum:sf::SoundSource::Status
@@ -740,9 +740,9 @@ check	c:\SFML\include\SFML\Audio\SoundFileFactory.hpp	/^        bool (*check)(In
 check	c:\SFML\include\SFML\Audio\SoundFileFactory.hpp	/^        bool (*check)(const std::string&);$/;"	m	struct:sf::SoundFileFactory::WriterFactory
 check_for_window_close	.\global.cpp	/^bool global::check_for_window_close(RenderWindow& window, Event& event) {$/;"	f	class:global
 code	c:\SFML\include\SFML\Window\Event.hpp	/^        Keyboard::Key code;    \/\/\/< Code of the key that has been pressed$/;"	m	struct:sf::Event::KeyEvent
-collideWith	.\entity.cpp	/^void collideWith(IEntity& e, unsigned int ivox, Vec2 voxPos) {}$/;"	f
 collide_with	.\entity.cpp	/^void BouncyWall::collide_with(IEntity& e, unsigned int ivox, Vec2 voxPos) {}$/;"	f	class:BouncyWall
 collide_with	.\entity.cpp	/^void Enemy::collide_with(IEntity& e, unsigned int ivox, Vec2 voxPos) {}$/;"	f	class:Enemy
+collide_with	.\entity.cpp	/^void Player::collide_with(IEntity& e, unsigned int ivox, Vec2 voxPos) {}$/;"	f	class:Player
 color	c:\SFML\include\SFML\Graphics\Vertex.hpp	/^    Color     color;     \/\/\/< Color of the vertex$/;"	m	class:sf::Vertex
 colorDstFactor	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^    Factor   colorDstFactor; \/\/\/< Destination blending factor for the color channels$/;"	m	struct:sf::BlendMode
 colorEquation	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^    Equation colorEquation;  \/\/\/< Blending equation for the color channels$/;"	m	struct:sf::BlendMode
@@ -774,7 +774,7 @@ erase_dead_frags	.\entity.cpp	/^void IEntity::erase_dead_frags() {}$/;"	f	class:
 family	c:\SFML\include\SFML\Graphics\Font.hpp	/^        std::string family; \/\/\/< The font family$/;"	m	struct:sf::Font::Info
 finger	c:\SFML\include\SFML\Window\Event.hpp	/^        unsigned int finger; \/\/\/< Index of the finger in case of multi-touch events$/;"	m	struct:sf::Event::TouchEvent
 fire_shot	.\entity.cpp	/^void Enemy::fire_shot() {}$/;"	f	class:Enemy
-fire_shot	.\entity.cpp	/^void fire_shot() {}$/;"	f
+fire_shot	.\entity.cpp	/^void Player::fire_shot() {}$/;"	f	class:Player
 frags	.\entity.h	/^  std::vector<Frag> frags;$/;"	m	struct:EType::IEntity
 ftStep	.\global.h	/^const float ftStep = 16.f;  \/\/ fixed update interval in ms$/;"	v
 g	c:\SFML\include\SFML\Graphics\Color.hpp	/^    Uint8 g; \/\/\/< Green component$/;"	m	class:sf::Color
@@ -787,7 +787,7 @@ getMoisture	c:\SFML\examples\island\Island.cpp	/^float getMoisture(float x, floa
 getName	c:\SFML\examples\shader\Effect.hpp	/^    const std::string& getName() const$/;"	f	class:Effect
 getSnowcapTerrainColor	c:\SFML\examples\island\Island.cpp	/^sf::Color getSnowcapTerrainColor(float elevation, float moisture)$/;"	f
 getTerrainColor	c:\SFML\examples\island\Island.cpp	/^sf::Color getTerrainColor(float elevation, float moisture)$/;"	f
-get_entity_with_id	.\global.cpp	/^IEntity& get_entity_with_id(unsigned int _id) {$/;"	f
+get_entity_with_id	.\global.cpp	/^shared_ptr<IEntity> global::get_entity_with_id(unsigned int _id) {$/;"	f	class:global
 get_health	.\entity.cpp	/^unsigned int IEntity::get_health() { return frags.size(); }$/;"	f	class:IEntity
 glStatesSet	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^        bool      glStatesSet;    \/\/\/< Are our internal GL states set yet?$/;"	m	struct:sf::RenderTarget::StatesCache
 global	.\global.h	/^namespace global {$/;"	n
@@ -807,6 +807,7 @@ high_res_clock	.\main1.cpp	/^typedef chrono::high_resolution_clock high_res_cloc
 hitbox	.\entity.h	/^  sf::Rect<float> hitbox;$/;"	m	struct:EType::IEntity
 id	.\entity.h	/^  unsigned int id;$/;"	m	struct:EType::IEntity
 index	c:\SFML\examples\island\Island.cpp	/^        unsigned int index;$/;"	m	struct:__anon1::WorkItem	file:
+init_player_test	.\main1.cpp	/^void init_player_test() {$/;"	f
 joystickButton	c:\SFML\include\SFML\Window\Event.hpp	/^        JoystickButtonEvent   joystickButton;    \/\/\/< Joystick button event parameters (Event::JoystickButtonPressed, Event::JoystickButtonReleased)$/;"	m	union:sf::Event::__anon8
 joystickConnect	c:\SFML\include\SFML\Window\Event.hpp	/^        JoystickConnectEvent  joystickConnect;   \/\/\/< Joystick (dis)connect event parameters (Event::JoystickConnected, Event::JoystickDisconnected)$/;"	m	union:sf::Event::__anon8
 joystickId	c:\SFML\include\SFML\Window\Event.hpp	/^        unsigned int   joystickId; \/\/\/< Index of the joystick (in range [0 .. Joystick::Count - 1])$/;"	m	struct:sf::Event::JoystickMoveEvent
@@ -1225,7 +1226,7 @@ threadCount	c:\SFML\examples\island\Island.cpp	/^    const unsigned int threadCo
 threadFunction	c:\SFML\examples\island\Island.cpp	/^void threadFunction()$/;"	f
 threads	c:\SFML\examples\island\Island.cpp	/^    std::vector<sf::Thread*> threads;$/;"	v
 threshold	c:\SFML\examples\joystick\Joystick.cpp	/^    float threshold = 0.1f;$/;"	v
-timerMax	.\entity.h	/^  const float timerMax;$/;"	m	struct:EType::ICanShoot
+timerMax	.\entity.h	/^  float timerMax;$/;"	m	struct:EType::ICanShoot
 toggleFolder	c:\SFML\doc\html\dynsections.js	/^function toggleFolder(id)$/;"	f
 toggleInherit	c:\SFML\doc\html\dynsections.js	/^function toggleInherit(id)$/;"	f
 toggleLevel	c:\SFML\doc\html\dynsections.js	/^function toggleLevel(level)$/;"	f
@@ -1247,6 +1248,7 @@ updateButtons	c:\SFML\examples\joystick\Joystick.cpp	/^    void updateButtons(un
 updateIdentification	c:\SFML\examples\joystick\Joystick.cpp	/^    void updateIdentification(unsigned int index)$/;"	f	namespace:__anon2
 updateStripes	c:\SFML\doc\html\dynsections.js	/^function updateStripes()$/;"	f
 updateValues	c:\SFML\examples\joystick\Joystick.cpp	/^    void updateValues(unsigned int index)$/;"	f	namespace:__anon2
+update_player_test	.\main1.cpp	/^void update_player_test() {$/;"	f
 useVertexCache	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^        bool      useVertexCache; \/\/\/< Did we previously use the vertex cache?$/;"	m	struct:sf::RenderTarget::StatesCache
 value	c:\SFML\examples\island\Island.cpp	/^        float* value;$/;"	m	struct:__anon1::Setting	file:
 value	c:\SFML\examples\joystick\Joystick.cpp	/^        sf::Text value;$/;"	m	struct:__anon2::JoystickObject	file:
