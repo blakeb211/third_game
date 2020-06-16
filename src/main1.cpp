@@ -28,7 +28,7 @@ void rotated_rectange_init() {
 
 void rotated_rectange_update() {
   for (auto& r : shapes) {
-    r.rotate(rand_engine() % 3); 
+    r.rotate(rand_engine() % 3);
   }
 }
 
@@ -40,7 +40,12 @@ int main() {
   float keyTimeAccum = 0.f;
   auto log_file = create_log_file(return_current_time_and_date());
   size_t frameCounter = 0;
+
+  //
+  //
+  //
   rotated_rectange_init();
+
 
   while (window->isOpen()) {
     const auto timePoint1 = high_res_clock::now();
@@ -48,24 +53,23 @@ int main() {
     // Get user input
     if (handle_keyboard_input(keyTimeAccum, keyInputStep, *window)) {
       break;
+    } else if (check_for_window_close(*window, event)) {
+      break;
     }
 
-    if (check_for_window_close(*window, event)) {
-      break;
+    if (ftAccum >= ftStep) {
+      // Draw Phase
+      window->clear(Color::Black);
+      for (const auto& r : shapes) {
+        window->draw(r);
+      }
+      window->display();
     }
 
     // Update phase
     for (; ftAccum >= ftStep; ftAccum -= ftStep) {
       rotated_rectange_update();
     }
-
-    // Draw Phase
-    window->clear(Color::Black);
-    for (const auto& r : shapes) {
-      window->draw(r);
-    }
-
-    window->display();
 
     // Frame Timings
     frameCounter++;

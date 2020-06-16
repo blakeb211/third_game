@@ -39,4 +39,5 @@ const std::string return_current_time_and_date();
 // create a log file
 std::unique_ptr<std::fstream> create_log_file(const std::string currDateTime);
 
+float calc_dist(const sf::Vector2f &va, const sf::Vector2f &vb);
 }  // namespace global
