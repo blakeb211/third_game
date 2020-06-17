@@ -1,7 +1,11 @@
 " NOTE - must have the dlls in the same folder 
 
 " Compile SFML Project WITHOUT Audio
-term clang++ -g -std=c++17 -fuse-ld=lld -Lc:\SFML\lib -IC:\SFML\include -lsfml-graphics -lsfml-window -lsfml-system global.cpp entity.cpp builder.cpp main1.cpp -o ..\build\game.exe
+cd c:/code/third_game/build/ 
+!make
+cd c:/code/third_game/src/ 
+"cd ..\src<CR>
+"term clang++ -g -std=c++17 -fuse-ld=lld -Lc:\SFML\lib -IC:\SFML\include -lsfml-graphics -lsfml-window -lsfml-system global.cpp entity.cpp builder.cpp main1.cpp -o ..\build\game.exe
 
 " Compile SFML Project WITH Audio
 "

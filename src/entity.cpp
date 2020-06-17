@@ -50,14 +50,14 @@ Player::Player() {
   // data
   canShoot = false;
   currTimer = 0.f;
-  timerMax = 100.f;
+  timerMax = 105.f;
   move_entity(*this, Vec2(10.f, winHeight - 10.f));
 }
 
 void Player::update(FrameTime ftStep) {
   currTimer += ftStep;
   global::move_entity(*this, vel + dvel);
-  dvel *= (abs(dvel.x) < 0.1f) ? 0 : 0.75f;
+  dvel *= (abs(dvel.x) < 0.01f) ? 0 : 0.75f;
 }
 void Player::collide_with(IEntity& e, unsigned int ivox, Vec2 voxPos) {}
 void Player::fire_shot() {
@@ -90,7 +90,7 @@ Bullet::Bullet(Vec2 pos) {
   builder::add_bullet1_frags(*this);
   global::build_hitbox(*this);
   healthCutoff = 2;
-  vel = Vec2(0.f, -4.5f);
+  vel = Vec2(0.f, -5.5f);
   dvel = Vec2(0.f, -3.f);
   move_entity(*this, pos);
 }
