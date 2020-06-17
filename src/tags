@@ -730,6 +730,7 @@ blockCount	c:\SFML\examples\island\Island.cpp	/^    const unsigned int blockCoun
 blockWidth	.\global.h	/^const unsigned int blockWidth = 5;$/;"	v
 bounds	c:\SFML\include\SFML\Graphics\Glyph.hpp	/^    FloatRect bounds;      \/\/\/< Bounding rectangle of the glyph, in coordinates relative to the baseline$/;"	m	class:sf::Glyph
 bufferUploadPending	c:\SFML\examples\island\Island.cpp	/^    bool bufferUploadPending = false;$/;"	v
+build_hitbox	.\global.cpp	/^void global::build_hitbox(IEntity& e) {$/;"	f	class:global
 build_level	.\builder.cpp	/^void builder::build_level(unsigned int& levelId) {$/;"	f	class:builder
 builder	.\builder.h	/^namespace builder {$/;"	n
 button	c:\SFML\examples\win32\Win32.cpp	/^HWND button;$/;"	v
@@ -744,7 +745,7 @@ check	c:\SFML\include\SFML\Audio\SoundFileFactory.hpp	/^        bool (*check)(co
 check_for_window_close	.\global.cpp	/^bool global::check_for_window_close(RenderWindow& window, Event& event) {$/;"	f	class:global
 code	c:\SFML\include\SFML\Window\Event.hpp	/^        Keyboard::Key code;    \/\/\/< Code of the key that has been pressed$/;"	m	struct:sf::Event::KeyEvent
 collide_with	.\entity.cpp	/^void BouncyWall::collide_with(IEntity& e, unsigned int ivox, Vec2 voxPos) {}$/;"	f	class:BouncyWall
-collide_with	.\entity.cpp	/^void Bullet::collide_with(IEntity& e, unsigned int ivox, Vec2 voxPos) { }$/;"	f	class:Bullet
+collide_with	.\entity.cpp	/^void Bullet::collide_with(IEntity& e, unsigned int ivox, Vec2 voxPos) {}$/;"	f	class:Bullet
 collide_with	.\entity.cpp	/^void Enemy::collide_with(IEntity& e, unsigned int ivox, Vec2 voxPos) {}$/;"	f	class:Enemy
 collide_with	.\entity.cpp	/^void Player::collide_with(IEntity& e, unsigned int ivox, Vec2 voxPos) {}$/;"	f	class:Player
 color	c:\SFML\include\SFML\Graphics\Vertex.hpp	/^    Color     color;     \/\/\/< Color of the vertex$/;"	m	class:sf::Vertex
@@ -810,7 +811,7 @@ heightFactor	c:\SFML\examples\island\Island.cpp	/^    float heightFactor = windo
 heightFlatten	c:\SFML\examples\island\Island.cpp	/^    float heightFlatten = 3.0f;$/;"	v
 high_res_clock	.\global.cpp	/^typedef chrono::high_resolution_clock high_res_clock;$/;"	t	file:
 high_res_clock	.\main1.cpp	/^typedef chrono::high_resolution_clock high_res_clock;$/;"	t	file:
-hitbox	.\entity.h	/^  sf::Rect<float> hitbox;$/;"	m	struct:EType::IEntity
+hitbox	.\entity.h	/^  sf::RectangleShape hitbox;$/;"	m	struct:EType::IEntity
 id	.\entity.h	/^  unsigned int id;$/;"	m	struct:EType::IEntity
 index	c:\SFML\examples\island\Island.cpp	/^        unsigned int index;$/;"	m	struct:__anon1::WorkItem	file:
 init_player_test	.\main1.cpp	/^void init_player_test() {$/;"	f

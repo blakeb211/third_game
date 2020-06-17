@@ -5,11 +5,31 @@ using namespace std;
 using namespace sf;
 typedef chrono::high_resolution_clock high_res_clock;
 
+// process current frags and build hitbox from it
+void global::build_hitbox(IEntity& e) {
+  vector<float> x, y;
+  int frag_count = e.frags.size();
+  for (int i = 0; i < frag_count; i++) {
+    auto frag_pos = e.frags[i].getPosition();
+    x.push_back(frag_pos.x);
+    y.push_back(frag_pos.y);
+  }
+  // these return a pair of iterators
+  auto xmm = minmax_element(x.begin(), x.end()); 
+  auto ymm = minmax_element(y.begin(), y.end()); 
+  auto width = (*xmm.second - *xmm.first); 
+  auto height = (*ymm.second - *ymm.first);
+  e.hitbox.setPosition(Vec2(*xmm.first, *ymm.first)); 
+  e.hitbox.setSize(Vec2(width, height));
+}
+
 // free function to set position of entity
 void global::move_entity(IEntity& e, const Vec2 offset) {
   for (int i = 0; i < e.frags.size(); i++) {
     e.frags[i].move(offset);
   }
+  // move hitbox
+  e.hitbox.move(offset);
 }
 
 // free function to get a new entity id
@@ -27,14 +47,14 @@ unique_ptr<RenderWindow> global::create_window() {
 // free function to calculate the frames per second using
 // the time the frame started
 pair<float, float> global::calc_frames_per_second(
-    const high_res_clock::time_point timePoint1) {
+    const high_res_clock::time_point& timePoint1) {
   auto timePoint2(high_res_clock::now());
   float frametime{chrono::duration_cast<chrono::duration<float, milli>>(
                       timePoint2 - timePoint1)
                       .count()};
   auto fSeconds = frametime / 1000.f;
   auto fps = 1.f / fSeconds;
-  return make_pair(roundf(fps), frametime);
+  return move(make_pair(roundf(fps), frametime));
 }
 
 // free funnction to check for window close
@@ -64,7 +84,8 @@ bool global::handle_keyboard_input(float timer, const float maxTime,
   }
   if (Keyboard::isKeyPressed(sf::Keyboard::Left)) {
     if (player_ptr && player_ptr->type == EType::Player) {
-      player_ptr->dvel += Vec2(-4.5f, 0.f);
+      auto& dvel_ref = player_ptr->dvel;
+      dvel_ref += (dvel_ref.x < 9.f) ? Vec2(-4.5f, 0.f) : Vec2(0.f, 0.f);
     }
   }
   if (Keyboard::isKeyPressed(sf::Keyboard::Right)) {

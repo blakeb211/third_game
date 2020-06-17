@@ -10,7 +10,6 @@ using namespace sf;
 using namespace global;
 using Vec2 = Vector2<float>;
 
-
 void builder::add_wall_frags(IEntity& e, Vec2 start, Vec2 end,
                              Color c = Color(210, 55, 70, 255)) {
   // create a vector from start to end

@@ -41,12 +41,12 @@ Player::Player() {
   // initialize members
   id = global::get_new_entity_id();
   type = EType::Player;
-  frags.resize(15);
+  frags.reserve(5);
   builder::add_player_frags(*this);
+  global::build_hitbox(*this);
   healthCutoff = 3;
   vel = Vec2(0.f, 0.f);
   dvel = Vec2(0.f, 0.f);
-  sf::Rect<float> hitbox;
   // data
   canShoot = false;
   currTimer = 0.f;
@@ -86,16 +86,17 @@ Bullet::Bullet(Vec2 pos) {
   // initialize members
   id = global::get_new_entity_id();
   type = EType::Bullet;
-  frags.resize(6);
+  frags.reserve(6);
   builder::add_bullet1_frags(*this);
+  global::build_hitbox(*this);
   healthCutoff = 2;
   vel = Vec2(0.f, -4.5f);
   dvel = Vec2(0.f, -3.f);
-  sf::Rect<float> hitbox;
   move_entity(*this, pos);
 }
 void Bullet::update(FrameTime ftStep) {
   global::move_entity(*this, vel + dvel);
   dvel *= 0.9f;
 }
+
 void Bullet::collide_with(IEntity& e, unsigned int ivox, Vec2 voxPos) {}

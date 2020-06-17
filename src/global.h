@@ -25,6 +25,9 @@ inline std::shared_ptr<IEntity> player_ptr;
 //
 // free functions
 //
+// reset the entities hitbox for collision checking
+void build_hitbox(IEntity& e); 
+
 // move entity's pos variable and all its frags with it
 void move_entity(IEntity& e, const Vec2 offset);
 
@@ -37,7 +40,7 @@ std::unique_ptr<sf::RenderWindow> create_window();
 // calculate the frames per second using
 // the time the frame started
 std::pair<float, float> calc_frames_per_second(
-    const std::chrono::high_resolution_clock::time_point);
+    const std::chrono::high_resolution_clock::time_point&);
 
 // check for window close
 bool check_for_window_close(sf::RenderWindow& window, sf::Event& event);

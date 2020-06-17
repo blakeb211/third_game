@@ -36,7 +36,7 @@ struct IEntity {
   unsigned int healthCutoff;
   Vec2 vel;
   Vec2 dvel;
-  sf::Rect<float> hitbox;
+  sf::RectangleShape hitbox;
   bool isDead{false};
 };
 

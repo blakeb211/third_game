@@ -3,6 +3,10 @@ KEEP IT SIMPLE STUPID
 Purpose of project: Re-Write Second Shooter to run faster and have the explosion
                     and enemy AI effects that I want
 
+DRAW HITBOXES
+KILL BULLETS
+REMOVE DEAD ENTITIES
+
 add a quadtree from codinggame video
 update cmake and start using it to build
 
