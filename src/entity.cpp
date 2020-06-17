@@ -61,13 +61,13 @@ void Player::update(FrameTime ftStep) {
 }
 void Player::collide_with(IEntity& e, unsigned int ivox, Vec2 voxPos) {}
 void Player::fire_shot() {
-  if (currTimer < timerMax) return; 
-    auto player_pos =
-        (frags[0].getPosition() + frags[frags.size() - 1].getPosition()) / 2.f;
-    global::entity.emplace_back(make_shared<Bullet>(
-        player_pos + Vec2(0.f, -1.f * global::blockWidth * 4.f)));
-    // reset shot timer
-    currTimer = 0.f;
+  if (currTimer < timerMax) return;
+  auto player_pos =
+      (frags[0].getPosition() + frags[frags.size() - 1].getPosition()) / 2.f;
+  global::entity.emplace_back(make_shared<Bullet>(
+      player_pos + Vec2(0.f, -1.f * global::blockWidth * 4.f)));
+  // reset shot timer
+  currTimer = 0.f;
 }
 
 //
@@ -97,6 +97,12 @@ Bullet::Bullet(Vec2 pos) {
 void Bullet::update(FrameTime ftStep) {
   global::move_entity(*this, vel + dvel);
   dvel *= 0.9f;
+  auto hitbox_pos = hitbox.getPosition();
+  auto hitbox_size = hitbox.getSize();
+  if (hitbox_pos.x < 0 || hitbox_pos.x + hitbox_size.x > global::winWidth ||
+      hitbox_pos.y < 0 || hitbox_pos.y > global::winHeight) {
+    isDead = true;
+  }
 }
 
 void Bullet::collide_with(IEntity& e, unsigned int ivox, Vec2 voxPos) {}

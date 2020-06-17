@@ -18,6 +18,9 @@ typedef Vector2f Vec2;
 
 vector<RectangleShape> shapes;
 
+//
+// ROTATED RECTANGES
+// 
 void rotated_rectange_init() {
   for (int i = 0; i < 1000; i++) {
     RectangleShape r;
@@ -37,6 +40,16 @@ void rotated_rectange_update() {
   }
 }
 
+void draw_rotated_rectange(RenderWindow& window) {
+  for (const auto& s : shapes) {
+        window.draw(s);
+      }
+}
+
+
+//
+// PLAYER TEST 
+// 
 void init_player_test() {
   entity.push_back(make_shared<Player>());
   cout << "init player test running" << endl;
@@ -49,8 +62,21 @@ void update_player_test(const float& ftStep) {
   for (const auto& e : entity) {
     e->update(ftStep);
   }
+  global::remove_dead_entities();
 }
 
+void draw_player_test(RenderWindow& window) {
+  for (const auto& e : entity) {
+    for (const auto& f : e->frags) {
+      window.draw(f);
+    }
+    window.draw(e->hitbox);
+  }
+}
+
+//
+// MAIN PROGRAM
+// 
 int main() {
   // Initialization
   auto window = create_window();
@@ -79,15 +105,7 @@ int main() {
     if (ftAccum >= ftStep) {
       // Draw Phase
       window->clear(Color::Black);
-      for (const auto& s : shapes) {
-        window->draw(s);
-      }
-      for (const auto& e : entity) {
-        for (const auto& f : e->frags) {
-          window->draw(f);
-        }
-        window->draw(e->hitbox);
-      }
+      draw_player_test(*window);
       window->display();
     }
 
@@ -103,6 +121,7 @@ int main() {
     window->setTitle(fps_string);
     if (frameCounter % 400 == 0) {
       *log_file << fps_string << "\n";
+      *log_file << "Entity.size() " << global::entity.size() << "\n";
     }
     auto timings = calc_frames_per_second(timePoint1);
     lastFPS = static_cast<int>(timings.first);

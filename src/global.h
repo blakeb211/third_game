@@ -25,7 +25,11 @@ inline std::shared_ptr<IEntity> player_ptr;
 //
 // free functions
 //
-// reset the entities hitbox for collision checking
+
+// generate the entity's hitbox for collision checking
+void remove_dead_entities(); 
+
+// generate the entity's hitbox for collision checking
 void build_hitbox(IEntity& e); 
 
 // move entity's pos variable and all its frags with it

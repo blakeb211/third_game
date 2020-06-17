@@ -5,6 +5,15 @@ using namespace std;
 using namespace sf;
 typedef chrono::high_resolution_clock high_res_clock;
 
+void global::remove_dead_entities() {
+  // used for
+  //    a) removing bullets that go off screen
+  //
+  entity.erase(remove_if(begin(entity), end(entity),
+                      [](const shared_ptr<IEntity> & e) { return e->frags.size() < e->healthCutoff ||  e->isDead == true; }),
+            end(entity));
+}
+
 // process current frags and build hitbox from it
 void global::build_hitbox(IEntity& e) {
   vector<float> x, y;
@@ -15,16 +24,16 @@ void global::build_hitbox(IEntity& e) {
     y.push_back(frag_pos.y);
   }
   // these return a pair of iterators
-  auto xmm = minmax_element(x.begin(), x.end()); 
-  auto ymm = minmax_element(y.begin(), y.end()); 
-  auto width = (*xmm.second - *xmm.first); 
+  auto xmm = minmax_element(x.begin(), x.end());
+  auto ymm = minmax_element(y.begin(), y.end());
+  auto width = (*xmm.second - *xmm.first);
   auto height = (*ymm.second - *ymm.first);
   float spacer = global::blockWidth * 1.f;
-  e.hitbox.setPosition(Vec2(*xmm.first - spacer, *ymm.first - spacer)); 
+  e.hitbox.setPosition(Vec2(*xmm.first - spacer, *ymm.first - spacer));
   e.hitbox.setSize(Vec2(width + spacer * 2.f, height + spacer * 2.f));
   // drawing options for hitbox
-  e.hitbox.setFillColor(Color(0,0,0,0));
-  e.hitbox.setOutlineColor(Color(51,153,255,240));
+  e.hitbox.setFillColor(Color(0, 0, 0, 0));
+  e.hitbox.setOutlineColor(Color(51, 153, 255, 240));
   e.hitbox.setOutlineThickness(1.f);
 }
 
