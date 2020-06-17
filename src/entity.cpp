@@ -62,10 +62,12 @@ void Player::update(FrameTime ftStep) {
 void Player::collide_with(IEntity& e, unsigned int ivox, Vec2 voxPos) {}
 void Player::fire_shot() {
   if (currTimer < timerMax) return;
-  auto player_pos =
-      (frags[0].getPosition() + frags[frags.size() - 1].getPosition()) / 2.f;
-  global::entity.emplace_back(make_shared<Bullet>(
-      player_pos + Vec2(0.f, -1.f * global::blockWidth * 4.f)));
+  auto player_pos = hitbox.getPosition();
+  auto hitbox_width = hitbox.getSize().x;   
+  auto new_bullet = make_shared<Bullet>(Vec2(0.f,0.f));
+  auto bullet_width = new_bullet->hitbox.getSize().x;
+  global::move_entity(*new_bullet, player_pos +Vec2((hitbox_width - bullet_width) / 2.f, -1.f * global::blockWidth * 4.f));
+  global::entity.push_back(move(new_bullet));
   // reset shot timer
   currTimer = 0.f;
 }
