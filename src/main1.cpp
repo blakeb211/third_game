@@ -86,6 +86,7 @@ int main() {
         for (const auto& f : e->frags) {
           window->draw(f);
         }
+        window->draw(e->hitbox);
       }
       window->display();
     }

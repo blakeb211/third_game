@@ -19,8 +19,13 @@ void global::build_hitbox(IEntity& e) {
   auto ymm = minmax_element(y.begin(), y.end()); 
   auto width = (*xmm.second - *xmm.first); 
   auto height = (*ymm.second - *ymm.first);
-  e.hitbox.setPosition(Vec2(*xmm.first, *ymm.first)); 
-  e.hitbox.setSize(Vec2(width, height));
+  float spacer = global::blockWidth * 1.f;
+  e.hitbox.setPosition(Vec2(*xmm.first - spacer, *ymm.first - spacer)); 
+  e.hitbox.setSize(Vec2(width + spacer * 2.f, height + spacer * 2.f));
+  // drawing options for hitbox
+  e.hitbox.setFillColor(Color(0,0,0,0));
+  e.hitbox.setOutlineColor(Color(51,153,255,240));
+  e.hitbox.setOutlineThickness(1.f);
 }
 
 // free function to set position of entity
