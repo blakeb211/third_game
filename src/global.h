@@ -15,11 +15,13 @@ const unsigned int winHeight = 768;
 const unsigned int blockWidth = 5;
 const unsigned int bW = blockWidth;
 const float ftStep = 16.f;  // fixed update interval in ms
-const float keyInputStep = ftStep;
+const float keyInputStep = ftStep * 3.f;
 inline unsigned int lastFPS = 0; 
 inline std::default_random_engine rand_engine;
 inline std::vector<std::shared_ptr<IEntity>> entity;
+inline std::vector<std::shared_ptr<Frag>> free_frags;
 inline unsigned int entityCounter = 0;
+inline std::shared_ptr<IEntity> player_ptr;
 //
 // free functions
 //

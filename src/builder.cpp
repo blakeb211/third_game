@@ -74,7 +74,7 @@ void builder::build_level(unsigned int& levelId) {
       pathCount++;
       unsigned int currEntityId = enemyIds.front();  // pop from the front
       enemyIds.pop();
-      // get a pointer to the enemy
+      // get a pointer to the enemy by downcasting IEntity
       auto e_ptr =
           dynamic_pointer_cast<Enemy>(get_entity_with_id(currEntityId));
       // read in the path

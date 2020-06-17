@@ -1,3 +1,7 @@
+// Project Purpose: Be able to work on the game and try demos within the same
+// codebase by commenting and uncommenting methods in Init and Update sections
+// of this file.
+
 #include "stdlibs.h"
 /*                  */
 #include <SFML/Graphics.hpp>
@@ -37,11 +41,11 @@ void init_player_test() {
   entity.push_back(make_shared<Player>());
   cout << "init player test running" << endl;
   cout << "entity.size() = " << entity.size() << endl;
-  cout << "entity[0].frags.size() = " << get_entity_with_id(0)->frags.size() << endl;
+  cout << "entity[0].frags.size() = " << get_entity_with_id(0)->frags.size()
+       << endl;
 }
 
-void update_player_test() {
-}
+void update_player_test() {}
 
 int main() {
   // Initialization
@@ -53,11 +57,10 @@ int main() {
   size_t frameCounter = 0;
 
   //
-  //initialize demo
+  // initialize demo
   //
-  //rotated_rectange_init();
+  // rotated_rectange_init();
   init_player_test();
-
 
   while (window->isOpen()) {
     const auto timePoint1 = high_res_clock::now();
@@ -72,7 +75,7 @@ int main() {
     if (ftAccum >= ftStep) {
       // Draw Phase
       window->clear(Color::Black);
-      for (const auto & s : shapes) {
+      for (const auto& s : shapes) {
         window->draw(s);
       }
       for (const auto& e : entity) {
@@ -85,7 +88,8 @@ int main() {
 
     // Update phase
     for (; ftAccum >= ftStep; ftAccum -= ftStep) {
-      rotated_rectange_update();
+      // rotated_rectange_update();
+      update_player_test();
     }
 
     // Frame Timings

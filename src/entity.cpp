@@ -17,7 +17,7 @@ Frag::Frag(float mX, float mY, sf::Color c = sf::Color::White)
     : vel{0.f, 0.f}, dvel{vel}, health{nullopt} {
       setOrigin(global::bW / 2.f, global::bW / 2.f);
       setSize({global::bW,global::bW});
-      move(Vec2(mX, mY) + Vec2(5,5));
+      move(Vec2(mX, mY));
       setFillColor(c);
     }
 
@@ -51,11 +51,14 @@ Player::Player() {
   canShoot = false;
   currTimer = 0.f;
   timerMax = 0.f;
-  move_entity(*this, Vec2(winWidth / 2.f, winHeight - 20.f));
+  move_entity(*this, Vec2(10.f, winHeight - 10.f));
 }
 void Player::update(FrameTime ftStep) {}
 void Player::collide_with(IEntity& e, unsigned int ivox, Vec2 voxPos) {}
-void Player::fire_shot() {}
+void Player::fire_shot() {
+  auto player_pos = (frags[0].getPosition() + frags[frags.size()-1].getPosition() / 2.f);
+  global::entity.emplace_back(make_shared<Bullet>(player_pos + Vec2(0.f, -10.f) ));
+}
 
 //
 // Enemy Definitions

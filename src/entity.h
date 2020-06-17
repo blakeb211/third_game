@@ -77,3 +77,10 @@ struct Player : IEntity, ICanShoot {
   void collide_with(IEntity& e, unsigned int ivox, Vec2 voxPos);
   void fire_shot();
 };
+
+struct Bullet : IEntity {
+  Player();
+  void update(FrameTime ftStep);
+  void collide_with(IEntity& e, unsigned int ivox, Vec2 voxPos);
+  void fire_shot();
+};

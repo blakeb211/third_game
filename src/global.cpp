@@ -7,15 +7,13 @@ typedef chrono::high_resolution_clock high_res_clock;
 
 // free function to set position of entity
 void global::move_entity(IEntity& e, const Vec2 offset) {
-  for(int i = 0; i < e.frags.size(); i++) {
+  for (int i = 0; i < e.frags.size(); i++) {
     e.frags[i].move(offset);
   }
 }
 
 // free function to get a new entity id
-unsigned int global::get_new_entity_id() {
-  return entityCounter++; 
-}
+unsigned int global::get_new_entity_id() { return entityCounter++; }
 // free function to create a window
 unique_ptr<RenderWindow> global::create_window() {
   const ContextSettings cs(0, 0, 2, 4, 4, ContextSettings::Default, true);
@@ -60,19 +58,29 @@ bool global::handle_keyboard_input(float timer, const float maxTime,
     window.close();
     return true;  // exit main game loop
   }
+  timer = 0.f;
+  if (global::player_ptr == nullptr) {
+    global::player_ptr = get_entity_with_id(0);
+  }
   if (Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-    cerr << "Left key pressed" << endl;
+    if (player_ptr && player_ptr->type == EType::Player) {
+      move_entity(*player_ptr, Vec2(-7.5f, 0.f));
+    }
   }
   if (Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-    cerr << "Right key pressed" << endl;
+    if (player_ptr && player_ptr->type == EType::Player) {
+      move_entity(*player_ptr, Vec2(+7.5f, 0.f));
+    }
   }
   if (Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-    cerr << "Space key pressed" << endl;
+    if (player_ptr && player_ptr->type == EType::Player) {
+      auto player_ptr2 = dynamic_pointer_cast<Player>(player_ptr);
+      player_ptr2->fire_shot();
+    }
   }
   if (Keyboard::isKeyPressed(sf::Keyboard::LShift)) {
     cerr << "LShift key pressed" << endl;
   }
-  timer = 0.f;
   return false;  // don't exit the main game loop
 }
 
@@ -118,5 +126,5 @@ shared_ptr<IEntity> global::get_entity_with_id(unsigned int _id) {
       return e;
     }
   }
-  throw exception("no entity with that id was found by get_entity_with_id()");
+  return nullptr;  // if no entity with that id was found
 }
