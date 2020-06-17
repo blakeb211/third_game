@@ -16,7 +16,8 @@ Frag::Frag() { }
 Frag::Frag(float mX, float mY, sf::Color c = sf::Color::White)
     : vel{0.f, 0.f}, dvel{vel}, health{nullopt} {
       setOrigin(global::bW / 2.f, global::bW / 2.f);
-      setPosition(Vec2(mX, mY));
+      setSize({global::bW,global::bW});
+      move(Vec2(mX, mY) + Vec2(5,5));
       setFillColor(c);
     }
 
@@ -36,6 +37,7 @@ void BouncyWall::collide_with(IEntity& e, unsigned int ivox, Vec2 voxPos) {}
 // Player Definitions
 //
 Player::Player() {
+  using namespace global;
   // initialize members
   id = global::get_new_entity_id();
   type = EType::Player;
@@ -49,6 +51,7 @@ Player::Player() {
   canShoot = false;
   currTimer = 0.f;
   timerMax = 0.f;
+  move_entity(*this, Vec2(winWidth / 2.f, winHeight - 20.f));
 }
 void Player::update(FrameTime ftStep) {}
 void Player::collide_with(IEntity& e, unsigned int ivox, Vec2 voxPos) {}
