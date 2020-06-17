@@ -3,9 +3,8 @@
 #include <SFML/System.hpp>
 /* */
 #include "stdlibs.h"
-using Vec2 = sf::Vector2<float>;
+using Vec2 = sf::Glsl::Vec2;
 using FrameTime = float;
-
 enum struct EType {
   Player = 1,
   Bullet = 2,
@@ -38,6 +37,7 @@ struct IEntity {
   Vec2 vel;
   Vec2 dvel;
   sf::Rect<float> hitbox;
+  bool isDead{false};
 };
 
 struct ICanShoot {  // players and enemies
@@ -79,8 +79,7 @@ struct Player : IEntity, ICanShoot {
 };
 
 struct Bullet : IEntity {
-  Player();
+  Bullet(Vec2 pos);
   void update(FrameTime ftStep);
   void collide_with(IEntity& e, unsigned int ivox, Vec2 voxPos);
-  void fire_shot();
 };

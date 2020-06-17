@@ -64,12 +64,12 @@ bool global::handle_keyboard_input(float timer, const float maxTime,
   }
   if (Keyboard::isKeyPressed(sf::Keyboard::Left)) {
     if (player_ptr && player_ptr->type == EType::Player) {
-      move_entity(*player_ptr, Vec2(-7.5f, 0.f));
+      player_ptr->dvel += Vec2(-4.5f, 0.f);
     }
   }
   if (Keyboard::isKeyPressed(sf::Keyboard::Right)) {
     if (player_ptr && player_ptr->type == EType::Player) {
-      move_entity(*player_ptr, Vec2(+7.5f, 0.f));
+      player_ptr->dvel += Vec2(+4.5f, 0.f);
     }
   }
   if (Keyboard::isKeyPressed(sf::Keyboard::Space)) {

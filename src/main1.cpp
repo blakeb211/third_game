@@ -45,7 +45,11 @@ void init_player_test() {
        << endl;
 }
 
-void update_player_test() {}
+void update_player_test(const float& ftStep) {
+  for (const auto& e : entity) {
+    e->update(ftStep);
+  }
+}
 
 int main() {
   // Initialization
@@ -89,7 +93,7 @@ int main() {
     // Update phase
     for (; ftAccum >= ftStep; ftAccum -= ftStep) {
       // rotated_rectange_update();
-      update_player_test();
+      update_player_test(ftStep);
     }
 
     // Frame Timings
