@@ -53,9 +53,27 @@ void draw_rotated_rectange(RenderWindow& window) {
 // 
 void init_player_test() {
   entity.push_back(make_shared<Player>());
+ 
+  auto wall_start = Vec2(0,150);
+  auto wall_end = Vec2(300,80);
+  auto wall_vec = wall_end - wall_start;
+  const auto length = hypot(wall_vec.x, wall_vec.y);
+  const auto unit_vec = wall_vec / length;
+
+
+  while (calc_dist(wall_start, wall_end) > 7.f * bW) {
+    // place voxel
+    auto tmp_end = wall_start + unit_vec * 10.f * static_cast<float>(bW);
+    entity.push_back(make_shared<BouncyWall>( wall_start, tmp_end ));
+    wall_start = tmp_end + unit_vec * 1.75f * static_cast<float>(bW);
+  }
+
+  // print debug information
   cout << "init player test running" << endl;
   cout << "entity.size() = " << entity.size() << endl;
   cout << "entity[0].frags.size() = " << get_entity_with_id(0)->frags.size()
+       << endl;
+  cout << "entity[1].frags.size() = " << get_entity_with_id(1)->frags.size()
        << endl;
 }
 

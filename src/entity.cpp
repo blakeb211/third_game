@@ -29,7 +29,16 @@ void IEntity::erase_dead_frags() {}
 // BouncyWall Definitions
 //
 // wall is just a non-moving entity with optional health
-BouncyWall::BouncyWall(Vec2 start, Vec2 end) {}
+BouncyWall::BouncyWall(Vec2 start, Vec2 end) {
+  // data
+  id = global::get_new_entity_id();
+  type = EType::BouncyWall;
+  healthCutoff = 4;
+
+  builder::add_wall_frags(*this, start, end, Color(210, 35, 90, 255));
+  global::build_hitbox(*this);
+}
+
 void BouncyWall::update(FrameTime ftStep) {}
 void BouncyWall::collide_with(IEntity& e, unsigned int ivox, Vec2 voxPos) {}
 
@@ -59,10 +68,12 @@ void Player::update(FrameTime ftStep) {
   global::move_entity(*this, vel + dvel);
   dvel *= (abs(dvel.x) < 0.01f) ? 0 : 0.75f;
 }
+
 void Player::collide_with(IEntity& e, unsigned int ivox, Vec2 voxPos) {}
+
 void Player::fire_shot() {
   if (currTimer < timerMax) return;
-  auto player_pos = hitbox.getPosition();
+  Vec2 player_pos = hitbox.getPosition();
   auto hitbox_width = hitbox.getSize().x;   
   auto player_center = player_pos + Vec2(hitbox_width / 2.f, 0.f);
   

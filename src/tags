@@ -32,7 +32,7 @@ BlendMode	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^struct SFML_GRAPHICS_API
 Blue	c:\SFML\include\SFML\Graphics\Color.hpp	/^    static const Color Blue;        \/\/\/< Blue predefined color$/;"	m	class:sf::Color
 Bold	c:\SFML\include\SFML\Graphics\Text.hpp	/^        Bold          = 1 << 0, \/\/\/< Bold characters$/;"	e	enum:sf::Text::Style
 BoolType	c:\SFML\include\SFML\Network\Packet.hpp	/^    typedef bool (Packet::*BoolType)(std::size_t);$/;"	t	class:sf::Packet
-BouncyWall	.\entity.cpp	/^BouncyWall::BouncyWall(Vec2 start, Vec2 end) {}$/;"	f	class:BouncyWall
+BouncyWall	.\entity.cpp	/^BouncyWall::BouncyWall(Vec2 start, Vec2 end) {$/;"	f	class:BouncyWall
 BouncyWall	.\entity.h	/^  BouncyWall = 3,$/;"	m	struct:EType
 BouncyWall	.\entity.h	/^struct BouncyWall : IEntity {$/;"	s	struct:EType
 BreakableWall	.\entity.h	/^  BreakableWall = 4,$/;"	m	struct:EType
@@ -177,6 +177,7 @@ Gravity	c:\SFML\include\SFML\Window\Sensor.hpp	/^        Gravity,          \/\/\
 Green	c:\SFML\include\SFML\Graphics\Color.hpp	/^    static const Color Green;       \/\/\/< Green predefined color$/;"	m	class:sf::Color
 Gyroscope	c:\SFML\include\SFML\Window\Sensor.hpp	/^        Gyroscope,        \/\/\/< Measures the raw rotation rates (degrees\/s)$/;"	e	enum:sf::Sensor::Type
 H	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        H,            \/\/\/< The H key$/;"	e	enum:sf::Keyboard::Key
+HITBOX	.\main1.cpp	12;"	d	file:
 Hand	c:\SFML\include\SFML\Window\Cursor.hpp	/^        Hand,                   \/\/\/< Pointing hand cursor$/;"	e	enum:sf::Cursor::Type
 Head	c:\SFML\include\SFML\Network\Http.hpp	/^            Head,  \/\/\/< Request a page's header only$/;"	e	enum:sf::Http::Request::Method
 Help	c:\SFML\include\SFML\Window\Cursor.hpp	/^        Help,                   \/\/\/< Help cursor$/;"	e	enum:sf::Cursor::Type
@@ -766,6 +767,8 @@ depthBits	c:\SFML\include\SFML\Window\ContextSettings.hpp	/^    unsigned int dep
 doClient	c:\SFML\examples\voip\Client.cpp	/^void doClient(unsigned short port)$/;"	f
 doServer	c:\SFML\examples\voip\Server.cpp	/^void doServer(unsigned short port)$/;"	f
 draw	c:\SFML\examples\shader\Effect.hpp	/^    void draw(sf::RenderTarget& target, sf::RenderStates states) const$/;"	f	class:Effect
+draw_player_test	.\main1.cpp	/^void draw_player_test(RenderWindow& window) {$/;"	f
+draw_rotated_rectange	.\main1.cpp	/^void draw_rotated_rectange(RenderWindow& window) {$/;"	f
 dvel	.\entity.h	/^  Vec2 dvel;$/;"	m	struct:EType::Frag
 dvel	.\entity.h	/^  Vec2 dvel;$/;"	m	struct:EType::IEntity
 edgeDropoffExponent	c:\SFML\examples\island\Island.cpp	/^    float edgeDropoffExponent = 1.5f;$/;"	v
@@ -1106,6 +1109,7 @@ productId	c:\SFML\include\SFML\Window\Joystick.hpp	/^        unsigned int produc
 r	c:\SFML\include\SFML\Graphics\Color.hpp	/^    Uint8 r; \/\/\/< Red component$/;"	m	class:sf::Color
 rand_engine	.\global.h	/^inline std::default_random_engine rand_engine;$/;"	v
 receiveLoop	c:\SFML\examples\voip\Server.cpp	/^    void receiveLoop()$/;"	f	class:NetworkAudioStream	file:
+remove_dead_entities	.\global.cpp	/^void global::remove_dead_entities() {$/;"	f	class:global
 resolutionX	c:\SFML\examples\island\Island.cpp	/^    const unsigned int resolutionX = 800;$/;"	v
 resolutionY	c:\SFML\examples\island\Island.cpp	/^    const unsigned int resolutionY = 600;$/;"	v
 return_current_time_and_date	.\global.cpp	/^const string global::return_current_time_and_date() {$/;"	f	class:global

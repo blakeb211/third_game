@@ -11,10 +11,11 @@ using namespace global;
 using Vec2 = Vector2<float>;
 
 void builder::add_wall_frags(IEntity& e, Vec2 start, Vec2 end,
-                             Color c = Color(210, 55, 70, 255)) {
+                             Color c ) {
+
   // create a vector from start to end
   Vec2 wallPath = end - start;
-  auto length = sqrt(pow(wallPath.x, 2) + pow(wallPath.y, 2));
+  auto length = hypot(wallPath.x, wallPath.y); 
   Vec2 unitVec = Vec2(wallPath.x / length, wallPath.y / length);
   // march from start to end placing voxels
   cout << "entering build_wall1 while loop" << endl;
@@ -22,6 +23,7 @@ void builder::add_wall_frags(IEntity& e, Vec2 start, Vec2 end,
     // place voxel
     e.frags.emplace_back(start.x, start.y, c);
     start += unitVec * 1.f * static_cast<float>(bW);
+    
   }
   cout << "exited build_wall1 while loop" << endl;
 }
