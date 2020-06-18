@@ -19,7 +19,7 @@ void builder::add_wall_frags(IEntity& e, Vec2 start, Vec2 end,
   Vec2 unitVec = Vec2(wallPath.x / length, wallPath.y / length);
   // march from start to end placing voxels
   cout << "entering build_wall1 while loop" << endl;
-  while (calc_dist(start, end) > 1 * bW) {
+  while (calc_dist(start, end) > 0.7f * bW) {
     // place voxel
     e.frags.emplace_back(start.x, start.y, c);
     start += unitVec * 1.f * static_cast<float>(bW);

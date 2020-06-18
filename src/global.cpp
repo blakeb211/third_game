@@ -28,7 +28,7 @@ void global::build_hitbox(IEntity& e) {
   auto ymm = minmax_element(y.begin(), y.end());
   auto width = (*xmm.second - *xmm.first);
   auto height = (*ymm.second - *ymm.first);
-  float spacer = global::blockWidth * 1.f;
+  float spacer = global::blockWidth * 0.5f;
   e.hitbox.setPosition(Vec2(*xmm.first - spacer, *ymm.first - spacer));
   e.hitbox.setSize(Vec2(width + spacer * 2.f, height + spacer * 2.f));
   // drawing options for hitbox

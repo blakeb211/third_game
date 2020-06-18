@@ -733,6 +733,7 @@ bounds	c:\SFML\include\SFML\Graphics\Glyph.hpp	/^    FloatRect bounds;      \/\/
 bufferUploadPending	c:\SFML\examples\island\Island.cpp	/^    bool bufferUploadPending = false;$/;"	v
 build_hitbox	.\global.cpp	/^void global::build_hitbox(IEntity& e) {$/;"	f	class:global
 build_level	.\builder.cpp	/^void builder::build_level(unsigned int& levelId) {$/;"	f	class:builder
+build_long_wall_player_test	.\main1.cpp	/^void build_long_wall_player_test( Vec2 start1, Vec2 end1) {$/;"	f
 builder	.\builder.h	/^namespace builder {$/;"	n
 button	c:\SFML\examples\win32\Win32.cpp	/^HWND button;$/;"	v
 button	c:\SFML\include\SFML\Window\Event.hpp	/^        Mouse::Button button; \/\/\/< Code of the button that has been pressed$/;"	m	struct:sf::Event::MouseButtonEvent
