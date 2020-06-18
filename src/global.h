@@ -26,6 +26,11 @@ inline std::shared_ptr<IEntity> player_ptr;
 // free functions
 //
 
+inline std::ostream & operator<<(std::ostream & Str, EType V); 
+
+// check entities for collisions 
+void check_entities_for_collisions(); 
+
 // generate the entity's hitbox for collision checking
 void remove_dead_entities(); 
 

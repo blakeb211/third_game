@@ -5,13 +5,46 @@ using namespace std;
 using namespace sf;
 typedef chrono::high_resolution_clock high_res_clock;
 
+
+inline std::ostream& global::operator<<(std::ostream& Str, EType V) {
+  switch (V) {
+    case EType::Bullet:
+      return Str << "bullet";
+    case EType::BouncyWall:
+      return Str << "bouncyWall";
+    case EType::Player:
+      return Str << "player";
+    default:
+      return Str << (int)V;
+  };
+}
+
+// check entities for collisions
+void global::check_entities_for_collisions() {
+  auto entSize = entity.size(); 
+  for (int i = 0; i < entSize - 1; i++) {
+    for (int j = i + 1; j < entSize; j++) {
+      // check if hitboxes collide
+      if (entity[i]->hitbox.getGlobalBounds().intersects(entity[j]->hitbox.getGlobalBounds())) {
+        cout << "Collision: " << i << "(" << entity[i]->type << ") and " << j;
+        cout << "(" << entity[j]->type << ")" << endl;
+      }
+
+    }
+  }
+
+}
+
 void global::remove_dead_entities() {
   // used for
   //    a) removing bullets that go off screen
   //
   entity.erase(remove_if(begin(entity), end(entity),
-                      [](const shared_ptr<IEntity> & e) { return e->frags.size() < e->healthCutoff ||  e->isDead == true; }),
-            end(entity));
+                         [](const shared_ptr<IEntity>& e) {
+                           return e->frags.size() < e->healthCutoff ||
+                                  e->isDead == true;
+                         }),
+               end(entity));
 }
 
 // process current frags and build hitbox from it

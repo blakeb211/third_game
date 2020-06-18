@@ -83,3 +83,4 @@ struct Bullet : IEntity {
   void update(FrameTime ftStep);
   void collide_with(IEntity& e, unsigned int ivox, Vec2 voxPos);
 };
+
