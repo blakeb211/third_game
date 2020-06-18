@@ -9,6 +9,7 @@
 
 #include "global.h"
 // #include "entity.h"
+#define HITBOX
 
 using namespace std;
 using namespace sf;
@@ -70,7 +71,9 @@ void draw_player_test(RenderWindow& window) {
     for (const auto& f : e->frags) {
       window.draw(f);
     }
+#ifdef HITBOX
     window.draw(e->hitbox);
+#endif
   }
 }
 

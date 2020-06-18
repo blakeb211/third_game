@@ -64,9 +64,11 @@ void Player::fire_shot() {
   if (currTimer < timerMax) return;
   auto player_pos = hitbox.getPosition();
   auto hitbox_width = hitbox.getSize().x;   
+  auto player_center = player_pos + Vec2(hitbox_width / 2.f, 0.f);
+  
   auto new_bullet = make_shared<Bullet>(Vec2(0.f,0.f));
   auto bullet_width = new_bullet->hitbox.getSize().x;
-  global::move_entity(*new_bullet, player_pos +Vec2((hitbox_width - bullet_width) / 2.f, -1.f * global::blockWidth * 4.f));
+  global::move_entity(*new_bullet, player_center - Vec2(bullet_width / 4.f, +1.f * global::blockWidth * 4.f));
   global::entity.push_back(move(new_bullet));
   // reset shot timer
   currTimer = 0.f;
