@@ -10,6 +10,9 @@ COLOR FRONT PIXELS OF BULLET1
 
 WALLS
   have a wall building functions
+  give walls a self-calculated reflection angle that is applied to things that hit it also only one voxel-voxel
+  collision at a time
+  need a dot product function
 
 READ THROUGH 3 OTHER GAME CODES
 READ THROUGH MY CODE

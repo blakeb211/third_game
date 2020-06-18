@@ -9,7 +9,7 @@
 
 #include "global.h"
 // #include "entity.h"
-//#define HITBOX
+#define HITBOX
 
 using namespace std;
 using namespace sf;
@@ -63,7 +63,7 @@ void build_long_wall_player_test(Vec2 start1, Vec2 end1) {
     // place voxel
     auto tmp_end = wall_start + unit_vec * 5.f * static_cast<float>(bW);
     entity.push_back(make_shared<BouncyWall>(wall_start, tmp_end));
-    wall_start = tmp_end + unit_vec * 0.5f * static_cast<float>(bW);
+    wall_start = tmp_end + unit_vec * 0.2f * static_cast<float>(bW);
   }
   // end of build a multi-segment wall
 }

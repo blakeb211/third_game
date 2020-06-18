@@ -46,11 +46,11 @@ void global::check_entities_for_collisions() {
               ei_ref.collide_with(ej_ref, ii, move(jj_pos));
               ej_ref.collide_with(ei_ref, jj, move(ii_pos));
               collision_flag = true;
-              //break;  // only one frag-frag collision per entity pair per frame
+              break;  // only one frag-frag collision per entity pair per frame
             }
           }
           if (collision_flag) {
-            //break;  // only one frag-frag collision per entity pair per frame
+            break;  // only one frag-frag collision per entity pair per frame
           }
         }
       }
@@ -84,7 +84,7 @@ void global::build_hitbox(IEntity& e) {
   auto ymm = minmax_element(y.begin(), y.end());
   auto width = (*xmm.second - *xmm.first);
   auto height = (*ymm.second - *ymm.first);
-  float spacer = global::blockWidth * 0.5f;
+  float spacer = global::blockWidth * 0.25f;
   e.hitbox.setPosition(Vec2(*xmm.first - spacer, *ymm.first - spacer));
   e.hitbox.setSize(Vec2(width + spacer * 2.f, height + spacer * 2.f));
   // drawing options for hitbox
