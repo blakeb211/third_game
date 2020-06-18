@@ -9,7 +9,12 @@ using namespace std;
 using namespace sf;
 using namespace global;
 using Vec2 = Vector2<float>;
-
+void builder::set_frag_health(IEntity& e, unsigned int num) {
+  auto fragsize = e.frags.size();
+  for(int i = 0; i < fragsize; i++) {
+    *e.frags[i].health = num;
+  }
+}
 void builder::add_wall_frags(IEntity& e, Vec2 start, Vec2 end,
                              Color c ) {
 

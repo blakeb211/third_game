@@ -1,10 +1,11 @@
 #include "global.h"
 
 #include "stdlibs.h"
+//#define COLL_LOGGING
+
 using namespace std;
 using namespace sf;
 typedef chrono::high_resolution_clock high_res_clock;
-
 
 inline std::ostream& global::operator<<(std::ostream& Str, EType V) {
   switch (V) {
@@ -21,18 +22,40 @@ inline std::ostream& global::operator<<(std::ostream& Str, EType V) {
 
 // check entities for collisions
 void global::check_entities_for_collisions() {
-  auto entSize = entity.size(); 
+  auto entSize = entity.size();
   for (int i = 0; i < entSize - 1; i++) {
     for (int j = i + 1; j < entSize; j++) {
       // check if hitboxes collide
-      if (entity[i]->hitbox.getGlobalBounds().intersects(entity[j]->hitbox.getGlobalBounds())) {
+      if (entity[i]->hitbox.getGlobalBounds().intersects(
+              entity[j]->hitbox.getGlobalBounds())) {
+#ifdef COLL_LOGGING
         cout << "Collision: " << i << "(" << entity[i]->type << ") and " << j;
         cout << "(" << entity[j]->type << ")" << endl;
+#endif
+        auto& ei_ref = *entity[i];
+        auto& ej_ref = *entity[j];
+        auto fi_size = ei_ref.frags.size();
+        auto fj_size = ej_ref.frags.size();
+        bool collision_flag = false;
+        for (int ii = 0; ii < fi_size; ii++) {
+          for (int jj = 0; jj < fj_size; jj++) {
+            if (ei_ref.frags[ii].getGlobalBounds().intersects(
+                    ej_ref.frags[jj].getGlobalBounds())) {
+              Vec2 ii_pos = ei_ref.frags[ii].getPosition();
+              Vec2 jj_pos = ej_ref.frags[jj].getPosition();
+              ei_ref.collide_with(ej_ref, ii, move(jj_pos));
+              ej_ref.collide_with(ei_ref, jj, move(ii_pos));
+              collision_flag = true;
+              //break;  // only one frag-frag collision per entity pair per frame
+            }
+          }
+          if (collision_flag) {
+            //break;  // only one frag-frag collision per entity pair per frame
+          }
+        }
       }
-
     }
   }
-
 }
 
 void global::remove_dead_entities() {
@@ -87,7 +110,7 @@ unique_ptr<RenderWindow> global::create_window() {
   auto window =
       make_unique<RenderWindow>(VideoMode(global::winWidth, global::winHeight),
                                 "Iteration 3", Style::Close, cs);
-  window->setVerticalSyncEnabled(true);  // prevent screen tearing
+  window->setVerticalSyncEnabled(false);  // prevent screen tearing
   return move(window);
 }
 
@@ -132,12 +155,13 @@ bool global::handle_keyboard_input(float timer, const float maxTime,
   if (Keyboard::isKeyPressed(sf::Keyboard::Left)) {
     if (player_ptr && player_ptr->type == EType::Player) {
       auto& dvel_ref = player_ptr->dvel;
-      dvel_ref += (dvel_ref.x < 9.f) ? Vec2(-4.5f, 0.f) : Vec2(0.f, 0.f);
+      dvel_ref += (abs(dvel_ref.x) < 9.f) ? Vec2(-4.5f, 0.f) : Vec2(0.f, 0.f);
     }
   }
   if (Keyboard::isKeyPressed(sf::Keyboard::Right)) {
     if (player_ptr && player_ptr->type == EType::Player) {
-      player_ptr->dvel += Vec2(+4.5f, 0.f);
+      auto& dvel_ref = player_ptr->dvel;
+      dvel_ref += (abs(dvel_ref.x) < 9.f) ? Vec2(+4.5f, 0.f) : Vec2(0.f, 0.f);
     }
   }
   if (Keyboard::isKeyPressed(sf::Keyboard::Space)) {

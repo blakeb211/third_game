@@ -17,6 +17,7 @@ READ THROUGH SFML API AGAIN
 
 add a quadtree from codinggame video
 
+Note that FTSTEP doesn't need to be passed to the udpate methods
 HAVE TO USE AXIS ALIGNED COLLISION DETECTION
 LOOK INTO QUAD TREES
 WRITE AND TEST COLLISION SYSTEM

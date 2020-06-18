@@ -9,7 +9,7 @@
 
 #include "global.h"
 // #include "entity.h"
-#define HITBOX
+//#define HITBOX
 
 using namespace std;
 using namespace sf;
@@ -81,8 +81,9 @@ void init_player_test() {
   build_long_wall_player_test(Vec2(2.f * winWidth / 3.f, winHeight / 20.f),
                               Vec2(winWidth, winHeight / 10.f));
 
-  build_long_wall_player_test(Vec2(0, 3.f * winHeight / 9.f),
-                              Vec2(2.f * winWidth / 12.f, 3.f * winHeight / 20.f));
+  build_long_wall_player_test(
+      Vec2(0, 3.f * winHeight / 9.f),
+      Vec2(2.f * winWidth / 12.f, 3.f * winHeight / 20.f));
   build_long_wall_player_test(
       Vec2(2.f * winWidth / 3.f, 3.f * winHeight / 20.f),
       Vec2(winWidth, 3.f * winHeight / 9.f));
@@ -97,9 +98,13 @@ void init_player_test() {
 }
 
 void update_player_test(const float& ftStep) {
-  for (const auto& e : entity) {
+  for (auto& e : entity) {
     e->update(ftStep);
   }
+  for (auto& f : free_frags) {
+    f.update();
+  }
+
   global::remove_dead_entities();
   global::check_entities_for_collisions();
 }
@@ -112,6 +117,10 @@ void draw_player_test(RenderWindow& window) {
 #ifdef HITBOX
     window.draw(e->hitbox);
 #endif
+  }
+  // draw free frags
+  for (const auto& f : free_frags) {
+    window.draw(f);
   }
 }
 
