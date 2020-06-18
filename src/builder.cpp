@@ -22,7 +22,9 @@ void builder::add_wall_frags(IEntity& e, Vec2 start, Vec2 end,
   while (calc_dist(start, end) > 0.7f * bW) {
     // place voxel
     e.frags.emplace_back(start.x, start.y, c);
-    start += unitVec * 1.f * static_cast<float>(bW);
+    // consider making 1.2f below be depending on the slope of the 
+    // start and end vectors
+    start += unitVec * 1.2f * static_cast<float>(bW);
     
   }
   cout << "exited build_wall1 while loop" << endl;
@@ -156,7 +158,7 @@ void builder::add_player_frags(IEntity& e) {
 }
 
 void builder::add_bullet1_frags(IEntity& e) {
-  e.frags.emplace_back(1.f * bW, 0.f * bW, Color(209, 181, 190, 255));
+  e.frags.emplace_back(1.f * bW, 0.f * bW, Color(0, 255, 0, 255));
   e.frags.emplace_back(0.f * bW, 1.f * bW, Color(209, 181, 190, 255));
   e.frags.emplace_back(1.f * bW, 1.f * bW, Color(209, 181, 190, 255));
   e.frags.emplace_back(2.f * bW, 1.f * bW, Color(209, 181, 190, 255));

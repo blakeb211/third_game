@@ -3,15 +3,19 @@ KEEP IT SIMPLE STUPID
 Purpose of project: Re-Write Second Shooter to run faster and have the explosion
                     and enemy AI effects that I want
 
-ADD WALLS
 Bullets RESPOND TO DYING by exploding
 
-add a quadtree from codinggame video
+ADD COLLISION MANAGER AND MAKE WORK WITH BULLETS
+COLOR FRONT PIXELS OF BULLET1
+
+WALLS
+  have a wall building functions
 
 READ THROUGH 3 OTHER GAME CODES
 READ THROUGH MY CODE
 READ THROUGH SFML API AGAIN
 
+add a quadtree from codinggame video
 
 HAVE TO USE AXIS ALIGNED COLLISION DETECTION
 LOOK INTO QUAD TREES

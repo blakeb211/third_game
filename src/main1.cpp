@@ -21,7 +21,7 @@ vector<RectangleShape> shapes;
 
 //
 // ROTATED RECTANGES
-// 
+//
 void rotated_rectange_init() {
   for (int i = 0; i < 1000; i++) {
     RectangleShape r;
@@ -43,28 +43,27 @@ void rotated_rectange_update() {
 
 void draw_rotated_rectange(RenderWindow& window) {
   for (const auto& s : shapes) {
-        window.draw(s);
-      }
+    window.draw(s);
+  }
 }
 
-
 //
-// PLAYER TEST 
-// 
+// PLAYER TEST
+//
 
-void build_long_wall_player_test( Vec2 start1, Vec2 end1) {
-// start of build a multi-segment wall
+void build_long_wall_player_test(Vec2 start1, Vec2 end1) {
+  // start of build a multi-segment wall
   auto wall_start = move(start1);
   auto wall_end = (end1);
   auto wall_vec = wall_end - wall_start;
   const auto length = hypot(wall_vec.x, wall_vec.y);
   const auto unit_vec = wall_vec / length;
 
-  while (calc_dist(wall_start, wall_end) > 5.f * bW) {
+  while (calc_dist(wall_start, wall_end) >= 2.8f * bW) {
     // place voxel
-    auto tmp_end = wall_start + unit_vec * 10.f * static_cast<float>(bW);
-    entity.push_back(make_shared<BouncyWall>( wall_start, tmp_end ));
-    wall_start = tmp_end + unit_vec * 0.8f * static_cast<float>(bW);
+    auto tmp_end = wall_start + unit_vec * 5.f * static_cast<float>(bW);
+    entity.push_back(make_shared<BouncyWall>(wall_start, tmp_end));
+    wall_start = tmp_end + unit_vec * 0.5f * static_cast<float>(bW);
   }
   // end of build a multi-segment wall
 }
@@ -72,8 +71,22 @@ void build_long_wall_player_test( Vec2 start1, Vec2 end1) {
 void init_player_test() {
   entity.push_back(make_shared<Player>());
 
-  build_long_wall_player_test(Vec2(0,winHeight / 10.f), Vec2(winWidth / 3.f, winHeight / 20.f));   
-  build_long_wall_player_test(Vec2(2.f * winWidth / 3.f, winHeight / 20.f), Vec2(winWidth, winHeight / 10.f));   
+  build_long_wall_player_test(Vec2(0.f, blockWidth),
+                              Vec2(winWidth / 3.f, blockWidth));
+  build_long_wall_player_test(Vec2(2.f * winWidth / 3.f, blockWidth),
+                              Vec2(winWidth, blockWidth));
+
+  build_long_wall_player_test(Vec2(0, winHeight / 10.f),
+                              Vec2(3.f * winWidth / 12.f, winHeight / 20.f));
+  build_long_wall_player_test(Vec2(2.f * winWidth / 3.f, winHeight / 20.f),
+                              Vec2(winWidth, winHeight / 10.f));
+
+  build_long_wall_player_test(Vec2(0, 3.f * winHeight / 9.f),
+                              Vec2(2.f * winWidth / 12.f, 3.f * winHeight / 20.f));
+  build_long_wall_player_test(
+      Vec2(2.f * winWidth / 3.f, 3.f * winHeight / 20.f),
+      Vec2(winWidth, 3.f * winHeight / 9.f));
+
   // print debug information
   cout << "init player test running" << endl;
   cout << "entity.size() = " << entity.size() << endl;
@@ -103,7 +116,7 @@ void draw_player_test(RenderWindow& window) {
 
 //
 // MAIN PROGRAM
-// 
+//
 int main() {
   // Initialization
   auto window = create_window();
