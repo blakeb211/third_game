@@ -3,7 +3,13 @@ KEEP IT SIMPLE STUPID
 Purpose of project: Re-Write Second Shooter to run faster and have the explosion
                     and enemy AI effects that I want
 
+
+ADD CMakeFiles\Makefile2 folder and files to github repository
+
+IMPROVE WALL COLLISIONS INCLUDING ROTATE BULLET FRAG BY FRAG
+INCLUDE DOTPRODUCTS
 Bullets RESPOND TO DYING by exploding
+ENEMIES EXPLODE
 
 ADD COLLISION MANAGER AND MAKE WORK WITH BULLETS
 COLOR FRONT PIXELS OF BULLET1
