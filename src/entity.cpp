@@ -20,9 +20,7 @@ Frag::Frag(float mX, float mY, sf::Color c = sf::Color::White)
   move(Vec2(mX, mY));
   setFillColor(c);
 }
-void Frag::update() {
-  move(vel + dvel);
-}
+void Frag::update() { move(vel + dvel); }
 // member functions
 unsigned int IEntity::get_health() { return frags.size(); }
 void IEntity::erase_dead_frags() {}
@@ -42,7 +40,8 @@ BouncyWall::BouncyWall(Vec2 start, Vec2 end) {
 }
 
 void BouncyWall::update(FrameTime ftStep) {}
-void BouncyWall::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos) {}
+void BouncyWall::collide_with(const IEntity& e, unsigned int ivox,
+                              Vec2 voxPos) {}
 
 //
 // Player Definitions
@@ -126,27 +125,23 @@ void Bullet::update(FrameTime ftStep) {
 }
 
 void Bullet::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos) {
-  auto bounce_vec= frags[ivox].getPosition() - voxPos;
+  auto bounce_vec = frags[ivox].getPosition() - voxPos;
   auto bv_len = hypot(bounce_vec.x, bounce_vec.y);
   auto bounce_unit_vec = bounce_vec / bv_len;
-  Vec2 frag_velocity; 
-  switch(e.type) {
+  Vec2 frag_velocity;
+  switch (e.type) {
     case EType::BouncyWall:
       (*frags[ivox].health)--;
-      global::move_entity(*this, bounce_unit_vec * (float)global::bW*0.9f);
-      vel += hypot(vel.x,vel.y) * bounce_unit_vec * 1.2f;
-      vel += Vec2((-2.5f + global::rand_engine() % 4)*0.1f, 0.f);
-      frag_velocity = vel + Vec2((-2.5f + global::rand_engine() % 4)*0.1f, (-2.5f + global::rand_engine() % 4)*0.1f);
+      global::move_entity(*this, bounce_unit_vec * (float)global::bW * 0.9f);
+      vel += hypot(vel.x, vel.y) * bounce_unit_vec * 1.2f;
+      vel += Vec2((-2.5f + global::rand_engine() % 4) * 0.1f, 0.f);
+      frag_velocity = vel + Vec2((-2.5f + global::rand_engine() % 4) * 0.1f,
+                                 (-2.5f + global::rand_engine() % 4) * 0.1f);
       break;
   }
   if (*frags[ivox].health == 1) {
+    global::frags_to_move.insert(make_pair(id, ivox));
     frags[ivox].vel = frag_velocity;
-    global::free_frags.push_back(move(frags[ivox]));
-    frags.erase(frags.begin() + ivox);
-    
-    // move frag to the free frag vector and remove it from the 
-    // bullet entity vector
   }
 }
-
 

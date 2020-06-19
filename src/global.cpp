@@ -20,6 +20,19 @@ inline std::ostream& global::operator<<(std::ostream& Str, EType V) {
   };
 }
 
+void global::process_set_of_freed_frags() {
+  // move frags to the free frag vector and remove it from the
+  // bullet entity vector
+  // The pair in frags_to_move is entity_id, frag idx.
+  for (const auto& ent_vox_pair : frags_to_move) {
+    auto ent_ptr = get_entity_with_id(ent_vox_pair.first);
+    auto frag_idx = ent_vox_pair.second;
+    free_frags.push_back(ent_ptr->frags[frag_idx]);
+    ent_ptr->frags.erase(ent_ptr->frags.begin() + frag_idx);
+  }
+  frags_to_move.erase(begin(frags_to_move), end(frags_to_move));
+}
+
 // check entities for collisions
 void global::check_entities_for_collisions() {
   auto entSize = entity.size();
@@ -46,11 +59,12 @@ void global::check_entities_for_collisions() {
               ei_ref.collide_with(ej_ref, ii, move(jj_pos));
               ej_ref.collide_with(ei_ref, jj, move(ii_pos));
               collision_flag = true;
-              break;  // only one frag-frag collision per entity pair per frame
+              // break;  // only one frag-frag collision per entity pair per
+              // frame
             }
           }
           if (collision_flag) {
-            break;  // only one frag-frag collision per entity pair per frame
+            // break;  // only one frag-frag collision per entity pair per frame
           }
         }
       }

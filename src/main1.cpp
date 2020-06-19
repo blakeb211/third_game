@@ -107,6 +107,7 @@ void update_player_test(const float& ftStep) {
 
   global::remove_dead_entities();
   global::check_entities_for_collisions();
+  global::process_set_of_freed_frags();
 }
 
 void draw_player_test(RenderWindow& window) {

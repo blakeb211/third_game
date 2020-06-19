@@ -22,10 +22,13 @@ inline std::vector<std::shared_ptr<IEntity>> entity;
 inline std::vector<Frag> free_frags;
 inline unsigned int entityCounter = 0;
 inline std::shared_ptr<IEntity> player_ptr;
+inline std::set<std::pair<int,int>> frags_to_move;
 //
 // free functions
 //
-
+// function to move frags that were freed from their entities
+void process_set_of_freed_frags(); 
+// function to print out ETypes as strings
 inline std::ostream & operator<<(std::ostream & Str, EType V); 
 
 // check entities for collisions 
