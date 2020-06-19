@@ -85,6 +85,7 @@ void builder::build_level(unsigned int& levelId) {
       // get a pointer to the enemy by downcasting IEntity
       auto e_ptr =
           dynamic_pointer_cast<Enemy>(get_entity_with_id(currEntityId));
+      
       // read in the path
       istringstream ss(line);
       // read in the whole line of float float|

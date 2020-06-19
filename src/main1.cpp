@@ -104,10 +104,13 @@ void update_player_test(const float& ftStep) {
   for (auto& f : free_frags) {
     f.update();
   }
-
-  global::remove_dead_entities();
-  global::check_entities_for_collisions();
-  global::process_set_of_freed_frags();
+  try {
+    global::remove_dead_entities();
+    global::check_entities_for_collisions();
+    global::process_set_of_freed_frags();
+  } catch (exception& e) {
+    cerr << "exception in update_player_test:" << e.what() << endl;
+  }
 }
 
 void draw_player_test(RenderWindow& window) {
@@ -170,9 +173,16 @@ int main() {
     frameCounter++;
     auto fps_string = "FPS: " + to_string(lastFPS);
     window->setTitle(fps_string);
-    if (frameCounter % 400 == 0) {
-      *log_file << fps_string << "\n";
-      *log_file << "Entity.size() " << global::entity.size() << "\n";
+    try {
+      if (frameCounter % 400 == 0) {
+        *log_file << fps_string << "\n";
+        *log_file << "Entity.size() " << global::entity.size() << "\n";
+        *log_file << "frags_to_move.size() " << global::frags_to_move.size()
+                  << "\n";
+        *log_file << "free_frags.size() " << global::free_frags.size() << "\n";
+      }
+    } catch (exception& e) {
+      cerr << "Exception thrown in logfile writing" << endl;
     }
     auto timings = calc_frames_per_second(timePoint1);
     lastFPS = static_cast<int>(timings.first);

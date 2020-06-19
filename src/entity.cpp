@@ -140,6 +140,7 @@ void Bullet::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos) {
       break;
   }
   if (*frags[ivox].health == 1) {
+    (*frags[ivox].health)--;
     global::frags_to_move.insert(make_pair(id, ivox));
     frags[ivox].vel = frag_velocity;
   }
