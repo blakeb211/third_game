@@ -177,7 +177,6 @@ Gravity	c:\SFML\include\SFML\Window\Sensor.hpp	/^        Gravity,          \/\/\
 Green	c:\SFML\include\SFML\Graphics\Color.hpp	/^    static const Color Green;       \/\/\/< Green predefined color$/;"	m	class:sf::Color
 Gyroscope	c:\SFML\include\SFML\Window\Sensor.hpp	/^        Gyroscope,        \/\/\/< Measures the raw rotation rates (degrees\/s)$/;"	e	enum:sf::Sensor::Type
 H	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        H,            \/\/\/< The H key$/;"	e	enum:sf::Keyboard::Key
-HITBOX	.\main1.cpp	12;"	d	file:
 Hand	c:\SFML\include\SFML\Window\Cursor.hpp	/^        Hand,                   \/\/\/< Pointing hand cursor$/;"	e	enum:sf::Cursor::Type
 Head	c:\SFML\include\SFML\Network\Http.hpp	/^            Head,  \/\/\/< Request a page's header only$/;"	e	enum:sf::Http::Request::Method
 Help	c:\SFML\include\SFML\Window\Cursor.hpp	/^        Help,                   \/\/\/< Help cursor$/;"	e	enum:sf::Cursor::Type
@@ -724,16 +723,16 @@ audioData	c:\SFML\examples\voip\Server.cpp	/^const sf::Uint8 audioData   = 1;$/;
 axis	c:\SFML\include\SFML\Window\Event.hpp	/^        Joystick::Axis axis;       \/\/\/< Axis on which the joystick moved$/;"	m	struct:sf::Event::JoystickMoveEvent
 axislabels	c:\SFML\examples\joystick\Joystick.cpp	/^    const char* axislabels[] = {"X", "Y", "Z", "R", "U", "V", "PovX", "PovY"};$/;"	v
 b	c:\SFML\include\SFML\Graphics\Color.hpp	/^    Uint8 b; \/\/\/< Blue component$/;"	m	class:sf::Color
-bW	.\global.h	/^const unsigned int bW = blockWidth;$/;"	v
+bW	.\global.h	/^inline const unsigned int bW = blockWidth;$/;"	v
 bitsPerPixel	c:\SFML\include\SFML\Window\VideoMode.hpp	/^    unsigned int bitsPerPixel; \/\/\/< Video mode pixel depth, in bits per pixels$/;"	m	class:sf::VideoMode
 blendMode	c:\SFML\include\SFML\Graphics\RenderStates.hpp	/^    BlendMode      blendMode; \/\/\/< Blending mode$/;"	m	class:sf::RenderStates
 blockCount	c:\SFML\examples\island\Island.cpp	/^    const unsigned int blockCount = 32;$/;"	v
-blockWidth	.\global.h	/^const unsigned int blockWidth = 5;$/;"	v
+blockWidth	.\global.h	/^inline const unsigned int blockWidth = 5;$/;"	v
 bounds	c:\SFML\include\SFML\Graphics\Glyph.hpp	/^    FloatRect bounds;      \/\/\/< Bounding rectangle of the glyph, in coordinates relative to the baseline$/;"	m	class:sf::Glyph
 bufferUploadPending	c:\SFML\examples\island\Island.cpp	/^    bool bufferUploadPending = false;$/;"	v
 build_hitbox	.\global.cpp	/^void global::build_hitbox(IEntity& e) {$/;"	f	class:global
 build_level	.\builder.cpp	/^void builder::build_level(unsigned int& levelId) {$/;"	f	class:builder
-build_long_wall_player_test	.\main1.cpp	/^void build_long_wall_player_test( Vec2 start1, Vec2 end1) {$/;"	f
+build_long_wall_player_test	.\main1.cpp	/^void build_long_wall_player_test(Vec2 start1, Vec2 end1) {$/;"	f
 builder	.\builder.h	/^namespace builder {$/;"	n
 button	c:\SFML\examples\win32\Win32.cpp	/^HWND button;$/;"	v
 button	c:\SFML\include\SFML\Window\Event.hpp	/^        Mouse::Button button; \/\/\/< Code of the button that has been pressed$/;"	m	struct:sf::Event::MouseButtonEvent
@@ -744,12 +743,13 @@ canShoot	.\entity.h	/^  bool canShoot;$/;"	m	struct:EType::ICanShoot
 channelCount	c:\SFML\include\SFML\Audio\SoundFileReader.hpp	/^        unsigned int channelCount; \/\/\/< Number of channels of the sound$/;"	m	struct:sf::SoundFileReader::Info
 check	c:\SFML\include\SFML\Audio\SoundFileFactory.hpp	/^        bool (*check)(InputStream&);$/;"	m	struct:sf::SoundFileFactory::ReaderFactory
 check	c:\SFML\include\SFML\Audio\SoundFileFactory.hpp	/^        bool (*check)(const std::string&);$/;"	m	struct:sf::SoundFileFactory::WriterFactory
+check_entities_for_collisions	.\global.cpp	/^void global::check_entities_for_collisions() {$/;"	f	class:global
 check_for_window_close	.\global.cpp	/^bool global::check_for_window_close(RenderWindow& window, Event& event) {$/;"	f	class:global
 code	c:\SFML\include\SFML\Window\Event.hpp	/^        Keyboard::Key code;    \/\/\/< Code of the key that has been pressed$/;"	m	struct:sf::Event::KeyEvent
-collide_with	.\entity.cpp	/^void BouncyWall::collide_with(IEntity& e, unsigned int ivox, Vec2 voxPos) {}$/;"	f	class:BouncyWall
-collide_with	.\entity.cpp	/^void Bullet::collide_with(IEntity& e, unsigned int ivox, Vec2 voxPos) {}$/;"	f	class:Bullet
-collide_with	.\entity.cpp	/^void Enemy::collide_with(IEntity& e, unsigned int ivox, Vec2 voxPos) {}$/;"	f	class:Enemy
-collide_with	.\entity.cpp	/^void Player::collide_with(IEntity& e, unsigned int ivox, Vec2 voxPos) {}$/;"	f	class:Player
+collide_with	.\entity.cpp	/^void BouncyWall::collide_with(const IEntity& e, unsigned int ivox,$/;"	f	class:BouncyWall
+collide_with	.\entity.cpp	/^void Bullet::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos) {$/;"	f	class:Bullet
+collide_with	.\entity.cpp	/^void Enemy::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos) {}$/;"	f	class:Enemy
+collide_with	.\entity.cpp	/^void Player::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos) {}$/;"	f	class:Player
 color	c:\SFML\include\SFML\Graphics\Vertex.hpp	/^    Color     color;     \/\/\/< Color of the vertex$/;"	m	class:sf::Vertex
 colorDstFactor	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^    Factor   colorDstFactor; \/\/\/< Destination blending factor for the color channels$/;"	m	struct:sf::BlendMode
 colorEquation	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^    Equation colorEquation;  \/\/\/< Blending equation for the color channels$/;"	m	struct:sf::BlendMode
@@ -785,8 +785,9 @@ finger	c:\SFML\include\SFML\Window\Event.hpp	/^        unsigned int finger; \/\/
 fire_shot	.\entity.cpp	/^void Enemy::fire_shot() {}$/;"	f	class:Enemy
 fire_shot	.\entity.cpp	/^void Player::fire_shot() {$/;"	f	class:Player
 frags	.\entity.h	/^  std::vector<Frag> frags;$/;"	m	struct:EType::IEntity
-free_frags	.\global.h	/^inline std::vector<std::shared_ptr<Frag>> free_frags;$/;"	v
-ftStep	.\global.h	/^const float ftStep = 16.f;  \/\/ fixed update interval in ms$/;"	v
+frags_to_move	.\global.h	/^inline std::set<std::pair<int,int>> frags_to_move;$/;"	v
+free_frags	.\global.h	/^inline std::vector<Frag> free_frags;$/;"	v
+ftStep	.\global.h	/^inline const float ftStep = 16.f;  \/\/ fixed update interval in ms$/;"	v
 g	c:\SFML\include\SFML\Graphics\Color.hpp	/^    Uint8 g; \/\/\/< Green component$/;"	m	class:sf::Color
 generateTerrain	c:\SFML\examples\island\Island.cpp	/^void generateTerrain(sf::Vertex* buffer)$/;"	f
 getElevation	c:\SFML\examples\island\Island.cpp	/^float getElevation(float x, float y)$/;"	f
@@ -826,7 +827,7 @@ joystickId	c:\SFML\include\SFML\Window\Event.hpp	/^        unsigned int joystick
 joystickId	c:\SFML\include\SFML\Window\Event.hpp	/^        unsigned int joystickId; \/\/\/< Index of the joystick (in range [0 .. Joystick::Count - 1])$/;"	m	struct:sf::Event::JoystickConnectEvent
 joystickMove	c:\SFML\include\SFML\Window\Event.hpp	/^        JoystickMoveEvent     joystickMove;      \/\/\/< Joystick move event parameters (Event::JoystickMoved)$/;"	m	union:sf::Event::__anon8
 key	c:\SFML\include\SFML\Window\Event.hpp	/^        KeyEvent              key;               \/\/\/< Key event parameters (Event::KeyPressed, Event::KeyReleased)$/;"	m	union:sf::Event::__anon8
-keyInputStep	.\global.h	/^const float keyInputStep = ftStep * 3.f;$/;"	v
+keyInputStep	.\global.h	/^inline const float keyInputStep = ftStep * 3.f;$/;"	v
 label	c:\SFML\examples\joystick\Joystick.cpp	/^        sf::Text label;$/;"	m	struct:__anon2::JoystickObject	file:
 lastBlendMode	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^        BlendMode lastBlendMode;  \/\/\/< Cached blending mode$/;"	m	struct:sf::RenderTarget::StatesCache
 lastFPS	.\global.h	/^inline unsigned int lastFPS = 0; $/;"	v
@@ -1085,6 +1086,7 @@ onUpdate	c:\SFML\examples\shader\Shader.cpp	/^    void onUpdate(float time, floa
 onUpdate	c:\SFML\examples\shader\Shader.cpp	/^    void onUpdate(float time, float x, float y)$/;"	f	class:StormBlink
 onUpdate	c:\SFML\examples\shader\Shader.cpp	/^    void onUpdate(float time, float x, float y)$/;"	f	class:WaveBlur
 onUpdate	c:\SFML\examples\shader\Shader.cpp	/^    void onUpdate(float, float x, float y)$/;"	f	class:Pixelate
+operator <<	.\global.cpp	/^inline std::ostream& global::operator<<(std::ostream& Str, EType V) {$/;"	f	class:global
 operator <<	c:\SFML\examples\ftp\Ftp.cpp	/^std::ostream& operator <<(std::ostream& stream, const sf::Ftp::Response& response)$/;"	f
 path	.\entity.h	/^  std::vector<Vec2> path;$/;"	m	struct:EType::IEnemy
 pendingWorkCount	c:\SFML\examples\island\Island.cpp	/^    int pendingWorkCount = 0;$/;"	v
@@ -1106,6 +1108,7 @@ priv	c:\SFML\include\SFML\Window\Context.hpp	/^namespace priv$/;"	n	namespace:sf
 priv	c:\SFML\include\SFML\Window\Cursor.hpp	/^namespace priv$/;"	n	namespace:sf
 priv	c:\SFML\include\SFML\Window\Window.hpp	/^namespace priv$/;"	n	namespace:sf
 processWorkItem	c:\SFML\examples\island\Island.cpp	/^void processWorkItem(std::vector<sf::Vertex>& vertices, const WorkItem& workItem)$/;"	f
+process_set_of_freed_frags	.\global.cpp	/^void global::process_set_of_freed_frags() {$/;"	f	class:global
 productId	c:\SFML\include\SFML\Window\Joystick.hpp	/^        unsigned int productId; \/\/\/< Product identifier$/;"	m	struct:sf::Joystick::Identification
 r	c:\SFML\include\SFML\Graphics\Color.hpp	/^    Uint8 r; \/\/\/< Red component$/;"	m	class:sf::Color
 rand_engine	.\global.h	/^inline std::default_random_engine rand_engine;$/;"	v
@@ -1133,6 +1136,7 @@ samples	c:\SFML\include\SFML\Audio\SoundStream.hpp	/^        const Int16* sample
 sensor	c:\SFML\include\SFML\Window\Event.hpp	/^        SensorEvent           sensor;            \/\/\/< Sensor event parameters (Event::SensorChanged)$/;"	m	union:sf::Event::__anon8
 set	c:\SFML\examples\joystick\Joystick.cpp	/^    void set(const char* label, const T& value)$/;"	f	namespace:__anon2
 setFont	c:\SFML\examples\shader\Effect.hpp	/^    static void setFont(const sf::Font& font)$/;"	f	class:Effect
+set_frag_health	.\builder.cpp	/^void builder::set_frag_health(IEntity& e, unsigned int num) {$/;"	f	class:builder
 sf	c:\SFML\include\SFML\Audio\AlResource.hpp	/^namespace sf$/;"	n
 sf	c:\SFML\include\SFML\Audio\InputSoundFile.hpp	/^namespace sf$/;"	n
 sf	c:\SFML\include\SFML\Audio\Listener.hpp	/^namespace sf$/;"	n
@@ -1255,6 +1259,7 @@ unicode	c:\SFML\include\SFML\Window\Event.hpp	/^        Uint32 unicode; \/\/\/< 
 update	.\entity.cpp	/^void BouncyWall::update(FrameTime ftStep) {}$/;"	f	class:BouncyWall
 update	.\entity.cpp	/^void Bullet::update(FrameTime ftStep) {$/;"	f	class:Bullet
 update	.\entity.cpp	/^void Enemy::update(FrameTime ftStep) {}$/;"	f	class:Enemy
+update	.\entity.cpp	/^void Frag::update() { move(vel + dvel); }$/;"	f	class:Frag
 update	.\entity.cpp	/^void Player::update(FrameTime ftStep) {$/;"	f	class:Player
 update	c:\SFML\examples\shader\Effect.hpp	/^    void update(float time, float x, float y)$/;"	f	class:Effect
 updateAxes	c:\SFML\examples\joystick\Joystick.cpp	/^    void updateAxes(unsigned int index)$/;"	f	namespace:__anon2
@@ -1276,8 +1281,8 @@ width	c:\SFML\include\SFML\Graphics\Font.hpp	/^        unsigned int width;  \/\/
 width	c:\SFML\include\SFML\Graphics\Rect.hpp	/^    T width;  \/\/\/< Width of the rectangle$/;"	m	class:sf::Rect
 width	c:\SFML\include\SFML\Window\Event.hpp	/^        unsigned int width;  \/\/\/< New width, in pixels$/;"	m	struct:sf::Event::SizeEvent
 width	c:\SFML\include\SFML\Window\VideoMode.hpp	/^    unsigned int width;        \/\/\/< Video mode width, in pixels$/;"	m	class:sf::VideoMode
-winHeight	.\global.h	/^const unsigned int winHeight = 768;$/;"	v
-winWidth	.\global.h	/^const unsigned int winWidth = 1024;$/;"	v
+winHeight	.\global.h	/^inline const unsigned int winHeight = 768;$/;"	v
+winWidth	.\global.h	/^inline const unsigned int winWidth = 1024;$/;"	v
 windowHeight	c:\SFML\examples\island\Island.cpp	/^    const unsigned int windowHeight = 600;$/;"	v
 windowWidth	c:\SFML\examples\island\Island.cpp	/^    const unsigned int windowWidth = 800;$/;"	v
 workPending	c:\SFML\examples\island\Island.cpp	/^    bool workPending = true;$/;"	v

@@ -24,12 +24,23 @@ void global::process_set_of_freed_frags() {
   // move frags to the free frag vector and remove it from the
   // bullet entity vector
   // The pair in frags_to_move is entity_id, frag idx.
-  for (const auto& ent_vox_pair : frags_to_move) {
-    auto ent_ptr = get_entity_with_id(ent_vox_pair.first);
-    if (ent_ptr == nullptr) { continue; }
-    auto frag_idx = ent_vox_pair.second;
-    free_frags.push_back(ent_ptr->frags[frag_idx]);
-    ent_ptr->frags.erase(ent_ptr->frags.begin() + frag_idx);
+  try {
+    for (const auto& ent_vox_pair : frags_to_move) {
+      auto ent_ptr = get_entity_with_id(ent_vox_pair.first);
+      if (ent_ptr == nullptr) {
+        continue;
+      }
+      auto frag_idx = ent_vox_pair.second;
+      free_frags.push_back(ent_ptr->frags[frag_idx]);
+    }
+  } catch (exception& e) {
+    cout << "exception in for loop of process_set_of_freed_frags" << endl;
+  }
+}
+
+void global::erase_moved_frags_from_entities() {
+  for(const auto& ent_vox_pair : frags_to_move) {
+    //ent_ptr->frags.erase(ent_ptr->frags.begin() + frag_idx);
   }
   frags_to_move.erase(begin(frags_to_move), end(frags_to_move));
 }

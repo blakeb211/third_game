@@ -10,12 +10,12 @@ namespace global {
 //
 // constants
 //
-const unsigned int winWidth = 1024;
-const unsigned int winHeight = 768;
-const unsigned int blockWidth = 5;
-const unsigned int bW = blockWidth;
-const float ftStep = 16.f;  // fixed update interval in ms
-const float keyInputStep = ftStep * 3.f;
+inline const unsigned int winWidth = 1024;
+inline const unsigned int winHeight = 768;
+inline const unsigned int blockWidth = 5;
+inline const unsigned int bW = blockWidth;
+inline const float ftStep = 16.f;  // fixed update interval in ms
+inline const float keyInputStep = ftStep * 3.f;
 inline unsigned int lastFPS = 0; 
 inline std::default_random_engine rand_engine;
 inline std::vector<std::shared_ptr<IEntity>> entity;
@@ -26,6 +26,8 @@ inline std::set<std::pair<int,int>> frags_to_move;
 //
 // free functions
 //
+void erase_moved_frags_from_entities(); 
+
 // function to move frags that were freed from their entities
 void process_set_of_freed_frags(); 
 // function to print out ETypes as strings

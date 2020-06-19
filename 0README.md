@@ -3,19 +3,14 @@ KEEP IT SIMPLE STUPID
 Purpose of project: Re-Write Second Shooter to run faster and have the explosion
                     and enemy AI effects that I want
 
-<<<<<<< HEAD
 
-ADD CMakeFiles\Makefile2 folder and files to github repository
-
-IMPROVE WALL COLLISIONS INCLUDING ROTATE BULLET FRAG BY FRAG
-INCLUDE DOTPRODUCTS
-=======
-When you dereference a shared_ptr and pass it into a function --> what happens to the ref count?
 Free Frags array gets deleted
+INCLUDE DOTPRODUCTS
+IMPROVE WALL COLLISIONS INCLUDING ROTATE BULLET FRAG BY FRAG
+When you dereference a shared_ptr and pass it into a function --> what happens to the ref count?
 Debug pixels going through walls
 add a timer class for the collision section to use in unnamed scopes
 
->>>>>>> update readme
 Bullets RESPOND TO DYING by exploding
 ENEMIES EXPLODE
 

@@ -105,11 +105,19 @@ void update_player_test(const float& ftStep) {
     f.update();
   }
   try {
-    global::remove_dead_entities();
     global::check_entities_for_collisions();
+  } catch (exception& e) {
+    cerr << "exception in check_entities_for_collisions:" << e.what() << endl;
+  }
+  try {
     global::process_set_of_freed_frags();
   } catch (exception& e) {
-    cerr << "exception in update_player_test:" << e.what() << endl;
+    cerr << "exception in processing freed frags:" << e.what() << endl;
+  }
+  try {
+    global::remove_dead_entities();
+  } catch (exception& e) {
+    cerr << "exception in remove_dead_entities:" << e.what() << endl;
   }
 }
 
