@@ -1,0 +1,3 @@
+C:/code/third_game/build/CMakeFiles/game.dir
+C:/code/third_game/build/CMakeFiles/edit_cache.dir
+C:/code/third_game/build/CMakeFiles/rebuild_cache.dir
