@@ -780,6 +780,7 @@ endOfStream	c:\SFML\examples\voip\Server.cpp	/^const sf::Uint8 endOfStream = 2;$
 entity	.\global.h	/^inline std::vector<std::shared_ptr<IEntity>> entity;$/;"	v
 entityCounter	.\global.h	/^inline unsigned int entityCounter = 0;$/;"	v
 erase_dead_frags	.\entity.cpp	/^void IEntity::erase_dead_frags() {}$/;"	f	class:IEntity
+erase_moved_frags_from_entities	.\global.cpp	/^void global::erase_moved_frags_from_entities() {$/;"	f	class:global
 family	c:\SFML\include\SFML\Graphics\Font.hpp	/^        std::string family; \/\/\/< The font family$/;"	m	struct:sf::Font::Info
 finger	c:\SFML\include\SFML\Window\Event.hpp	/^        unsigned int finger; \/\/\/< Index of the finger in case of multi-touch events$/;"	m	struct:sf::Event::TouchEvent
 fire_shot	.\entity.cpp	/^void Enemy::fire_shot() {}$/;"	f	class:Enemy

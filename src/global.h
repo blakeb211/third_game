@@ -26,7 +26,8 @@ inline std::set<std::pair<int,int>> frags_to_move;
 //
 // free functions
 //
-void erase_moved_frags_from_entities(); 
+// use some criteria to erase free frags
+void erase_freed_frags(); 
 
 // function to move frags that were freed from their entities
 void process_set_of_freed_frags(); 

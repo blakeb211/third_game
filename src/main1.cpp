@@ -89,12 +89,6 @@ void init_player_test() {
       Vec2(winWidth, 3.f * winHeight / 9.f));
 
   // print debug information
-  cout << "init player test running" << endl;
-  cout << "entity.size() = " << entity.size() << endl;
-  cout << "entity[0].frags.size() = " << get_entity_with_id(0)->frags.size()
-       << endl;
-  cout << "entity[1].frags.size() = " << get_entity_with_id(1)->frags.size()
-       << endl;
 }
 
 void update_player_test(const float& ftStep) {
@@ -113,6 +107,10 @@ void update_player_test(const float& ftStep) {
     global::process_set_of_freed_frags();
   } catch (exception& e) {
     cerr << "exception in processing freed frags:" << e.what() << endl;
+  }
+  try { global::erase_freed_frags(); }
+  catch (exception& e) {
+    cerr << "exception in erase_moved_frags_from_entities:" << e.what() << endl;
   }
   try {
     global::remove_dead_entities();

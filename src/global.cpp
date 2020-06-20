@@ -31,18 +31,26 @@ void global::process_set_of_freed_frags() {
         continue;
       }
       auto frag_idx = ent_vox_pair.second;
-      free_frags.push_back(ent_ptr->frags[frag_idx]);
+      free_frags.push_back(move(ent_ptr->frags[frag_idx]));
+      ent_ptr->frags.erase(ent_ptr->frags.begin() + frag_idx);
     }
+    // clear frags to move vector
+    frags_to_move.clear();
   } catch (exception& e) {
     cout << "exception in for loop of process_set_of_freed_frags" << endl;
   }
 }
 
-void global::erase_moved_frags_from_entities() {
-  for(const auto& ent_vox_pair : frags_to_move) {
-    //ent_ptr->frags.erase(ent_ptr->frags.begin() + frag_idx);
+void global::erase_freed_frags() {
+  // check frags_to_move for duplicates
+  for (auto it = begin(free_frags); it != end(free_frags); it++) {
+    auto pos = it->getPosition();
+    if (*(it->health) < 0 || pos.x < 0 || pos.x > winWidth || pos.y < 0 ||
+        pos.y > winHeight) {
+      free_frags.erase(it);
+      break;
+    }
   }
-  frags_to_move.erase(begin(frags_to_move), end(frags_to_move));
 }
 
 // check entities for collisions
