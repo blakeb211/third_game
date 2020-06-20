@@ -21,6 +21,7 @@ struct Frag : sf::RectangleShape {
   Vec2 vel;
   Vec2 dvel;
   std::optional<int> health;  // voxel health
+  size_t id;
 };
 
 struct IEntity {

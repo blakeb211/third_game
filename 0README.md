@@ -3,6 +3,7 @@ KEEP IT SIMPLE STUPID
 Purpose of project: Re-Write Second Shooter to run faster and have the explosion
                     and enemy AI effects that I want
 
+*** in progress *** change FRAGS_TO_MOVE TO HOLD AN ENTITY SHARED PTR AND A FRAG ID
 
 change the frags_to_move to hold a shared ptr or regular ptr to the entity
   modify process_frags_to_move

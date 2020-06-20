@@ -26,10 +26,7 @@ void global::process_set_of_freed_frags() {
   // The pair in frags_to_move is entity_id, frag idx.
   try {
     for (const auto& ent_vox_pair : frags_to_move) {
-      auto ent_ptr = get_entity_with_id(ent_vox_pair.first);
-      if (ent_ptr == nullptr) {
-        continue;
-      }
+
       auto frag_idx = ent_vox_pair.second;
       free_frags.push_back((ent_ptr->frags[frag_idx]));
     }

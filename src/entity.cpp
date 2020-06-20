@@ -12,13 +12,15 @@ using namespace std;
 using namespace sf;
 
 // Frag constructors
-Frag::Frag() {}
+Frag::Frag() {
+}
 Frag::Frag(float mX, float mY, sf::Color c = sf::Color::White)
     : vel{0.f, 0.f}, dvel{vel}, health{nullopt} {
   setOrigin(global::bW / 2.f, global::bW / 2.f);
   setSize({global::bW, global::bW});
   move(Vec2(mX, mY));
   setFillColor(c);
+  id = global::fragCounter++;
 }
 void Frag::update() { move(vel + dvel); }
 // member functions
