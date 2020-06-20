@@ -31,11 +31,8 @@ void global::process_set_of_freed_frags() {
         continue;
       }
       auto frag_idx = ent_vox_pair.second;
-      free_frags.push_back(move(ent_ptr->frags[frag_idx]));
-      ent_ptr->frags.erase(ent_ptr->frags.begin() + frag_idx);
+      free_frags.push_back((ent_ptr->frags[frag_idx]));
     }
-    // clear frags to move vector
-    frags_to_move.clear();
   } catch (exception& e) {
     cout << "exception in for loop of process_set_of_freed_frags" << endl;
   }
@@ -43,7 +40,7 @@ void global::process_set_of_freed_frags() {
 
 void global::erase_freed_frags() {
   // check frags_to_move for duplicates
-  for (auto it = begin(free_frags); it != end(free_frags); it++) {
+  for (auto it = begin(frags_to_move); it != end(frags_to_move); it++) {
     auto pos = it->getPosition();
     if (*(it->health) < 0 || pos.x < 0 || pos.x > winWidth || pos.y < 0 ||
         pos.y > winHeight) {
@@ -51,6 +48,8 @@ void global::erase_freed_frags() {
       break;
     }
   }
+    // clear frags to move vector
+    frags_to_move.clear();
 }
 
 // check entities for collisions

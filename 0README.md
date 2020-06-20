@@ -4,6 +4,10 @@ Purpose of project: Re-Write Second Shooter to run faster and have the explosion
                     and enemy AI effects that I want
 
 
+change the frags_to_move to hold a shared ptr or regular ptr to the entity
+  modify process_frags_to_move
+  modify erase_newly_freed_frags
+
 INCLUDE DOTPRODUCTS
 IMPROVE WALL COLLISIONS INCLUDING ROTATE BULLET FRAG BY FRAG
 When you dereference a shared_ptr and pass it into a function --> what happens to the ref count?
