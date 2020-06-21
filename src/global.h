@@ -22,14 +22,18 @@ inline std::vector<std::shared_ptr<IEntity>> entity;
 inline std::vector<Frag> free_frags;
 inline size_t entityCounter = 0;
 inline size_t fragCounter = 0;
-inline std::unique_ptr<IEntity> player_ptr;
-inline std::set<std::pair<size_t, size_t>> frags_to_move;
+inline std::shared_ptr<IEntity> player_ptr;
+inline std::set<std::pair<std::shared_ptr<IEntity>, size_t>> frags_to_move;
 //
 // free functions
 //
 // use some criteria to erase free frags
 void erase_freed_frags(); 
 
+// fxn to erase a frag with a given id from an entity if it is present
+void erase_frag_with_id(IEntity& e, size_t frag_id); 
+
+std::unique_ptr<Frag> get_frag_with_id(IEntity& e, size_t frag_id); 
 // function to move frags that were freed from their entities
 void process_set_of_freed_frags(); 
 // function to print out ETypes as strings

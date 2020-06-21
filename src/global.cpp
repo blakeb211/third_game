@@ -20,24 +20,42 @@ inline std::ostream& global::operator<<(std::ostream& Str, EType V) {
   };
 }
 
+void global::erase_frag_with_id(IEntity& e, size_t frag_id) {
+  for (auto it = e.frags.begin(); it != e.frags.end(); it++) {
+    if (it->id == frag_id) {
+      e.frags.erase(it);
+      return;
+    }
+  }
+}
+
+unique_ptr<Frag> global::get_frag_with_id(IEntity& e, size_t frag_id) {
+  for (auto& f : e.frags) {
+    if (f.id == frag_id) {
+      return make_unique<Frag>(f);
+    }
+  }
+  return nullptr;
+}
+
 void global::process_set_of_freed_frags() {
   // move frags to the free frag vector and remove it from the
   // bullet entity vector
   // The pair in frags_to_move is entity_id, frag idx.
 
-  // sort the set by entity id first??
   size_t frag_id;
-  size_t ent_id;
+  shared_ptr<IEntity> e_ptr;
+  unique_ptr<Frag> f_ptr;
+
   try {
     for (const auto& eid_fid : frags_to_move) {
-      auto e_ptr = get_entity_with_id(eid_fid.first);
+      e_ptr = eid_fid.first;
       frag_id = eid_fid.second;
-      if (e_ptr != nullptr) {
-        auto frag = get_frag_with_id(e_ptr, frag_id);
-        if (frag != nullptr) {
-          free_frags.push_back(frag);
-        }
+      f_ptr = get_frag_with_id(*e_ptr, frag_id);
+      if (f_ptr != nullptr) {
+        free_frags.push_back(move(*f_ptr));
       }
+      erase_frag_with_id(*e_ptr, frag_id);
     }
   } catch (exception& e) {
     cout << "exception in for loop of process_set_of_freed_frags" << endl;
@@ -45,15 +63,10 @@ void global::process_set_of_freed_frags() {
 }
 
 void global::erase_freed_frags() {
-  // check frags_to_move for duplicates
-  for (auto it = begin(frags_to_move); it != end(frags_to_move); it++) {
-    auto pos = it->getPosition();
-    if (*(it->health) < 0 || pos.x < 0 || pos.x > winWidth || pos.y < 0 ||
-        pos.y > winHeight) {
-      free_frags.erase(it);
-      break;
-    }
-  }
+    //if (*(it->health) < 0 || pos.x < 0 || pos.x > winWidth || pos.y < 0 ||
+     //   pos.y > winHeight) {
+     // free_frags.erase(it);
+     // break;
   // clear frags to move vector
   frags_to_move.clear();
 }
