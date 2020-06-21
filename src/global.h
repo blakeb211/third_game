@@ -22,8 +22,8 @@ inline std::vector<std::shared_ptr<IEntity>> entity;
 inline std::vector<Frag> free_frags;
 inline size_t entityCounter = 0;
 inline size_t fragCounter = 0;
-inline std::shared_ptr<IEntity> player_ptr;
-inline std::set<std::pair<shared_ptr<IEntity>, size_t>> frags_to_move;
+inline std::unique_ptr<IEntity> player_ptr;
+inline std::set<std::pair<size_t, size_t>> frags_to_move;
 //
 // free functions
 //

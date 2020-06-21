@@ -153,7 +153,7 @@ FilenameNotAllowed	c:\SFML\include\SFML\Network\Ftp.hpp	/^            FilenameNo
 FloatRect	c:\SFML\include\SFML\Graphics\Rect.hpp	/^typedef Rect<float> FloatRect;$/;"	t	namespace:sf
 Font	c:\SFML\include\SFML\Graphics\Font.hpp	/^class SFML_GRAPHICS_API Font$/;"	c	namespace:sf
 Forbidden	c:\SFML\include\SFML\Network\Http.hpp	/^            Forbidden           = 403, \/\/\/< The requested page cannot be accessed at all, even with authentication$/;"	e	enum:sf::Http::Response::Status
-Frag	.\entity.cpp	/^Frag::Frag() {}$/;"	f	class:Frag
+Frag	.\entity.cpp	/^Frag::Frag() {$/;"	f	class:Frag
 Frag	.\entity.cpp	/^Frag::Frag(float mX, float mY, sf::Color c = sf::Color::White)$/;"	f	class:Frag
 Frag	.\entity.h	/^struct Frag : sf::RectangleShape {$/;"	s	struct:EType
 Fragment	c:\SFML\include\SFML\Graphics\Shader.hpp	/^        Fragment  \/\/\/< Fragment (pixel) shader$/;"	e	enum:sf::Shader::Type
@@ -778,15 +778,16 @@ enable	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^        bool      enable
 endOfStream	c:\SFML\examples\voip\Client.cpp	/^const sf::Uint8 endOfStream = 2;$/;"	v
 endOfStream	c:\SFML\examples\voip\Server.cpp	/^const sf::Uint8 endOfStream = 2;$/;"	v
 entity	.\global.h	/^inline std::vector<std::shared_ptr<IEntity>> entity;$/;"	v
-entityCounter	.\global.h	/^inline unsigned int entityCounter = 0;$/;"	v
+entityCounter	.\global.h	/^inline size_t entityCounter = 0;$/;"	v
 erase_dead_frags	.\entity.cpp	/^void IEntity::erase_dead_frags() {}$/;"	f	class:IEntity
-erase_moved_frags_from_entities	.\global.cpp	/^void global::erase_moved_frags_from_entities() {$/;"	f	class:global
+erase_freed_frags	.\global.cpp	/^void global::erase_freed_frags() {$/;"	f	class:global
 family	c:\SFML\include\SFML\Graphics\Font.hpp	/^        std::string family; \/\/\/< The font family$/;"	m	struct:sf::Font::Info
 finger	c:\SFML\include\SFML\Window\Event.hpp	/^        unsigned int finger; \/\/\/< Index of the finger in case of multi-touch events$/;"	m	struct:sf::Event::TouchEvent
 fire_shot	.\entity.cpp	/^void Enemy::fire_shot() {}$/;"	f	class:Enemy
 fire_shot	.\entity.cpp	/^void Player::fire_shot() {$/;"	f	class:Player
+fragCounter	.\global.h	/^inline size_t fragCounter = 0;$/;"	v
 frags	.\entity.h	/^  std::vector<Frag> frags;$/;"	m	struct:EType::IEntity
-frags_to_move	.\global.h	/^inline std::set<std::pair<int,int>> frags_to_move;$/;"	v
+frags_to_move	.\global.h	/^inline std::set<std::pair<weak_ptr<IEntity>, size_t>> frags_to_move;$/;"	v
 free_frags	.\global.h	/^inline std::vector<Frag> free_frags;$/;"	v
 ftStep	.\global.h	/^inline const float ftStep = 16.f;  \/\/ fixed update interval in ms$/;"	v
 g	c:\SFML\include\SFML\Graphics\Color.hpp	/^    Uint8 g; \/\/\/< Green component$/;"	m	class:sf::Color
@@ -818,6 +819,7 @@ heightFlatten	c:\SFML\examples\island\Island.cpp	/^    float heightFlatten = 3.0
 high_res_clock	.\global.cpp	/^typedef chrono::high_resolution_clock high_res_clock;$/;"	t	file:
 high_res_clock	.\main1.cpp	/^typedef chrono::high_resolution_clock high_res_clock;$/;"	t	file:
 hitbox	.\entity.h	/^  sf::RectangleShape hitbox;$/;"	m	struct:EType::IEntity
+id	.\entity.h	/^  size_t id;$/;"	m	struct:EType::Frag
 id	.\entity.h	/^  unsigned int id;$/;"	m	struct:EType::IEntity
 index	c:\SFML\examples\island\Island.cpp	/^        unsigned int index;$/;"	m	struct:__anon1::WorkItem	file:
 init_player_test	.\main1.cpp	/^void init_player_test() {$/;"	f
