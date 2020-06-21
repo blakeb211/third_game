@@ -277,3 +277,6 @@ shared_ptr<IEntity> global::get_entity_with_id(unsigned int _id) {
   }
   return nullptr;  // if no entity with that id was found
 }
+
+
+
