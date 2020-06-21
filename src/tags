@@ -780,6 +780,7 @@ endOfStream	c:\SFML\examples\voip\Server.cpp	/^const sf::Uint8 endOfStream = 2;$
 entity	.\global.h	/^inline std::vector<std::shared_ptr<IEntity>> entity;$/;"	v
 entityCounter	.\global.h	/^inline size_t entityCounter = 0;$/;"	v
 erase_dead_frags	.\entity.cpp	/^void IEntity::erase_dead_frags() {}$/;"	f	class:IEntity
+erase_frag_with_id	.\global.cpp	/^void global::erase_frag_with_id(IEntity& e, size_t frag_id) {$/;"	f	class:global
 erase_freed_frags	.\global.cpp	/^void global::erase_freed_frags() {$/;"	f	class:global
 family	c:\SFML\include\SFML\Graphics\Font.hpp	/^        std::string family; \/\/\/< The font family$/;"	m	struct:sf::Font::Info
 finger	c:\SFML\include\SFML\Window\Event.hpp	/^        unsigned int finger; \/\/\/< Index of the finger in case of multi-touch events$/;"	m	struct:sf::Event::TouchEvent
@@ -787,7 +788,7 @@ fire_shot	.\entity.cpp	/^void Enemy::fire_shot() {}$/;"	f	class:Enemy
 fire_shot	.\entity.cpp	/^void Player::fire_shot() {$/;"	f	class:Player
 fragCounter	.\global.h	/^inline size_t fragCounter = 0;$/;"	v
 frags	.\entity.h	/^  std::vector<Frag> frags;$/;"	m	struct:EType::IEntity
-frags_to_move	.\global.h	/^inline std::set<std::pair<weak_ptr<IEntity>, size_t>> frags_to_move;$/;"	v
+frags_to_move	.\global.h	/^inline std::set<std::pair<std::shared_ptr<IEntity>, size_t>> frags_to_move;$/;"	v
 free_frags	.\global.h	/^inline std::vector<Frag> free_frags;$/;"	v
 ftStep	.\global.h	/^inline const float ftStep = 16.f;  \/\/ fixed update interval in ms$/;"	v
 g	c:\SFML\include\SFML\Graphics\Color.hpp	/^    Uint8 g; \/\/\/< Green component$/;"	m	class:sf::Color
@@ -801,6 +802,7 @@ getName	c:\SFML\examples\shader\Effect.hpp	/^    const std::string& getName() co
 getSnowcapTerrainColor	c:\SFML\examples\island\Island.cpp	/^sf::Color getSnowcapTerrainColor(float elevation, float moisture)$/;"	f
 getTerrainColor	c:\SFML\examples\island\Island.cpp	/^sf::Color getTerrainColor(float elevation, float moisture)$/;"	f
 get_entity_with_id	.\global.cpp	/^shared_ptr<IEntity> global::get_entity_with_id(unsigned int _id) {$/;"	f	class:global
+get_frag_with_id	.\global.cpp	/^unique_ptr<Frag> global::get_frag_with_id(IEntity& e, size_t frag_id) {$/;"	f	class:global
 get_health	.\entity.cpp	/^unsigned int IEntity::get_health() { return frags.size(); }$/;"	f	class:IEntity
 get_new_entity_id	.\global.cpp	/^unsigned int global::get_new_entity_id() { return entityCounter++; }$/;"	f	class:global
 glStatesSet	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^        bool      glStatesSet;    \/\/\/< Are our internal GL states set yet?$/;"	m	struct:sf::RenderTarget::StatesCache

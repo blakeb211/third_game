@@ -49,26 +49,31 @@ void global::process_set_of_freed_frags() {
 
   try {
     for (const auto& eid_fid : frags_to_move) {
-      e_ptr = eid_fid.first;
+      e_ptr = get_entity_with_id(eid_fid.first);
+      if (e_ptr == nullptr) continue;
       frag_id = eid_fid.second;
       f_ptr = get_frag_with_id(*e_ptr, frag_id);
       if (f_ptr != nullptr) {
-        free_frags.push_back(move(*f_ptr));
+        free_frags.push_back(*f_ptr);
+        erase_frag_with_id(*e_ptr, frag_id);
       }
-      erase_frag_with_id(*e_ptr, frag_id);
     }
   } catch (exception& e) {
     cout << "exception in for loop of process_set_of_freed_frags" << endl;
   }
+  frags_to_move.clear();
 }
 
 void global::erase_freed_frags() {
-    //if (*(it->health) < 0 || pos.x < 0 || pos.x > winWidth || pos.y < 0 ||
-     //   pos.y > winHeight) {
-     // free_frags.erase(it);
-     // break;
-  // clear frags to move vector
-  frags_to_move.clear();
+  Vec2 pos;
+  for (auto it = begin(free_frags); it != end(free_frags); it++) {
+    pos = it->getPosition(); 
+    if (*(it->health) < 0 || pos.x < 0 || pos.x > winWidth || pos.y < 0 ||
+      pos.y > winHeight) {
+     free_frags.erase(it);
+     break;
+  }
+}
 }
 
 // check entities for collisions
