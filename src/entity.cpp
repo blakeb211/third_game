@@ -133,12 +133,12 @@ void Bullet::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos) {
   Vec2 frag_velocity;
   switch (e.type) {
     case EType::BouncyWall:
-      (*frags[ivox].health)--;
-      global::move_entity(*this, bounce_unit_vec * (float)global::bW * 0.9f);
-      vel += hypot(vel.x, vel.y) * bounce_unit_vec * 1.2f;
+      //(*frags[ivox].health)--;
+      // move entity so it doesn't collide again in this frame
+      global::move_entity(*this, bounce_unit_vec * (float)global::bW * 0.6f);
+      vel = hypot(vel.x, vel.y) * bounce_unit_vec * 1.2f;
       vel += Vec2((-2.5f + global::rand_engine() % 4) * 0.1f, 0.f);
-      frag_velocity = vel + Vec2((-2.5f + global::rand_engine() % 4) * 0.1f,
-                                 (-2.5f + global::rand_engine() % 4) * 0.1f);
+      frag_velocity = vel;
       break;
   }
   if (*frags[ivox].health == 1) {
