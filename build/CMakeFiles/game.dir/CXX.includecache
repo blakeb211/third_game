@@ -14,25 +14,29 @@ SFML/System.hpp
 stdlibs.h
 C:/code/third_game/src/stdlibs.h
 
-C:/code/third_game/src/global.cpp
-global.h
-C:/code/third_game/src/global.h
-stdlibs.h
-C:/code/third_game/src/stdlibs.h
-
 C:/code/third_game/src/global.h
 SFML/System.hpp
 -
 chrono
 -
-random
--
 memory
+-
+random
 -
 SFML/Graphics.hpp
 -
 entity.h
 C:/code/third_game/src/entity.h
+
+C:/code/third_game/src/main1.cpp
+stdlibs.h
+C:/code/third_game/src/stdlibs.h
+SFML/Graphics.hpp
+-
+SFML/System.hpp
+-
+global.h
+C:/code/third_game/src/global.h
 
 C:/code/third_game/src/stdlibs.h
 iostream
@@ -54,6 +58,8 @@ cassert
 exception
 -
 algorithm
+-
+numeric
 -
 limits
 -

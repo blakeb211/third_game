@@ -613,6 +613,8 @@ ThreadLocalPtr	c:\SFML\include\SFML\System\ThreadLocalPtr.hpp	/^class ThreadLoca
 Tilde	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Tilde,        \/\/\/< The ~ key$/;"	e	enum:sf::Keyboard::Key
 Time	c:\SFML\include\SFML\System\Time.hpp	/^class SFML_SYSTEM_API Time$/;"	c	namespace:sf
 TimeSpan	c:\SFML\include\SFML\Audio\Music.hpp	/^    typedef Span<Time> TimeSpan;$/;"	t	class:sf::Music
+Timer	.\global.cpp	/^global::Timer::Timer(string s, vector<float>& timing_data_vec) {$/;"	f	class:global::Timer
+Timer	.\global.h	/^struct Timer {$/;"	s	namespace:global
 Titlebar	c:\SFML\include\SFML\Window\WindowStyle.hpp	/^        Titlebar   = 1 << 0, \/\/\/< Title bar + fixed border$/;"	e	enum:sf::Style::__anon10
 Touch	c:\SFML\include\SFML\Window\Touch.hpp	/^class SFML_WINDOW_API Touch$/;"	c	namespace:sf
 TouchBegan	c:\SFML\include\SFML\Window\Event.hpp	/^        TouchBegan,             \/\/\/< A touch event began (data in event.touch)$/;"	e	enum:sf::Event::EventType
@@ -788,7 +790,7 @@ fire_shot	.\entity.cpp	/^void Enemy::fire_shot() {}$/;"	f	class:Enemy
 fire_shot	.\entity.cpp	/^void Player::fire_shot() {$/;"	f	class:Player
 fragCounter	.\global.h	/^inline size_t fragCounter = 0;$/;"	v
 frags	.\entity.h	/^  std::vector<Frag> frags;$/;"	m	struct:EType::IEntity
-frags_to_move	.\global.h	/^inline std::set<std::pair<std::shared_ptr<IEntity>, size_t>> frags_to_move;$/;"	v
+frags_to_move	.\global.h	/^inline std::set<std::pair<size_t, size_t>> frags_to_move;$/;"	v
 free_frags	.\global.h	/^inline std::vector<Frag> free_frags;$/;"	v
 ftStep	.\global.h	/^inline const float ftStep = 16.f;  \/\/ fixed update interval in ms$/;"	v
 g	c:\SFML\include\SFML\Graphics\Color.hpp	/^    Uint8 g; \/\/\/< Green component$/;"	m	class:sf::Color
@@ -835,7 +837,7 @@ key	c:\SFML\include\SFML\Window\Event.hpp	/^        KeyEvent              key;  
 keyInputStep	.\global.h	/^inline const float keyInputStep = ftStep * 3.f;$/;"	v
 label	c:\SFML\examples\joystick\Joystick.cpp	/^        sf::Text label;$/;"	m	struct:__anon2::JoystickObject	file:
 lastBlendMode	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^        BlendMode lastBlendMode;  \/\/\/< Cached blending mode$/;"	m	struct:sf::RenderTarget::StatesCache
-lastFPS	.\global.h	/^inline unsigned int lastFPS = 0; $/;"	v
+lastFPS	.\global.h	/^inline unsigned int lastFPS = 0;$/;"	v
 lastTextureId	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^        Uint64    lastTextureId;  \/\/\/< Cached texture$/;"	m	struct:sf::RenderTarget::StatesCache
 left	c:\SFML\include\SFML\Graphics\Rect.hpp	/^    T left;   \/\/\/< Left coordinate of the rectangle$/;"	m	class:sf::Rect
 length	c:\SFML\include\SFML\Audio\Music.hpp	/^        T length; \/\/\/< The length of the time range$/;"	m	struct:sf::Music::Span
@@ -1066,6 +1068,7 @@ mouseMove	c:\SFML\include\SFML\Window\Event.hpp	/^        MouseMoveEvent        
 mouseWheel	c:\SFML\include\SFML\Window\Event.hpp	/^        MouseWheelEvent       mouseWheel;        \/\/\/< Mouse wheel event parameters (Event::MouseWheelMoved) (deprecated)$/;"	m	union:sf::Event::__anon8
 mouseWheelScroll	c:\SFML\include\SFML\Window\Event.hpp	/^        MouseWheelScrollEvent mouseWheelScroll;  \/\/\/< Mouse wheel event parameters (Event::MouseWheelScrolled)$/;"	m	union:sf::Event::__anon8
 move_entity	.\global.cpp	/^void global::move_entity(IEntity& e, const Vec2 offset) {$/;"	f	class:global
+msg	.\global.h	/^  std::string msg;$/;"	m	struct:global::Timer
 name	c:\SFML\examples\island\Island.cpp	/^        const char* name;$/;"	m	struct:__anon1::Setting	file:
 name	c:\SFML\include\SFML\Window\Joystick.hpp	/^        String       name;      \/\/\/< Name of the joystick$/;"	m	struct:sf::Joystick::Identification
 nextRow	c:\SFML\include\SFML\Graphics\Font.hpp	/^        unsigned int     nextRow; \/\/\/< Y position of the next new row in the texture$/;"	m	struct:sf::Font::Page
@@ -1237,6 +1240,7 @@ start	c:\SFML\examples\voip\Server.cpp	/^    void start(unsigned short port)$/;"
 stencilBits	c:\SFML\include\SFML\Window\ContextSettings.hpp	/^    unsigned int stencilBits;       \/\/\/< Bits of the stencil buffer$/;"	m	struct:sf::ContextSettings
 system	c:\SFML\include\SFML\Window\Event.hpp	/^        bool          system;  \/\/\/< Is the System key pressed?$/;"	m	struct:sf::Event::KeyEvent
 targetBuffer	c:\SFML\examples\island\Island.cpp	/^        sf::Vertex* targetBuffer;$/;"	m	struct:__anon1::WorkItem	file:
+tend	.\global.h	/^  std::chrono::high_resolution_clock::time_point tend;$/;"	m	struct:global::Timer
 texCoords	c:\SFML\include\SFML\Graphics\Vertex.hpp	/^    Vector2f  texCoords; \/\/\/< Coordinates of the texture's pixel to map to the vertex$/;"	m	class:sf::Vertex
 texCoordsArrayEnabled	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^        bool      texCoordsArrayEnabled; \/\/\/< Is GL_TEXTURE_COORD_ARRAY client state enabled?$/;"	m	struct:sf::RenderTarget::StatesCache
 text	c:\SFML\include\SFML\Window\Event.hpp	/^        TextEvent             text;              \/\/\/< Text event parameters (Event::TextEntered)$/;"	m	union:sf::Event::__anon8
@@ -1249,6 +1253,11 @@ threadFunction	c:\SFML\examples\island\Island.cpp	/^void threadFunction()$/;"	f
 threads	c:\SFML\examples\island\Island.cpp	/^    std::vector<sf::Thread*> threads;$/;"	v
 threshold	c:\SFML\examples\joystick\Joystick.cpp	/^    float threshold = 0.1f;$/;"	v
 timerMax	.\entity.h	/^  float timerMax;$/;"	m	struct:EType::ICanShoot
+timings_check_coll	.\global.h	/^inline std::vector<float> timings_check_coll;$/;"	v
+timings_draw_player_code	.\global.h	/^inline std::vector<float> timings_draw_player_code;$/;"	v
+timings_erase_freed_frags	.\global.h	/^inline std::vector<float> timings_erase_freed_frags;$/;"	v
+timings_process_coll	.\global.h	/^inline std::vector<float> timings_process_coll;$/;"	v
+timings_remove_dead_ent	.\global.h	/^inline std::vector<float> timings_remove_dead_ent;$/;"	v
 toggleFolder	c:\SFML\doc\html\dynsections.js	/^function toggleFolder(id)$/;"	f
 toggleInherit	c:\SFML\doc\html\dynsections.js	/^function toggleInherit(id)$/;"	f
 toggleLevel	c:\SFML\doc\html\dynsections.js	/^function toggleLevel(level)$/;"	f
@@ -1257,6 +1266,7 @@ top	c:\SFML\include\SFML\Graphics\Font.hpp	/^        unsigned int top;    \/\/\/
 top	c:\SFML\include\SFML\Graphics\Rect.hpp	/^    T top;    \/\/\/< Top coordinate of the rectangle$/;"	m	class:sf::Rect
 touch	c:\SFML\include\SFML\Window\Event.hpp	/^        TouchEvent            touch;             \/\/\/< Touch events parameters (Event::TouchBegan, Event::TouchMoved, Event::TouchEnded)$/;"	m	union:sf::Event::__anon8
 transform	c:\SFML\include\SFML\Graphics\RenderStates.hpp	/^    Transform      transform; \/\/\/< Transform$/;"	m	class:sf::RenderStates
+tstart	.\global.h	/^  std::chrono::high_resolution_clock::time_point tstart;$/;"	m	struct:global::Timer
 type	.\entity.h	/^  EType type;$/;"	m	struct:EType::IEntity
 type	c:\SFML\include\SFML\Window\Event.hpp	/^        Sensor::Type type; \/\/\/< Type of the sensor$/;"	m	struct:sf::Event::SensorEvent
 type	c:\SFML\include\SFML\Window\Event.hpp	/^    EventType type; \/\/\/< Type of the event$/;"	m	class:sf::Event
@@ -1276,6 +1286,7 @@ update_player_test	.\main1.cpp	/^void update_player_test(const float& ftStep) {$
 useVertexCache	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^        bool      useVertexCache; \/\/\/< Did we previously use the vertex cache?$/;"	m	struct:sf::RenderTarget::StatesCache
 value	c:\SFML\examples\island\Island.cpp	/^        float* value;$/;"	m	struct:__anon1::Setting	file:
 value	c:\SFML\examples\joystick\Joystick.cpp	/^        sf::Text value;$/;"	m	struct:__anon2::JoystickObject	file:
+vec_ref	.\global.h	/^  std::vector<float>& vec_ref;$/;"	m	struct:global::Timer
 vel	.\entity.h	/^  Vec2 vel;$/;"	m	struct:EType::Frag
 vel	.\entity.h	/^  Vec2 vel;$/;"	m	struct:EType::IEntity
 vendorId	c:\SFML\include\SFML\Window\Joystick.hpp	/^        unsigned int vendorId;  \/\/\/< Manufacturer identifier$/;"	m	struct:sf::Joystick::Identification
@@ -1318,3 +1329,4 @@ z	c:\SFML\include\SFML\Window\Event.hpp	/^        float z;           \/\/\/< Cur
 ~NonCopyable	c:\SFML\include\SFML\System\NonCopyable.hpp	/^    ~NonCopyable() {}$/;"	f	class:sf::NonCopyable
 ~SoundFileReader	c:\SFML\include\SFML\Audio\SoundFileReader.hpp	/^    virtual ~SoundFileReader() {}$/;"	f	class:sf::SoundFileReader
 ~SoundFileWriter	c:\SFML\include\SFML\Audio\SoundFileWriter.hpp	/^    virtual ~SoundFileWriter() {}$/;"	f	class:sf::SoundFileWriter
+~Timer	.\global.cpp	/^global::Timer::~Timer() {$/;"	f	class:global::Timer

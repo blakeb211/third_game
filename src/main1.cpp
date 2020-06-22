@@ -98,28 +98,28 @@ void update_player_test(const float& ftStep) {
   for (auto& f : free_frags) {
     f.update();
   }
-  try {
+
+  {
+    Timer t("check entities for collisions", global::timings_check_coll);
     global::check_entities_for_collisions();
-  } catch (exception& e) {
-    cerr << "exception in check_entities_for_collisions:" << e.what() << endl;
   }
-  try {
+  {
+    Timer t("process set of freed frags",
+            global::timings_process_set_of_freed_frags);
     global::process_set_of_freed_frags();
-  } catch (exception& e) {
-    cerr << "exception in processing freed frags:" << e.what() << endl;
   }
-  try { global::erase_freed_frags(); }
-  catch (exception& e) {
-    cerr << "exception in erase_moved_frags_from_entities:" << e.what() << endl;
+  {
+    Timer t("erase freed frags", global::timings_erase_freed_frags);
+    global::erase_freed_frags();
   }
-  try {
+  {
+    Timer t("remove dead entities", global::timings_remove_dead_ent);
     global::remove_dead_entities();
-  } catch (exception& e) {
-    cerr << "exception in remove_dead_entities:" << e.what() << endl;
   }
 }
 
 void draw_player_test(RenderWindow& window) {
+  Timer t("draw player test", global::timings_draw_player_code);
   for (const auto& e : entity) {
     for (const auto& f : e->frags) {
       window.draw(f);
@@ -179,16 +179,37 @@ int main() {
     frameCounter++;
     auto fps_string = "FPS: " + to_string(lastFPS);
     window->setTitle(fps_string);
-    try {
-      if (frameCounter % 400 == 0) {
-        *log_file << fps_string << "\n";
-        *log_file << "Entity.size() " << global::entity.size() << "\n";
-        *log_file << "frags_to_move.size() " << global::frags_to_move.size()
-                  << "\n";
-        *log_file << "free_frags.size() " << global::free_frags.size() << "\n";
-      }
-    } catch (exception& e) {
-      cerr << "Exception thrown in logfile writing" << endl;
+
+    if (frameCounter % 600 == 0) {
+      *log_file << fps_string << "\n";
+      *log_file << "Entity.size() " << global::entity.size() << "\n";
+      *log_file << "frags_to_move.size() " << global::frags_to_move.size()
+                << "\n";
+      *log_file << "free_frags.size() " << global::free_frags.size() << "\n";
+      // timing data
+      auto t_coll_min_max = minmax_element(global::timings_check_coll.begin(), global::timings_check_coll.end());
+      auto t_coll_avg = std::accumulate(timings_check_coll.begin(), timings_check_coll.end(), 0) / timings_check_coll.size();
+      auto t_process_min_max = minmax_element(global::timings_process_set_of_freed_frags.begin(), global::timings_process_set_of_freed_frags.end());
+      auto t_process_avg = std::accumulate(timings_process_set_of_freed_frags.begin(), timings_process_set_of_freed_frags.end(), 0) / timings_process_set_of_freed_frags.size();
+      auto t_erase_min_max = minmax_element(global::timings_erase_freed_frags.begin(), global::timings_erase_freed_frags.end());
+      auto t_erase_avg = std::accumulate(timings_erase_freed_frags.begin(), timings_erase_freed_frags.end(), 0) / timings_erase_freed_frags.size();
+      auto t_remove_ent_min_max = minmax_element(global::timings_remove_dead_ent.begin(), global::timings_remove_dead_ent.end());
+      auto t_remove_ent_avg = std::accumulate(timings_remove_dead_ent.begin(), timings_remove_dead_ent.end(), 0) / timings_remove_dead_ent.size();
+      auto t_draw_min_max = minmax_element(global::timings_draw_player_code.begin(), global::timings_draw_player_code.end());
+      auto t_draw_avg = std::accumulate(timings_draw_player_code.begin(), timings_draw_player_code.end(), 0) / timings_draw_player_code.size();
+  
+      *log_file << "TIMINGS: " << "\n";
+      *log_file << "collisions: " << *t_coll_min_max.first << " " << *t_coll_min_max.second << " " << t_coll_avg << "\n";
+      *log_file << "process freed frags: " << *t_process_min_max.first << " " << *t_process_min_max.second << " " << t_process_avg << "\n";
+      *log_file << "eraes freed frags: " << *t_erase_min_max.first << " " << *t_erase_min_max.second << " " << t_erase_avg << "\n";
+      *log_file << "remove entities: " << *t_remove_ent_min_max.first << " " << *t_remove_ent_min_max.second << " " << t_remove_ent_avg << "\n";
+      *log_file << "draw code: " << *t_draw_min_max.first << " " << *t_draw_min_max.second << " " << t_draw_avg << "\n";
+
+      global::timings_check_coll.clear();
+      global::timings_process_set_of_freed_frags.clear();
+      global::timings_erase_freed_frags.clear();
+      global::timings_remove_dead_ent.clear();
+      global::timings_draw_player_code.clear();
     }
     auto timings = calc_frames_per_second(timePoint1);
     lastFPS = static_cast<int>(timings.first);

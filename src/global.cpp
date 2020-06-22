@@ -67,13 +67,13 @@ void global::process_set_of_freed_frags() {
 void global::erase_freed_frags() {
   Vec2 pos;
   for (auto it = begin(free_frags); it != end(free_frags); it++) {
-    pos = it->getPosition(); 
+    pos = it->getPosition();
     if (*(it->health) < 0 || pos.x < 0 || pos.x > winWidth || pos.y < 0 ||
-      pos.y > winHeight) {
-     free_frags.erase(it);
-     break;
+        pos.y > winHeight) {
+      free_frags.erase(it);
+      break;
+    }
   }
-}
 }
 
 // check entities for collisions
@@ -212,13 +212,13 @@ bool global::handle_keyboard_input(float timer, const float maxTime,
   if (Keyboard::isKeyPressed(sf::Keyboard::Left)) {
     if (player_ptr && player_ptr->type == EType::Player) {
       auto& dvel_ref = player_ptr->dvel;
-      dvel_ref += (abs(dvel_ref.x) < 9.f) ? Vec2(-4.5f, 0.f) : Vec2(0.f, 0.f);
+      dvel_ref += (abs(dvel_ref.x) < 12.5f) ? Vec2(-.1f, 0.f) : Vec2(0.f, 0.f);
     }
   }
   if (Keyboard::isKeyPressed(sf::Keyboard::Right)) {
     if (player_ptr && player_ptr->type == EType::Player) {
       auto& dvel_ref = player_ptr->dvel;
-      dvel_ref += (abs(dvel_ref.x) < 9.f) ? Vec2(+4.5f, 0.f) : Vec2(0.f, 0.f);
+      dvel_ref += (abs(dvel_ref.x) < 12.5f) ? Vec2(+.1f, 0.f) : Vec2(0.f, 0.f);
     }
   }
   if (Keyboard::isKeyPressed(sf::Keyboard::Space)) {
@@ -278,5 +278,19 @@ shared_ptr<IEntity> global::get_entity_with_id(unsigned int _id) {
   return nullptr;  // if no entity with that id was found
 }
 
-
-
+//
+// Timer definitions
+//
+global::Timer::Timer(string s, vector<float>& timing_data_vec) : vec_ref{timing_data_vec} {
+  msg = move(s);
+  tstart = chrono::high_resolution_clock::now();
+}
+// Complete the timing calculation in the destructor
+global::Timer::~Timer() {
+  tend = chrono::high_resolution_clock::now();
+  float difftime{
+      chrono::duration_cast<chrono::duration<float, micro>>(tend - tstart)
+          .count()};
+  // pushing the timing data to the vector
+  vec_ref.push_back(difftime);
+}

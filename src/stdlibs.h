@@ -10,6 +10,7 @@
 #include <cassert>
 #include <exception>
 #include <algorithm>
+#include <numeric>
 #include <limits>
 #include <sstream>
 #include <list>
