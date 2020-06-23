@@ -43,7 +43,12 @@ BouncyWall::BouncyWall(Vec2 start, Vec2 end) {
 
 void BouncyWall::update(FrameTime ftStep) {}
 void BouncyWall::collide_with(const IEntity& e, unsigned int ivox,
-                              Vec2 voxPos) {}
+                              Vec2 voxPos) {
+// this really should be the color of the frag that hit it not the 
+// color of the first frag of the entity
+ auto col = e.frags[0].getFillColor(); 
+ frags[ivox].setFillColor(col);
+}
 
 //
 // Player Definitions
