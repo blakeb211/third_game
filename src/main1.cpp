@@ -9,7 +9,7 @@
 
 #include "global.h"
 // #include "entity.h"
-//#define HITBOX
+#define HITBOX
 
 using namespace std;
 using namespace sf;

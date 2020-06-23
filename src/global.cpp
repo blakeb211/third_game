@@ -1,7 +1,7 @@
 #include "global.h"
 
 #include "stdlibs.h"
-//#define COLL_LOGGING
+#define COLL_LOGGING
 
 using namespace std;
 using namespace sf;

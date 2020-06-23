@@ -65,7 +65,7 @@ Player::Player() {
   // data
   canShoot = false;
   currTimer = 0.f;
-  timerMax = 105.f;
+  timerMax = 305.f;
   move_entity(*this, Vec2(10.f, winHeight - 10.f));
 }
 
@@ -157,9 +157,13 @@ void Bullet::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos, sf::
       vel += Vec2((-2.5f + global::rand_engine() % 4) * 0.1f, 0.f);
       frag_velocity = vel;
       break;
-  }
+    case EType::Enemy:
+      frag_velocity = hypot(vel.x, vel.y) * bounce_unit_vec * 1.2f;
+      (*frags[ivox].health)--;
+      break;
+  };
+  // if bullet has taken a hit we move it to free frag
   if (*frags[ivox].health == 1) {
-    (*frags[ivox].health)--;
     frags[ivox].vel = frag_velocity;
     global::frags_to_move.insert(make_pair(id, frags[ivox].id));
   }
