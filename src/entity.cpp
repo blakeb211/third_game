@@ -65,7 +65,7 @@ Player::Player() {
   // data
   canShoot = false;
   currTimer = 0.f;
-  timerMax = 305.f;
+  timerMax = 215.f;
   move_entity(*this, Vec2(10.f, winHeight - 10.f));
 }
 

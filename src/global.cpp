@@ -1,7 +1,7 @@
 #include "global.h"
 
 #include "stdlibs.h"
-#define COLL_LOGGING
+//#define COLL_LOGGING
 
 using namespace std;
 using namespace sf;
@@ -15,6 +15,8 @@ inline std::ostream& global::operator<<(std::ostream& Str, EType V) {
       return Str << "bouncyWall";
     case EType::Player:
       return Str << "player";
+    case EType::Enemy:
+      return Str << "enemy";
     default:
       return Str << (int)V;
   };
