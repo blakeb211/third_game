@@ -169,7 +169,7 @@ unique_ptr<RenderWindow> global::create_window() {
   auto window =
       make_unique<RenderWindow>(VideoMode(global::winWidth, global::winHeight),
                                 "Iteration 3", Style::Close, cs);
-  window->setVerticalSyncEnabled(false);  // prevent screen tearing
+  window->setVerticalSyncEnabled(true);  // prevent screen tearing
   return move(window);
 }
 
@@ -214,13 +214,13 @@ bool global::handle_keyboard_input(float timer, const float maxTime,
   if (Keyboard::isKeyPressed(sf::Keyboard::Left)) {
     if (player_ptr && player_ptr->type == EType::Player) {
       auto& dvel_ref = player_ptr->dvel;
-      dvel_ref += (abs(dvel_ref.x) < 12.5f) ? Vec2(-.1f, 0.f) : Vec2(0.f, 0.f);
+      dvel_ref += (abs(dvel_ref.x) < 12.5f) ? Vec2(-2.1f, 0.f) : Vec2(0.f, 0.f);
     }
   }
   if (Keyboard::isKeyPressed(sf::Keyboard::Right)) {
     if (player_ptr && player_ptr->type == EType::Player) {
       auto& dvel_ref = player_ptr->dvel;
-      dvel_ref += (abs(dvel_ref.x) < 12.5f) ? Vec2(+.1f, 0.f) : Vec2(0.f, 0.f);
+      dvel_ref += (abs(dvel_ref.x) < 12.5f) ? Vec2(+2.1f, 0.f) : Vec2(0.f, 0.f);
     }
   }
   if (Keyboard::isKeyPressed(sf::Keyboard::Space)) {
