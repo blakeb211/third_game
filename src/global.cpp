@@ -99,8 +99,8 @@ void global::check_entities_for_collisions() {
                     ej_ref.frags[jj].getGlobalBounds())) {
               Vec2 ii_pos = ei_ref.frags[ii].getPosition();
               Vec2 jj_pos = ej_ref.frags[jj].getPosition();
-              ei_ref.collide_with(ej_ref, ii, move(jj_pos));
-              ej_ref.collide_with(ei_ref, jj, move(ii_pos));
+              ei_ref.collide_with(ej_ref, ii, move(jj_pos), ej_ref.frags[jj].getFillColor());
+              ej_ref.collide_with(ei_ref, jj, move(ii_pos), ei_ref.frags[ii].getFillColor());
               collision_flag = true;
               // break;  // only one frag-frag collision per entity pair per
               // frame

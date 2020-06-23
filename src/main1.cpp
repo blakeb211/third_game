@@ -88,6 +88,7 @@ void init_player_test() {
       Vec2(2.f * winWidth / 3.f, 3.f * winHeight / 20.f),
       Vec2(winWidth, 3.f * winHeight / 9.f));
 
+  global::entity.push_back(make_shared<Enemy>(Enemy(0)));
   // print debug information
 }
 
