@@ -45,7 +45,7 @@ void BouncyWall::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos,
                               sf::Color fragColor) {
   // this really should be the color of the frag that hit it not the
   // color of the first frag of the entity
-  frags[ivox].setFillColor(fragColor);
+  frags[ivox].setFillColor(frags[ivox].getFillColor() - sf::Color(15,15,15,0));
 }
 
 void BouncyWall::collide_with_free_frag(unsigned int vi, const Frag& f) {}
