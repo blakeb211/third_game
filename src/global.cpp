@@ -22,6 +22,11 @@ inline std::ostream& global::operator<<(std::ostream& Str, EType V) {
   };
 }
 
+void global::set_frag_health(IEntity& e,unsigned int h) {
+  for(auto & f : e.frags) {
+    *(f.health) = h;
+  }
+}
 void global::erase_frag_with_id(IEntity& e, size_t frag_id) {
   for (auto it = e.frags.begin(); it != e.frags.end(); it++) {
     if (it->id == frag_id) {
@@ -66,7 +71,7 @@ void global::check_free_frags_for_collisions() {
             collision_flag = true;
             Vec2 ev_pos = ei_ref.frags[vi].getPosition();
             fi_ref.collide_with(ei_ref, ev_pos);
-            ei_ref.collide_with_free_frag(fi_ref);
+            ei_ref.collide_with_free_frag(vi, fi_ref);
           }
           if (collision_flag) {
             break;

@@ -35,6 +35,9 @@ inline std::vector<float> timings_draw_player_code;
 //
 // free functions
 //
+//
+//
+void set_frag_health(IEntity& e,unsigned int);
 // use some criteria to erase free frags
 void erase_freed_frags();
 

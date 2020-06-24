@@ -22,7 +22,7 @@ Frag::Frag(float mX, float mY, sf::Color c = sf::Color::White)
   id = global::fragCounter++;
 }
 void Frag::update() { move(vel + dvel); }
-void Frag::collide_with(const IEntity& e, Vec2 voxPos) {}
+void Frag::collide_with(const IEntity& e, Vec2 voxPos) { (*health)--; }
 // member functions
 unsigned int IEntity::get_health() { return frags.size(); }
 
@@ -48,7 +48,7 @@ void BouncyWall::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos,
   frags[ivox].setFillColor(fragColor);
 }
 
-void BouncyWall::collide_with_free_frag(const Frag& f) {}
+void BouncyWall::collide_with_free_frag(unsigned int vi, const Frag& f) {}
 
 //
 // Player Definitions
@@ -79,7 +79,7 @@ void Player::update(FrameTime ftStep) {
 
 void Player::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos,
                           sf::Color c) {}
-void Player::collide_with_free_frag(const Frag& f) {}
+void Player::collide_with_free_frag(unsigned int vi, const Frag& f) {}
 void Player::fire_shot() {
   if (currTimer < timerMax) return;
   Vec2 player_pos = hitbox.getPosition();
@@ -105,6 +105,7 @@ Enemy::Enemy(unsigned int enemy_type) {
   builder::add_enemy1_frags(*this);
   healthCutoff = frags.size() / 2;
   global::build_hitbox(*this);
+  global::set_frag_health(*this, 5);
   // ICanShoot
   canShoot = false;
   timerMax = 2000.f;  // timerMax in milliseconds
@@ -115,10 +116,36 @@ Enemy::Enemy(unsigned int enemy_type) {
   global::move_entity(*this, path[currPathPoint]);
 }
 void Enemy::fire_shot() {}
-void Enemy::update(FrameTime ftStep) {}
+void Enemy::update(FrameTime ftStep) {
+  global::move_entity(*this, vel + dvel);
+  dvel *= 0.03f;
+}
 void Enemy::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos,
-                         sf::Color c) {}
-void Enemy::collide_with_free_frag(const Frag& f) {}
+                         sf::Color c) {
+  auto bounce_vec = frags[ivox].getPosition() - voxPos;
+  auto bv_len = hypot(bounce_vec.x, bounce_vec.y);
+  auto bounce_unit_vec = bounce_vec / bv_len;
+  Vec2 frag_velocity;
+  switch (e.type) {
+    case EType::Bullet:
+      (*frags[ivox].health)--;
+      frags[ivox].setFillColor(sf::Color::Red);
+      // dvel = hypot(vel.x, vel.y) * bounce_unit_vec * 1.2f;
+      dvel += bounce_unit_vec * 0.5f;
+      frag_velocity = 8.f * dvel;
+      break;
+    case EType::Enemy:
+      break;
+  };
+  // if enemy frag health == 1 move it to free frag
+  if (*frags[ivox].health <= 1) {
+    frags[ivox].vel = frag_velocity;
+    global::frags_to_move.insert(make_pair(id, frags[ivox].id));
+  }
+}
+void Enemy::collide_with_free_frag(unsigned int vi, const Frag& f) {
+  (*(frags[vi]).health)--;
+}
 //
 // Bullet Definitions
 //
@@ -174,5 +201,5 @@ void Bullet::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos,
   }
 }
 
-void Bullet::collide_with_free_frag(const Frag& f) {}
+void Bullet::collide_with_free_frag(unsigned int vi, const Frag& f) {}
 
