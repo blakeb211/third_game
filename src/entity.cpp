@@ -103,7 +103,7 @@ Enemy::Enemy(unsigned int enemy_type) {
   id = global::get_new_entity_id();
   type = EType::Enemy;
   builder::add_enemy1_frags(*this);
-  healthCutoff = frags.size() / 2;
+  healthCutoff = 2 * frags.size() / 3;
   global::build_hitbox(*this);
   global::set_frag_health(*this, 5);
   // ICanShoot
@@ -117,9 +117,17 @@ Enemy::Enemy(unsigned int enemy_type) {
 }
 void Enemy::fire_shot() {}
 void Enemy::update(FrameTime ftStep) {
+  auto hitbox_pos = hitbox.getPosition();
+  auto hitbox_size = hitbox.getSize();
   global::move_entity(*this, vel + dvel);
   dvel *= 0.03f;
+  // mark enemies as dead if they move off screen
+  if (hitbox_pos.x < 0 || hitbox_pos.x + hitbox_size.x > global::winWidth ||
+      hitbox_pos.y < 0 || hitbox_pos.y > global::winHeight) {
+    isDead = true;
+  }
 }
+
 void Enemy::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos,
                          sf::Color c) {
   auto bounce_vec = frags[ivox].getPosition() - voxPos;
@@ -138,7 +146,7 @@ void Enemy::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos,
       break;
   };
   // if enemy frag health == 1 move it to free frag
-  if (*frags[ivox].health <= 1) {
+  if (*frags[ivox].health <= 2) {
     frags[ivox].vel = frag_velocity;
     global::frags_to_move.insert(make_pair(id, frags[ivox].id));
   }

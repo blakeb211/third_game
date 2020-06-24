@@ -22,8 +22,8 @@ inline std::ostream& global::operator<<(std::ostream& Str, EType V) {
   };
 }
 
-void global::set_frag_health(IEntity& e,unsigned int h) {
-  for(auto & f : e.frags) {
+void global::set_frag_health(IEntity& e, unsigned int h) {
+  for (auto& f : e.frags) {
     *(f.health) = h;
   }
 }
@@ -170,12 +170,26 @@ void global::remove_dead_entities() {
   //    a) removing bullets that go off screen
   //
   // here is where we would explode dead entities into free frags
-  entity.erase(remove_if(begin(entity), end(entity),
-                         [](const shared_ptr<IEntity>& e) {
-                           return e->frags.size() < e->healthCutoff ||
-                                  e->isDead == true;
-                         }),
-               end(entity));
+  for (auto& e : entity) {
+    // copy its frags to free_frags
+    // set the frag velociy
+    // mark as isDead
+    if (e->frags.size() < e->healthCutoff) {
+      for (auto& f : e->frags) {
+        f.vel = Vec2(-3.5f + rand_engine() % 7, -3.5f + rand_engine() % 7);
+        free_frags.push_back(move(f));
+      }
+      e->isDead = true;
+    }
+  }
+  // erase all entities flagged as isDead, which can happen by
+  // moving off screen or if they dropped below their health cutoff
+  // and got exploded
+
+  entity.erase(
+      remove_if(begin(entity), end(entity),
+                [](const shared_ptr<IEntity>& e) { return e->isDead == true; }),
+      end(entity));
 }
 
 // process current frags and build hitbox from it
