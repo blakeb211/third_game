@@ -111,7 +111,7 @@ Enemy::Enemy(unsigned int enemy_type) {
   timerMax = 2000.f;  // timerMax in milliseconds
   // IEnemy
   // path loaded from file or generated
-  path.emplace_back(Vec2(300.f, 300.f));
+  path.emplace_back(Vec2(200 + global::rand_engine() % 600, 200 + global::rand_engine() % 300));
   currPathPoint = 0;
   global::move_entity(*this, path[currPathPoint]);
 }

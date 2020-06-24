@@ -3,29 +3,23 @@ KEEP IT SIMPLE STUPID
 Purpose of project: Re-Write Second Shooter to run faster and have the explosion
                     and enemy AI effects that I want
 
-*** in progress *** change FRAGS_TO_MOVE TO HOLD AN ENTITY SHARED PTR AND A FRAG ID
-
-change the frags_to_move to hold a shared ptr or regular ptr to the entity
-  modify process_frags_to_move
-  modify erase_newly_freed_frags
 
 INCLUDE DOTPRODUCTS
-IMPROVE WALL COLLISIONS INCLUDING ROTATE BULLET FRAG BY FRAG
-When you dereference a shared_ptr and pass it into a function --> what happens to the ref count?
-Debug pixels going through walls
-add a timer class for the collision section to use in unnamed scopes
+INCLUDE ENEMIES ROTATE TO SHOOT
+
+// WHERE TO PUT THIS CODE?
+// INCLUDE COLLISIONS BETWEEN
+WALL AND FRAG
+BULLET AND FRAG
+ENEMY AND FRAG
 
 Bullets RESPOND TO DYING by exploding
-ENEMIES EXPLODE
-
-ADD COLLISION MANAGER AND MAKE WORK WITH BULLETS
-COLOR FRONT PIXELS OF BULLET1
+ENEMIES RESPOND TO DYING BY exploding 
 
 WALLS
   have a wall building functions
   give walls a self-calculated reflection angle that is applied to things that hit it also only one voxel-voxel
   collision at a time
-  need a dot product function
 
 READ THROUGH 3 OTHER GAME CODES
 READ THROUGH MY CODE

@@ -752,12 +752,12 @@ code	c:\SFML\include\SFML\Window\Event.hpp	/^        Keyboard::Key code;    \/\/
 collide_with	.\entity.cpp	/^void BouncyWall::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos,$/;"	f	class:BouncyWall
 collide_with	.\entity.cpp	/^void Bullet::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos,$/;"	f	class:Bullet
 collide_with	.\entity.cpp	/^void Enemy::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos,$/;"	f	class:Enemy
-collide_with	.\entity.cpp	/^void Frag::collide_with(const IEntity& e, Vec2 voxPos) {}$/;"	f	class:Frag
+collide_with	.\entity.cpp	/^void Frag::collide_with(const IEntity& e, Vec2 voxPos) { (*health)--; }$/;"	f	class:Frag
 collide_with	.\entity.cpp	/^void Player::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos,$/;"	f	class:Player
-collide_with_free_frag	.\entity.cpp	/^void BouncyWall::collide_with_free_frag(const Frag& f) {}$/;"	f	class:BouncyWall
-collide_with_free_frag	.\entity.cpp	/^void Bullet::collide_with_free_frag(const Frag& f) {}$/;"	f	class:Bullet
-collide_with_free_frag	.\entity.cpp	/^void Enemy::collide_with_free_frag(const Frag& f) {}$/;"	f	class:Enemy
-collide_with_free_frag	.\entity.cpp	/^void Player::collide_with_free_frag(const Frag& f) {}$/;"	f	class:Player
+collide_with_free_frag	.\entity.cpp	/^void BouncyWall::collide_with_free_frag(unsigned int vi, const Frag& f) {}$/;"	f	class:BouncyWall
+collide_with_free_frag	.\entity.cpp	/^void Bullet::collide_with_free_frag(unsigned int vi, const Frag& f) {}$/;"	f	class:Bullet
+collide_with_free_frag	.\entity.cpp	/^void Enemy::collide_with_free_frag(unsigned int vi, const Frag& f) {$/;"	f	class:Enemy
+collide_with_free_frag	.\entity.cpp	/^void Player::collide_with_free_frag(unsigned int vi, const Frag& f) {}$/;"	f	class:Player
 color	c:\SFML\include\SFML\Graphics\Vertex.hpp	/^    Color     color;     \/\/\/< Color of the vertex$/;"	m	class:sf::Vertex
 colorDstFactor	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^    Factor   colorDstFactor; \/\/\/< Destination blending factor for the color channels$/;"	m	struct:sf::BlendMode
 colorEquation	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^    Equation colorEquation;  \/\/\/< Blending equation for the color channels$/;"	m	struct:sf::BlendMode
@@ -1150,6 +1150,7 @@ sensor	c:\SFML\include\SFML\Window\Event.hpp	/^        SensorEvent           sen
 set	c:\SFML\examples\joystick\Joystick.cpp	/^    void set(const char* label, const T& value)$/;"	f	namespace:__anon2
 setFont	c:\SFML\examples\shader\Effect.hpp	/^    static void setFont(const sf::Font& font)$/;"	f	class:Effect
 set_frag_health	.\builder.cpp	/^void builder::set_frag_health(IEntity& e, unsigned int num) {$/;"	f	class:builder
+set_frag_health	.\global.cpp	/^void global::set_frag_health(IEntity& e,unsigned int h) {$/;"	f	class:global
 sf	c:\SFML\include\SFML\Audio\AlResource.hpp	/^namespace sf$/;"	n
 sf	c:\SFML\include\SFML\Audio\InputSoundFile.hpp	/^namespace sf$/;"	n
 sf	c:\SFML\include\SFML\Audio\Listener.hpp	/^namespace sf$/;"	n
@@ -1279,7 +1280,7 @@ type	c:\SFML\include\SFML\Window\Event.hpp	/^    EventType type; \/\/\/< Type of
 unicode	c:\SFML\include\SFML\Window\Event.hpp	/^        Uint32 unicode; \/\/\/< UTF-32 Unicode value of the character$/;"	m	struct:sf::Event::TextEvent
 update	.\entity.cpp	/^void BouncyWall::update(FrameTime ftStep) {}$/;"	f	class:BouncyWall
 update	.\entity.cpp	/^void Bullet::update(FrameTime ftStep) {$/;"	f	class:Bullet
-update	.\entity.cpp	/^void Enemy::update(FrameTime ftStep) {}$/;"	f	class:Enemy
+update	.\entity.cpp	/^void Enemy::update(FrameTime ftStep) {$/;"	f	class:Enemy
 update	.\entity.cpp	/^void Frag::update() { move(vel + dvel); }$/;"	f	class:Frag
 update	.\entity.cpp	/^void Player::update(FrameTime ftStep) {$/;"	f	class:Player
 update	c:\SFML\examples\shader\Effect.hpp	/^    void update(float time, float x, float y)$/;"	f	class:Effect

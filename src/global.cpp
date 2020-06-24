@@ -169,6 +169,7 @@ void global::remove_dead_entities() {
   // used for
   //    a) removing bullets that go off screen
   //
+  // here is where we would explode dead entities into free frags
   entity.erase(remove_if(begin(entity), end(entity),
                          [](const shared_ptr<IEntity>& e) {
                            return e->frags.size() < e->healthCutoff ||

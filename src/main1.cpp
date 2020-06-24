@@ -88,7 +88,9 @@ void init_player_test() {
       Vec2(2.f * winWidth / 3.f, 3.f * winHeight / 20.f),
       Vec2(winWidth, 3.f * winHeight / 9.f));
 
-  global::entity.push_back(make_shared<Enemy>(Enemy(0)));
+  for (auto i : {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}) {
+    global::entity.push_back(make_shared<Enemy>(Enemy(0)));
+  }
   // print debug information
 }
 
@@ -119,7 +121,8 @@ void update_player_test(const float& ftStep) {
     global::remove_dead_entities();
   }
   {
-    Timer t("check free frags for collisions", global::timings_check_free_frag_coll);
+    Timer t("check free frags for collisions",
+            global::timings_check_free_frag_coll);
     global::check_free_frags_for_collisions();
   }
 }
@@ -227,10 +230,10 @@ int main() {
       auto ff_coll_min_max =
           minmax_element(global::timings_check_free_frag_coll.begin(),
                          global::timings_check_free_frag_coll.end());
-      auto ff_coll_avg = std::accumulate(timings_check_free_frag_coll.begin(),
-                                        timings_check_free_frag_coll.end(), 0) /
-                        timings_check_free_frag_coll.size();
-
+      auto ff_coll_avg =
+          std::accumulate(timings_check_free_frag_coll.begin(),
+                          timings_check_free_frag_coll.end(), 0) /
+          timings_check_free_frag_coll.size();
 
       *log_file << "TIMINGS: "
                 << "\n";
