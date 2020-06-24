@@ -27,6 +27,7 @@ inline std::shared_ptr<IEntity> player_ptr;
 inline std::set<std::pair<size_t, size_t>> frags_to_move;
 // vectors to hold timing data in microseconds
 inline std::vector<float> timings_check_coll;
+inline std::vector<float> timings_check_free_frag_coll;
 inline std::vector<float> timings_process_set_of_freed_frags;
 inline std::vector<float> timings_erase_freed_frags;
 inline std::vector<float> timings_remove_dead_ent;
@@ -48,6 +49,9 @@ inline std::ostream& operator<<(std::ostream& Str, EType V);
 
 // check entities for collisions
 void check_entities_for_collisions();
+
+// check free frags for collisions
+void check_free_frags_for_collisions();
 
 // generate the entity's hitbox for collision checking
 void remove_dead_entities();

@@ -114,7 +114,7 @@ Edge	c:\SFML\examples\shader\Shader.cpp	/^class Edge : public Effect$/;"	c	file:
 Effect	c:\SFML\examples\shader\Effect.hpp	/^    Effect(const std::string& name) :$/;"	f	class:Effect
 Effect	c:\SFML\examples\shader\Effect.hpp	/^class Effect : public sf::Drawable$/;"	c
 End	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        End,          \/\/\/< The End key$/;"	e	enum:sf::Keyboard::Key
-Enemy	.\entity.cpp	/^Enemy::Enemy(unsigned int enemy_type) {}$/;"	f	class:Enemy
+Enemy	.\entity.cpp	/^Enemy::Enemy(unsigned int enemy_type) {$/;"	f	class:Enemy
 Enemy	.\entity.h	/^  Enemy = 5$/;"	m	struct:EType
 Enemy	.\entity.h	/^struct Enemy : IEntity, ICanShoot, IEnemy {$/;"	s	struct:EType
 Enter	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Enter,        \/\/\/< The Enter\/Return keys$/;"	e	enum:sf::Keyboard::Key
@@ -153,7 +153,7 @@ FilenameNotAllowed	c:\SFML\include\SFML\Network\Ftp.hpp	/^            FilenameNo
 FloatRect	c:\SFML\include\SFML\Graphics\Rect.hpp	/^typedef Rect<float> FloatRect;$/;"	t	namespace:sf
 Font	c:\SFML\include\SFML\Graphics\Font.hpp	/^class SFML_GRAPHICS_API Font$/;"	c	namespace:sf
 Forbidden	c:\SFML\include\SFML\Network\Http.hpp	/^            Forbidden           = 403, \/\/\/< The requested page cannot be accessed at all, even with authentication$/;"	e	enum:sf::Http::Response::Status
-Frag	.\entity.cpp	/^Frag::Frag() {$/;"	f	class:Frag
+Frag	.\entity.cpp	/^Frag::Frag() {}$/;"	f	class:Frag
 Frag	.\entity.cpp	/^Frag::Frag(float mX, float mY, sf::Color c = sf::Color::White)$/;"	f	class:Frag
 Frag	.\entity.h	/^struct Frag : sf::RectangleShape {$/;"	s	struct:EType
 Fragment	c:\SFML\include\SFML\Graphics\Shader.hpp	/^        Fragment  \/\/\/< Fragment (pixel) shader$/;"	e	enum:sf::Shader::Type
@@ -613,7 +613,7 @@ ThreadLocalPtr	c:\SFML\include\SFML\System\ThreadLocalPtr.hpp	/^class ThreadLoca
 Tilde	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        Tilde,        \/\/\/< The ~ key$/;"	e	enum:sf::Keyboard::Key
 Time	c:\SFML\include\SFML\System\Time.hpp	/^class SFML_SYSTEM_API Time$/;"	c	namespace:sf
 TimeSpan	c:\SFML\include\SFML\Audio\Music.hpp	/^    typedef Span<Time> TimeSpan;$/;"	t	class:sf::Music
-Timer	.\global.cpp	/^global::Timer::Timer(string s, vector<float>& timing_data_vec) {$/;"	f	class:global::Timer
+Timer	.\global.cpp	/^global::Timer::Timer(string s, vector<float>& timing_data_vec)$/;"	f	class:global::Timer
 Timer	.\global.h	/^struct Timer {$/;"	s	namespace:global
 Titlebar	c:\SFML\include\SFML\Window\WindowStyle.hpp	/^        Titlebar   = 1 << 0, \/\/\/< Title bar + fixed border$/;"	e	enum:sf::Style::__anon10
 Touch	c:\SFML\include\SFML\Window\Touch.hpp	/^class SFML_WINDOW_API Touch$/;"	c	namespace:sf
@@ -747,11 +747,17 @@ check	c:\SFML\include\SFML\Audio\SoundFileFactory.hpp	/^        bool (*check)(In
 check	c:\SFML\include\SFML\Audio\SoundFileFactory.hpp	/^        bool (*check)(const std::string&);$/;"	m	struct:sf::SoundFileFactory::WriterFactory
 check_entities_for_collisions	.\global.cpp	/^void global::check_entities_for_collisions() {$/;"	f	class:global
 check_for_window_close	.\global.cpp	/^bool global::check_for_window_close(RenderWindow& window, Event& event) {$/;"	f	class:global
+check_free_frags_for_collisions	.\global.cpp	/^void global::check_free_frags_for_collisions() {$/;"	f	class:global
 code	c:\SFML\include\SFML\Window\Event.hpp	/^        Keyboard::Key code;    \/\/\/< Code of the key that has been pressed$/;"	m	struct:sf::Event::KeyEvent
-collide_with	.\entity.cpp	/^void BouncyWall::collide_with(const IEntity& e, unsigned int ivox,$/;"	f	class:BouncyWall
-collide_with	.\entity.cpp	/^void Bullet::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos) {$/;"	f	class:Bullet
-collide_with	.\entity.cpp	/^void Enemy::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos) {}$/;"	f	class:Enemy
-collide_with	.\entity.cpp	/^void Player::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos) {}$/;"	f	class:Player
+collide_with	.\entity.cpp	/^void BouncyWall::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos,$/;"	f	class:BouncyWall
+collide_with	.\entity.cpp	/^void Bullet::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos,$/;"	f	class:Bullet
+collide_with	.\entity.cpp	/^void Enemy::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos,$/;"	f	class:Enemy
+collide_with	.\entity.cpp	/^void Frag::collide_with(const IEntity& e, Vec2 voxPos) {}$/;"	f	class:Frag
+collide_with	.\entity.cpp	/^void Player::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos,$/;"	f	class:Player
+collide_with_free_frag	.\entity.cpp	/^void BouncyWall::collide_with_free_frag(const Frag& f) {}$/;"	f	class:BouncyWall
+collide_with_free_frag	.\entity.cpp	/^void Bullet::collide_with_free_frag(const Frag& f) {}$/;"	f	class:Bullet
+collide_with_free_frag	.\entity.cpp	/^void Enemy::collide_with_free_frag(const Frag& f) {}$/;"	f	class:Enemy
+collide_with_free_frag	.\entity.cpp	/^void Player::collide_with_free_frag(const Frag& f) {}$/;"	f	class:Player
 color	c:\SFML\include\SFML\Graphics\Vertex.hpp	/^    Color     color;     \/\/\/< Color of the vertex$/;"	m	class:sf::Vertex
 colorDstFactor	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^    Factor   colorDstFactor; \/\/\/< Destination blending factor for the color channels$/;"	m	struct:sf::BlendMode
 colorEquation	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^    Equation colorEquation;  \/\/\/< Blending equation for the color channels$/;"	m	struct:sf::BlendMode
@@ -781,7 +787,6 @@ endOfStream	c:\SFML\examples\voip\Client.cpp	/^const sf::Uint8 endOfStream = 2;$
 endOfStream	c:\SFML\examples\voip\Server.cpp	/^const sf::Uint8 endOfStream = 2;$/;"	v
 entity	.\global.h	/^inline std::vector<std::shared_ptr<IEntity>> entity;$/;"	v
 entityCounter	.\global.h	/^inline size_t entityCounter = 0;$/;"	v
-erase_dead_frags	.\entity.cpp	/^void IEntity::erase_dead_frags() {}$/;"	f	class:IEntity
 erase_frag_with_id	.\global.cpp	/^void global::erase_frag_with_id(IEntity& e, size_t frag_id) {$/;"	f	class:global
 erase_freed_frags	.\global.cpp	/^void global::erase_freed_frags() {$/;"	f	class:global
 family	c:\SFML\include\SFML\Graphics\Font.hpp	/^        std::string family; \/\/\/< The font family$/;"	m	struct:sf::Font::Info
@@ -1254,9 +1259,10 @@ threads	c:\SFML\examples\island\Island.cpp	/^    std::vector<sf::Thread*> thread
 threshold	c:\SFML\examples\joystick\Joystick.cpp	/^    float threshold = 0.1f;$/;"	v
 timerMax	.\entity.h	/^  float timerMax;$/;"	m	struct:EType::ICanShoot
 timings_check_coll	.\global.h	/^inline std::vector<float> timings_check_coll;$/;"	v
+timings_check_free_frag_coll	.\global.h	/^inline std::vector<float> timings_check_free_frag_coll;$/;"	v
 timings_draw_player_code	.\global.h	/^inline std::vector<float> timings_draw_player_code;$/;"	v
 timings_erase_freed_frags	.\global.h	/^inline std::vector<float> timings_erase_freed_frags;$/;"	v
-timings_process_coll	.\global.h	/^inline std::vector<float> timings_process_coll;$/;"	v
+timings_process_set_of_freed_frags	.\global.h	/^inline std::vector<float> timings_process_set_of_freed_frags;$/;"	v
 timings_remove_dead_ent	.\global.h	/^inline std::vector<float> timings_remove_dead_ent;$/;"	v
 toggleFolder	c:\SFML\doc\html\dynsections.js	/^function toggleFolder(id)$/;"	f
 toggleInherit	c:\SFML\doc\html\dynsections.js	/^function toggleInherit(id)$/;"	f

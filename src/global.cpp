@@ -40,6 +40,47 @@ unique_ptr<Frag> global::get_frag_with_id(IEntity& e, size_t frag_id) {
   return nullptr;
 }
 
+// check free frags for collisions with entities, but not other free frags
+void global::check_free_frags_for_collisions() {
+  int ffSize = free_frags.size();
+  int entSize = entity.size();
+  bool collision_flag = false;
+  for (int fi = 0; fi < ffSize; fi++) {
+    for (int ei = 0; ei < entSize; ei++) {
+      // check if hitboxes collide
+      if (free_frags[fi].getGlobalBounds().intersects(
+              entity[ei]->hitbox.getGlobalBounds())) {
+#ifdef COLL_LOGGING
+        cout << "Collision: "
+             << "free frag and " << j;
+        cout << "(" << entity[ei]->type << ")" << endl;
+#endif
+        auto& fi_ref = free_frags[fi];
+        auto& ei_ref = *entity[ei];
+        auto ev_size = ei_ref.frags.size();
+        // loop over entity voxels
+        Vec2 ff_pos = free_frags[fi].getPosition();
+        for (int vi = 0; vi < ev_size; vi++) {
+          if (fi_ref.getGlobalBounds().intersects(
+                  ei_ref.frags[vi].getGlobalBounds())) {
+            collision_flag = true;
+            Vec2 ev_pos = ei_ref.frags[vi].getPosition();
+            fi_ref.collide_with(ei_ref, ev_pos);
+            ei_ref.collide_with_free_frag(fi_ref);
+          }
+          if (collision_flag) {
+            break;
+          }
+        }
+      }
+      // free frag can only hit one entity voxel at a time
+      if (collision_flag) {
+        break;
+      }
+    }
+  }
+}
+
 void global::process_set_of_freed_frags() {
   // move frags to the free frag vector and remove it from the
   // bullet entity vector
@@ -101,8 +142,10 @@ void global::check_entities_for_collisions() {
                     ej_ref.frags[jj].getGlobalBounds())) {
               Vec2 ii_pos = ei_ref.frags[ii].getPosition();
               Vec2 jj_pos = ej_ref.frags[jj].getPosition();
-              ei_ref.collide_with(ej_ref, ii, move(jj_pos), ej_ref.frags[jj].getFillColor());
-              ej_ref.collide_with(ei_ref, jj, move(ii_pos), ei_ref.frags[ii].getFillColor());
+              ei_ref.collide_with(ej_ref, ii, move(jj_pos),
+                                  ej_ref.frags[jj].getFillColor());
+              ej_ref.collide_with(ei_ref, jj, move(ii_pos),
+                                  ei_ref.frags[ii].getFillColor());
               collision_flag = true;
               // break;  // only one frag-frag collision per entity pair per
               // frame
@@ -283,7 +326,8 @@ shared_ptr<IEntity> global::get_entity_with_id(unsigned int _id) {
 //
 // Timer definitions
 //
-global::Timer::Timer(string s, vector<float>& timing_data_vec) : vec_ref{timing_data_vec} {
+global::Timer::Timer(string s, vector<float>& timing_data_vec)
+    : vec_ref{timing_data_vec} {
   msg = move(s);
   tstart = chrono::high_resolution_clock::now();
 }

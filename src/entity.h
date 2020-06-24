@@ -13,10 +13,13 @@ enum struct EType {
   Enemy = 5
 };
 
+struct IEntity; 
+
 struct Frag : sf::RectangleShape {
   Frag();
   Frag(float mX, float mY, sf::Color c);
   void update();
+  void collide_with(const IEntity& e, Vec2 voxPos);
   // member data
   Vec2 vel;
   Vec2 dvel;
@@ -27,10 +30,10 @@ struct Frag : sf::RectangleShape {
 struct IEntity {
   // pure virtuals
   virtual void update(FrameTime ftStep) = 0;
+  virtual void collide_with_free_frag(const Frag& f) = 0;
   virtual void collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos, sf::Color c) = 0;
   // member functions
   unsigned int get_health(); 
-  void erase_dead_frags(); 
   // data
   unsigned int id;
   EType type;
@@ -64,6 +67,7 @@ struct Enemy : IEntity, ICanShoot, IEnemy {
   void fire_shot();
   void update(FrameTime ftStep);
   void collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos, sf::Color c);
+  void collide_with_free_frag(const Frag& f);
 };
 // wall is just a non-moving entity with optional health
 
@@ -71,6 +75,7 @@ struct BouncyWall : IEntity {
   BouncyWall(Vec2 start, Vec2 end); 
   void update(FrameTime ftStep);
   void collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos, sf::Color c);
+  void collide_with_free_frag(const Frag& f);
 };
 
 struct Player : IEntity, ICanShoot {
@@ -78,11 +83,13 @@ struct Player : IEntity, ICanShoot {
   void update(FrameTime ftStep);
   void collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos, sf::Color c);
   void fire_shot();
+  void collide_with_free_frag(const Frag& f);
 };
 
 struct Bullet : IEntity {
   Bullet(Vec2 pos);
   void update(FrameTime ftStep);
   void collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos, sf::Color c);
+  void collide_with_free_frag(const Frag& f);
 };
 

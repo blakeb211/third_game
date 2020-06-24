@@ -9,7 +9,7 @@
 
 #include "global.h"
 // #include "entity.h"
-#define HITBOX
+//#define HITBOX
 
 using namespace std;
 using namespace sf;
@@ -113,9 +113,14 @@ void update_player_test(const float& ftStep) {
     Timer t("erase freed frags", global::timings_erase_freed_frags);
     global::erase_freed_frags();
   }
+
   {
     Timer t("remove dead entities", global::timings_remove_dead_ent);
     global::remove_dead_entities();
+  }
+  {
+    Timer t("check free frags for collisions", global::timings_check_free_frag_coll);
+    global::check_free_frags_for_collisions();
   }
 }
 
@@ -188,25 +193,63 @@ int main() {
                 << "\n";
       *log_file << "free_frags.size() " << global::free_frags.size() << "\n";
       // timing data
-      auto t_coll_min_max = minmax_element(global::timings_check_coll.begin(), global::timings_check_coll.end());
-      auto t_coll_avg = std::accumulate(timings_check_coll.begin(), timings_check_coll.end(), 0) / timings_check_coll.size();
-      auto t_process_min_max = minmax_element(global::timings_process_set_of_freed_frags.begin(), global::timings_process_set_of_freed_frags.end());
-      auto t_process_avg = std::accumulate(timings_process_set_of_freed_frags.begin(), timings_process_set_of_freed_frags.end(), 0) / timings_process_set_of_freed_frags.size();
-      auto t_erase_min_max = minmax_element(global::timings_erase_freed_frags.begin(), global::timings_erase_freed_frags.end());
-      auto t_erase_avg = std::accumulate(timings_erase_freed_frags.begin(), timings_erase_freed_frags.end(), 0) / timings_erase_freed_frags.size();
-      auto t_remove_ent_min_max = minmax_element(global::timings_remove_dead_ent.begin(), global::timings_remove_dead_ent.end());
-      auto t_remove_ent_avg = std::accumulate(timings_remove_dead_ent.begin(), timings_remove_dead_ent.end(), 0) / timings_remove_dead_ent.size();
-      auto t_draw_min_max = minmax_element(global::timings_draw_player_code.begin(), global::timings_draw_player_code.end());
-      auto t_draw_avg = std::accumulate(timings_draw_player_code.begin(), timings_draw_player_code.end(), 0) / timings_draw_player_code.size();
-  
-      *log_file << "TIMINGS: " << "\n";
-      *log_file << "collisions: " << *t_coll_min_max.first << " " << *t_coll_min_max.second << " " << t_coll_avg << "\n";
-      *log_file << "process freed frags: " << *t_process_min_max.first << " " << *t_process_min_max.second << " " << t_process_avg << "\n";
-      *log_file << "eraes freed frags: " << *t_erase_min_max.first << " " << *t_erase_min_max.second << " " << t_erase_avg << "\n";
-      *log_file << "remove entities: " << *t_remove_ent_min_max.first << " " << *t_remove_ent_min_max.second << " " << t_remove_ent_avg << "\n";
-      *log_file << "draw code: " << *t_draw_min_max.first << " " << *t_draw_min_max.second << " " << t_draw_avg << "\n";
+      auto t_coll_min_max = minmax_element(global::timings_check_coll.begin(),
+                                           global::timings_check_coll.end());
+      auto t_coll_avg = std::accumulate(timings_check_coll.begin(),
+                                        timings_check_coll.end(), 0) /
+                        timings_check_coll.size();
+      auto t_process_min_max =
+          minmax_element(global::timings_process_set_of_freed_frags.begin(),
+                         global::timings_process_set_of_freed_frags.end());
+      auto t_process_avg =
+          std::accumulate(timings_process_set_of_freed_frags.begin(),
+                          timings_process_set_of_freed_frags.end(), 0) /
+          timings_process_set_of_freed_frags.size();
+      auto t_erase_min_max =
+          minmax_element(global::timings_erase_freed_frags.begin(),
+                         global::timings_erase_freed_frags.end());
+      auto t_erase_avg = std::accumulate(timings_erase_freed_frags.begin(),
+                                         timings_erase_freed_frags.end(), 0) /
+                         timings_erase_freed_frags.size();
+      auto t_remove_ent_min_max =
+          minmax_element(global::timings_remove_dead_ent.begin(),
+                         global::timings_remove_dead_ent.end());
+      auto t_remove_ent_avg =
+          std::accumulate(timings_remove_dead_ent.begin(),
+                          timings_remove_dead_ent.end(), 0) /
+          timings_remove_dead_ent.size();
+      auto t_draw_min_max =
+          minmax_element(global::timings_draw_player_code.begin(),
+                         global::timings_draw_player_code.end());
+      auto t_draw_avg = std::accumulate(timings_draw_player_code.begin(),
+                                        timings_draw_player_code.end(), 0) /
+                        timings_draw_player_code.size();
+      auto ff_coll_min_max =
+          minmax_element(global::timings_check_free_frag_coll.begin(),
+                         global::timings_check_free_frag_coll.end());
+      auto ff_coll_avg = std::accumulate(timings_check_free_frag_coll.begin(),
+                                        timings_check_free_frag_coll.end(), 0) /
+                        timings_check_free_frag_coll.size();
+
+
+      *log_file << "TIMINGS: "
+                << "\n";
+      *log_file << "collisions: " << *t_coll_min_max.first << " "
+                << *t_coll_min_max.second << " " << t_coll_avg << "\n";
+      *log_file << "ff collisions: " << *ff_coll_min_max.first << " "
+                << *ff_coll_min_max.second << " " << ff_coll_avg << "\n";
+      *log_file << "process freed frags: " << *t_process_min_max.first << " "
+                << *t_process_min_max.second << " " << t_process_avg << "\n";
+      *log_file << "eraes freed frags: " << *t_erase_min_max.first << " "
+                << *t_erase_min_max.second << " " << t_erase_avg << "\n";
+      *log_file << "remove entities: " << *t_remove_ent_min_max.first << " "
+                << *t_remove_ent_min_max.second << " " << t_remove_ent_avg
+                << "\n";
+      *log_file << "draw code: " << *t_draw_min_max.first << " "
+                << *t_draw_min_max.second << " " << t_draw_avg << "\n";
 
       global::timings_check_coll.clear();
+      global::timings_check_free_frag_coll.clear();
       global::timings_process_set_of_freed_frags.clear();
       global::timings_erase_freed_frags.clear();
       global::timings_remove_dead_ent.clear();

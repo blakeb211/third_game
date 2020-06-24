@@ -22,9 +22,9 @@ Frag::Frag(float mX, float mY, sf::Color c = sf::Color::White)
   id = global::fragCounter++;
 }
 void Frag::update() { move(vel + dvel); }
+void Frag::collide_with(const IEntity& e, Vec2 voxPos) {}
 // member functions
 unsigned int IEntity::get_health() { return frags.size(); }
-void IEntity::erase_dead_frags() {}
 
 //
 // BouncyWall Definitions
@@ -41,12 +41,14 @@ BouncyWall::BouncyWall(Vec2 start, Vec2 end) {
 }
 
 void BouncyWall::update(FrameTime ftStep) {}
-void BouncyWall::collide_with(const IEntity& e, unsigned int ivox,
-                              Vec2 voxPos, sf::Color fragColor) {
+void BouncyWall::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos,
+                              sf::Color fragColor) {
   // this really should be the color of the frag that hit it not the
   // color of the first frag of the entity
   frags[ivox].setFillColor(fragColor);
 }
+
+void BouncyWall::collide_with_free_frag(const Frag& f) {}
 
 //
 // Player Definitions
@@ -75,8 +77,9 @@ void Player::update(FrameTime ftStep) {
   dvel *= (abs(dvel.x) < 0.01f) ? 0 : 0.75f;
 }
 
-void Player::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos, sf::Color c) {}
-
+void Player::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos,
+                          sf::Color c) {}
+void Player::collide_with_free_frag(const Frag& f) {}
 void Player::fire_shot() {
   if (currTimer < timerMax) return;
   Vec2 player_pos = hitbox.getPosition();
@@ -102,19 +105,20 @@ Enemy::Enemy(unsigned int enemy_type) {
   builder::add_enemy1_frags(*this);
   healthCutoff = frags.size() / 2;
   global::build_hitbox(*this);
-  // ICanShoot 
+  // ICanShoot
   canShoot = false;
-  timerMax = 2000.f; //timerMax in milliseconds
+  timerMax = 2000.f;  // timerMax in milliseconds
   // IEnemy
   // path loaded from file or generated
-  path.emplace_back(Vec2(300.f,300.f));
+  path.emplace_back(Vec2(300.f, 300.f));
   currPathPoint = 0;
   global::move_entity(*this, path[currPathPoint]);
 }
 void Enemy::fire_shot() {}
 void Enemy::update(FrameTime ftStep) {}
-void Enemy::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos, sf::Color c) {}
-
+void Enemy::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos,
+                         sf::Color c) {}
+void Enemy::collide_with_free_frag(const Frag& f) {}
 //
 // Bullet Definitions
 //
@@ -143,7 +147,8 @@ void Bullet::update(FrameTime ftStep) {
   }
 }
 
-void Bullet::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos, sf::Color c) {
+void Bullet::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos,
+                          sf::Color c) {
   auto bounce_vec = frags[ivox].getPosition() - voxPos;
   auto bv_len = hypot(bounce_vec.x, bounce_vec.y);
   auto bounce_unit_vec = bounce_vec / bv_len;
@@ -168,4 +173,6 @@ void Bullet::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos, sf::
     global::frags_to_move.insert(make_pair(id, frags[ivox].id));
   }
 }
+
+void Bullet::collide_with_free_frag(const Frag& f) {}
 
