@@ -24,22 +24,21 @@ Frag::Frag(float mX, float mY, sf::Color c = sf::Color::White)
 void Frag::update() { move(vel + dvel); }
 void Frag::collide_with(const IEntity& e, Vec2 voxPos) {
   Vec2 bounce_vec, bounce_unit_vec;
-  float bv_len, curr_vel_len;
+  float curr_vel_len;
   switch (e.type) {
     case EType::BouncyWall:
+      (*health)--;
       curr_vel_len = hypot(dvel.x + vel.x, dvel.y + vel.y);
-      bounce_vec = getPosition() - voxPos;
-      bv_len = hypot(bounce_vec.x, bounce_vec.y);
-      bounce_unit_vec = bounce_vec / bv_len;
+      bounce_vec = (getPosition() - voxPos);
+      bounce_unit_vec = (getPosition() - voxPos) / hypot(bounce_vec.x, bounce_vec.y);
       move(bounce_unit_vec * static_cast<float>(global::bW) * 0.6f);
       vel = bounce_unit_vec * curr_vel_len;
       break;
     case EType::Bullet:
       (*health)--;
       // if bullet has taken a hit we move it to free frag
-      bounce_vec = getPosition() - voxPos;
-      bv_len = hypot(bounce_vec.x, bounce_vec.y);
-      bounce_unit_vec = bounce_vec / bv_len;
+      bounce_vec = (getPosition() - voxPos);
+      bounce_unit_vec = bounce_vec / hypot(bounce_vec.x, bounce_vec.y);
       vel = bounce_unit_vec * hypot(dvel.x + vel.x, dvel.y + vel.y);
     default:
       (*health)--;
@@ -186,8 +185,8 @@ void Enemy::collide_with_free_frag(unsigned int vi, const Frag& f) {
   auto bounce_unit_vec = bounce_vec / bv_len;
   frags[vi].setFillColor(sf::Color::Red - sf::Color(90, 0, 0, 0));
   (*(frags[vi]).health)--;
-  if (*frags[vi].health <= 2) {
-    frags[vi].vel = bounce_unit_vec * 0.8f;
+  if (*frags[vi].health <= 1) {
+    frags[vi].vel = bounce_unit_vec * hypot(f.vel.x, f.vel.y)*0.5f;
     global::frags_to_move.insert(make_pair(id, frags[vi].id));
   }
 }
