@@ -22,9 +22,12 @@ inline std::ostream& global::operator<<(std::ostream& Str, EType V) {
   };
 }
 
-void global::set_frag_health(IEntity& e, unsigned int h) {
+float global::rand_between(float low, int high) {
+  return low + rand_engine() % high;
+}
+void global::set_frag_health(IEntity& e, optional<unsigned int> h) {
   for (auto& f : e.frags) {
-    *(f.health) = h;
+    *(f.health) = *h;
   }
 }
 void global::erase_frag_with_id(IEntity& e, size_t frag_id) {
