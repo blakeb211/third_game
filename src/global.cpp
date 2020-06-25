@@ -7,30 +7,28 @@ using namespace std;
 using namespace sf;
 typedef chrono::high_resolution_clock high_res_clock;
 
-inline std::ostream& global::operator<<(std::ostream& Str, EType V) {
+inline std::ostream &global::operator<<(std::ostream &Str, EType V) {
   switch (V) {
-    case EType::Bullet:
-      return Str << "bullet";
-    case EType::BouncyWall:
-      return Str << "bouncyWall";
-    case EType::Player:
-      return Str << "player";
-    case EType::Enemy:
-      return Str << "enemy";
-    default:
-      return Str << (int)V;
+  case EType::Bullet:
+    return Str << "bullet";
+  case EType::BouncyWall:
+    return Str << "bouncyWall";
+  case EType::Player:
+    return Str << "player";
+  case EType::Enemy:
+    return Str << "enemy";
+  default:
+    return Str << (int)V;
   };
 }
+int global::rand_between(int low, int high) { return low + rand_engine() % (high - low); }
 
-float global::rand_between(float low, int high) {
-  return low + rand_engine() % high;
-}
-void global::set_frag_health(IEntity& e, optional<unsigned int> h) {
-  for (auto& f : e.frags) {
+void global::set_frag_health(IEntity &e, optional<unsigned int> h) {
+  for (auto &f : e.frags) {
     *(f.health) = *h;
   }
 }
-void global::erase_frag_with_id(IEntity& e, size_t frag_id) {
+void global::erase_frag_with_id(IEntity &e, size_t frag_id) {
   for (auto it = e.frags.begin(); it != e.frags.end(); it++) {
     if (it->id == frag_id) {
       e.frags.erase(it);
@@ -39,8 +37,8 @@ void global::erase_frag_with_id(IEntity& e, size_t frag_id) {
   }
 }
 
-unique_ptr<Frag> global::get_frag_with_id(IEntity& e, size_t frag_id) {
-  for (auto& f : e.frags) {
+unique_ptr<Frag> global::get_frag_with_id(IEntity &e, size_t frag_id) {
+  for (auto &f : e.frags) {
     if (f.id == frag_id) {
       return make_unique<Frag>(f);
     }
@@ -56,21 +54,14 @@ void global::check_free_frags_for_collisions() {
   for (int fi = 0; fi < ffSize; fi++) {
     for (int ei = 0; ei < entSize; ei++) {
       // check if hitboxes collide
-      if (free_frags[fi].getGlobalBounds().intersects(
-              entity[ei]->hitbox.getGlobalBounds())) {
-#ifdef COLL_LOGGING
-        cout << "Collision: "
-             << "free frag and " << j;
-        cout << "(" << entity[ei]->type << ")" << endl;
-#endif
-        auto& fi_ref = free_frags[fi];
-        auto& ei_ref = *entity[ei];
+      if (free_frags[fi].getGlobalBounds().intersects(entity[ei]->hitbox.getGlobalBounds())) {
+        auto &fi_ref = free_frags[fi];
+        auto &ei_ref = *entity[ei];
         auto ev_size = ei_ref.frags.size();
         // loop over entity voxels
         Vec2 ff_pos = free_frags[fi].getPosition();
         for (int vi = 0; vi < ev_size; vi++) {
-          if (fi_ref.getGlobalBounds().intersects(
-                  ei_ref.frags[vi].getGlobalBounds())) {
+          if (fi_ref.getGlobalBounds().intersects(ei_ref.frags[vi].getGlobalBounds())) {
             collision_flag = true;
             Vec2 ev_pos = ei_ref.frags[vi].getPosition();
             fi_ref.collide_with(ei_ref, ev_pos);
@@ -83,6 +74,11 @@ void global::check_free_frags_for_collisions() {
       }
       // free frag can only hit one entity voxel at a time
       if (collision_flag) {
+#ifdef COLL_LOGGING
+        cout << "Collision: "
+             << "free frag and ";
+        cout << "(" << entity[ei]->type << ")" << endl;
+#endif
         break;
       }
     }
@@ -99,9 +95,10 @@ void global::process_set_of_freed_frags() {
   unique_ptr<Frag> f_ptr;
 
   try {
-    for (const auto& eid_fid : frags_to_move) {
+    for (const auto &eid_fid : frags_to_move) {
       e_ptr = get_entity_with_id(eid_fid.first);
-      if (e_ptr == nullptr) continue;
+      if (e_ptr == nullptr)
+        continue;
       frag_id = eid_fid.second;
       f_ptr = get_frag_with_id(*e_ptr, frag_id);
       if (f_ptr != nullptr) {
@@ -109,7 +106,7 @@ void global::process_set_of_freed_frags() {
         erase_frag_with_id(*e_ptr, frag_id);
       }
     }
-  } catch (exception& e) {
+  } catch (exception &e) {
     cout << "exception in for loop of process_set_of_freed_frags" << endl;
   }
   frags_to_move.clear();
@@ -119,8 +116,7 @@ void global::erase_freed_frags() {
   Vec2 pos;
   for (auto it = begin(free_frags); it != end(free_frags); it++) {
     pos = it->getPosition();
-    if (*(it->health) < 0 || pos.x < 0 || pos.x > winWidth || pos.y < 0 ||
-        pos.y > winHeight) {
+    if (*(it->health) < 0 || pos.x < 0 || pos.x > winWidth || pos.y < 0 || pos.y > winHeight) {
       free_frags.erase(it);
       break;
     }
@@ -133,33 +129,29 @@ void global::check_entities_for_collisions() {
   for (int i = 0; i < entSize - 1; i++) {
     for (int j = i + 1; j < entSize; j++) {
       // check if hitboxes collide
-      if (entity[i]->hitbox.getGlobalBounds().intersects(
-              entity[j]->hitbox.getGlobalBounds())) {
-#ifdef COLL_LOGGING
-        cout << "Collision: " << i << "(" << entity[i]->type << ") and " << j;
-        cout << "(" << entity[j]->type << ")" << endl;
-#endif
-        auto& ei_ref = *entity[i];
-        auto& ej_ref = *entity[j];
+      if (entity[i]->hitbox.getGlobalBounds().intersects(entity[j]->hitbox.getGlobalBounds())) {
+        auto &ei_ref = *entity[i];
+        auto &ej_ref = *entity[j];
         auto fi_size = ei_ref.frags.size();
         auto fj_size = ej_ref.frags.size();
         bool collision_flag = false;
         for (int ii = 0; ii < fi_size; ii++) {
           for (int jj = 0; jj < fj_size; jj++) {
-            if (ei_ref.frags[ii].getGlobalBounds().intersects(
-                    ej_ref.frags[jj].getGlobalBounds())) {
+            if (ei_ref.frags[ii].getGlobalBounds().intersects(ej_ref.frags[jj].getGlobalBounds())) {
               Vec2 ii_pos = ei_ref.frags[ii].getPosition();
               Vec2 jj_pos = ej_ref.frags[jj].getPosition();
-              ei_ref.collide_with(ej_ref, ii, move(jj_pos),
-                                  ej_ref.frags[jj].getFillColor());
-              ej_ref.collide_with(ei_ref, jj, move(ii_pos),
-                                  ei_ref.frags[ii].getFillColor());
+              ei_ref.collide_with(ej_ref, ii, move(jj_pos), ej_ref.frags[jj].getFillColor());
+              ej_ref.collide_with(ei_ref, jj, move(ii_pos), ei_ref.frags[ii].getFillColor());
               collision_flag = true;
               // break;  // only one frag-frag collision per entity pair per
               // frame
             }
           }
           if (collision_flag) {
+#ifdef COLL_LOGGING
+            cout << "Collision: " << i << "(" << entity[i]->type << ") and " << j;
+            cout << "(" << entity[j]->type << ")" << endl;
+#endif
             // break;  // only one frag-frag collision per entity pair per frame
           }
         }
@@ -173,12 +165,12 @@ void global::remove_dead_entities() {
   //    a) removing bullets that go off screen
   //
   // here is where we would explode dead entities into free frags
-  for (auto& e : entity) {
+  for (auto &e : entity) {
     // copy its frags to free_frags
     // set the frag velociy
     // mark as isDead
     if (e->frags.size() < e->healthCutoff) {
-      for (auto& f : e->frags) {
+      for (auto &f : e->frags) {
         f.vel = Vec2(-3.5f + rand_engine() % 7, -3.5f + rand_engine() % 7);
         free_frags.push_back(move(f));
       }
@@ -189,14 +181,13 @@ void global::remove_dead_entities() {
   // moving off screen or if they dropped below their health cutoff
   // and got exploded
 
-  entity.erase(
-      remove_if(begin(entity), end(entity),
-                [](const shared_ptr<IEntity>& e) { return e->isDead == true; }),
-      end(entity));
+  entity.erase(remove_if(begin(entity), end(entity),
+                         [](const shared_ptr<IEntity> &e) { return e->isDead == true; }),
+               end(entity));
 }
 
 // process current frags and build hitbox from it
-void global::build_hitbox(IEntity& e) {
+void global::build_hitbox(IEntity &e) {
   vector<float> x, y;
   int frag_count = e.frags.size();
   for (int i = 0; i < frag_count; i++) {
@@ -219,7 +210,7 @@ void global::build_hitbox(IEntity& e) {
 }
 
 // free function to set position of entity
-void global::move_entity(IEntity& e, const Vec2 offset) {
+void global::move_entity(IEntity &e, const Vec2 offset) {
   for (int i = 0; i < e.frags.size(); i++) {
     e.frags[i].move(offset);
   }
@@ -232,46 +223,43 @@ unsigned int global::get_new_entity_id() { return entityCounter++; }
 // free function to create a window
 unique_ptr<RenderWindow> global::create_window() {
   const ContextSettings cs(0, 0, 2, 4, 4, ContextSettings::Default, true);
-  auto window =
-      make_unique<RenderWindow>(VideoMode(global::winWidth, global::winHeight),
-                                "Iteration 3", Style::Close, cs);
-  window->setVerticalSyncEnabled(true);  // prevent screen tearing
+  auto window = make_unique<RenderWindow>(VideoMode(global::winWidth, global::winHeight),
+                                          "Iteration 3", Style::Close, cs);
+  window->setVerticalSyncEnabled(true); // prevent screen tearing
   return move(window);
 }
 
 // free function to calculate the frames per second using
 // the time the frame started
-pair<float, float> global::calc_frames_per_second(
-    const high_res_clock::time_point& timePoint1) {
+pair<float, float> global::calc_frames_per_second(const high_res_clock::time_point &timePoint1) {
   auto timePoint2(high_res_clock::now());
-  float frametime{chrono::duration_cast<chrono::duration<float, milli>>(
-                      timePoint2 - timePoint1)
-                      .count()};
+  float frametime{
+      chrono::duration_cast<chrono::duration<float, milli>>(timePoint2 - timePoint1).count()};
   auto fSeconds = frametime / 1000.f;
   auto fps = 1.f / fSeconds;
   return move(make_pair(roundf(fps), frametime));
 }
 
 // free funnction to check for window close
-bool global::check_for_window_close(RenderWindow& window, Event& event) {
+bool global::check_for_window_close(RenderWindow &window, Event &event) {
   while (window.pollEvent(event)) {
     switch (event.type) {
-      case Event::Closed:
-        cerr << "User exited window" << endl;
-        window.close();
-        return true;
+    case Event::Closed:
+      cerr << "User exited window" << endl;
+      window.close();
+      return true;
     };
   }
   return false;
 }
 
 // get user input
-bool global::handle_keyboard_input(float timer, const float maxTime,
-                                   RenderWindow& window) {
-  if (timer < maxTime) return false;  // don't exit main game loop
+bool global::handle_keyboard_input(float timer, const float maxTime, RenderWindow &window) {
+  if (timer < maxTime)
+    return false; // don't exit main game loop
   if (Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
     window.close();
-    return true;  // exit main game loop
+    return true; // exit main game loop
   }
   timer = 0.f;
   if (global::player_ptr == nullptr) {
@@ -279,13 +267,13 @@ bool global::handle_keyboard_input(float timer, const float maxTime,
   }
   if (Keyboard::isKeyPressed(sf::Keyboard::Left)) {
     if (player_ptr && player_ptr->type == EType::Player) {
-      auto& dvel_ref = player_ptr->dvel;
+      auto &dvel_ref = player_ptr->dvel;
       dvel_ref += (abs(dvel_ref.x) < 12.5f) ? Vec2(-2.1f, 0.f) : Vec2(0.f, 0.f);
     }
   }
   if (Keyboard::isKeyPressed(sf::Keyboard::Right)) {
     if (player_ptr && player_ptr->type == EType::Player) {
-      auto& dvel_ref = player_ptr->dvel;
+      auto &dvel_ref = player_ptr->dvel;
       dvel_ref += (abs(dvel_ref.x) < 12.5f) ? Vec2(+2.1f, 0.f) : Vec2(0.f, 0.f);
     }
   }
@@ -298,7 +286,7 @@ bool global::handle_keyboard_input(float timer, const float maxTime,
   if (Keyboard::isKeyPressed(sf::Keyboard::LShift)) {
     cerr << "LShift key pressed" << endl;
   }
-  return false;  // don't exit the main game loop
+  return false; // don't exit the main game loop
 }
 
 // free function to get current date and time as string
@@ -333,33 +321,30 @@ unique_ptr<fstream> global::create_log_file(const string currDateTime) {
   return make_unique<fstream>(log_file_name, ios::out);
 }
 
-float global::calc_dist(const sf::Vector2f& va, const sf::Vector2f& vb) {
+float global::calc_dist(const sf::Vector2f &va, const sf::Vector2f &vb) {
   return sqrt(pow(va.x - vb.x, 2) + pow(va.y - vb.y, 2));
 }
 
 shared_ptr<IEntity> global::get_entity_with_id(unsigned int _id) {
-  for (auto& e : global::entity) {
+  for (auto &e : global::entity) {
     if (e->id == _id) {
       return e;
     }
   }
-  return nullptr;  // if no entity with that id was found
+  return nullptr; // if no entity with that id was found
 }
 
 //
 // Timer definitions
 //
-global::Timer::Timer(string s, vector<float>& timing_data_vec)
-    : vec_ref{timing_data_vec} {
+global::Timer::Timer(string s, vector<float> &timing_data_vec) : vec_ref{timing_data_vec} {
   msg = move(s);
   tstart = chrono::high_resolution_clock::now();
 }
 // Complete the timing calculation in the destructor
 global::Timer::~Timer() {
   tend = chrono::high_resolution_clock::now();
-  float difftime{
-      chrono::duration_cast<chrono::duration<float, micro>>(tend - tstart)
-          .count()};
+  float difftime{chrono::duration_cast<chrono::duration<float, micro>>(tend - tstart).count()};
   // pushing the timing data to the vector
   vec_ref.push_back(difftime);
 }

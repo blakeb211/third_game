@@ -9,31 +9,28 @@ using namespace std;
 using namespace sf;
 using namespace global;
 using Vec2 = Vector2<float>;
-void builder::set_frag_health(IEntity& e, unsigned int num) {
+void builder::set_frag_health(IEntity &e, unsigned int num) {
   auto fragsize = e.frags.size();
-  for(int i = 0; i < fragsize; i++) {
+  for (int i = 0; i < fragsize; i++) {
     *e.frags[i].health = num;
   }
 }
-void builder::add_wall_frags(IEntity& e, Vec2 start, Vec2 end,
-                             Color c ) {
-
+void builder::add_wall_frags(IEntity &e, Vec2 start, Vec2 end, Color c) {
   // create a vector from start to end
   Vec2 wallPath = end - start;
-  auto length = hypot(wallPath.x, wallPath.y); 
+  auto length = hypot(wallPath.x, wallPath.y);
   Vec2 unitVec = Vec2(wallPath.x / length, wallPath.y / length);
   // march from start to end placing voxels
   while (calc_dist(start, end) > 0.55f * bW) {
     // place voxel
     e.frags.emplace_back(start.x, start.y, c);
-    // consider making 1.2f below be depending on the slope of the 
+    // consider making 1.2f below be depending on the slope of the
     // start and end vectors
     start += unitVec * 1.f * static_cast<float>(bW);
-    
   }
 }
 
-void builder::build_level(unsigned int& levelId) {
+void builder::build_level(unsigned int &levelId) {
   // open the file levelN_data.txt
   cout << "opening level loading input file" << endl;
   ifstream in_file("level" + to_string(levelId) + "_data.txt", ios::in);
@@ -53,21 +50,21 @@ void builder::build_level(unsigned int& levelId) {
           // convert char number to int number
           int digit = line[i] - '0';
           switch (digit) {
-            case 1:
-              entity.push_back(make_shared<Enemy>(1));
-              break;
-            case 2:
-              entity.push_back(make_shared<Enemy>(2));
-              break;
-            case 3:
-              entity.push_back(make_shared<Enemy>(3));
-              break;
-            case 4:
-              entity.push_back(make_shared<Enemy>(4));
-              break;
-            default:
-              throw exception("switch in builder::build_level failed");
-              break;
+          case 1:
+            entity.push_back(make_shared<Enemy>(1));
+            break;
+          case 2:
+            entity.push_back(make_shared<Enemy>(2));
+            break;
+          case 3:
+            entity.push_back(make_shared<Enemy>(3));
+            break;
+          case 4:
+            entity.push_back(make_shared<Enemy>(4));
+            break;
+          default:
+            throw exception("switch in builder::build_level failed");
+            break;
           };
           cout << "enemy  was added to  entity" << endl;
           // add the newly created enemy's entity id to the enemyIds vector
@@ -78,12 +75,11 @@ void builder::build_level(unsigned int& levelId) {
     // check if its a path line
     if (line.find('|') != string::npos) {
       pathCount++;
-      unsigned int currEntityId = enemyIds.front();  // pop from the front
+      unsigned int currEntityId = enemyIds.front(); // pop from the front
       enemyIds.pop();
       // get a pointer to the enemy by downcasting IEntity
-      auto e_ptr =
-          dynamic_pointer_cast<Enemy>(get_entity_with_id(currEntityId));
-      
+      auto e_ptr = dynamic_pointer_cast<Enemy>(get_entity_with_id(currEntityId));
+
       // read in the path
       istringstream ss(line);
       // read in the whole line of float float|
@@ -93,16 +89,14 @@ void builder::build_level(unsigned int& levelId) {
         char c;
         ss >> x;
         if (ss.bad())
-          throw exception(
-              "sstring stream accessed when bad in builder::build_level");
+          throw exception("sstring stream accessed when bad in builder::build_level");
         ss >> y;
         ss >> c;
         assert(x * winWidth <= winWidth);
         assert(y * winHeight <= winHeight);
         // Convert from level editor coords to game coords
         const float kCoordsConv = bW;
-        e_ptr->path.push_back(Vec2(x * winWidth * kCoordsConv,
-                                   y * winHeight * kCoordsConv));
+        e_ptr->path.push_back(Vec2(x * winWidth * kCoordsConv, y * winHeight * kCoordsConv));
       }
       // set enemies starting position to the first point on its path
       global::move_entity(*e_ptr, e_ptr->path[0]);
@@ -123,7 +117,7 @@ void builder::build_level(unsigned int& levelId) {
         ss >> y_start;
         ss >> x_end;
         ss >> y_end;
-        ss >> c;  // read in type of wall, 'B' or 'D'
+        ss >> c; // read in type of wall, 'B' or 'D'
         assert(c == 'B' || c == 'D');
         // Convert from level editor coords to game coords
         x_start *= winWidth;
@@ -135,8 +129,7 @@ void builder::build_level(unsigned int& levelId) {
         // build the wall
         if (c == 'B') {
           // divide wall up into 30 pixel-wide segments
-          entity.push_back(
-              make_shared<BouncyWall>(Vec2(x_start, y_start), Vec2(x_end, y_end)));
+          entity.push_back(make_shared<BouncyWall>(Vec2(x_start, y_start), Vec2(x_end, y_end)));
           // break out of the stringstream reading loop
           break;
         }
@@ -154,14 +147,14 @@ void builder::build_level(unsigned int& levelId) {
   assert(enemyCount == pathCount);
 }
 
-void builder::add_player_frags(IEntity& e) {
+void builder::add_player_frags(IEntity &e) {
   e.frags.emplace_back(0.f, 0.f, Color::White);
   e.frags.emplace_back(0.f + 1.f * bW, 0.f, Color::White);
   e.frags.emplace_back(0.f + 2.f * bW, 0.f, Color::White);
   e.frags.emplace_back(0.f + 1.f * bW, 0.f - 1.f * bW, Color::Cyan);
 }
 
-void builder::add_bullet1_frags(IEntity& e) {
+void builder::add_bullet1_frags(IEntity &e) {
   e.frags.emplace_back(1.f * bW, 0.f * bW, Color(153, 76, 0, 255));
   e.frags.emplace_back(0.f * bW, 1.f * bW, Color(153, 76, 0, 255));
   e.frags.emplace_back(1.f * bW, 1.f * bW, Color(153, 76, 0, 255));
@@ -169,20 +162,20 @@ void builder::add_bullet1_frags(IEntity& e) {
   e.frags.emplace_back(1.f * bW, 2.f * bW, Color(153, 76, 0, 255));
 }
 
-void builder::add_bullet2_frags(IEntity& e) {
-  //e.frags.emplace_back(2.f * bW, 0.f * bW, Color(112, 1, 209, 255));
+void builder::add_bullet2_frags(IEntity &e) {
+  // e.frags.emplace_back(2.f * bW, 0.f * bW, Color(112, 1, 209, 255));
   e.frags.emplace_back(2.f * bW, 0.f * bW, Color(112, 1, 209, 255));
   e.frags.emplace_back(1.f * bW, 1.f * bW, Color(112, 1, 209, 255));
-  //e.frags.emplace_back(2.f * bW, 1.f * bW, Color(112, 1, 209, 255));
+  // e.frags.emplace_back(2.f * bW, 1.f * bW, Color(112, 1, 209, 255));
   e.frags.emplace_back(2.f * bW, 1.f * bW, Color(112, 1, 209, 255));
   e.frags.emplace_back(3.f * bW, 1.f * bW, Color(112, 1, 209, 255));
   e.frags.emplace_back(1.f * bW, 2.f * bW, Color(112, 1, 209, 255));
   e.frags.emplace_back(3.f * bW, 2.f * bW, Color(112, 1, 209, 255));
-  //e.frags.emplace_back(0.f * bW, 3.f * bW, Color(112, 1, 209, 255));
-  //e.frags.emplace_back(5.f * bW, 3.f * bW, Color(112, 1, 209, 255));
+  // e.frags.emplace_back(0.f * bW, 3.f * bW, Color(112, 1, 209, 255));
+  // e.frags.emplace_back(5.f * bW, 3.f * bW, Color(112, 1, 209, 255));
 }
 
-void builder::add_enemy1_frags(IEntity& e) {
+void builder::add_enemy1_frags(IEntity &e) {
   e.frags.emplace_back(9.f * bW, 0.f * bW, Color::Cyan);
   e.frags.emplace_back(10.f * bW, 0.f * bW, Color::Cyan);
   e.frags.emplace_back(11.f * bW, 0.f * bW, Color::Cyan);
@@ -239,7 +232,7 @@ void builder::add_enemy1_frags(IEntity& e) {
   e.frags.emplace_back(15.f * bW, 7.f * bW, Color::Cyan);
 }
 
-void builder::add_enemy2_frags(IEntity& e) {
+void builder::add_enemy2_frags(IEntity &e) {
   e.frags.emplace_back(3.f * bW, 0.f * bW, Color::Magenta);
   e.frags.emplace_back(4.f * bW, 0.f * bW, Color::Magenta);
   e.frags.emplace_back(17.f * bW, 0.f * bW, Color::Magenta);
@@ -316,7 +309,7 @@ void builder::add_enemy2_frags(IEntity& e) {
   e.frags.emplace_back(17.f * bW, 7.f * bW, Color::Magenta);
 }
 
-void builder::add_enemy3_frags(IEntity& e) {
+void builder::add_enemy3_frags(IEntity &e) {
   e.frags.emplace_back(9.f * bW, 0.f * bW, Color::Red + Color::Yellow);
   e.frags.emplace_back(10.f * bW, 0.f * bW, Color::Red + Color::Yellow);
   e.frags.emplace_back(11.f * bW, 0.f * bW, Color::Red + Color::Yellow);
@@ -395,7 +388,7 @@ void builder::add_enemy3_frags(IEntity& e) {
   e.frags.emplace_back(19.f * bW, 7.f * bW, Color::Red + Color::Yellow);
 }
 
-void builder::add_enemy4_frags(IEntity& e) {
+void builder::add_enemy4_frags(IEntity &e) {
   e.frags.emplace_back(9.f * bW, 0.f * bW, Color(255, 140, 0, 245));
   e.frags.emplace_back(10.f * bW, 0.f * bW, Color(255, 140, 0, 245));
   e.frags.emplace_back(11.f * bW, 0.f * bW, Color(255, 140, 0, 245));
@@ -514,5 +507,4 @@ void builder::add_enemy4_frags(IEntity& e) {
   e.frags.emplace_back(7.f * bW, 6.f * bW, Color(255, 140, 0, 245));
   e.frags.emplace_back(22.f * bW, 6.f * bW, Color(255, 140, 0, 245));
 }
-
 

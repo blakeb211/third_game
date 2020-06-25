@@ -22,27 +22,27 @@ Frag::Frag(float mX, float mY, sf::Color c = sf::Color::White)
   id = global::fragCounter++;
 }
 void Frag::update() { move(vel + dvel); }
-void Frag::collide_with(const IEntity& e, Vec2 voxPos) {
+void Frag::collide_with(const IEntity &e, Vec2 voxPos) {
   Vec2 bounce_vec, bounce_unit_vec;
   float curr_vel_len;
   switch (e.type) {
-    case EType::BouncyWall:
-      (*health)--;
-      curr_vel_len = hypot(dvel.x + vel.x, dvel.y + vel.y);
-      bounce_vec = (getPosition() - voxPos);
-      bounce_unit_vec = (getPosition() - voxPos) / hypot(bounce_vec.x, bounce_vec.y);
-      move(bounce_unit_vec * static_cast<float>(global::bW) * 0.6f);
-      vel = bounce_unit_vec * curr_vel_len;
-      break;
-    case EType::Bullet:
-      (*health)--;
-      // if bullet has taken a hit we move it to free frag
-      bounce_vec = (getPosition() - voxPos);
-      bounce_unit_vec = bounce_vec / hypot(bounce_vec.x, bounce_vec.y);
-      vel = bounce_unit_vec * hypot(dvel.x + vel.x, dvel.y + vel.y);
-    default:
-      (*health)--;
-      break;
+  case EType::BouncyWall:
+    (*health)--;
+    curr_vel_len = hypot(dvel.x + vel.x, dvel.y + vel.y);
+    bounce_vec = (getPosition() - voxPos);
+    bounce_unit_vec = (getPosition() - voxPos) / hypot(bounce_vec.x, bounce_vec.y);
+    move(bounce_unit_vec * static_cast<float>(global::bW) * 0.6f);
+    vel = bounce_unit_vec * curr_vel_len;
+    break;
+  case EType::Bullet:
+    (*health)--;
+    // if bullet has taken a hit we move it to free frag
+    bounce_vec = (getPosition() - voxPos);
+    bounce_unit_vec = bounce_vec / hypot(bounce_vec.x, bounce_vec.y);
+    vel = bounce_unit_vec * hypot(dvel.x + vel.x, dvel.y + vel.y);
+  default:
+    (*health)--;
+    break;
   };
   // frags should bounce off bouncy walls and lose health when they hit
   // everything else
@@ -65,15 +65,14 @@ BouncyWall::BouncyWall(Vec2 start, Vec2 end) {
 }
 
 void BouncyWall::update(FrameTime ftStep) {}
-void BouncyWall::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos,
+void BouncyWall::collide_with(const IEntity &e, unsigned int ivox, Vec2 voxPos,
                               sf::Color fragColor) {
   // this really should be the color of the frag that hit it not the
   // color of the first frag of the entity
-  frags[ivox].setFillColor(frags[ivox].getFillColor() -
-                           sf::Color(15, 15, 15, 0));
+  frags[ivox].setFillColor(frags[ivox].getFillColor() - sf::Color(15, 15, 15, 0));
 }
 
-void BouncyWall::collide_with_free_frag(unsigned int vi, const Frag& f) {}
+void BouncyWall::collide_with_free_frag(unsigned int vi, const Frag &f) {}
 
 //
 // Player Definitions
@@ -102,11 +101,11 @@ void Player::update(FrameTime ftStep) {
   dvel *= (abs(dvel.x) < 0.01f) ? 0 : 0.75f;
 }
 
-void Player::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos,
-                          sf::Color c) {}
-void Player::collide_with_free_frag(unsigned int vi, const Frag& f) {}
+void Player::collide_with(const IEntity &e, unsigned int ivox, Vec2 voxPos, sf::Color c) {}
+void Player::collide_with_free_frag(unsigned int vi, const Frag &f) {}
 void Player::fire_shot() {
-  if (currTimer < timerMax) return;
+  if (currTimer < timerMax)
+    return;
   Vec2 player_pos = hitbox.getPosition();
   auto hitbox_width = hitbox.getSize().x;
   auto player_center = player_pos + Vec2(hitbox_width / 2.f, 0.f);
@@ -114,8 +113,7 @@ void Player::fire_shot() {
   auto new_bullet = make_shared<Bullet>(Vec2(0.f, 0.f));
   auto bullet_width = new_bullet->hitbox.getSize().x;
   global::move_entity(*new_bullet,
-                      player_center - Vec2(bullet_width / 4.f,
-                                           +1.f * global::blockWidth * 4.f));
+                      player_center - Vec2(bullet_width / 4.f, +1.f * global::blockWidth * 4.f));
   global::entity.push_back(move(new_bullet));
   // reset shot timer
   currTimer = 0.f;
@@ -127,19 +125,37 @@ void Player::fire_shot() {
 Enemy::Enemy(unsigned int enemy_type) {
   id = global::get_new_entity_id();
   type = EType::Enemy;
-  builder::add_enemy1_frags(*this);
-  healthCutoff = 2 * frags.size() / 3;
-  global::build_hitbox(*this);
-  global::set_frag_health(*this, 5);
-  // ICanShoot
   canShoot = false;
-  timerMax = 2000.f;  // timerMax in milliseconds
-  // IEnemy
-  // path loaded from file or generated
-  path.emplace_back(Vec2(200 + global::rand_engine() % 600,
-                         200 + global::rand_engine() % 300));
-  currPathPoint = 0;
-  global::move_entity(*this, path[currPathPoint]);
+  healthCutoff = 2 * frags.size() / 3;
+
+  switch (enemy_type) {
+  case 0:
+    builder::add_enemy1_frags(*this);
+    global::set_frag_health(*this, 5);
+    // ICanShoot
+    timerMax = 2000.f; // timerMax in milliseconds
+    // IEnemy
+    // path loaded from file or generated
+    path.emplace_back(Vec2(global::rand_between(200, 800), global::rand_between(300, 600)));
+    currPathPoint = 0;
+    global::move_entity(*this, path[currPathPoint]);
+
+    global::build_hitbox(*this);
+    break;
+  case 1:
+    builder::add_enemy2_frags(*this);
+    global::set_frag_health(*this, 5);
+    // ICanShoot
+    timerMax = 2000.f; // timerMax in milliseconds
+    // IEnemy
+    // path loaded from file or generated
+    path.emplace_back(Vec2(global::rand_between(200, 800), global::rand_between(300, 600)));
+    currPathPoint = 0;
+    global::move_entity(*this, path[currPathPoint]);
+
+    global::build_hitbox(*this);
+    break;
+  };
 }
 void Enemy::fire_shot() {}
 void Enemy::update(FrameTime ftStep) {
@@ -148,37 +164,40 @@ void Enemy::update(FrameTime ftStep) {
   global::move_entity(*this, vel + dvel);
   dvel *= 0.03f;
   // mark enemies as dead if they move off screen
-  if (hitbox_pos.x < 0 || hitbox_pos.x + hitbox_size.x > global::winWidth ||
-      hitbox_pos.y < 0 || hitbox_pos.y > global::winHeight) {
+  if (hitbox_pos.x < 0 || hitbox_pos.x + hitbox_size.x > global::winWidth || hitbox_pos.y < 0 ||
+      hitbox_pos.y > global::winHeight) {
     isDead = true;
   }
 }
 
-void Enemy::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos,
-                         sf::Color c) {
+void Enemy::collide_with(const IEntity &e, unsigned int ivox, Vec2 voxPos, sf::Color c) {
   auto bounce_vec = frags[ivox].getPosition() - voxPos;
   auto bv_len = hypot(bounce_vec.x, bounce_vec.y);
   auto bounce_unit_vec = bounce_vec / bv_len;
   Vec2 frag_velocity;
   switch (e.type) {
-    case EType::Bullet:
-      (*frags[ivox].health)--;
-      frags[ivox].setFillColor(sf::Color::Red);
-      // dvel = hypot(vel.x, vel.y) * bounce_unit_vec * 1.2f;
-      dvel += bounce_unit_vec * 0.5f;
-      frag_velocity = 8.f * dvel;
-      break;
-    case EType::Enemy:
-      dvel += bounce_unit_vec * 0.8f;
-      break;
+  case EType::Bullet:
+    (*frags[ivox].health)--;
+    frags[ivox].setFillColor(sf::Color::Red);
+    // dvel = hypot(vel.x, vel.y) * bounce_unit_vec * 1.2f;
+    dvel += bounce_unit_vec * 0.5f;
+    frag_velocity = 8.f * dvel;
+    break;
+  case EType::Enemy:
+    dvel += bounce_unit_vec * 7.8f;
+    break;
+  case EType::BouncyWall:
+    dvel += bounce_unit_vec * 0.8f;
+    break;
   };
   // if enemy frag health == 1 move it to free frag
+  if (e.type == EType::Enemy) return;
   if (*frags[ivox].health <= 2) {
     frags[ivox].vel = frag_velocity;
     global::frags_to_move.insert(make_pair(id, frags[ivox].id));
   }
 }
-void Enemy::collide_with_free_frag(unsigned int vi, const Frag& f) {
+void Enemy::collide_with_free_frag(unsigned int vi, const Frag &f) {
   auto voxPos = f.getPosition();
   auto bounce_vec = frags[vi].getPosition() - voxPos;
   auto bv_len = hypot(bounce_vec.x, bounce_vec.y);
@@ -186,7 +205,7 @@ void Enemy::collide_with_free_frag(unsigned int vi, const Frag& f) {
   frags[vi].setFillColor(sf::Color::Red - sf::Color(90, 0, 0, 0));
   (*(frags[vi]).health)--;
   if (*frags[vi].health <= 1) {
-    frags[vi].vel = bounce_unit_vec * hypot(f.vel.x, f.vel.y)*0.5f;
+    frags[vi].vel = bounce_unit_vec * hypot(f.vel.x, f.vel.y) * 0.5f;
     global::frags_to_move.insert(make_pair(id, frags[vi].id));
   }
 }
@@ -202,7 +221,7 @@ Bullet::Bullet(Vec2 pos) {
   builder::add_bullet2_frags(*this);
   builder::set_frag_health(*this, 2);
   global::build_hitbox(*this);
-  healthCutoff = 2;
+  healthCutoff = 3;
   vel = Vec2(0.f, -5.5f);
   dvel = Vec2(0.f, -3.f);
   move_entity(*this, pos);
@@ -212,30 +231,29 @@ void Bullet::update(FrameTime ftStep) {
   dvel *= 0.9f;
   auto hitbox_pos = hitbox.getPosition();
   auto hitbox_size = hitbox.getSize();
-  if (hitbox_pos.x < 0 || hitbox_pos.x + hitbox_size.x > global::winWidth ||
-      hitbox_pos.y < 0 || hitbox_pos.y > global::winHeight) {
+  if (hitbox_pos.x < 0 || hitbox_pos.x + hitbox_size.x > global::winWidth || hitbox_pos.y < 0 ||
+      hitbox_pos.y > global::winHeight) {
     isDead = true;
   }
 }
 
-void Bullet::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos,
-                          sf::Color c) {
+void Bullet::collide_with(const IEntity &e, unsigned int ivox, Vec2 voxPos, sf::Color c) {
   auto bounce_vec = frags[ivox].getPosition() - voxPos;
   auto bv_len = hypot(bounce_vec.x, bounce_vec.y);
   auto bounce_unit_vec = bounce_vec / bv_len;
   Vec2 frag_velocity;
   switch (e.type) {
-    case EType::BouncyWall:
-      // move entity so it doesn't collide again in this frame
-      global::move_entity(*this, bounce_unit_vec * (float)global::bW * 0.6f);
-      vel = hypot(vel.x, vel.y) * bounce_unit_vec * 1.2f;
-      vel += Vec2((-2.5f + global::rand_engine() % 4) * 0.1f, 0.f);
-      frag_velocity = vel;
-      break;
-    case EType::Enemy:
-      frag_velocity = hypot(vel.x, vel.y) * bounce_unit_vec * 1.2f;
-      (*frags[ivox].health)--;
-      break;
+  case EType::BouncyWall:
+    // move entity so it doesn't collide again in this frame
+    global::move_entity(*this, bounce_unit_vec * (float)global::bW * 0.6f);
+    vel = hypot(vel.x, vel.y) * bounce_unit_vec * 1.2f;
+    vel += Vec2((-2.5f + global::rand_engine() % 4) * 0.1f, 0.f);
+    frag_velocity = vel;
+    break;
+  case EType::Enemy:
+    frag_velocity = hypot(vel.x, vel.y) * bounce_unit_vec * 1.2f;
+    (*frags[ivox].health)--;
+    break;
   };
   // if bullet has taken a hit we move it to free frag
   if (*frags[ivox].health == 1) {
@@ -244,7 +262,7 @@ void Bullet::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos,
   }
 }
 
-void Bullet::collide_with_free_frag(unsigned int vi, const Frag& f) {
+void Bullet::collide_with_free_frag(unsigned int vi, const Frag &f) {
   (*frags[vi].health)--;
   // if bullet has taken a hit we move it to free frag
   auto bounce_vec = frags[vi].getPosition() - f.getPosition();

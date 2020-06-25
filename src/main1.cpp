@@ -9,7 +9,7 @@
 
 #include "global.h"
 // #include "entity.h"
-// #define HITBOX
+#define HITBOX
 
 using namespace std;
 using namespace sf;
@@ -28,21 +28,21 @@ void rotated_rectange_init() {
     r.setOrigin(Vec2(winWidth / 2.f, winHeight / 2.f));
     r.setSize(Vec2(30 + rand_engine() % 60, 30 + rand_engine() % 60));
     r.setPosition(Vec2(500 + rand_engine() % 100, 360 + rand_engine() % 100));
-    r.setFillColor(Color(rand_engine() % 250, rand_engine() % 250,
-                         rand_engine() % 250, rand_engine() % 250));
+    r.setFillColor(
+        Color(rand_engine() % 250, rand_engine() % 250, rand_engine() % 250, rand_engine() % 250));
     r.setOrigin(Vec2(0.f, 0.f));
     shapes.push_back(move(r));
   }
 }
 
 void rotated_rectange_update() {
-  for (auto& r : shapes) {
+  for (auto &r : shapes) {
     r.rotate(rand_engine() % 3);
   }
 }
 
-void draw_rotated_rectange(RenderWindow& window) {
-  for (const auto& s : shapes) {
+void draw_rotated_rectange(RenderWindow &window) {
+  for (const auto &s : shapes) {
     window.draw(s);
   }
 }
@@ -64,41 +64,46 @@ void build_long_wall_player_test(Vec2 start1, Vec2 end1) {
     auto tmp_end = wall_start + unit_vec * 5.f * static_cast<float>(bW);
     entity.push_back(make_shared<BouncyWall>(wall_start, tmp_end));
     wall_start = tmp_end + unit_vec * 0.2f * static_cast<float>(bW);
-  }
-  // end of build a multi-segment wall
+  } // end of build a multi-segment wall
 }
 
 void init_player_test() {
   entity.push_back(make_shared<Player>());
 
-  build_long_wall_player_test(Vec2(0.f, blockWidth),
-                              Vec2(winWidth / 3.f, blockWidth));
-  build_long_wall_player_test(Vec2(2.f * winWidth / 3.f, blockWidth),
-                              Vec2(winWidth, blockWidth));
+  build_long_wall_player_test(Vec2(0.f, blockWidth), Vec2(winWidth / 3.f, blockWidth));
+  build_long_wall_player_test(Vec2(2.f * winWidth / 3.f, blockWidth), Vec2(winWidth, blockWidth));
 
   build_long_wall_player_test(Vec2(0, winHeight / 10.f),
                               Vec2(3.f * winWidth / 12.f, winHeight / 20.f));
   build_long_wall_player_test(Vec2(2.f * winWidth / 3.f, winHeight / 20.f),
                               Vec2(winWidth, winHeight / 10.f));
 
-  build_long_wall_player_test(
-      Vec2(0, 3.f * winHeight / 9.f),
-      Vec2(2.f * winWidth / 12.f, 3.f * winHeight / 20.f));
-  build_long_wall_player_test(
-      Vec2(2.f * winWidth / 3.f, 3.f * winHeight / 20.f),
-      Vec2(winWidth, 3.f * winHeight / 9.f));
+  build_long_wall_player_test(Vec2(0, 3.f * winHeight / 9.f),
+                              Vec2(2.f * winWidth / 12.f, 3.f * winHeight / 20.f));
+  build_long_wall_player_test(Vec2(2.f * winWidth / 3.f, 3.f * winHeight / 20.f),
+                              Vec2(winWidth, 3.f * winHeight / 9.f));
 
-  for (auto i : {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}) {
+
+  build_long_wall_player_test(Vec2(blockWidth, 1.f * blockWidth + winHeight / 3.f),
+                              Vec2(blockWidth, winHeight));
+
+  build_long_wall_player_test(Vec2(winWidth - blockWidth, 1.f * blockWidth + winHeight / 3.f),
+                              Vec2(winWidth - blockWidth, winHeight));
+  for (auto i : {1, 1, 1, 1, 1, 1}) {
     global::entity.push_back(make_shared<Enemy>(Enemy(0)));
+  }
+
+  for (auto i : {1, 1, 1, 1, 1, 1}) {
+    global::entity.push_back(make_shared<Enemy>(Enemy(1)));
   }
   // print debug information
 }
 
-void update_player_test(const float& ftStep) {
-  for (auto& e : entity) {
+void update_player_test(const float &ftStep) {
+  for (auto &e : entity) {
     e->update(ftStep);
   }
-  for (auto& f : free_frags) {
+  for (auto &f : free_frags) {
     f.update();
   }
 
@@ -107,8 +112,7 @@ void update_player_test(const float& ftStep) {
     global::check_entities_for_collisions();
   }
   {
-    Timer t("process set of freed frags",
-            global::timings_process_set_of_freed_frags);
+    Timer t("process set of freed frags", global::timings_process_set_of_freed_frags);
     global::process_set_of_freed_frags();
   }
   {
@@ -121,16 +125,15 @@ void update_player_test(const float& ftStep) {
     global::remove_dead_entities();
   }
   {
-    Timer t("check free frags for collisions",
-            global::timings_check_free_frag_coll);
+    Timer t("check free frags for collisions", global::timings_check_free_frag_coll);
     global::check_free_frags_for_collisions();
   }
 }
 
-void draw_player_test(RenderWindow& window) {
+void draw_player_test(RenderWindow &window) {
   Timer t("draw player test", global::timings_draw_player_code);
-  for (const auto& e : entity) {
-    for (const auto& f : e->frags) {
+  for (const auto &e : entity) {
+    for (const auto &f : e->frags) {
       window.draw(f);
     }
 #ifdef HITBOX
@@ -138,7 +141,7 @@ void draw_player_test(RenderWindow& window) {
 #endif
   }
   // draw free frags
-  for (const auto& f : free_frags) {
+  for (const auto &f : free_frags) {
     window.draw(f);
   }
 }
@@ -150,7 +153,7 @@ int main() {
   // Initialization
   auto window = create_window();
   Event event;
-  float ftAccum = 0.f;  // frametime accumulator
+  float ftAccum = 0.f; // frametime accumulator
   float keyTimeAccum = 0.f;
   auto log_file = create_log_file(return_current_time_and_date());
   size_t frameCounter = 0;
@@ -192,64 +195,53 @@ int main() {
     if (frameCounter % 600 == 0) {
       *log_file << fps_string << "\n";
       *log_file << "Entity.size() " << global::entity.size() << "\n";
-      *log_file << "frags_to_move.size() " << global::frags_to_move.size()
-                << "\n";
+      *log_file << "frags_to_move.size() " << global::frags_to_move.size() << "\n";
       *log_file << "free_frags.size() " << global::free_frags.size() << "\n";
       // timing data
-      auto t_coll_min_max = minmax_element(global::timings_check_coll.begin(),
-                                           global::timings_check_coll.end());
-      auto t_coll_avg = std::accumulate(timings_check_coll.begin(),
-                                        timings_check_coll.end(), 0) /
+      auto t_coll_min_max =
+          minmax_element(global::timings_check_coll.begin(), global::timings_check_coll.end());
+      auto t_coll_avg = std::accumulate(timings_check_coll.begin(), timings_check_coll.end(), 0) /
                         timings_check_coll.size();
-      auto t_process_min_max =
-          minmax_element(global::timings_process_set_of_freed_frags.begin(),
-                         global::timings_process_set_of_freed_frags.end());
-      auto t_process_avg =
-          std::accumulate(timings_process_set_of_freed_frags.begin(),
-                          timings_process_set_of_freed_frags.end(), 0) /
-          timings_process_set_of_freed_frags.size();
-      auto t_erase_min_max =
-          minmax_element(global::timings_erase_freed_frags.begin(),
-                         global::timings_erase_freed_frags.end());
-      auto t_erase_avg = std::accumulate(timings_erase_freed_frags.begin(),
-                                         timings_erase_freed_frags.end(), 0) /
-                         timings_erase_freed_frags.size();
-      auto t_remove_ent_min_max =
-          minmax_element(global::timings_remove_dead_ent.begin(),
-                         global::timings_remove_dead_ent.end());
+      auto t_process_min_max = minmax_element(global::timings_process_set_of_freed_frags.begin(),
+                                              global::timings_process_set_of_freed_frags.end());
+      auto t_process_avg = std::accumulate(timings_process_set_of_freed_frags.begin(),
+                                           timings_process_set_of_freed_frags.end(), 0) /
+                           timings_process_set_of_freed_frags.size();
+      auto t_erase_min_max = minmax_element(global::timings_erase_freed_frags.begin(),
+                                            global::timings_erase_freed_frags.end());
+      auto t_erase_avg =
+          std::accumulate(timings_erase_freed_frags.begin(), timings_erase_freed_frags.end(), 0) /
+          timings_erase_freed_frags.size();
+      auto t_remove_ent_min_max = minmax_element(global::timings_remove_dead_ent.begin(),
+                                                 global::timings_remove_dead_ent.end());
       auto t_remove_ent_avg =
-          std::accumulate(timings_remove_dead_ent.begin(),
-                          timings_remove_dead_ent.end(), 0) /
+          std::accumulate(timings_remove_dead_ent.begin(), timings_remove_dead_ent.end(), 0) /
           timings_remove_dead_ent.size();
-      auto t_draw_min_max =
-          minmax_element(global::timings_draw_player_code.begin(),
-                         global::timings_draw_player_code.end());
-      auto t_draw_avg = std::accumulate(timings_draw_player_code.begin(),
-                                        timings_draw_player_code.end(), 0) /
-                        timings_draw_player_code.size();
-      auto ff_coll_min_max =
-          minmax_element(global::timings_check_free_frag_coll.begin(),
-                         global::timings_check_free_frag_coll.end());
-      auto ff_coll_avg =
-          std::accumulate(timings_check_free_frag_coll.begin(),
-                          timings_check_free_frag_coll.end(), 0) /
-          timings_check_free_frag_coll.size();
+      auto t_draw_min_max = minmax_element(global::timings_draw_player_code.begin(),
+                                           global::timings_draw_player_code.end());
+      auto t_draw_avg =
+          std::accumulate(timings_draw_player_code.begin(), timings_draw_player_code.end(), 0) /
+          timings_draw_player_code.size();
+      auto ff_coll_min_max = minmax_element(global::timings_check_free_frag_coll.begin(),
+                                            global::timings_check_free_frag_coll.end());
+      auto ff_coll_avg = std::accumulate(timings_check_free_frag_coll.begin(),
+                                         timings_check_free_frag_coll.end(), 0) /
+                         timings_check_free_frag_coll.size();
 
       *log_file << "TIMINGS: "
                 << "\n";
-      *log_file << "collisions: " << *t_coll_min_max.first << " "
-                << *t_coll_min_max.second << " " << t_coll_avg << "\n";
-      *log_file << "ff collisions: " << *ff_coll_min_max.first << " "
-                << *ff_coll_min_max.second << " " << ff_coll_avg << "\n";
+      *log_file << "collisions: " << *t_coll_min_max.first << " " << *t_coll_min_max.second << " "
+                << t_coll_avg << "\n";
+      *log_file << "ff collisions: " << *ff_coll_min_max.first << " " << *ff_coll_min_max.second
+                << " " << ff_coll_avg << "\n";
       *log_file << "process freed frags: " << *t_process_min_max.first << " "
                 << *t_process_min_max.second << " " << t_process_avg << "\n";
-      *log_file << "eraes freed frags: " << *t_erase_min_max.first << " "
-                << *t_erase_min_max.second << " " << t_erase_avg << "\n";
+      *log_file << "eraes freed frags: " << *t_erase_min_max.first << " " << *t_erase_min_max.second
+                << " " << t_erase_avg << "\n";
       *log_file << "remove entities: " << *t_remove_ent_min_max.first << " "
-                << *t_remove_ent_min_max.second << " " << t_remove_ent_avg
-                << "\n";
-      *log_file << "draw code: " << *t_draw_min_max.first << " "
-                << *t_draw_min_max.second << " " << t_draw_avg << "\n";
+                << *t_remove_ent_min_max.second << " " << t_remove_ent_avg << "\n";
+      *log_file << "draw code: " << *t_draw_min_max.first << " " << *t_draw_min_max.second << " "
+                << t_draw_avg << "\n";
 
       global::timings_check_coll.clear();
       global::timings_check_free_frag_coll.clear();
