@@ -6,29 +6,27 @@
 
 #IncludeRegexTransform: 
 
-C:/code/third_game/src/builder.h
-SFML/Graphics.hpp
--
-SFML/System.hpp
--
-entity.h
-C:/code/third_game/src/entity.h
-stdlibs.h
-C:/code/third_game/src/stdlibs.h
-
-C:/code/third_game/src/entity.cpp
-SFML/Graphics.hpp
--
-SFML/System.hpp
--
-stdlibs.h
-C:/code/third_game/src/stdlibs.h
+C:/code/third_game/src/builder.cpp
 builder.h
 C:/code/third_game/src/builder.h
+SFML/Graphics.hpp
+-
+SFML/System.hpp
+-
 entity.h
 C:/code/third_game/src/entity.h
 global.h
 C:/code/third_game/src/global.h
+
+C:/code/third_game/src/builder.h
+SFML/Graphics.hpp
+-
+SFML/System.hpp
+-
+entity.h
+C:/code/third_game/src/entity.h
+stdlibs.h
+C:/code/third_game/src/stdlibs.h
 
 C:/code/third_game/src/entity.h
 SFML/Graphics.hpp

@@ -162,24 +162,24 @@ void builder::add_player_frags(IEntity& e) {
 }
 
 void builder::add_bullet1_frags(IEntity& e) {
-  e.frags.emplace_back(1.f * bW, 0.f * bW, Color(0, 255, 0, 255));
-  e.frags.emplace_back(0.f * bW, 1.f * bW, Color(209, 181, 190, 255));
-  e.frags.emplace_back(1.f * bW, 1.f * bW, Color(209, 181, 190, 255));
-  e.frags.emplace_back(2.f * bW, 1.f * bW, Color(209, 181, 190, 255));
-  e.frags.emplace_back(1.f * bW, 2.f * bW, Color(209, 181, 190, 255));
+  e.frags.emplace_back(1.f * bW, 0.f * bW, Color(153, 76, 0, 255));
+  e.frags.emplace_back(0.f * bW, 1.f * bW, Color(153, 76, 0, 255));
+  e.frags.emplace_back(1.f * bW, 1.f * bW, Color(153, 76, 0, 255));
+  e.frags.emplace_back(2.f * bW, 1.f * bW, Color(153, 76, 0, 255));
+  e.frags.emplace_back(1.f * bW, 2.f * bW, Color(153, 76, 0, 255));
 }
 
 void builder::add_bullet2_frags(IEntity& e) {
+  //e.frags.emplace_back(2.f * bW, 0.f * bW, Color(112, 1, 209, 255));
   e.frags.emplace_back(2.f * bW, 0.f * bW, Color(112, 1, 209, 255));
-  e.frags.emplace_back(3.f * bW, 0.f * bW, Color(112, 1, 209, 255));
   e.frags.emplace_back(1.f * bW, 1.f * bW, Color(112, 1, 209, 255));
+  //e.frags.emplace_back(2.f * bW, 1.f * bW, Color(112, 1, 209, 255));
   e.frags.emplace_back(2.f * bW, 1.f * bW, Color(112, 1, 209, 255));
   e.frags.emplace_back(3.f * bW, 1.f * bW, Color(112, 1, 209, 255));
-  e.frags.emplace_back(4.f * bW, 1.f * bW, Color(112, 1, 209, 255));
   e.frags.emplace_back(1.f * bW, 2.f * bW, Color(112, 1, 209, 255));
-  e.frags.emplace_back(4.f * bW, 2.f * bW, Color(112, 1, 209, 255));
-  e.frags.emplace_back(0.f * bW, 3.f * bW, Color(112, 1, 209, 255));
-  e.frags.emplace_back(5.f * bW, 3.f * bW, Color(112, 1, 209, 255));
+  e.frags.emplace_back(3.f * bW, 2.f * bW, Color(112, 1, 209, 255));
+  //e.frags.emplace_back(0.f * bW, 3.f * bW, Color(112, 1, 209, 255));
+  //e.frags.emplace_back(5.f * bW, 3.f * bW, Color(112, 1, 209, 255));
 }
 
 void builder::add_enemy1_frags(IEntity& e) {

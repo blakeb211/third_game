@@ -34,6 +34,13 @@ void Frag::collide_with(const IEntity& e, Vec2 voxPos) {
       move(bounce_unit_vec * static_cast<float>(global::bW) * 0.6f);
       vel = bounce_unit_vec * curr_vel_len;
       break;
+    case EType::Bullet:
+      (*health)--;
+      // if bullet has taken a hit we move it to free frag
+      bounce_vec = getPosition() - voxPos;
+      bv_len = hypot(bounce_vec.x, bounce_vec.y);
+      bounce_unit_vec = bounce_vec / bv_len;
+      vel = bounce_unit_vec * hypot(dvel.x + vel.x, dvel.y + vel.y);
     default:
       (*health)--;
       break;
@@ -193,7 +200,7 @@ Bullet::Bullet(Vec2 pos) {
   id = global::get_new_entity_id();
   type = EType::Bullet;
   frags.reserve(6);
-  builder::add_bullet1_frags(*this);
+  builder::add_bullet2_frags(*this);
   builder::set_frag_health(*this, 2);
   global::build_hitbox(*this);
   healthCutoff = 2;
@@ -220,7 +227,6 @@ void Bullet::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos,
   Vec2 frag_velocity;
   switch (e.type) {
     case EType::BouncyWall:
-      //(*frags[ivox].health)--;
       // move entity so it doesn't collide again in this frame
       global::move_entity(*this, bounce_unit_vec * (float)global::bW * 0.6f);
       vel = hypot(vel.x, vel.y) * bounce_unit_vec * 1.2f;
@@ -239,5 +245,16 @@ void Bullet::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos,
   }
 }
 
-void Bullet::collide_with_free_frag(unsigned int vi, const Frag& f) {}
+void Bullet::collide_with_free_frag(unsigned int vi, const Frag& f) {
+  (*frags[vi].health)--;
+  // if bullet has taken a hit we move it to free frag
+  auto bounce_vec = frags[vi].getPosition() - f.getPosition();
+  auto bv_len = hypot(bounce_vec.x, bounce_vec.y);
+  auto bounce_unit_vec = bounce_vec / bv_len;
+  auto frag_velocity = bounce_unit_vec * hypot(dvel.x + vel.x, dvel.y + vel.y);
+  if (*frags[vi].health == 1) {
+    frags[vi].vel = frag_velocity;
+    global::frags_to_move.insert(make_pair(id, frags[vi].id));
+  }
+}
 
