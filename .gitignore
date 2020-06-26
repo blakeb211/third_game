@@ -12,6 +12,8 @@
 *.orig
 # Byte compiled python modules.
 *.pyc
+# object files
+*.obj
 # vim swap files
 .*.sw?
 .sw?
