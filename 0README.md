@@ -4,6 +4,8 @@ Purpose of project: Re-Write Second Shooter to run faster and have the explosion
                     and enemy AI effects that I want
 
 
+TIMING AND LOGGING - REFACTOR AND CLEAN UP OUTPUT
+
 DOTPRODUCTS
 
 ROTATE ENTITY ON GRID

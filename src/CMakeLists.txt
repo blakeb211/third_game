@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.17.0)
 project (game)
-add_executable(game global.cpp entity.cpp builder.cpp main1.cpp)
+add_executable(game timing_manager.cpp global.cpp entity.cpp builder.cpp main1.cpp)
 #include_directories(c:/SFML/include)
 #link_directories(c:/SFML/lib)
 #set the C++17 standard

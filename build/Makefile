@@ -247,6 +247,33 @@ main1.cpp.s:
 	$(MAKE) -f CMakeFiles\game.dir\build.make CMakeFiles/game.dir/main1.cpp.s
 .PHONY : main1.cpp.s
 
+timing_manager.obj: timing_manager.cpp.obj
+
+.PHONY : timing_manager.obj
+
+# target to build an object file
+timing_manager.cpp.obj:
+	$(MAKE) -f CMakeFiles\game.dir\build.make CMakeFiles/game.dir/timing_manager.cpp.obj
+.PHONY : timing_manager.cpp.obj
+
+timing_manager.i: timing_manager.cpp.i
+
+.PHONY : timing_manager.i
+
+# target to preprocess a source file
+timing_manager.cpp.i:
+	$(MAKE) -f CMakeFiles\game.dir\build.make CMakeFiles/game.dir/timing_manager.cpp.i
+.PHONY : timing_manager.cpp.i
+
+timing_manager.s: timing_manager.cpp.s
+
+.PHONY : timing_manager.s
+
+# target to generate assembly for a file
+timing_manager.cpp.s:
+	$(MAKE) -f CMakeFiles\game.dir\build.make CMakeFiles/game.dir/timing_manager.cpp.s
+.PHONY : timing_manager.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -268,6 +295,9 @@ help:
 	@echo ... main1.obj
 	@echo ... main1.i
 	@echo ... main1.s
+	@echo ... timing_manager.obj
+	@echo ... timing_manager.i
+	@echo ... timing_manager.s
 .PHONY : help
 
 

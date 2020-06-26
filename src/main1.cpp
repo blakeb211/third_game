@@ -22,7 +22,7 @@ vector<RectangleShape> shapes;
 // PLAYER TEST
 //
 
-void build_long_wall_player_test(Vec2 wall_start, Vec2 wall_end)
+void build_long_wall(Vec2 wall_start, Vec2 wall_end)
 {
     // start of build a multi-segment wall
     const auto unit_vec = make_unit_vec(wall_end - wall_start);
@@ -39,24 +39,23 @@ void init_player_test()
 {
     entity.push_back(make_shared<Player>());
 
-    build_long_wall_player_test(Vec2(0.f, blockWidth), Vec2(winWidth / 3.f, blockWidth));
-    build_long_wall_player_test(Vec2(2.f * winWidth / 3.f, blockWidth), Vec2(winWidth, blockWidth));
+    build_long_wall(Vec2(0.f, blockWidth), Vec2(winWidth / 3.f, blockWidth));
+    build_long_wall(Vec2(2.f * winWidth / 3.f, blockWidth), Vec2(winWidth, blockWidth));
 
-    build_long_wall_player_test(
-        Vec2(0, winHeight / 10.f), Vec2(3.f * winWidth / 12.f, winHeight / 20.f));
-    build_long_wall_player_test(
-        Vec2(2.f * winWidth / 3.f, winHeight / 20.f), Vec2(winWidth, winHeight / 10.f));
+    build_long_wall(Vec2(0, winHeight / 10.f), Vec2(3.f * winWidth / 12.f, winHeight / 20.f));
+    build_long_wall(Vec2(2.f * winWidth / 3.f, winHeight / 20.f), Vec2(winWidth, winHeight / 10.f));
 
-    build_long_wall_player_test(Vec2(winWidth / 12.f, 3.f * winHeight / 9.f),
+    build_long_wall(Vec2(winWidth / 12.f, 3.f * winHeight / 9.f),
         Vec2(2.f * winWidth / 12.f, 3.f * winHeight / 20.f));
-    build_long_wall_player_test(Vec2(2.f * winWidth / 3.f, 3.f * winHeight / 20.f),
+    build_long_wall(Vec2(2.f * winWidth / 3.f, 3.f * winHeight / 20.f),
         Vec2(11.5f * winWidth / 12.f, 3.f * winHeight / 9.f));
 
-    build_long_wall_player_test(
+    build_long_wall(
         Vec2(blockWidth, 1.f * blockWidth + winHeight / 3.f), Vec2(blockWidth, winHeight));
 
-    build_long_wall_player_test(Vec2(winWidth - blockWidth, 1.f * blockWidth + winHeight / 3.f),
+    build_long_wall(Vec2(winWidth - blockWidth, 1.f * blockWidth + winHeight / 3.f),
         Vec2(winWidth - blockWidth, winHeight));
+
     for (auto i : { 1, 1, 1, 1, 1, 1 }) {
         global::entity.push_back(make_shared<Enemy>(Enemy(0)));
     }
@@ -64,7 +63,6 @@ void init_player_test()
     for (auto i : { 1, 1, 1, 1, 1, 1 }) {
         global::entity.push_back(make_shared<Enemy>(Enemy(1)));
     }
-    // print debug information
 }
 
 void update_player_test(const float& ftStep)

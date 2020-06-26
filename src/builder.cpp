@@ -1,7 +1,6 @@
 #include "builder.h"
 
 #include <SFML/Graphics.hpp>
-#include <SFML/System.hpp>
 
 #include "entity.h"
 #include "global.h"
@@ -9,26 +8,23 @@ using namespace std;
 using namespace sf;
 using namespace global;
 using Vec2 = Vector2<float>;
+
 void builder::set_frag_health(IEntity& e, unsigned int num)
 {
-    auto fragsize = e.frags.size();
-    for (int i = 0; i < fragsize; i++) {
-        *e.frags[i].health = num;
-    }
+  for_each(begin(e.frags), end(e.frags), [&](auto & f) { *f.health = num; });
 }
+
 void builder::add_wall_frags(IEntity& e, Vec2 start, Vec2 end, Color c)
 {
     // create a vector from start to end
-    Vec2 wallPath = end - start;
-    auto length = hypot(wallPath.x, wallPath.y);
-    Vec2 unitVec = Vec2(wallPath.x / length, wallPath.y / length);
+    Vec2 unitVec = make_unit_vec(end - start);
     // march from start to end placing voxels
     while (calc_dist(start, end) > 0.55f * bW) {
         // place voxel
         e.frags.emplace_back(start.x, start.y, c);
         // consider making 1.2f below be depending on the slope of the
         // start and end vectors
-        start += unitVec * 1.f * static_cast<float>(bW);
+        start += unitVec * 1.f * (float)(bW);
     }
 }
 
@@ -171,16 +167,12 @@ void builder::add_bullet1_frags(IEntity& e)
 
 void builder::add_bullet2_frags(IEntity& e)
 {
-    // e.frags.emplace_back(2.f * bW, 0.f * bW, Color(112, 1, 209, 255));
     e.frags.emplace_back(2.f * bW, 0.f * bW, Color(112, 1, 209, 255));
     e.frags.emplace_back(1.f * bW, 1.f * bW, Color(112, 1, 209, 255));
-    // e.frags.emplace_back(2.f * bW, 1.f * bW, Color(112, 1, 209, 255));
     e.frags.emplace_back(2.f * bW, 1.f * bW, Color(112, 1, 209, 255));
     e.frags.emplace_back(3.f * bW, 1.f * bW, Color(112, 1, 209, 255));
     e.frags.emplace_back(1.f * bW, 2.f * bW, Color(112, 1, 209, 255));
     e.frags.emplace_back(3.f * bW, 2.f * bW, Color(112, 1, 209, 255));
-    // e.frags.emplace_back(0.f * bW, 3.f * bW, Color(112, 1, 209, 255));
-    // e.frags.emplace_back(5.f * bW, 3.f * bW, Color(112, 1, 209, 255));
 }
 
 void builder::add_enemy1_frags(IEntity& e)
