@@ -9,14 +9,17 @@ ROTATE ENTITY ON GRID
   colliding bullets, entities
 ADD A LERP FUNCTION
 FUNCTION TO MOVE ENEMIES OUT OF HITBOX OVERLAP FOR EASIER INITIAL PLACEMENT
+SIMPLIFY BOUNCE_VEC CODE
 
 REFACTOR - GROUP RELATED METHODS 
 CREATING TIMING MANAGER CLASS TO MAKE TIMING EASIER
+
+
+Add enemy AI with raycasts
 ADD PLAYER HEALTH WITH A HEALTHBAR
 ADD FADEOUT AND TIMER TO DYING ENEMIES
 ADD MORE CONSISTENT COLLISIONS
 IN GAME LEVEL EDITOR
-Add enemy AI with raycasts
 
 WALLS
   have a wall building functions
@@ -26,9 +29,8 @@ READ THROUGH 3 OTHER GAME CODES
 READ THROUGH MY CODE
 READ THROUGH SFML API AGAIN
 
-add a quadtree from codinggame video
+separately test a quadtree from codinggame video
 
-LOOK INTO QUAD TREES
 WRITE AND TEST AI SYSTEM
 NEED LEVELS
 ADD SOUND
@@ -48,7 +50,6 @@ Directory Org
   src directory for source files 
 
   Engine changes
-    add a "free voxels" vector that broken off pixels can move to with a timer for their lifetime
     add hit boxes and only check against those -> if those intersect then do voxel-by-voxel checking
 
 NOTES:
