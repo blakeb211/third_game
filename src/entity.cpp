@@ -27,18 +27,18 @@ Frag::Frag(float mX, float mY, sf::Color c = sf::Color::White)
 void Frag::update() { move(vel + dvel); }
 void Frag::collide_with(const IEntity& e, Vec2 voxPos)
 {
-    Vec2 bounce_unit_vec; 
+    Vec2 bounce_unit_vec;
     float curr_vel_len;
     switch (e.type) {
     case EType::BouncyWall:
         curr_vel_len = hypot(dvel.x + vel.x, dvel.y + vel.y);
-        bounce_unit_vec = global::make_unit_vec(getPosition() - voxPos); 
+        bounce_unit_vec = global::make_unit_vec(getPosition() - voxPos);
         move(bounce_unit_vec * static_cast<float>(global::bW) * 1.4f);
         vel = bounce_unit_vec * curr_vel_len;
         break;
     case EType::Bullet:
         (*health) -= 2;
-        bounce_unit_vec = global::make_unit_vec(getPosition() - voxPos); 
+        bounce_unit_vec = global::make_unit_vec(getPosition() - voxPos);
         vel = bounce_unit_vec * hypot(dvel.x + vel.x, dvel.y + vel.y);
     case EType::Enemy:
         (*health) -= 3;
@@ -56,14 +56,12 @@ unsigned int IEntity::get_health() { return frags.size(); }
 //
 // BouncyWall Definitions
 //
-// wall is just a non-moving entity with optional health
 BouncyWall::BouncyWall(Vec2 start, Vec2 end)
 {
     // data
     id = global::get_new_entity_id();
     type = EType::BouncyWall;
     healthCutoff = 4;
-
     builder::add_wall_frags(*this, start, end, Color(210, 35, 90, 255));
     global::build_hitbox(*this);
 }
@@ -72,8 +70,7 @@ void BouncyWall::update(FrameTime ftStep) { }
 void BouncyWall::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos, sf::Color fragColor)
 {
     // this really should be the color of the frag that hit it not the
-    // color of the first frag of the entity
-    frags[ivox].setFillColor(frags[ivox].getFillColor() - sf::Color(15, 15, 15, 0));
+    frags[ivox].setFillColor(frags[ivox].getFillColor() + sf::Color(0, 40, 9, 0));
 }
 
 void BouncyWall::collide_with_free_frag(unsigned int vi, const Frag& f) { }
@@ -93,11 +90,10 @@ Player::Player()
     healthCutoff = 3;
     vel = Vec2(0.f, 0.f);
     dvel = Vec2(0.f, 0.f);
-    // data
     canShoot = false;
     currTimer = 0.f;
     timerMax = 215.f;
-    move_entity(*this, Vec2(10.f, winHeight - 10.f));
+    move_entity(*this, Vec2(winWidth / 2.f, winHeight - 4.f * (float)global::bW));
 }
 
 void Player::update(FrameTime ftStep)
@@ -108,19 +104,24 @@ void Player::update(FrameTime ftStep)
 }
 
 void Player::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos, sf::Color c) { }
+
 void Player::collide_with_free_frag(unsigned int vi, const Frag& f) { }
+
 void Player::fire_shot()
 {
-    if (currTimer < timerMax)
+    if (currTimer < timerMax) {
         return;
+    }
     Vec2 player_pos = hitbox.getPosition();
     auto hitbox_width = hitbox.getSize().x;
     auto player_center = player_pos + Vec2(hitbox_width / 2.f, 0.f);
-
+    // create bullet
     auto new_bullet = make_shared<Bullet>(Vec2(0.f, 0.f));
+    // position bullet in front of player
     auto bullet_width = new_bullet->hitbox.getSize().x;
     global::move_entity(
         *new_bullet, player_center - Vec2(bullet_width / 4.f, +1.f * global::blockWidth * 4.f));
+    // add bullet to entity mega-vector
     global::entity.push_back(move(new_bullet));
     // reset shot timer
     currTimer = 0.f;
@@ -146,7 +147,8 @@ Enemy::Enemy(unsigned int enemy_type)
         path.emplace_back(Vec2(global::rand_between(200, 800), global::rand_between(300, 600)));
         currPathPoint = 0;
         global::move_entity(*this, path[currPathPoint]);
-        healthCutoff = 2 * frags.size() / 3;
+        // define when enemy explodes
+        healthCutoff = 2 * frags.size() / 4;
         global::build_hitbox(*this);
         break;
     case 1:
@@ -159,18 +161,21 @@ Enemy::Enemy(unsigned int enemy_type)
         path.emplace_back(Vec2(global::rand_between(200, 800), global::rand_between(300, 450)));
         currPathPoint = 0;
         global::move_entity(*this, path[currPathPoint]);
-        healthCutoff = 2 * frags.size() / 3;
+        // define when enemy explodes
+        healthCutoff = 2 * frags.size() / 4;
         global::build_hitbox(*this);
         break;
     };
 }
 void Enemy::fire_shot() { }
+
 void Enemy::update(FrameTime ftStep)
 {
     currTimer += ftStep;
     auto hitbox_pos = hitbox.getPosition();
     auto hitbox_size = hitbox.getSize();
     global::move_entity(*this, vel + dvel);
+    // dampen enemies dvel
     dvel *= 0.03f;
     // mark enemies as dead if they move off screen
     if (hitbox_pos.x < 0 || hitbox_pos.x + hitbox_size.x > global::winWidth || hitbox_pos.y < 0
@@ -196,7 +201,7 @@ void Enemy::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos, sf::C
         if (*frags[ivox].health <= 1) {
             // move the frag outside the enemy so doesn't hurt itself
             frags[ivox].vel = frag_velocity;
-            auto move_dist = hypot(hitbox.getSize().x/2, hitbox.getSize().y/2);
+            auto move_dist = hypot(hitbox.getSize().x / 2, hitbox.getSize().y / 2);
             frags[ivox].move(bounce_unit_vec * (float)global::bW);
             global::frags_to_move.insert(make_pair(id, frags[ivox].id));
         }

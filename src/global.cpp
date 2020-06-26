@@ -211,9 +211,10 @@ void global::check_entities_for_collisions()
 void global::remove_dead_entities()
 {
     // used for
-    //    a) removing bullets that go off screen
-    //
+    //    a) removing entities that went off screen 
+    //    b) marking entities as dead if they are below their health cutoff
     // here is where we would explode dead entities into free frags
+     
     for (auto& e : entity) {
         // copy its frags to free_frags
         // set the frag velociy
@@ -222,7 +223,7 @@ void global::remove_dead_entities()
             for (auto& f : e->frags) {
                 // modulate exploded enemy frag health
                 (*f.health) = 1;
-                f.vel = Vec2(-3.5f + rand_engine() % 7, -3.5f + rand_engine() % 7);
+                f.vel = Vec2(rand_between(-3, 6), rand_between(-3, 6));
                 free_frags.push_back(move(f));
             }
             e->isDead = true;
@@ -231,7 +232,6 @@ void global::remove_dead_entities()
     // erase all entities flagged as isDead, which can happen by
     // moving off screen or if they dropped below their health cutoff
     // and got exploded
-
     entity.erase(remove_if(begin(entity), end(entity),
                      [](const shared_ptr<IEntity>& e) { return e->isDead == true; }),
         end(entity));
