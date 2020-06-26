@@ -27,22 +27,18 @@ Frag::Frag(float mX, float mY, sf::Color c = sf::Color::White)
 void Frag::update() { move(vel + dvel); }
 void Frag::collide_with(const IEntity& e, Vec2 voxPos)
 {
-    Vec2 bounce_vec, bounce_unit_vec;
+    Vec2 bounce_unit_vec; 
     float curr_vel_len;
     switch (e.type) {
     case EType::BouncyWall:
         curr_vel_len = hypot(dvel.x + vel.x, dvel.y + vel.y);
-        bounce_vec = (getPosition() - voxPos);
-        bounce_unit_vec = (getPosition() - voxPos) / hypot(bounce_vec.x, bounce_vec.y);
+        bounce_unit_vec = global::make_unit_vec(getPosition() - voxPos); 
         move(bounce_unit_vec * static_cast<float>(global::bW) * 1.4f);
         vel = bounce_unit_vec * curr_vel_len;
         break;
     case EType::Bullet:
         (*health) -= 2;
-        // if bullet has taken a hit we move it to free frag
-        bounce_vec = (getPosition() - voxPos);
-        bounce_unit_vec = bounce_vec / hypot(bounce_vec.x, bounce_vec.y);
-        move(bounce_unit_vec * static_cast<float>(global::bW) * 1.2f);
+        bounce_unit_vec = global::make_unit_vec(getPosition() - voxPos); 
         vel = bounce_unit_vec * hypot(dvel.x + vel.x, dvel.y + vel.y);
     case EType::Enemy:
         (*health) -= 3;
@@ -160,7 +156,7 @@ Enemy::Enemy(unsigned int enemy_type)
         timerMax = 2000.f; // timerMax in milliseconds
         // IEnemy
         // path loaded from file or generated
-        path.emplace_back(Vec2(global::rand_between(200, 800), global::rand_between(300, 600)));
+        path.emplace_back(Vec2(global::rand_between(200, 800), global::rand_between(300, 450)));
         currPathPoint = 0;
         global::move_entity(*this, path[currPathPoint]);
         healthCutoff = 2 * frags.size() / 3;
@@ -201,7 +197,7 @@ void Enemy::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos, sf::C
             // move the frag outside the enemy so doesn't hurt itself
             frags[ivox].vel = frag_velocity;
             auto move_dist = hypot(hitbox.getSize().x/2, hitbox.getSize().y/2);
-            frags[ivox].move(bounce_unit_vec * move_dist);
+            frags[ivox].move(bounce_unit_vec * (float)global::bW);
             global::frags_to_move.insert(make_pair(id, frags[ivox].id));
         }
         break;
@@ -266,8 +262,8 @@ void Bullet::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos, sf::
     case EType::BouncyWall:
         // move entity so it doesn't collide again in this frame
         global::move_entity(*this, bounce_unit_vec * (float)global::bW * 0.6f);
-        vel = hypot(vel.x, vel.y) * bounce_unit_vec * 1.2f;
-        vel += Vec2((-2.5f + global::rand_engine() % 4) * 0.1f, 0.f);
+        vel = hypot(vel.x, vel.y) * bounce_unit_vec;
+        vel += Vec2((-2.5f + global::rand_engine() % 4) * 0.05f, 0.f);
         frag_velocity = vel;
         break;
     case EType::Enemy:

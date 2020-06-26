@@ -8,7 +8,6 @@
 #include <SFML/System.hpp>
 
 #include "global.h"
-// #include "entity.h"
 //#define HITBOX
 
 using namespace std;
@@ -23,14 +22,10 @@ vector<RectangleShape> shapes;
 // PLAYER TEST
 //
 
-void build_long_wall_player_test(Vec2 start1, Vec2 end1)
+void build_long_wall_player_test(Vec2 wall_start, Vec2 wall_end)
 {
     // start of build a multi-segment wall
-    auto wall_start = move(start1);
-    auto wall_end = (end1);
-    auto wall_vec = wall_end - wall_start;
-    const auto length = hypot(wall_vec.x, wall_vec.y);
-    const auto unit_vec = wall_vec / length;
+    const auto unit_vec = make_unit_vec(wall_end - wall_start);
 
     while (calc_dist(wall_start, wall_end) >= 2.8f * bW) {
         // place voxel
@@ -52,10 +47,10 @@ void init_player_test()
     build_long_wall_player_test(
         Vec2(2.f * winWidth / 3.f, winHeight / 20.f), Vec2(winWidth, winHeight / 10.f));
 
-    build_long_wall_player_test(
-        Vec2(0, 3.f * winHeight / 9.f), Vec2(2.f * winWidth / 12.f, 3.f * winHeight / 20.f));
-    build_long_wall_player_test(
-        Vec2(2.f * winWidth / 3.f, 3.f * winHeight / 20.f), Vec2(winWidth, 3.f * winHeight / 9.f));
+    build_long_wall_player_test(Vec2(winWidth / 12.f, 3.f * winHeight / 9.f),
+        Vec2(2.f * winWidth / 12.f, 3.f * winHeight / 20.f));
+    build_long_wall_player_test(Vec2(2.f * winWidth / 3.f, 3.f * winHeight / 20.f),
+        Vec2(11.5f * winWidth / 12.f, 3.f * winHeight / 9.f));
 
     build_long_wall_player_test(
         Vec2(blockWidth, 1.f * blockWidth + winHeight / 3.f), Vec2(blockWidth, winHeight));
@@ -108,17 +103,13 @@ void draw_player_test(RenderWindow& window)
 {
     Timer t("draw player test", global::timings_draw_player_code);
     for (const auto& e : entity) {
-        for (const auto& f : e->frags) {
-            window.draw(f);
-        }
+        for_each(begin(e->frags), end(e->frags), [&](const Frag& f) { window.draw(f); });
 #ifdef HITBOX
         window.draw(e->hitbox);
 #endif
     }
     // draw free frags
-    for (const auto& f : free_frags) {
-        window.draw(f);
-    }
+    for_each(begin(free_frags), end(free_frags), [&](const Frag& f) { window.draw(f); });
 }
 
 //

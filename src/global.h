@@ -36,6 +36,11 @@ inline std::vector<float> timings_draw_player_code;
 // free functions
 //
 //
+
+// make a unit vec from a vector
+Vec2 make_unit_vec(Vec2 v);
+
+
 void collide_enemy_hitboxes(IEntity& ei, IEntity& ej);
 
 // generate random integer between a low and high range

@@ -22,6 +22,13 @@ inline std::ostream& global::operator<<(std::ostream& Str, EType V)
         return Str << (int)V;
     };
 }
+
+Vec2 global::make_unit_vec(Vec2 v)
+{
+    auto len = hypot(v.x, v.y);
+    return v / len;
+}
+
 int global::rand_between(int low, int high) { return low + rand_engine() % (high - low); }
 
 void global::set_frag_health(IEntity& e, optional<unsigned int> h)
@@ -57,7 +64,7 @@ void global::collide_enemy_hitboxes(IEntity& ei_ref, IEntity& ej_ref)
     auto ej_cent = ej_ref.hitbox.getPosition()
         + Vec2(ej_ref.hitbox.getSize().x / 2, ej_ref.hitbox.getSize().y / 2);
     auto bounce_vec = ei_cent - ej_cent;
-    auto bv_len =  hypot(bounce_vec.x, bounce_vec.y);
+    auto bv_len = hypot(bounce_vec.x, bounce_vec.y);
     bounce_vec = bounce_vec / bv_len;
     // apply bounce forces
     ei_ref.dvel += bounce_vec * 0.8f;
@@ -214,6 +221,7 @@ void global::remove_dead_entities()
         if (e->frags.size() < e->healthCutoff) {
             for (auto& f : e->frags) {
                 // modulate exploded enemy frag health
+                (*f.health) = 1;
                 f.vel = Vec2(-3.5f + rand_engine() % 7, -3.5f + rand_engine() % 7);
                 free_frags.push_back(move(f));
             }
