@@ -135,9 +135,8 @@ int main()
         const auto timePoint1 = high_res_clock::now();
 
         // Get user input
-        if (handle_keyboard_input(keyTimeAccum, keyInputStep, *window)) {
-            break;
-        } else if (check_for_window_close(*window, event)) {
+        if (handle_keyboard_input(keyTimeAccum, keyInputStep, *window)
+            || check_for_window_close(*window, event)) {
             break;
         }
 
@@ -162,7 +161,7 @@ int main()
         if (frameCounter % 600 == 0) {
             *log_file << fps_string << "\n";
             *log_file << "Entity.size() " << global::entity.size() << "\n";
-            *log_file << "frags_to_move.size() " << global::frags_to_move.size() << "\n";
+            *log_file << "frags_to_free.size() " << global::frags_to_free.size() << "\n";
             *log_file << "free_frags.size() " << global::free_frags.size() << "\n";
             // timing data
             auto t_coll_min_max = minmax_element(

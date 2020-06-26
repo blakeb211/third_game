@@ -24,7 +24,7 @@ inline std::vector<Frag> free_frags;
 inline size_t entityCounter = 0;
 inline size_t fragCounter = 0;
 inline std::shared_ptr<IEntity> player_ptr;
-inline std::set<std::pair<size_t, size_t>> frags_to_move;
+inline std::set<std::pair<size_t, size_t>> frags_to_free;
 // vectors to hold timing data in microseconds
 inline std::vector<float> timings_check_coll;
 inline std::vector<float> timings_check_free_frag_coll;
@@ -40,6 +40,8 @@ inline std::vector<float> timings_draw_player_code;
 // make a unit vec from a vector
 Vec2 make_unit_vec(Vec2 v);
 
+// calculate entity center if it hasn't been calculated yet, otherwise return it
+Vec2 get_center(IEntity& e);
 
 void collide_enemy_hitboxes(IEntity& ei, IEntity& ej);
 

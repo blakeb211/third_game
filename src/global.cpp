@@ -56,16 +56,25 @@ unique_ptr<Frag> global::get_frag_with_id(IEntity& e, size_t frag_id)
     }
     return nullptr;
 }
+
+// calculate entity center if it hasn't been calculated yet, otherwise return it
+Vec2 global::get_center(IEntity& e)
+{
+    if (e.center.x > 0 || e.center.y > 0) {
+      return e.center;
+    }
+    else { 
+        e.center
+            = e.hitbox.getPosition() + Vec2(e.hitbox.getSize().x / 2, e.hitbox.getSize().y / 2);
+    }
+    return e.center;
+}
 // collide enemy hitboxes to keep the out of each others hitbox
 void global::collide_enemy_hitboxes(IEntity& ei_ref, IEntity& ej_ref)
 {
-    auto ei_cent = ei_ref.hitbox.getPosition()
-        + Vec2(ei_ref.hitbox.getSize().x / 2, ei_ref.hitbox.getSize().y / 2);
-    auto ej_cent = ej_ref.hitbox.getPosition()
-        + Vec2(ej_ref.hitbox.getSize().x / 2, ej_ref.hitbox.getSize().y / 2);
-    auto bounce_vec = ei_cent - ej_cent;
-    auto bv_len = hypot(bounce_vec.x, bounce_vec.y);
-    bounce_vec = bounce_vec / bv_len;
+    auto ei_cent = get_center(ei_ref);
+    auto ej_cent = get_center(ej_ref); 
+    auto bounce_vec = make_unit_vec(ei_cent - ej_cent);
     // apply bounce forces
     ei_ref.dvel += bounce_vec * 0.8f;
     ej_ref.dvel += bounce_vec * -0.8f;
@@ -83,7 +92,7 @@ void global::check_free_frags_for_collisions()
                 auto& fi_ref = free_frags[fi];
                 auto& ei_ref = *entity[ei];
                 auto ev_size = ei_ref.frags.size();
-                // loop over entity voxels
+                // check which pixels the frag hit 
                 Vec2 ff_pos = free_frags[fi].getPosition();
                 for (int vi = 0; vi < ev_size; vi++) {
                     if (fi_ref.getGlobalBounds().intersects(ei_ref.frags[vi].getGlobalBounds())) {
@@ -116,14 +125,14 @@ void global::process_set_of_freed_frags()
 {
     // move frags to the free frag vector and remove it from the
     // bullet entity vector
-    // The pair in frags_to_move is entity_id, frag idx.
+    // The pair in frags_to_free is entity_id, frag idx.
 
     size_t frag_id;
     shared_ptr<IEntity> e_ptr;
     unique_ptr<Frag> f_ptr;
 
     try {
-        for (const auto& eid_fid : frags_to_move) {
+        for (const auto& eid_fid : frags_to_free) {
             e_ptr = get_entity_with_id(eid_fid.first);
             if (e_ptr == nullptr)
                 continue;
@@ -137,7 +146,7 @@ void global::process_set_of_freed_frags()
     } catch (exception& e) {
         cout << "exception in for loop of process_set_of_freed_frags" << endl;
     }
-    frags_to_move.clear();
+    frags_to_free.clear();
 }
 
 void global::erase_freed_frags()
@@ -211,10 +220,10 @@ void global::check_entities_for_collisions()
 void global::remove_dead_entities()
 {
     // used for
-    //    a) removing entities that went off screen 
+    //    a) removing entities that went off screen
     //    b) marking entities as dead if they are below their health cutoff
-    // here is where we would explode dead entities into free frags
-     
+    //    c) exploding entities that fall below their healthCutoff
+
     for (auto& e : entity) {
         // copy its frags to free_frags
         // set the frag velociy
@@ -224,6 +233,7 @@ void global::remove_dead_entities()
                 // modulate exploded enemy frag health
                 (*f.health) = 1;
                 f.vel = Vec2(rand_between(-3, 6), rand_between(-3, 6));
+                // explode entities into free frags
                 free_frags.push_back(move(f));
             }
             e->isDead = true;
@@ -261,18 +271,16 @@ void global::build_hitbox(IEntity& e)
     e.hitbox.setOutlineThickness(1.f);
 }
 
-// free function to set position of entity
+// move entity frags and its hitbox
 void global::move_entity(IEntity& e, const Vec2 offset)
 {
-    for (int i = 0; i < e.frags.size(); i++) {
-        e.frags[i].move(offset);
-    }
-    // move hitbox
+    for_each(begin(e.frags), end(e.frags), [&](Frag& f) { f.move(offset); });
     e.hitbox.move(offset);
 }
 
 // free function to get a new entity id
 unsigned int global::get_new_entity_id() { return entityCounter++; }
+
 // free function to create a window
 unique_ptr<RenderWindow> global::create_window()
 {
@@ -285,15 +293,14 @@ unique_ptr<RenderWindow> global::create_window()
 
 // free function to calculate the frames per second using
 // the time the frame started
-pair<float, float> global::calc_frames_per_second(const high_res_clock::time_point& timePoint1)
+pair<float, float> global::calc_frames_per_second(const high_res_clock::time_point& time1)
 {
-    auto timePoint2(high_res_clock::now());
-    float frametime {
-        chrono::duration_cast<chrono::duration<float, milli>>(timePoint2 - timePoint1).count()
-    };
-    auto fSeconds = frametime / 1000.f;
+    auto time2(high_res_clock::now());
+    // calculate Frametime in milliseconds
+    float fTime { chrono::duration_cast<chrono::duration<float, milli>>(time2 - time1).count() };
+    auto fSeconds = fTime / 1000.f;
     auto fps = 1.f / fSeconds;
-    return move(make_pair(roundf(fps), frametime));
+    return move(make_pair(roundf(fps), fTime));
 }
 
 // free funnction to check for window close
@@ -383,7 +390,7 @@ unique_ptr<fstream> global::create_log_file(const string currDateTime)
 
 float global::calc_dist(const sf::Vector2f& va, const sf::Vector2f& vb)
 {
-    return sqrt(pow(va.x - vb.x, 2) + pow(va.y - vb.y, 2));
+    return move(sqrt(pow(va.x - vb.x, 2) + pow(va.y - vb.y, 2)));
 }
 
 shared_ptr<IEntity> global::get_entity_with_id(unsigned int _id)

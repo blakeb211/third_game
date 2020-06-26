@@ -203,7 +203,7 @@ void Enemy::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos, sf::C
             frags[ivox].vel = frag_velocity;
             auto move_dist = hypot(hitbox.getSize().x / 2, hitbox.getSize().y / 2);
             frags[ivox].move(bounce_unit_vec * (float)global::bW);
-            global::frags_to_move.insert(make_pair(id, frags[ivox].id));
+            global::frags_to_free.insert(make_pair(id, frags[ivox].id));
         }
         break;
     case EType::Enemy:
@@ -224,7 +224,7 @@ void Enemy::collide_with_free_frag(unsigned int vi, const Frag& f)
     (*(frags[vi]).health)--;
     if (*frags[vi].health <= 1) {
         frags[vi].vel = bounce_unit_vec * hypot(f.vel.x, f.vel.y) * 0.5f;
-        global::frags_to_move.insert(make_pair(id, frags[vi].id));
+        global::frags_to_free.insert(make_pair(id, frags[vi].id));
     }
 }
 //
@@ -279,7 +279,7 @@ void Bullet::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos, sf::
     // if bullet has taken a hit we move it to free frag
     if (*frags[ivox].health == 1) {
         frags[ivox].vel = frag_velocity;
-        global::frags_to_move.insert(make_pair(id, frags[ivox].id));
+        global::frags_to_free.insert(make_pair(id, frags[ivox].id));
     }
 }
 
@@ -293,7 +293,7 @@ void Bullet::collide_with_free_frag(unsigned int vi, const Frag& f)
     auto frag_velocity = bounce_unit_vec * hypot(dvel.x + vel.x, dvel.y + vel.y);
     if (*frags[vi].health == 1) {
         frags[vi].vel = frag_velocity;
-        global::frags_to_move.insert(make_pair(id, frags[vi].id));
+        global::frags_to_free.insert(make_pair(id, frags[vi].id));
     }
 }
 
