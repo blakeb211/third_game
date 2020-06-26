@@ -4,23 +4,23 @@ Purpose of project: Re-Write Second Shooter to run faster and have the explosion
                     and enemy AI effects that I want
 
 
-INCLUDE DOTPRODUCTS
-INCLUDE ENEMIES ROTATE TO SHOOT
+DOTPRODUCTS
+ROTATE ENTITY ON GRID
+  colliding bullets, entities
+ADD A LERP FUNCTION
+FUNCTION TO MOVE ENEMIES OUT OF HITBOX OVERLAP FOR EASIER INITIAL PLACEMENT
 
-// WHERE TO PUT THIS CODE?
-// INCLUDE COLLISIONS BETWEEN
-WALL AND FRAG
-BULLET AND FRAG
-ENEMY AND FRAG
-
-Bullets RESPOND TO DYING by exploding
-ENEMIES RESPOND TO DYING BY exploding 
+REFACTOR - GROUP RELATED METHODS 
+CREATING TIMING MANAGER CLASS TO MAKE TIMING EASIER
+ADD PLAYER HEALTH WITH A HEALTHBAR
+ADD FADEOUT AND TIMER TO DYING ENEMIES
+ADD MORE CONSISTENT COLLISIONS
+IN GAME LEVEL EDITOR
 Add enemy AI with raycasts
 
 WALLS
   have a wall building functions
-  give walls a self-calculated reflection angle that is applied to things that hit it also only one voxel-voxel
-  collision at a time
+  give walls a self-calculated reflection angle 
 
 READ THROUGH 3 OTHER GAME CODES
 READ THROUGH MY CODE
@@ -28,8 +28,6 @@ READ THROUGH SFML API AGAIN
 
 add a quadtree from codinggame video
 
-Note that FTSTEP doesn't need to be passed to the udpate methods
-HAVE TO USE AXIS ALIGNED COLLISION DETECTION
 LOOK INTO QUAD TREES
 WRITE AND TEST AI SYSTEM
 NEED LEVELS
@@ -45,7 +43,6 @@ Study Materials
 
 
 Coding Guidelines 
-  use a lerp fxn
 
 Directory Org
   src directory for source files 
