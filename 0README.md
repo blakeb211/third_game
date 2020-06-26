@@ -5,6 +5,7 @@ Purpose of project: Re-Write Second Shooter to run faster and have the explosion
 
 
 DOTPRODUCTS
+
 ROTATE ENTITY ON GRID
   colliding bullets, entities
 ADD A LERP FUNCTION
@@ -13,6 +14,8 @@ SIMPLIFY BOUNCE_VEC CODE
 
 REFACTOR - GROUP RELATED METHODS 
 CREATING TIMING MANAGER CLASS TO MAKE TIMING EASIER
+
+SPEED UP DRAW CALLS USING A VERTEX ARRAY
 
 Add enemy AI with raycasts
 ADD PLAYER HEALTH WITH A HEALTHBAR

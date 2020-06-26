@@ -35,6 +35,10 @@ inline std::vector<float> timings_draw_player_code;
 //
 // free functions
 //
+//
+void collide_enemy_hitboxes(IEntity& ei, IEntity& ej);
+
+// generate random integer between a low and high range
 int rand_between(int low, int high);
 //
 // loop of the frags in an entity and set their health
