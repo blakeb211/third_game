@@ -9,9 +9,9 @@ using namespace sf;
 using namespace global;
 using Vec2 = Vector2<float>;
 
-void builder::set_frag_health(IEntity& e, unsigned int num)
+void builder::set_frag_health(IEntity& e, optional<unsigned int> num)
 {
-  for_each(begin(e.frags), end(e.frags), [&](auto & f) { *f.health = num; });
+  for_each(begin(e.frags), end(e.frags), [&num](auto & f) { f.health = num; });
 }
 
 void builder::add_wall_frags(IEntity& e, Vec2 start, Vec2 end, Color c)

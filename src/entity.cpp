@@ -61,6 +61,7 @@ BouncyWall::BouncyWall(Vec2 start, Vec2 end)
     // data
     id = global::get_new_entity_id();
     type = EType::BouncyWall;
+    global::set_frag_health(*this, nullopt);
     healthCutoff = 4;
     builder::add_wall_frags(*this, start, end, Color(210, 35, 90, 255));
     global::build_hitbox(*this);
@@ -139,7 +140,7 @@ Enemy::Enemy(unsigned int enemy_type)
     switch (enemy_type) {
     case 0:
         builder::add_enemy1_frags(*this);
-        global::set_frag_health(*this, 5);
+        global::set_frag_health(*this, 3);
         // ICanShoot
         timerMax = 2000.f; // timerMax in milliseconds
         // IEnemy
@@ -148,21 +149,20 @@ Enemy::Enemy(unsigned int enemy_type)
         currPathPoint = 0;
         global::move_entity(*this, path[currPathPoint]);
         // define when enemy explodes
-        healthCutoff = 2 * frags.size() / 4;
+        healthCutoff = 3 * frags.size() / 4;
         global::build_hitbox(*this);
         break;
     case 1:
         builder::add_enemy2_frags(*this);
-        global::set_frag_health(*this, 5);
+        global::set_frag_health(*this, 3);
         // ICanShoot
         timerMax = 2000.f; // timerMax in milliseconds
-        // IEnemy
-        // path loaded from file or generated
+        // randomly generated first path point
         path.emplace_back(Vec2(global::rand_between(200, 800), global::rand_between(300, 450)));
         currPathPoint = 0;
         global::move_entity(*this, path[currPathPoint]);
         // define when enemy explodes
-        healthCutoff = 2 * frags.size() / 4;
+        healthCutoff = 3 * frags.size() / 4;
         global::build_hitbox(*this);
         break;
     };

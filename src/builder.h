@@ -24,5 +24,5 @@ void add_enemy3_frags(IEntity& e);
 void add_enemy4_frags(IEntity& e);
 void build_level(unsigned int& levelId);
 void add_wall_frags(IEntity& e, Vec2 start, Vec2 end, sf::Color c);
-void set_frag_health(IEntity& e, unsigned int num);
+void set_frag_health(IEntity& e, std::optional<unsigned int> num);
 } // namespace builder
