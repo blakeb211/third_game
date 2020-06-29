@@ -25,13 +25,6 @@ inline size_t entityCounter = 0;
 inline size_t fragCounter = 0;
 inline std::shared_ptr<IEntity> player_ptr;
 inline std::set<std::pair<size_t, size_t>> frags_to_free;
-// vectors to hold timing data in microseconds
-inline std::vector<float> timings_check_coll;
-inline std::vector<float> timings_check_free_frag_coll;
-inline std::vector<float> timings_process_set_of_freed_frags;
-inline std::vector<float> timings_erase_freed_frags;
-inline std::vector<float> timings_remove_dead_ent;
-inline std::vector<float> timings_draw_player_code;
 //
 // free functions
 //

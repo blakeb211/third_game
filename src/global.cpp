@@ -285,17 +285,7 @@ unique_ptr<RenderWindow> global::create_window()
   return move(window);
 }
 
-// free function to calculate the frames per second using
-// the time the frame started
-pair<float, float> global::calc_frames_per_second(const high_res_clock::time_point& time1)
-{
-  auto time2(high_res_clock::now());
-  // calculate Frametime in milliseconds
-  float fTime { chrono::duration_cast<chrono::duration<float, milli>>(time2 - time1).count() };
-  auto fSeconds = fTime / 1000.f;
-  auto fps = 1.f / fSeconds;
-  return move(make_pair(roundf(fps), fTime));
-}
+
 
 // free funnction to check for window close
 bool global::check_for_window_close(RenderWindow& window, Event& event)

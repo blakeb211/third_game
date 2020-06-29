@@ -3,20 +3,22 @@ KEEP IT SIMPLE STUPID
 Purpose of project: Re-Write Second Shooter to run faster and have the explosion
                     and enemy AI effects that I want
 
+*******************************************************************
+**  CREATING TIMING MANAGER CLASS TO MAKE TIMING EASIER
+**  TIMING AND LOGGING - REFACTOR AND CLEAN UP OUTPUT
+**  
+**  ROOM FOR OPTIMIZATION
+**    reduce draw calls using SFML vertexarray
+**    make logfile async? - not sure if this would help
+**    set O2 level and possibly switch STL algorithms for EASTL or hand-rolled
+*******************************************************************
 
-TIMING AND LOGGING - REFACTOR AND CLEAN UP OUTPUT
-REDUCE DRAW CALLS USING VERTEXARRAY 
-CREATING TIMING MANAGER CLASS TO MAKE TIMING EASIER
+
 
 DOTPRODUCTS
-
 ROTATE ENTITY ON GRID
   colliding bullets, entities
 ADD A LERP FUNCTION
-
-REFACTOR - GROUP RELATED METHODS 
-
-SPEED UP DRAW CALLS USING A VERTEX ARRAY
 
 Add enemy AI with raycasts
 ADD PLAYER HEALTH WITH A HEALTHBAR

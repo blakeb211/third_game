@@ -7,6 +7,18 @@
 
 namespace timing {
 
+
+
+
+
+
+
+
+
+
+
+
+  
 using Vecf = std::vector<float>;
 using high_res_clock = std::chrono::high_resolution_clock;
 
@@ -50,5 +62,6 @@ void calc_and_log_final_timing_data(); // call at end of program
 
 // Accessory functions
 std::string return_current_date_and_time();
-std::pair<float, float> calc_frames_per_second();
+std::pair<float, float> calc_frames_per_second(const high_res_clock::time_point& time1);
+
 }

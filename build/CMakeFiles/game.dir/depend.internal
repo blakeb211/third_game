@@ -23,6 +23,7 @@ CMakeFiles/game.dir/main1.cpp.obj
  C:/code/third_game/src/global.h
  C:/code/third_game/src/main1.cpp
  C:/code/third_game/src/stdlibs.h
+ C:/code/third_game/src/timing_manager.h
 CMakeFiles/game.dir/timing_manager.cpp.obj
  C:/code/third_game/src/timing_manager.cpp
  C:/code/third_game/src/timing_manager.h
