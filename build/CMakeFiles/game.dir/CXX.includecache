@@ -96,6 +96,10 @@ utility
 optional
 -
 
+C:/code/third_game/src/timing_manager.cpp
+timing_manager.h
+C:/code/third_game/src/timing_manager.h
+
 C:/code/third_game/src/timing_manager.h
 chrono
 -
@@ -105,6 +109,10 @@ fstream
 -
 initializer_list
 -
+memory
+-
 unordered_map
+-
+ostream
 -
 

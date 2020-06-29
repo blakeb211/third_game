@@ -1,7 +1,13 @@
 #include "timing_manager.h"
 using namespace std;
 
-timing::Timer::Timer(string s) { const auto timePoint1 = high_res_clock::now(); }
+void timing::initialize_timers(ostream&, const initializer_list<string> timing_labels) { }
+
+timing::Timer::Timer(string s) { this->start = high_res_clock::now(); }
+
+timing::Timer::~Timer() { }
+
+timing::Timer timing::create_timer(const string label) { }
 
 void timing::calc_and_log_interval_timing_data()
 {
@@ -20,6 +26,10 @@ void timing::calc_and_log_interval_timing_data()
 
   // Clear the timing interval vector.
   //    timings_check_coll.clear();
+}
+
+void timing::calc_and_log_final_timing_data()
+{ // call at end of program
 }
 
 //

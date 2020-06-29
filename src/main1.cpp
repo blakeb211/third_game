@@ -30,9 +30,9 @@ void build_long_wall(Vec2 wall_start, Vec2 wall_end)
 
   while (calc_dist(wall_start, wall_end) >= 2.8f * bW) {
     // place voxel
-    auto tmp_end = wall_start + unit_vec * 5.f * (float)(bW);
+    auto tmp_end = wall_start + unit_vec * 5.f * static_cast<float>(bW);
     entity.push_back(make_shared<BouncyWall>(wall_start, tmp_end));
-    wall_start = tmp_end + unit_vec * 0.2f * (float)(bW);
+    wall_start = tmp_end + unit_vec * 0.2f * static_cast<float>(bW);
   } // end of build a multi-segment wall
 }
 
@@ -164,6 +164,10 @@ int main()
       *log_file << "free_frags.size() " << global::free_frags.size() << "\n";
 
     }
+    
+
+    // TODO: replace this with a Timer created at beginning of main
+    // game loop
     auto timings = timing::calc_frames_per_second(timePoint1);
     lastFPS = static_cast<int>(timings.first);
     ftAccum += timings.second;
