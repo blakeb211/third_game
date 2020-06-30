@@ -1,11 +1,13 @@
 #include "timing_manager.h"
 #include <iostream>
 #include <tuple>
+#include <memory>
 
 using namespace std;
 
-void timing::initialize_timers(ostream& os, const initializer_list<string> timing_labels)
+void timing::initialize_timers(const initializer_list<string> timing_labels)
 {
+  // assign an os to os
   for (string s : timing_labels) {
     // add timing label to timing_map
     auto it = timing_map.find(s);
@@ -19,18 +21,21 @@ void timing::initialize_timers(ostream& os, const initializer_list<string> timin
   }
 }
 
-timing::Timer::Timer(string s) { 
-  if (timing_map.count(s) != 1) throw exception("incorrect timer label used to construct a Timer");
+timing::Timer::Timer(string s)
+{
+  if (timing_map.count(s) != 1)
+    throw exception("incorrect timer label used to construct a Timer");
   label = s;
-  start = high_res_clock::now(); 
+  start = high_res_clock::now();
 }
 
-timing::Timer::~Timer() {
-  end = high_res_clock::now();    
+timing::Timer::~Timer()
+{
+  end = high_res_clock::now();
   // calc the duration in microseconds
   float duration { chrono::duration_cast<chrono::duration<float, micro>>(end - start).count() };
   // add the duration to the vector
-  auto & tuple_ref = timing_map[label];
+  auto& tuple_ref = timing_map[label];
   get<0>(tuple_ref).push_back(duration);
   // if the duration is less than the overall min replace the overall min with it.
   if (duration < get<1>(tuple_ref)) {
@@ -42,13 +47,13 @@ timing::Timer::~Timer() {
   }
   // add the duration timing to the average timing so we can divide to get the average
   // at the end
-  get<3>(tuple_ref) += duration; 
+  get<3>(tuple_ref) += duration;
 }
 
-void timing::calc_and_log_interval_timing_data()
+void timing::calc_and_log_interval_timing_data(ostream& os)
 {
-  // divide the accumulated value by the size to get the average 
- 
+  // divide the accumulated value by the size to get the average
+  for (auto& timer_pair : timing_map) { }
   // Calculate min max and average for the interval.
   //    auto t_coll_min_max
   //        = minmax_element(global::timings_check_coll.begin(), global::timings_check_coll.end());
@@ -66,7 +71,7 @@ void timing::calc_and_log_interval_timing_data()
   //    timings_check_coll.clear();
 }
 
-void timing::calc_and_log_final_timing_data()
+void timing::calc_and_log_final_timing_data(ostream& os)
 { // call at end of program
 }
 
