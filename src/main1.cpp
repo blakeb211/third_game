@@ -9,6 +9,7 @@
 
 #include "global.h"
 #include "timing_manager.h"
+#include <tuple>
 //#define HITBOX
 
 using namespace std;
@@ -40,9 +41,8 @@ void init_player_test()
 {
   // Setup timers
   timing::initialize_timers(cout,
-      { "drawing calls", "update entities", "entity collision checks",
-          "process and erase freed frags", "remove dead entities",
-          "check free frags for collisions", "total frame" });
+      { "drawing", "update", "entity collision", "process frags", "remove entities",
+          "free frag collision", "frametime" });
 
   // Spawn entities
   entity.push_back(make_shared<Player>());
@@ -77,7 +77,7 @@ void update_player_test(const float& ftStep)
 {
 
   {
-    timing::Timer timer("update entities");
+    timing::Timer timer("update");
     for (auto& e : entity) {
       e->update(ftStep);
     }
@@ -86,28 +86,28 @@ void update_player_test(const float& ftStep)
     }
   }
   {
-    timing::Timer t("entity collision checks");
+    timing::Timer t("entity collision");
     global::check_entities_for_collisions();
   }
   {
-    timing::Timer timer("process and erase freed frags");
+    timing::Timer timer("process frags");
     global::process_set_of_freed_frags();
     global::erase_freed_frags();
   }
 
   {
-    timing::Timer timer("remove dead entities");
+    timing::Timer timer("remove entities");
     global::remove_dead_entities();
   }
   {
-    timing::Timer timer("check free frags for collisions");
+    timing::Timer timer("free frag collision");
     global::check_free_frags_for_collisions();
   }
 }
 
 void draw_player_test(RenderWindow& window)
 {
-  timing::Timer timer("drawing calls");
+  timing::Timer timer("drawing");
   for (const auto& e : entity) {
     for_each(begin(e->frags), end(e->frags), [&window](const Frag& f) { window.draw(f); });
 #ifdef HITBOX
@@ -138,7 +138,7 @@ int main()
   init_player_test();
 
   while (window->isOpen()) {
-    const auto timePoint1 = high_res_clock::now();
+    timing::Timer timer("frametime");
     // Get user input
     if (handle_keyboard_input(keyTimeAccum, keyInputStep, *window)
         || check_for_window_close(*window, event)) {
@@ -160,21 +160,24 @@ int main()
 
     // Frame Timings
     frameCounter++;
-    auto fps_string = "FPS: " + to_string(lastFPS);
-    window->setTitle(fps_string);
 
     // TODO: MAKE LOGGING FREQUENCY A GLOBAL
+    string fps_string = "FPS: ";
+    if (get<0>(timing::timing_map["frametime"]).size() > 0) {
+      auto ftMicro = get<0>(timing::timing_map["frametime"]).back();
+      auto ftMilli = ftMicro / 1'000.f;
+      auto fps = (int)round(1.f / (ftMilli / 1'000.f));
+      fps_string = fps_string + to_string(fps);
+      window->setTitle(fps_string);
+      ftAccum += ftMilli;
+      keyTimeAccum += ftMilli;
+    }
     if (frameCounter % 600 == 0) {
       *log_file << fps_string << "\n";
       *log_file << "Entity.size() " << global::entity.size() << "\n";
       *log_file << "frags_to_free.size() " << global::frags_to_free.size() << "\n";
       *log_file << "free_frags.size() " << global::free_frags.size() << "\n";
     }
-
-    auto timings = timing::calc_frames_per_second(timePoint1);
-    lastFPS = static_cast<int>(timings.first);
-    ftAccum += timings.second;
-    keyTimeAccum += timings.second;
   }
 
   log_file->close();

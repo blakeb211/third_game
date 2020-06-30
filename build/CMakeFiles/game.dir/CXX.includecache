@@ -39,6 +39,8 @@ global.h
 C:/code/third_game/src/global.h
 timing_manager.h
 C:/code/third_game/src/timing_manager.h
+tuple
+-
 
 C:/code/third_game/src/stdlibs.h
 iostream
@@ -96,16 +98,6 @@ utility
 optional
 -
 
-C:/code/third_game/src/timing_manager.cpp
-timing_manager.h
-C:/code/third_game/src/timing_manager.h
-iostream
--
-tuple
--
-memory
--
-
 C:/code/third_game/src/timing_manager.h
 chrono
 -
@@ -122,6 +114,8 @@ unordered_map
 iostream
 -
 fstream
+-
+functional
 -
 set
 -

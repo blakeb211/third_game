@@ -7,26 +7,28 @@
 #include <unordered_map>
 #include <iostream>
 #include <fstream>
+#include <functional>
 #include <set>
 namespace timing {
 
 using Vecf = std::vector<float>;
 using high_res_clock = std::chrono::high_resolution_clock;
 
+// hold a reference to the output stream
+inline auto timing_ostream = std::ref(std::cout);
+
 // map a timing label to a tuple
 // tuple: <0> interval timings  microseconds
 //        <1> overall min
 //        <2> overall max,
 //        <3> overall avg
-
 inline std::unordered_map<std::string, std::tuple<Vecf, float, float, float>> timing_map;
 
 // Initialize the timing manager.
 //      Connect up timing_stream
 //      Add a new entry to timing map for each string. Report error
 //      if it already exists.
-void initialize_timers(const std::initializer_list<std::string> timing_labels);
-
+void initialize_timers(std::ostream&, const std::initializer_list<std::string>);
 
 struct Timer;
 
@@ -49,11 +51,11 @@ struct Timer {
 // update overall min, max, avg for all timers
 // log them to file
 // clear interval timing vectors
-void calc_and_log_interval_timing_data(std::ostream&); // call at end of frame
+void calc_and_log_interval_timing_data(); // call at end of frame
 
 // print timing statistics to cout
 // log timing statistics to file
-void calc_and_log_final_timing_data(std::ostream&); // call at end of program
+void calc_and_log_final_timing_data(); // call at end of program
 
 // Accessory functions
   std::pair<float, float> calc_frames_per_second(const high_res_clock::time_point& time1);

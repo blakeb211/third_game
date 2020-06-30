@@ -2,11 +2,12 @@
 #include <iostream>
 #include <tuple>
 #include <memory>
-
+#include <functional>
 using namespace std;
 
-void timing::initialize_timers(const initializer_list<string> timing_labels)
+void timing::initialize_timers(ostream& os, const initializer_list<string> timing_labels)
 {
+  timing_ostream = os;
   // assign an os to os
   for (string s : timing_labels) {
     // add timing label to timing_map
@@ -50,7 +51,7 @@ timing::Timer::~Timer()
   get<3>(tuple_ref) += duration;
 }
 
-void timing::calc_and_log_interval_timing_data(ostream& os)
+void timing::calc_and_log_interval_timing_data()
 {
   // divide the accumulated value by the size to get the average
   for (auto& timer_pair : timing_map) { }
@@ -71,7 +72,7 @@ void timing::calc_and_log_interval_timing_data(ostream& os)
   //    timings_check_coll.clear();
 }
 
-void timing::calc_and_log_final_timing_data(ostream& os)
+void timing::calc_and_log_final_timing_data()
 { // call at end of program
 }
 
