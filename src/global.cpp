@@ -389,20 +389,3 @@ shared_ptr<IEntity> global::get_entity_with_id(unsigned int _id)
   return nullptr; // if no entity with that id was found
 }
 
-//
-// Timer definitions
-//
-global::Timer::Timer(string s, vector<float>& timing_data_vec)
-    : vec_ref { timing_data_vec }
-{
-  msg = move(s);
-  tstart = chrono::high_resolution_clock::now();
-}
-// Complete the timing calculation in the destructor
-global::Timer::~Timer()
-{
-  tend = chrono::high_resolution_clock::now();
-  float difftime { chrono::duration_cast<chrono::duration<float, micro>>(tend - tstart).count() };
-  // pushing the timing data to the vector
-  vec_ref.push_back(difftime);
-}

@@ -99,15 +99,4 @@ float calc_dist(const sf::Vector2f &va, const sf::Vector2f &vb);
 // return reference to the entity with the given id
 std::shared_ptr<IEntity> get_entity_with_id(unsigned int);
 
-struct Timer {
-  Timer(std::string s, std::vector<float> &timing_data_vector);
-  ~Timer();
-
-private:
-  std::chrono::high_resolution_clock::time_point tstart;
-  std::chrono::high_resolution_clock::time_point tend;
-  std::string msg;
-  std::vector<float> &vec_ref;
-};
-
 } // namespace global

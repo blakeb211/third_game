@@ -1,16 +1,54 @@
 #include "timing_manager.h"
+#include <iostream>
+#include <tuple>
+
 using namespace std;
 
-void timing::initialize_timers(ostream&, const initializer_list<string> timing_labels) { }
+void timing::initialize_timers(ostream& os, const initializer_list<string> timing_labels)
+{
+  for (string s : timing_labels) {
+    // add timing label to timing_map
+    auto it = timing_map.find(s);
+    auto end_it = timing_map.end();
+    // check to make sure not trying to add same label twice
+    if (it != end_it) {
+      throw exception("Attempt to initialize timing_map with same key twice");
+    }
+    // add key to map and initialize the tuple. Init the min value to 999
+    timing_map[s] = make_tuple(vector<float>(), 999.f, 0.f, 0.f);
+  }
+}
 
-timing::Timer::Timer(string s) { this->start = high_res_clock::now(); }
+timing::Timer::Timer(string s) { 
+  if (timing_map.count(s) != 1) throw exception("incorrect timer label used to construct a Timer");
+  label = s;
+  start = high_res_clock::now(); 
+}
 
-timing::Timer::~Timer() { }
-
-timing::Timer timing::create_timer(const string label) { }
+timing::Timer::~Timer() {
+  end = high_res_clock::now();    
+  // calc the duration in microseconds
+  float duration { chrono::duration_cast<chrono::duration<float, micro>>(end - start).count() };
+  // add the duration to the vector
+  auto & tuple_ref = timing_map[label];
+  get<0>(tuple_ref).push_back(duration);
+  // if the duration is less than the overall min replace the overall min with it.
+  if (duration < get<1>(tuple_ref)) {
+    get<1>(tuple_ref) = duration;
+  }
+  // if the duration is greater than the overall max replace the overall max with it.
+  if (duration > get<2>(tuple_ref)) {
+    get<2>(tuple_ref) = duration;
+  }
+  // add the duration timing to the average timing so we can divide to get the average
+  // at the end
+  get<3>(tuple_ref) += duration; 
+}
 
 void timing::calc_and_log_interval_timing_data()
 {
+  // divide the accumulated value by the size to get the average 
+ 
   // Calculate min max and average for the interval.
   //    auto t_coll_min_max
   //        = minmax_element(global::timings_check_coll.begin(), global::timings_check_coll.end());

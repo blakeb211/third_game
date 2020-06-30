@@ -7,7 +7,7 @@
 #include <unordered_map>
 #include <ostream>
 #include <fstream>
-
+#include <set>
 namespace timing {
 
 using Vecf = std::vector<float>;
@@ -26,23 +26,21 @@ inline std::unordered_map<std::string, std::tuple<Vecf, float, float, float>> ti
 //      Connect up timing_stream
 //      Add a new entry to timing map for each string. Report error
 //      if it already exists.
-void initialize_timers(std::fstream&, const std::initializer_list<std::string> timing_labels);
+void initialize_timers(std::ostream&, const std::initializer_list<std::string> timing_labels);
 
 struct Timer;
-// acts as a Timer factory - will only
-// create Timer if the label given
-// exists in the map
-Timer create_timer(const std::string label);
 
 // timer struct is created and destroyed each frame
 struct Timer {
   friend Timer create_timer(std::string);
   ~Timer();
+  Timer() = delete;
+  Timer(std::string timing_label); // private constructor
   Timer(const Timer&) = delete;
   Timer& operator=(const Timer&) = delete;
 
   private:
-  Timer(std::string timing_label); // private constructor
+  std::string label;
   high_res_clock::time_point start;
   high_res_clock::time_point end;
 };

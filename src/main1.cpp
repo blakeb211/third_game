@@ -38,6 +38,13 @@ void build_long_wall(Vec2 wall_start, Vec2 wall_end)
 
 void init_player_test()
 {
+  // Setup timers
+  timing::initialize_timers(cout,
+      { "drawing calls", "update entities", "entity collision checks",
+          "process and erase freed frags", "remove dead entities",
+          "check free frags for collisions", "total frame" });
+
+  // Spawn entities
   entity.push_back(make_shared<Player>());
 
   build_long_wall(Vec2(0.f, blockWidth), Vec2(winWidth / 3.f, blockWidth));
@@ -68,39 +75,39 @@ void init_player_test()
 
 void update_player_test(const float& ftStep)
 {
-  for (auto& e : entity) {
-    e->update(ftStep);
+
+  {
+    timing::Timer timer("update entities");
+    for (auto& e : entity) {
+      e->update(ftStep);
+    }
+    for (auto& f : free_frags) {
+      f.update();
+    }
   }
-  for (auto& f : free_frags) {
-    f.update();
+  {
+    timing::Timer t("entity collision checks");
+    global::check_entities_for_collisions();
+  }
+  {
+    timing::Timer timer("process and erase freed frags");
+    global::process_set_of_freed_frags();
+    global::erase_freed_frags();
   }
 
-  //  {
-  //    Timer t("check entities for collisions", global::timings_check_coll);
-  global::check_entities_for_collisions();
-  //  }
-  //  {
-  //    Timer t("process set of freed frags", global::timings_process_set_of_freed_frags);
-  global::process_set_of_freed_frags();
-  //  }
-  //  {
-  //    Timer t("erase freed frags", global::timings_erase_freed_frags);
-  global::erase_freed_frags();
-  //  }
-  //
-  //  {
-  //    Timer t("remove dead entities", global::timings_remove_dead_ent);
-  global::remove_dead_entities();
-  //  }
-  //  {
-  //    Timer t("check free frags for collisions", global::timings_check_free_frag_coll);
-  global::check_free_frags_for_collisions();
-  //  }
+  {
+    timing::Timer timer("remove dead entities");
+    global::remove_dead_entities();
+  }
+  {
+    timing::Timer timer("check free frags for collisions");
+    global::check_free_frags_for_collisions();
+  }
 }
 
 void draw_player_test(RenderWindow& window)
 {
-  //Timer t("draw player test", global::timings_draw_player_code);
+  timing::Timer timer("drawing calls");
   for (const auto& e : entity) {
     for_each(begin(e->frags), end(e->frags), [&window](const Frag& f) { window.draw(f); });
 #ifdef HITBOX
@@ -131,7 +138,7 @@ int main()
   init_player_test();
 
   while (window->isOpen()) {
-  const auto timePoint1 = high_res_clock::now();
+    const auto timePoint1 = high_res_clock::now();
     // Get user input
     if (handle_keyboard_input(keyTimeAccum, keyInputStep, *window)
         || check_for_window_close(*window, event)) {
@@ -162,12 +169,8 @@ int main()
       *log_file << "Entity.size() " << global::entity.size() << "\n";
       *log_file << "frags_to_free.size() " << global::frags_to_free.size() << "\n";
       *log_file << "free_frags.size() " << global::free_frags.size() << "\n";
-
     }
-    
 
-    // TODO: replace this with a Timer created at beginning of main
-    // game loop
     auto timings = timing::calc_frames_per_second(timePoint1);
     lastFPS = static_cast<int>(timings.first);
     ftAccum += timings.second;

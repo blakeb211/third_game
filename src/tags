@@ -615,6 +615,8 @@ Time	c:\SFML\include\SFML\System\Time.hpp	/^class SFML_SYSTEM_API Time$/;"	c	nam
 TimeSpan	c:\SFML\include\SFML\Audio\Music.hpp	/^    typedef Span<Time> TimeSpan;$/;"	t	class:sf::Music
 Timer	.\global.cpp	/^global::Timer::Timer(string s, vector<float>& timing_data_vec)$/;"	f	class:global::Timer
 Timer	.\global.h	/^struct Timer {$/;"	s	namespace:global
+Timer	.\timing_manager.cpp	/^timing::Timer::Timer(string s) { this->start = high_res_clock::now(); }$/;"	f	class:timing::Timer
+Timer	.\timing_manager.h	/^struct Timer {$/;"	s	namespace:timing
 Titlebar	c:\SFML\include\SFML\Window\WindowStyle.hpp	/^        Titlebar   = 1 << 0, \/\/\/< Title bar + fixed border$/;"	e	enum:sf::Style::__anon10
 Touch	c:\SFML\include\SFML\Window\Touch.hpp	/^class SFML_WINDOW_API Touch$/;"	c	namespace:sf
 TouchBegan	c:\SFML\include\SFML\Window\Event.hpp	/^        TouchBegan,             \/\/\/< A touch event began (data in event.touch)$/;"	e	enum:sf::Event::EventType
@@ -705,6 +707,7 @@ Zero	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^        Zero,             \/\
 Zero	c:\SFML\include\SFML\System\Time.hpp	/^    static const Time Zero; \/\/\/< Predefined "zero" time value$/;"	m	class:sf::Time
 _USE_MATH_DEFINES	.\stdlibs.h	5;"	d
 a	c:\SFML\include\SFML\Graphics\Color.hpp	/^    Uint8 a; \/\/\/< Alpha (opacity) component$/;"	m	class:sf::Color
+active_timers	.\timing_manager.h	/^inline std::set<string> active_timers;$/;"	v
 add_bullet1_frags	.\builder.cpp	/^void builder::add_bullet1_frags(IEntity& e)$/;"	f	class:builder
 add_bullet2_frags	.\builder.cpp	/^void builder::add_bullet2_frags(IEntity& e)$/;"	f	class:builder
 add_enemy1_frags	.\builder.cpp	/^void builder::add_enemy1_frags(IEntity& e)$/;"	f	class:builder
@@ -734,13 +737,15 @@ bounds	c:\SFML\include\SFML\Graphics\Glyph.hpp	/^    FloatRect bounds;      \/\/
 bufferUploadPending	c:\SFML\examples\island\Island.cpp	/^    bool bufferUploadPending = false;$/;"	v
 build_hitbox	.\global.cpp	/^void global::build_hitbox(IEntity& e)$/;"	f	class:global
 build_level	.\builder.cpp	/^void builder::build_level(unsigned int& levelId)$/;"	f	class:builder
-build_long_wall_player_test	.\main1.cpp	/^void build_long_wall_player_test(Vec2 wall_start, Vec2 wall_end)$/;"	f
+build_long_wall	.\main1.cpp	/^void build_long_wall(Vec2 wall_start, Vec2 wall_end)$/;"	f
 builder	.\builder.h	/^namespace builder {$/;"	n
 button	c:\SFML\examples\win32\Win32.cpp	/^HWND button;$/;"	v
 button	c:\SFML\include\SFML\Window\Event.hpp	/^        Mouse::Button button; \/\/\/< Code of the button that has been pressed$/;"	m	struct:sf::Event::MouseButtonEvent
 button	c:\SFML\include\SFML\Window\Event.hpp	/^        unsigned int button;     \/\/\/< Index of the button that has been pressed (in range [0 .. Joystick::ButtonCount - 1])$/;"	m	struct:sf::Event::JoystickButtonEvent
+calc_and_log_final_timing_data	.\timing_manager.cpp	/^void timing::calc_and_log_final_timing_data()$/;"	f	class:timing
+calc_and_log_interval_timing_data	.\timing_manager.cpp	/^void timing::calc_and_log_interval_timing_data()$/;"	f	class:timing
 calc_dist	.\global.cpp	/^float global::calc_dist(const sf::Vector2f& va, const sf::Vector2f& vb)$/;"	f	class:global
-calc_frames_per_second	.\global.cpp	/^pair<float, float> global::calc_frames_per_second(const high_res_clock::time_point& timePoint1)$/;"	f	class:global
+calc_frames_per_second	.\timing_manager.cpp	/^pair<float, float> timing::calc_frames_per_second(const high_res_clock::time_point& time1)$/;"	f	class:timing
 canShoot	.\entity.h	/^    bool canShoot;$/;"	m	struct:EType::ICanShoot
 channelCount	c:\SFML\include\SFML\Audio\SoundFileReader.hpp	/^        unsigned int channelCount; \/\/\/< Number of channels of the sound$/;"	m	struct:sf::SoundFileReader::Info
 check	c:\SFML\include\SFML\Audio\SoundFileFactory.hpp	/^        bool (*check)(InputStream&);$/;"	m	struct:sf::SoundFileFactory::ReaderFactory
@@ -768,6 +773,7 @@ control	c:\SFML\include\SFML\Window\Event.hpp	/^        bool          control; \
 create	c:\SFML\include\SFML\Audio\SoundFileFactory.hpp	/^        SoundFileReader* (*create)();$/;"	m	struct:sf::SoundFileFactory::ReaderFactory
 create	c:\SFML\include\SFML\Audio\SoundFileFactory.hpp	/^        SoundFileWriter* (*create)();$/;"	m	struct:sf::SoundFileFactory::WriterFactory
 create_log_file	.\global.cpp	/^unique_ptr<fstream> global::create_log_file(const string currDateTime)$/;"	f	class:global
+create_timer	.\timing_manager.cpp	/^timing::Timer timing::create_timer(const string label) { }$/;"	f	class:timing
 create_window	.\global.cpp	/^unique_ptr<RenderWindow> global::create_window()$/;"	f	class:global
 currPathPoint	.\entity.h	/^    unsigned int currPathPoint;$/;"	m	struct:EType::IEnemy
 currTimer	.\entity.h	/^    float currTimer;$/;"	m	struct:EType::ICanShoot
@@ -783,6 +789,7 @@ dvel	.\entity.h	/^    Vec2 dvel;$/;"	m	struct:EType::IEntity
 edgeDropoffExponent	c:\SFML\examples\island\Island.cpp	/^    float edgeDropoffExponent = 1.5f;$/;"	v
 edgeFactor	c:\SFML\examples\island\Island.cpp	/^    float edgeFactor = 0.9f;$/;"	v
 enable	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^        bool      enable;         \/\/\/< Is the cache enabled?$/;"	m	struct:sf::RenderTarget::StatesCache
+end	.\timing_manager.h	/^  high_res_clock::time_point end;$/;"	m	struct:timing::Timer
 endOfStream	c:\SFML\examples\voip\Client.cpp	/^const sf::Uint8 endOfStream = 2;$/;"	v
 endOfStream	c:\SFML\examples\voip\Server.cpp	/^const sf::Uint8 endOfStream = 2;$/;"	v
 entity	.\global.h	/^inline std::vector<std::shared_ptr<IEntity>> entity;$/;"	v
@@ -795,7 +802,7 @@ fire_shot	.\entity.cpp	/^void Enemy::fire_shot() { }$/;"	f	class:Enemy
 fire_shot	.\entity.cpp	/^void Player::fire_shot()$/;"	f	class:Player
 fragCounter	.\global.h	/^inline size_t fragCounter = 0;$/;"	v
 frags	.\entity.h	/^    std::vector<Frag> frags;$/;"	m	struct:EType::IEntity
-frags_to_move	.\global.h	/^inline std::set<std::pair<size_t, size_t>> frags_to_move;$/;"	v
+frags_to_free	.\global.h	/^inline std::set<std::pair<size_t, size_t>> frags_to_free;$/;"	v
 free_frags	.\global.h	/^inline std::vector<Frag> free_frags;$/;"	v
 ftStep	.\global.h	/^inline const float ftStep = 16.f; \/\/ fixed update interval in ms$/;"	v
 g	c:\SFML\include\SFML\Graphics\Color.hpp	/^    Uint8 g; \/\/\/< Green component$/;"	m	class:sf::Color
@@ -808,6 +815,7 @@ getMoisture	c:\SFML\examples\island\Island.cpp	/^float getMoisture(float x, floa
 getName	c:\SFML\examples\shader\Effect.hpp	/^    const std::string& getName() const$/;"	f	class:Effect
 getSnowcapTerrainColor	c:\SFML\examples\island\Island.cpp	/^sf::Color getSnowcapTerrainColor(float elevation, float moisture)$/;"	f
 getTerrainColor	c:\SFML\examples\island\Island.cpp	/^sf::Color getTerrainColor(float elevation, float moisture)$/;"	f
+get_center	.\global.cpp	/^Vec2 global::get_center(IEntity& e)$/;"	f	class:global
 get_entity_with_id	.\global.cpp	/^shared_ptr<IEntity> global::get_entity_with_id(unsigned int _id)$/;"	f	class:global
 get_frag_with_id	.\global.cpp	/^unique_ptr<Frag> global::get_frag_with_id(IEntity& e, size_t frag_id)$/;"	f	class:global
 get_health	.\entity.cpp	/^unsigned int IEntity::get_health() { return frags.size(); }$/;"	f	class:IEntity
@@ -832,6 +840,7 @@ id	.\entity.h	/^    size_t id;$/;"	m	struct:EType::Frag
 id	.\entity.h	/^    unsigned int id;$/;"	m	struct:EType::IEntity
 index	c:\SFML\examples\island\Island.cpp	/^        unsigned int index;$/;"	m	struct:__anon1::WorkItem	file:
 init_player_test	.\main1.cpp	/^void init_player_test()$/;"	f
+initialize_timers	.\timing_manager.cpp	/^void timing::initialize_timers(ostream&, const initializer_list<string> timing_labels) { }$/;"	f	class:timing
 joystickButton	c:\SFML\include\SFML\Window\Event.hpp	/^        JoystickButtonEvent   joystickButton;    \/\/\/< Joystick button event parameters (Event::JoystickButtonPressed, Event::JoystickButtonReleased)$/;"	m	union:sf::Event::__anon8
 joystickConnect	c:\SFML\include\SFML\Window\Event.hpp	/^        JoystickConnectEvent  joystickConnect;   \/\/\/< Joystick (dis)connect event parameters (Event::JoystickConnected, Event::JoystickDisconnected)$/;"	m	union:sf::Event::__anon8
 joystickId	c:\SFML\include\SFML\Window\Event.hpp	/^        unsigned int   joystickId; \/\/\/< Index of the joystick (in range [0 .. Joystick::Count - 1])$/;"	m	struct:sf::Event::JoystickMoveEvent
@@ -1149,7 +1158,7 @@ samples	c:\SFML\include\SFML\Audio\SoundStream.hpp	/^        const Int16* sample
 sensor	c:\SFML\include\SFML\Window\Event.hpp	/^        SensorEvent           sensor;            \/\/\/< Sensor event parameters (Event::SensorChanged)$/;"	m	union:sf::Event::__anon8
 set	c:\SFML\examples\joystick\Joystick.cpp	/^    void set(const char* label, const T& value)$/;"	f	namespace:__anon2
 setFont	c:\SFML\examples\shader\Effect.hpp	/^    static void setFont(const sf::Font& font)$/;"	f	class:Effect
-set_frag_health	.\builder.cpp	/^void builder::set_frag_health(IEntity& e, unsigned int num)$/;"	f	class:builder
+set_frag_health	.\builder.cpp	/^void builder::set_frag_health(IEntity& e, optional<unsigned int> num)$/;"	f	class:builder
 set_frag_health	.\global.cpp	/^void global::set_frag_health(IEntity& e, optional<unsigned int> h)$/;"	f	class:global
 sf	c:\SFML\include\SFML\Audio\AlResource.hpp	/^namespace sf$/;"	n
 sf	c:\SFML\include\SFML\Audio\InputSoundFile.hpp	/^namespace sf$/;"	n
@@ -1242,6 +1251,7 @@ shift	c:\SFML\include\SFML\Window\Event.hpp	/^        bool          shift;   \/\
 size	c:\SFML\include\SFML\Window\Event.hpp	/^        SizeEvent             size;              \/\/\/< Size event parameters (Event::Resized)$/;"	m	union:sf::Event::__anon8
 snowcapHeight	c:\SFML\examples\island\Island.cpp	/^    float snowcapHeight = 0.6f;$/;"	v
 sstr	c:\SFML\examples\joystick\Joystick.cpp	/^    std::ostringstream sstr;$/;"	v
+start	.\timing_manager.h	/^  high_res_clock::time_point start;$/;"	m	struct:timing::Timer
 start	c:\SFML\examples\voip\Server.cpp	/^    void start(unsigned short port)$/;"	f	class:NetworkAudioStream
 stencilBits	c:\SFML\include\SFML\Window\ContextSettings.hpp	/^    unsigned int stencilBits;       \/\/\/< Bits of the stencil buffer$/;"	m	struct:sf::ContextSettings
 system	c:\SFML\include\SFML\Window\Event.hpp	/^        bool          system;  \/\/\/< Is the System key pressed?$/;"	m	struct:sf::Event::KeyEvent
@@ -1259,12 +1269,8 @@ threadFunction	c:\SFML\examples\island\Island.cpp	/^void threadFunction()$/;"	f
 threads	c:\SFML\examples\island\Island.cpp	/^    std::vector<sf::Thread*> threads;$/;"	v
 threshold	c:\SFML\examples\joystick\Joystick.cpp	/^    float threshold = 0.1f;$/;"	v
 timerMax	.\entity.h	/^    float timerMax;$/;"	m	struct:EType::ICanShoot
-timings_check_coll	.\global.h	/^inline std::vector<float> timings_check_coll;$/;"	v
-timings_check_free_frag_coll	.\global.h	/^inline std::vector<float> timings_check_free_frag_coll;$/;"	v
-timings_draw_player_code	.\global.h	/^inline std::vector<float> timings_draw_player_code;$/;"	v
-timings_erase_freed_frags	.\global.h	/^inline std::vector<float> timings_erase_freed_frags;$/;"	v
-timings_process_set_of_freed_frags	.\global.h	/^inline std::vector<float> timings_process_set_of_freed_frags;$/;"	v
-timings_remove_dead_ent	.\global.h	/^inline std::vector<float> timings_remove_dead_ent;$/;"	v
+timing	.\timing_manager.h	/^namespace timing {$/;"	n
+timing_map	.\timing_manager.h	/^inline std::unordered_map<std::string, std::tuple<Vecf, float, float, float>> timing_map;$/;"	v
 toggleFolder	c:\SFML\doc\html\dynsections.js	/^function toggleFolder(id)$/;"	f
 toggleInherit	c:\SFML\doc\html\dynsections.js	/^function toggleInherit(id)$/;"	f
 toggleLevel	c:\SFML\doc\html\dynsections.js	/^function toggleLevel(level)$/;"	f
@@ -1337,3 +1343,4 @@ z	c:\SFML\include\SFML\Window\Event.hpp	/^        float z;           \/\/\/< Cur
 ~SoundFileReader	c:\SFML\include\SFML\Audio\SoundFileReader.hpp	/^    virtual ~SoundFileReader() {}$/;"	f	class:sf::SoundFileReader
 ~SoundFileWriter	c:\SFML\include\SFML\Audio\SoundFileWriter.hpp	/^    virtual ~SoundFileWriter() {}$/;"	f	class:sf::SoundFileWriter
 ~Timer	.\global.cpp	/^global::Timer::~Timer()$/;"	f	class:global::Timer
+~Timer	.\timing_manager.cpp	/^timing::Timer::~Timer() { }$/;"	f	class:timing::Timer
