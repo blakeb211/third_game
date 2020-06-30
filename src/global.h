@@ -9,13 +9,23 @@
 #include "entity.h"
 namespace global {
 //
-// constants
+// GLOBALS
+// 
+enum GAME_STATE {
+  Menu,
+  Level_Screen,
+  Game,
+  Editor,
+};
+
+//
+// Global Inline Variables 
 //
 inline const unsigned int winWidth = 1024;
 inline const unsigned int winHeight = 768;
 inline const unsigned int blockWidth = 5;
 inline const unsigned int bW = blockWidth;
-inline const float ftStep = 16.f; // fixed update interval in ms
+inline const float ftStep = 13.f; // fixed update interval in ms
 inline const float keyInputStep = ftStep * 3.f;
 inline unsigned int lastFPS = 0;
 inline std::default_random_engine rand_engine;
@@ -25,6 +35,10 @@ inline size_t entityCounter = 0;
 inline size_t fragCounter = 0;
 inline std::shared_ptr<IEntity> player_ptr;
 inline std::set<std::pair<size_t, size_t>> frags_to_free;
+inline GAME_STATE state = GAME_STATE::Menu;
+inline unsigned int score = 0;
+inline unsigned int level = 0;
+inline unsigned int playerHealth = 3;
 //
 // free functions
 //
@@ -70,6 +84,9 @@ void build_hitbox(IEntity &e);
 // move entity's pos variable and all its frags with it
 void move_entity(IEntity &e, const Vec2 offset);
 
+// rotate entity's frags by offset
+void rotate_entity(IEntity &e, const float ang_offset);
+
 // get a new unique entity id
 unsigned int get_new_entity_id();
 
@@ -98,5 +115,6 @@ float calc_dist(const sf::Vector2f &va, const sf::Vector2f &vb);
 
 // return reference to the entity with the given id
 std::shared_ptr<IEntity> get_entity_with_id(unsigned int);
+
 
 } // namespace global

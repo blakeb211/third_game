@@ -1,8 +1,9 @@
 #include "timing_manager.h"
-#include <iostream>
-#include <tuple>
-#include <memory>
 #include <functional>
+#include <iostream>
+#include <iomanip>
+#include <memory>
+#include <tuple>
 using namespace std;
 
 void timing::initialize_timers(ostream& os, const initializer_list<string> timing_labels)
@@ -18,7 +19,7 @@ void timing::initialize_timers(ostream& os, const initializer_list<string> timin
       throw exception("Attempt to initialize timing_map with same key twice");
     }
     // add key to map and initialize the tuple. Init the min value to 999
-    timing_map[s] = make_tuple(vector<float>(), 999.f, 0.f, 0.f);
+    timing_map[s] = make_tuple(vector<float>(), 9'999'999.f, 0.f, 0.f);
   }
 }
 
@@ -53,23 +54,29 @@ timing::Timer::~Timer()
 
 void timing::calc_and_log_interval_timing_data()
 {
-  // divide the accumulated value by the size to get the average
-  for (auto& timer_pair : timing_map) { }
-  // Calculate min max and average for the interval.
-  //    auto t_coll_min_max
-  //        = minmax_element(global::timings_check_coll.begin(), global::timings_check_coll.end());
-  //    auto t_coll_avg = std::accumulate(timings_check_coll.begin(), timings_check_coll.end(), 0)
-  //        / timings_check_coll.size();
-
   // TODO: MAKE THIS ASYNC FOR BETTER SPEED ?
-  // Log calculated data to the log file
-  //    *log_file << "TIMINGS: "
-  //              << "\n";
-  //    *log_file << "collisions: " << *t_coll_min_max.first << " " << *t_coll_min_max.second << " "
-  //              << t_coll_avg << "\n";
+  for (auto& timer_pair : timing_map) {
+    auto label = timer_pair.first;
+    auto& vec_ref = get<0>(timer_pair.second);
+    auto datapoint_count = vec_ref.size();
+    auto& min_ref = get<1>(timer_pair.second); // already calc'd
+    auto& max_ref = get<2>(timer_pair.second); // already calc'd
+    auto& avg_ref = get<3>(timer_pair.second); // needs calc'd
+    // report the min and the max for that interval
+    // calc the average for that interval
+    avg_ref = avg_ref / datapoint_count;
+    // Log calculated data to the log file
+    auto & os = timing_ostream.get(); 
+    os << left << setw(20) << " " << setw(8) << "min" << setw(8) << "max" << setw(8) << "avg (microseconds)" << "\n";
+    os << setw(20) << label;
+    os << setw(8) << min_ref << setw(8) << max_ref << setw(8) << avg_ref << "\n";
 
-  // Clear the timing interval vector.
-  //    timings_check_coll.clear();
+    // reset the tuple values
+    avg_ref = 0.f;
+    max_ref = 0.f;
+    min_ref = 9'999'999.f;
+    vec_ref.clear();
+  }
 }
 
 void timing::calc_and_log_final_timing_data()

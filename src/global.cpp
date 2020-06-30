@@ -264,10 +264,13 @@ void global::build_hitbox(IEntity& e)
   e.hitbox.setOutlineThickness(1.f);
 }
 
+// rotate entity's frags by offset
+void global::rotate_entity(IEntity& e, const float ang_offset) { }
+
 // move entity frags and its hitbox
 void global::move_entity(IEntity& e, const Vec2 offset)
 {
-  for_each(begin(e.frags), end(e.frags), [& offset](Frag& f) { f.move(offset); });
+  for_each(begin(e.frags), end(e.frags), [&offset](Frag& f) { f.move(offset); });
   e.hitbox.move(offset);
   e.center += offset;
 }
@@ -281,11 +284,9 @@ unique_ptr<RenderWindow> global::create_window()
   const ContextSettings cs(0, 0, 2, 4, 4, ContextSettings::Default, true);
   auto window = make_unique<RenderWindow>(
       VideoMode(global::winWidth, global::winHeight), "Iteration 3", Style::Close, cs);
-  window->setVerticalSyncEnabled(true); // prevent screen tearing
+  window->setVerticalSyncEnabled(false); // prevent screen tearing
   return move(window);
 }
-
-
 
 // free funnction to check for window close
 bool global::check_for_window_close(RenderWindow& window, Event& event)
@@ -319,13 +320,15 @@ bool global::handle_keyboard_input(float timer, const float maxTime, RenderWindo
   if (Keyboard::isKeyPressed(sf::Keyboard::Left)) {
     if (player_ptr && player_ptr->type == EType::Player) {
       auto& dvel_ref = player_ptr->dvel;
-      dvel_ref += (abs(dvel_ref.x) < 12.5f) ? Vec2(-2.1f, 0.f) : Vec2(0.f, 0.f);
+      if (player_ptr->center.x < 30.f) return false;
+      dvel_ref += (abs(dvel_ref.x) < 7.5f) ? Vec2(-2.1f, 0.f) : Vec2(0.f, 0.f);
     }
   }
   if (Keyboard::isKeyPressed(sf::Keyboard::Right)) {
     if (player_ptr && player_ptr->type == EType::Player) {
       auto& dvel_ref = player_ptr->dvel;
-      dvel_ref += (abs(dvel_ref.x) < 12.5f) ? Vec2(+2.1f, 0.f) : Vec2(0.f, 0.f);
+      if (player_ptr->center.x > winWidth - 30.f) return false;
+      dvel_ref += (abs(dvel_ref.x) < 7.5f) ? Vec2(+2.1f, 0.f) : Vec2(0.f, 0.f);
     }
   }
   if (Keyboard::isKeyPressed(sf::Keyboard::Space)) {

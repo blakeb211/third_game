@@ -55,6 +55,7 @@ void calc_and_log_interval_timing_data(); // call at end of frame
 
 // print timing statistics to cout
 // log timing statistics to file
+// TODO: Implement this function for statistical summary at end
 void calc_and_log_final_timing_data(); // call at end of program
 
 // Accessory functions
