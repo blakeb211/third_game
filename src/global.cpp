@@ -363,7 +363,6 @@ bool global::handle_keyboard_input(float &timer, const float maxTime, RenderWind
     {
       // escape key activates the Menu
       state = GAME_STATE::Menu;
-      cout << "changing state from Game to Menu" << endl;
       return false;
     }
     if (global::player_ptr == nullptr)
@@ -413,9 +412,13 @@ bool global::handle_keyboard_input(float &timer, const float maxTime, RenderWind
     if (Keyboard::isKeyPressed(sf::Keyboard::Enter))
     {
       // escape key activates the Menu
-      cout << "changing state from Menu to Game" << endl;
       timer = 0.0f;
       state = GAME_STATE::Game;
+    }
+    if (Keyboard::isKeyPressed(sf::Keyboard::Delete))
+    {
+      cout << "game exited from menu" << endl;
+      return true;
     }
     return false;
   } // GAME_STATE::Menu

@@ -731,11 +731,9 @@ audioData	c:\SFML\examples\voip\Server.cpp	/^const sf::Uint8 audioData   = 1;$/;
 axis	c:\SFML\include\SFML\Window\Event.hpp	/^        Joystick::Axis axis;       \/\/\/< Axis on which the joystick moved$/;"	m	struct:sf::Event::JoystickMoveEvent
 axislabels	c:\SFML\examples\joystick\Joystick.cpp	/^    const char* axislabels[] = {"X", "Y", "Z", "R", "U", "V", "PovX", "PovY"};$/;"	v
 b	c:\SFML\include\SFML\Graphics\Color.hpp	/^    Uint8 b; \/\/\/< Blue component$/;"	m	class:sf::Color
-bW	.\global.h	/^inline const unsigned int bW = blockWidth;$/;"	v
 bitsPerPixel	c:\SFML\include\SFML\Window\VideoMode.hpp	/^    unsigned int bitsPerPixel; \/\/\/< Video mode pixel depth, in bits per pixels$/;"	m	class:sf::VideoMode
 blendMode	c:\SFML\include\SFML\Graphics\RenderStates.hpp	/^    BlendMode      blendMode; \/\/\/< Blending mode$/;"	m	class:sf::RenderStates
 blockCount	c:\SFML\examples\island\Island.cpp	/^    const unsigned int blockCount = 32;$/;"	v
-blockWidth	.\global.h	/^inline const unsigned int blockWidth = 5;$/;"	v
 bounds	c:\SFML\include\SFML\Graphics\Glyph.hpp	/^    FloatRect bounds;      \/\/\/< Bounding rectangle of the glyph, in coordinates relative to the baseline$/;"	m	class:sf::Glyph
 bufferUploadPending	c:\SFML\examples\island\Island.cpp	/^    bool bufferUploadPending = false;$/;"	v
 build_hitbox	.\global.cpp	/^void global::build_hitbox(IEntity &e)$/;"	f	class:global
@@ -785,7 +783,8 @@ depthBits	c:\SFML\include\SFML\Window\ContextSettings.hpp	/^    unsigned int dep
 doClient	c:\SFML\examples\voip\Client.cpp	/^void doClient(unsigned short port)$/;"	f
 doServer	c:\SFML\examples\voip\Server.cpp	/^void doServer(unsigned short port)$/;"	f
 draw	c:\SFML\examples\shader\Effect.hpp	/^    void draw(sf::RenderTarget& target, sf::RenderStates states) const$/;"	f	class:Effect
-draw_player_test	.\main1.cpp	/^void draw_player_test(RenderWindow& window)$/;"	f
+draw_menu_screen	.\main1.cpp	/^void draw_menu_screen(RenderWindow &window)$/;"	f
+draw_player_test	.\main1.cpp	/^void draw_player_test(RenderWindow &window)$/;"	f
 dvel	.\entity.h	/^    Vec2 dvel;$/;"	m	struct:EType::Frag
 dvel	.\entity.h	/^    Vec2 dvel;$/;"	m	struct:EType::IEntity
 edgeDropoffExponent	c:\SFML\examples\island\Island.cpp	/^    float edgeDropoffExponent = 1.5f;$/;"	v
@@ -795,18 +794,15 @@ end	.\timing_manager.h	/^  high_res_clock::time_point end;$/;"	m	struct:timing::
 endOfStream	c:\SFML\examples\voip\Client.cpp	/^const sf::Uint8 endOfStream = 2;$/;"	v
 endOfStream	c:\SFML\examples\voip\Server.cpp	/^const sf::Uint8 endOfStream = 2;$/;"	v
 entity	.\global.h	/^inline std::vector<std::shared_ptr<IEntity>> entity;$/;"	v
-entityCounter	.\global.h	/^inline size_t entityCounter = 0;$/;"	v
 erase_frag_with_id	.\global.cpp	/^void global::erase_frag_with_id(IEntity &e, size_t frag_id)$/;"	f	class:global
 erase_freed_frags	.\global.cpp	/^void global::erase_freed_frags()$/;"	f	class:global
 family	c:\SFML\include\SFML\Graphics\Font.hpp	/^        std::string family; \/\/\/< The font family$/;"	m	struct:sf::Font::Info
 finger	c:\SFML\include\SFML\Window\Event.hpp	/^        unsigned int finger; \/\/\/< Index of the finger in case of multi-touch events$/;"	m	struct:sf::Event::TouchEvent
 fire_shot	.\entity.cpp	/^void Enemy::fire_shot() { }$/;"	f	class:Enemy
 fire_shot	.\entity.cpp	/^void Player::fire_shot()$/;"	f	class:Player
-fragCounter	.\global.h	/^inline size_t fragCounter = 0;$/;"	v
 frags	.\entity.h	/^    std::vector<Frag> frags;$/;"	m	struct:EType::IEntity
 frags_to_free	.\global.h	/^inline std::set<std::pair<size_t, size_t>> frags_to_free;$/;"	v
 free_frags	.\global.h	/^inline std::vector<Frag> free_frags;$/;"	v
-ftStep	.\global.h	/^inline const float ftStep = 13.f; \/\/ fixed update interval in ms$/;"	v
 g	c:\SFML\include\SFML\Graphics\Color.hpp	/^    Uint8 g; \/\/\/< Green component$/;"	m	class:sf::Color
 generateTerrain	c:\SFML\examples\island\Island.cpp	/^void generateTerrain(sf::Vertex* buffer)$/;"	f
 getElevation	c:\SFML\examples\island\Island.cpp	/^float getElevation(float x, float y)$/;"	f
@@ -841,6 +837,7 @@ hitbox	.\entity.h	/^    sf::RectangleShape hitbox;$/;"	m	struct:EType::IEntity
 id	.\entity.h	/^    size_t id;$/;"	m	struct:EType::Frag
 id	.\entity.h	/^    unsigned int id;$/;"	m	struct:EType::IEntity
 index	c:\SFML\examples\island\Island.cpp	/^        unsigned int index;$/;"	m	struct:__anon1::WorkItem	file:
+init_menu	.\main1.cpp	/^void init_menu()$/;"	f
 init_player_test	.\main1.cpp	/^void init_player_test()$/;"	f
 initialize_timers	.\timing_manager.cpp	/^void timing::initialize_timers(ostream& os, const initializer_list<string> timing_labels)$/;"	f	class:timing
 joystickButton	c:\SFML\include\SFML\Window\Event.hpp	/^        JoystickButtonEvent   joystickButton;    \/\/\/< Joystick button event parameters (Event::JoystickButtonPressed, Event::JoystickButtonReleased)$/;"	m	union:sf::Event::__anon8
@@ -850,15 +847,12 @@ joystickId	c:\SFML\include\SFML\Window\Event.hpp	/^        unsigned int joystick
 joystickId	c:\SFML\include\SFML\Window\Event.hpp	/^        unsigned int joystickId; \/\/\/< Index of the joystick (in range [0 .. Joystick::Count - 1])$/;"	m	struct:sf::Event::JoystickConnectEvent
 joystickMove	c:\SFML\include\SFML\Window\Event.hpp	/^        JoystickMoveEvent     joystickMove;      \/\/\/< Joystick move event parameters (Event::JoystickMoved)$/;"	m	union:sf::Event::__anon8
 key	c:\SFML\include\SFML\Window\Event.hpp	/^        KeyEvent              key;               \/\/\/< Key event parameters (Event::KeyPressed, Event::KeyReleased)$/;"	m	union:sf::Event::__anon8
-keyInputStep	.\global.h	/^inline const float keyInputStep = ftStep * 3.f;$/;"	v
 label	.\timing_manager.h	/^  std::string label;$/;"	m	struct:timing::Timer
 label	c:\SFML\examples\joystick\Joystick.cpp	/^        sf::Text label;$/;"	m	struct:__anon2::JoystickObject	file:
 lastBlendMode	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^        BlendMode lastBlendMode;  \/\/\/< Cached blending mode$/;"	m	struct:sf::RenderTarget::StatesCache
-lastFPS	.\global.h	/^inline unsigned int lastFPS = 0;$/;"	v
 lastTextureId	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^        Uint64    lastTextureId;  \/\/\/< Cached texture$/;"	m	struct:sf::RenderTarget::StatesCache
 left	c:\SFML\include\SFML\Graphics\Rect.hpp	/^    T left;   \/\/\/< Left coordinate of the rectangle$/;"	m	class:sf::Rect
 length	c:\SFML\include\SFML\Audio\Music.hpp	/^        T length; \/\/\/< The length of the time range$/;"	m	struct:sf::Music::Span
-level	.\global.h	/^inline unsigned int level = 0;$/;"	v
 lightFactor	c:\SFML\examples\island\Island.cpp	/^    float lightFactor = 0.7f;$/;"	v
 load	c:\SFML\examples\shader\Effect.hpp	/^    void load()$/;"	f	class:Effect
 m_actualSize	c:\SFML\include\SFML\Graphics\Texture.hpp	/^    Vector2u     m_actualSize;    \/\/\/< Actual texture size (can be greater than public size because of padding)$/;"	m	class:sf::Texture
@@ -1081,6 +1075,7 @@ main	c:\SFML\examples\window\Window.cpp	/^int main()$/;"	f
 main	c:\SFML\include\SFML\Main.hpp	38;"	d
 majorVersion	c:\SFML\include\SFML\Window\ContextSettings.hpp	/^    unsigned int majorVersion;      \/\/\/< Major number of the context version to create$/;"	m	struct:sf::ContextSettings
 make_unit_vec	.\global.cpp	/^Vec2 global::make_unit_vec(Vec2 v)$/;"	f	class:global
+menu_text	.\global.h	/^inline std::vector<std::pair<sf::Text, Vec2>> menu_text;$/;"	v
 minorVersion	c:\SFML\include\SFML\Window\ContextSettings.hpp	/^    unsigned int minorVersion;      \/\/\/< Minor number of the context version to create$/;"	m	struct:sf::ContextSettings
 mouseButton	c:\SFML\include\SFML\Window\Event.hpp	/^        MouseButtonEvent      mouseButton;       \/\/\/< Mouse button event parameters (Event::MouseButtonPressed, Event::MouseButtonReleased)$/;"	m	union:sf::Event::__anon8
 mouseMove	c:\SFML\include\SFML\Window\Event.hpp	/^        MouseMoveEvent        mouseMove;         \/\/\/< Mouse move event parameters (Event::MouseMoved)$/;"	m	union:sf::Event::__anon8
@@ -1121,7 +1116,6 @@ perlinFrequencyBase	c:\SFML\examples\island\Island.cpp	/^    float perlinFrequen
 perlinOctaves	c:\SFML\examples\island\Island.cpp	/^    const int perlinOctaves = 3;$/;"	v
 playMusic	c:\SFML\examples\sound\Sound.cpp	/^void playMusic(const std::string& filename)$/;"	f
 playSound	c:\SFML\examples\sound\Sound.cpp	/^void playSound()$/;"	f
-playerHealth	.\global.h	/^inline unsigned int playerHealth = 3;$/;"	v
 player_ptr	.\global.h	/^inline std::shared_ptr<IEntity> player_ptr;$/;"	v
 position	c:\SFML\include\SFML\Graphics\Vertex.hpp	/^    Vector2f  position;  \/\/\/< 2D position of the vertex$/;"	m	class:sf::Vertex
 position	c:\SFML\include\SFML\Window\Event.hpp	/^        float          position;   \/\/\/< New position on the axis (in range [-100 .. 100])$/;"	m	struct:sf::Event::JoystickMoveEvent
@@ -1160,7 +1154,6 @@ sampleCount	c:\SFML\include\SFML\Audio\SoundFileReader.hpp	/^        Uint64     
 sampleCount	c:\SFML\include\SFML\Audio\SoundStream.hpp	/^        std::size_t  sampleCount; \/\/\/< Number of samples pointed by Samples$/;"	m	struct:sf::SoundStream::Chunk
 sampleRate	c:\SFML\include\SFML\Audio\SoundFileReader.hpp	/^        unsigned int sampleRate;   \/\/\/< Samples rate of the sound, in samples per second$/;"	m	struct:sf::SoundFileReader::Info
 samples	c:\SFML\include\SFML\Audio\SoundStream.hpp	/^        const Int16* samples;     \/\/\/< Pointer to the audio samples$/;"	m	struct:sf::SoundStream::Chunk
-score	.\global.h	/^inline unsigned int score = 0;$/;"	v
 sensor	c:\SFML\include\SFML\Window\Event.hpp	/^        SensorEvent           sensor;            \/\/\/< Sensor event parameters (Event::SensorChanged)$/;"	m	union:sf::Event::__anon8
 set	c:\SFML\examples\joystick\Joystick.cpp	/^    void set(const char* label, const T& value)$/;"	f	namespace:__anon2
 setFont	c:\SFML\examples\shader\Effect.hpp	/^    static void setFont(const sf::Font& font)$/;"	f	class:Effect
@@ -1258,7 +1251,6 @@ snowcapHeight	c:\SFML\examples\island\Island.cpp	/^    float snowcapHeight = 0.6
 sstr	c:\SFML\examples\joystick\Joystick.cpp	/^    std::ostringstream sstr;$/;"	v
 start	.\timing_manager.h	/^  high_res_clock::time_point start;$/;"	m	struct:timing::Timer
 start	c:\SFML\examples\voip\Server.cpp	/^    void start(unsigned short port)$/;"	f	class:NetworkAudioStream
-state	.\global.h	/^inline GAME_STATE state = GAME_STATE::Menu;$/;"	v
 stencilBits	c:\SFML\include\SFML\Window\ContextSettings.hpp	/^    unsigned int stencilBits;       \/\/\/< Bits of the stencil buffer$/;"	m	struct:sf::ContextSettings
 system	c:\SFML\include\SFML\Window\Event.hpp	/^        bool          system;  \/\/\/< Is the System key pressed?$/;"	m	struct:sf::Event::KeyEvent
 targetBuffer	c:\SFML\examples\island\Island.cpp	/^        sf::Vertex* targetBuffer;$/;"	m	struct:__anon1::WorkItem	file:
@@ -1299,7 +1291,8 @@ updateButtons	c:\SFML\examples\joystick\Joystick.cpp	/^    void updateButtons(un
 updateIdentification	c:\SFML\examples\joystick\Joystick.cpp	/^    void updateIdentification(unsigned int index)$/;"	f	namespace:__anon2
 updateStripes	c:\SFML\doc\html\dynsections.js	/^function updateStripes()$/;"	f
 updateValues	c:\SFML\examples\joystick\Joystick.cpp	/^    void updateValues(unsigned int index)$/;"	f	namespace:__anon2
-update_player_test	.\main1.cpp	/^void update_player_test(const float& ftStep)$/;"	f
+update_menu_screen	.\main1.cpp	/^void update_menu_screen(const float &ftStep)$/;"	f
+update_player_test	.\main1.cpp	/^void update_player_test(const float &ftStep)$/;"	f
 useVertexCache	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^        bool      useVertexCache; \/\/\/< Did we previously use the vertex cache?$/;"	m	struct:sf::RenderTarget::StatesCache
 value	c:\SFML\examples\island\Island.cpp	/^        float* value;$/;"	m	struct:__anon1::Setting	file:
 value	c:\SFML\examples\joystick\Joystick.cpp	/^        sf::Text value;$/;"	m	struct:__anon2::JoystickObject	file:
@@ -1313,8 +1306,6 @@ width	c:\SFML\include\SFML\Graphics\Font.hpp	/^        unsigned int width;  \/\/
 width	c:\SFML\include\SFML\Graphics\Rect.hpp	/^    T width;  \/\/\/< Width of the rectangle$/;"	m	class:sf::Rect
 width	c:\SFML\include\SFML\Window\Event.hpp	/^        unsigned int width;  \/\/\/< New width, in pixels$/;"	m	struct:sf::Event::SizeEvent
 width	c:\SFML\include\SFML\Window\VideoMode.hpp	/^    unsigned int width;        \/\/\/< Video mode width, in pixels$/;"	m	class:sf::VideoMode
-winHeight	.\global.h	/^inline const unsigned int winHeight = 768;$/;"	v
-winWidth	.\global.h	/^inline const unsigned int winWidth = 1024;$/;"	v
 windowHeight	c:\SFML\examples\island\Island.cpp	/^    const unsigned int windowHeight = 600;$/;"	v
 windowWidth	c:\SFML\examples\island\Island.cpp	/^    const unsigned int windowWidth = 800;$/;"	v
 workPending	c:\SFML\examples\island\Island.cpp	/^    bool workPending = true;$/;"	v

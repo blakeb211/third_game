@@ -22,24 +22,26 @@ enum GAME_STATE {
 //
 // Global Inline Variables 
 //
-inline const unsigned int winWidth = 1024;
-inline const unsigned int winHeight = 768;
-inline const unsigned int blockWidth = 5;
-inline const unsigned int bW = blockWidth;
-inline const float ftStep = 13.f; // fixed update interval in ms
-inline const float keyInputStep = ftStep * 3.f;
-inline unsigned int lastFPS = 0;
+inline const unsigned int winWidth {1024};
+inline const unsigned int winHeight {768};
+inline const unsigned int blockWidth {5};
+inline const unsigned int & bW {blockWidth};
+inline const float ftStep {13.f}; // fixed update interval in ms
+inline const float keyInputStep {ftStep * 3.f};
+inline unsigned int lastFPS {0};
 inline std::default_random_engine rand_engine;
 inline std::vector<std::shared_ptr<IEntity>> entity;
 inline std::vector<Frag> free_frags;
-inline size_t entityCounter = 0;
-inline size_t fragCounter = 0;
+inline size_t entityCounter {0};
+inline size_t fragCounter {0};
 inline std::shared_ptr<IEntity> player_ptr;
 inline std::set<std::pair<size_t, size_t>> frags_to_free;
-inline GAME_STATE state = GAME_STATE::Menu;
-inline unsigned int score = 0;
-inline unsigned int level = 0;
-inline unsigned int playerHealth = 3;
+inline GAME_STATE state {GAME_STATE::Menu};
+inline unsigned int score {0};
+inline unsigned int level {0};
+inline unsigned int playerHealth {3};
+inline sf::Font font; // unitialized
+inline std::vector<sf::Text> menu_text;
 //
 // free functions
 //
