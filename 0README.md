@@ -11,13 +11,24 @@ Purpose of project: Re-Write Second Shooter to run faster and have the explosion
 *******************************************************************
 
 
-DOTPRODUCTS
+add score system
+draw player health with transparency
+
 ROTATE ENTITY ON GRID
-  colliding bullets, entities
+  colliding bullets, enemies 
+
+separate out mathlib
+DOTPRODUCTS 
+LERP FUNCTION
+make-unit-vector
+
+refactor to draw using vertexArray
 
 Add enemy AI with raycasts
+add particle system
 
-ADD A LERP FUNCTION
+
+
 
 ADD PLAYER HEALTH WITH A HEALTHBAR
 SCORE
