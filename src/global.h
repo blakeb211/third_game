@@ -13,6 +13,7 @@ namespace global {
 // 
 enum GAME_STATE {
   Menu,
+  Pause,
   Level_Screen,
   Game,
   Editor,
@@ -102,7 +103,7 @@ calc_frames_per_second(const std::chrono::high_resolution_clock::time_point &);
 bool check_for_window_close(sf::RenderWindow &window, sf::Event &event);
 
 // handle user input
-bool handle_keyboard_input(float timer, const float maxTime, sf::RenderWindow &window);
+bool handle_keyboard_input(float &timer, const float maxTime, sf::RenderWindow &window);
 
 // get current date and time as string
 const std::string return_current_time_and_date();

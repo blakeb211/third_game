@@ -19,7 +19,6 @@ using namespace global;
 typedef chrono::high_resolution_clock high_res_clock;
 typedef Vector2f Vec2;
 
-
 //
 // PLAYER TEST
 //
@@ -120,15 +119,12 @@ int main()
       { "drawing", "update", "entity collision", "process frags", "remove entities",
           "free frag collision", "frametime" });
   state = GAME_STATE::Game;
-  //
-  // initialize demo
-  //
-  // rotated_rectange_init();
+
+  // Initialize
   init_player_test();
 
   while (window->isOpen()) {
-    switch (state) {
-    case GAME_STATE::Game:
+    if (state == GAME_STATE::Game) {
 
       timing::Timer timer("frametime");
       // Get user input
@@ -170,8 +166,23 @@ int main()
         *log_file << setw(8) << global::free_frags.size() << "\n";
         timing::calc_and_log_interval_timing_data();
       }
-      break;
-    }; // GAME_STATE switch statement
+    } // GAME_STATE::Game
+
+    else if (state == GAME_STATE::Menu) {
+
+      // check for switching state back to Game
+      //
+      if (handle_keyboard_input(keyTimeAccum, keyInputStep, *window)
+          || check_for_window_close(*window, event)) {
+        break;
+      }
+
+    } // GAME_STATE::Menu
+
+    else if (state == GAME_STATE::Level_Screen) {
+
+    } // GAME_STATE::Level_Screen
+
   } // Main game loop
   log_file->close();
   cerr << "Logfile closing" << endl;

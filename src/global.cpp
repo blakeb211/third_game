@@ -305,43 +305,62 @@ bool global::check_for_window_close(RenderWindow& window, Event& event)
 }
 
 // get user input
-bool global::handle_keyboard_input(float timer, const float maxTime, RenderWindow& window)
+// exit main game loop by return true
+bool global::handle_keyboard_input(float& timer, const float maxTime, RenderWindow& window)
 {
-  if (timer < maxTime)
-    return false; // don't exit main game loop
-  if (Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-    window.close();
-    return true; // exit main game loop
-  }
-  timer = 0.f;
-  if (global::player_ptr == nullptr) {
-    global::player_ptr = get_entity_with_id(0);
-  }
-  if (Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-    if (player_ptr && player_ptr->type == EType::Player) {
-      auto& dvel_ref = player_ptr->dvel;
-      if (player_ptr->center.x < 30.f) return false;
-      dvel_ref += (abs(dvel_ref.x) < 7.5f) ? Vec2(-2.1f, 0.f) : Vec2(0.f, 0.f);
+  if (state == GAME_STATE::Game) {
+    if (timer < maxTime)
+      return false; // don't exit main game loop
+    timer = 0.f;
+    if (Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+      // escape key activates the Menu
+      state = GAME_STATE::Menu;
+    cout << "changing state from Game to Menu" << endl;
+      return false;
     }
-  }
-  if (Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-    if (player_ptr && player_ptr->type == EType::Player) {
-      auto& dvel_ref = player_ptr->dvel;
-      if (player_ptr->center.x > winWidth - 30.f) return false;
-      dvel_ref += (abs(dvel_ref.x) < 7.5f) ? Vec2(+2.1f, 0.f) : Vec2(0.f, 0.f);
+    if (global::player_ptr == nullptr) {
+      global::player_ptr = get_entity_with_id(0);
     }
-  }
-  if (Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-    if (player_ptr && player_ptr->type == EType::Player) {
-      auto player_ptr2 = dynamic_pointer_cast<Player>(player_ptr);
-      player_ptr2->fire_shot();
+    if (Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+      if (player_ptr && player_ptr->type == EType::Player) {
+        auto& dvel_ref = player_ptr->dvel;
+        if (player_ptr->center.x < 30.f)
+          return false;
+        dvel_ref += (abs(dvel_ref.x) < 8.9f) ? Vec2(-4.1f, 0.f) : Vec2(0.f, 0.f);
+      }
     }
-  }
-  if (Keyboard::isKeyPressed(sf::Keyboard::LShift)) {
-    cerr << "LShift key pressed" << endl;
-  }
-  return false; // don't exit the main game loop
-}
+    if (Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+      if (player_ptr && player_ptr->type == EType::Player) {
+        auto& dvel_ref = player_ptr->dvel;
+        if (player_ptr->center.x > winWidth - 30.f)
+          return false;
+        dvel_ref += (abs(dvel_ref.x) < 8.9f) ? Vec2(+4.1f, 0.f) : Vec2(0.f, 0.f);
+      }
+    }
+    if (Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+      if (player_ptr && player_ptr->type == EType::Player) {
+        auto player_ptr2 = dynamic_pointer_cast<Player>(player_ptr);
+        player_ptr2->fire_shot();
+      }
+    }
+    if (Keyboard::isKeyPressed(sf::Keyboard::LShift)) {
+      cerr << "LShift key pressed" << endl;
+    }
+    return false; // don't exit the main game loop
+  } else if (state == GAME_STATE::Menu) {
+    timer += 0.1f;
+    if (timer < maxTime) return false;
+    // check for return to Game
+    if (Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+      // escape key activates the Menu
+    cout << "changing state from Menu to Game" << endl;
+      timer = 0.0f;
+      state = GAME_STATE::Game;
+    }
+    return false;
+  } // GAME_STATE::Menu
+  return false;
+} // handle_keyboard_input
 
 // free function to get current date and time as string
 const string global::return_current_time_and_date()
