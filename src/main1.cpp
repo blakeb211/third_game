@@ -110,10 +110,10 @@ int main()
   // Initialization
   auto window = create_window();
   Event event;
-  float ftAccum = 0.f; // frametime accumulator
-  float keyTimeAccum = 0.f;
+  float ftAccum {0.f}; // frametime accumulator
+  float keyTimeAccum {0.f};
   auto log_file = create_log_file(return_current_time_and_date());
-  size_t frameCounter = 0;
+  size_t frameCounter {0};
   // Setup timers
   timing::initialize_timers(*log_file,
       { "drawing", "update", "entity collision", "process frags", "remove entities",
@@ -169,13 +169,16 @@ int main()
     } // GAME_STATE::Game
 
     else if (state == GAME_STATE::Menu) {
-
-      // check for switching state back to Game
+      // Accumulate keyTimeAccum so that pressing keys doesn't generate too many events in the menu
+      keyTimeAccum += global::ftStep;
+      // check for switching state back to game
       //
       if (handle_keyboard_input(keyTimeAccum, keyInputStep, *window)
           || check_for_window_close(*window, event)) {
         break;
       }
+        window->clear(sf::Color(128,128,115,255));
+        window->display();
 
     } // GAME_STATE::Menu
 
