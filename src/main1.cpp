@@ -22,7 +22,13 @@ typedef Vector2f Vec2;
 //
 // PLAYER TEST
 //
-
+void init_menu() {
+    // Create a graphical text to display
+    sf::Font font;
+    if (!font.loadFromFile("arial.ttf"))
+        return EXIT_FAILURE;
+    sf::Text text("Hello SFML", font, 50);
+}
 void init_player_test()
 {
 
@@ -102,6 +108,15 @@ void draw_player_test(RenderWindow& window)
   for_each(begin(free_frags), end(free_frags), [&window](const Frag& f) { window.draw(f); });
 }
 
+void draw_menu_screen(RenderWindow& window) {
+
+}
+
+
+void update_menu_screen(const float& ftStep) {
+
+}
+
 //
 // MAIN PROGRAM
 //
@@ -122,7 +137,7 @@ int main()
 
   // Initialize
   init_player_test();
-
+  init_menu();
   while (window->isOpen()) {
     if (state == GAME_STATE::Game) {
 
@@ -178,6 +193,8 @@ int main()
         break;
       }
         window->clear(sf::Color(128,128,115,255));
+        draw_menu_screen(*window);
+        update_menu_screen(global::ftStep);
         window->display();
 
     } // GAME_STATE::Menu
