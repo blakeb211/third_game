@@ -26,7 +26,7 @@ void init_menu() {
     // Create a graphical text to display
     sf::Font font;
     if (!font.loadFromFile("arial.ttf"))
-        return EXIT_FAILURE;
+        cerr << "Error loading font from file!" << endl;
     sf::Text text("Hello SFML", font, 50);
 }
 void init_player_test()
