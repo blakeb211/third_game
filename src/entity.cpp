@@ -111,11 +111,14 @@ void Player::update(FrameTime ftStep)
 
 void Player::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos, sf::Color c)
 {
-
+  auto bounce_vec = global::make_unit_vec(center - voxPos);
   switch (e.type) {
   case EType::BouncyWall:
-    auto bounce_vec = global::make_unit_vec(center - voxPos);
     dvel += Vec2(bounce_vec.x, 0) * 2.8f;
+    break;
+  case EType::Bullet:
+    global::move_entity(*this, Vec2(bounce_vec.x, 0) * (float)global::bW*4.f);
+    global::playerHealth--;
     break;
   }
 }
