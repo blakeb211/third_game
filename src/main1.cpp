@@ -148,8 +148,8 @@ void draw_player_test(RenderWindow &window)
 #endif
   }
   // draw free frags
-  draw_free_frags(window);
-  //for_each(begin(free_frags), end(free_frags), [&window](const Frag &f) { window.draw(f); });
+  //draw_free_frags(window);
+  for_each(begin(free_frags), end(free_frags), [&window](const Frag &f) { window.draw(f); });
 }
 
 void draw_menu_screen(RenderWindow &window)
