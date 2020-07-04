@@ -32,23 +32,23 @@ void init_menu()
   else
   {
     cout << "Font loaded from file" << endl;
-    float _y {winHeight / 10.f};
+    float _y{winHeight / 10.f};
     const float _dy = {winHeight / 18.f};
-    const float _x {winWidth / 4.f};
-    sf::Text text0("(Blake's) Space Invaders - Menu Screen",global::font, 30);
-    text0.setPosition(Vec2(_x, _y)); 
+    const float _x{winWidth / 4.f};
+    sf::Text text0("(Blake's) Space Invaders - Menu Screen", global::font, 30);
+    text0.setPosition(Vec2(_x, _y));
     global::menu_text.push_back(text0);
     sf::Text text1("Return_to_game-----Enter key", global::font, 20);
     _y += _dy;
-    text1.setPosition(Vec2(_x, _y)); 
+    text1.setPosition(Vec2(_x, _y));
     global::menu_text.push_back(text1);
     sf::Text text2("Level_editor---------Tab key", global::font, 20);
     _y += _dy;
-    text2.setPosition(Vec2(_x, _y)); 
+    text2.setPosition(Vec2(_x, _y));
     global::menu_text.push_back(text2);
     sf::Text text3("Quit_game----------Delete key or click X", global::font, 20);
     _y += _dy;
-    text3.setPosition(Vec2(_x, _y)); 
+    text3.setPosition(Vec2(_x, _y));
     global::menu_text.push_back(text3);
   }
 }
@@ -121,16 +121,19 @@ void update_player_test(const float &ftStep)
     global::check_free_frags_for_collisions();
   }
 }
-void draw_free_frags(RenderWindow &window) {
+void draw_free_frags(RenderWindow &window)
+{
   global::ff_varray.clear();
   size_t num = 4;
   sf::Color col;
   sf::Transform trans;
-  for(auto & f : free_frags) {
+  for (auto &f : free_frags)
+  {
     col = f.getFillColor();
     trans = f.getTransform();
-    for (int i {0}; i < num; i++) {
-      Vec2 p_transformed = trans.transformPoint(f.getPoint(i)); 
+    for (int i{0}; i < num; i++)
+    {
+      Vec2 p_transformed = trans.transformPoint(f.getPoint(i));
       sf::Vertex v = sf::Vertex(p_transformed, col);
       ff_varray.append(v);
     }
@@ -148,8 +151,17 @@ void draw_player_test(RenderWindow &window)
 #endif
   }
   // draw free frags
-  //draw_free_frags(window);
+  // draw_free_frags(window);
   for_each(begin(free_frags), end(free_frags), [&window](const Frag &f) { window.draw(f); });
+  // draw player health bar
+  sf::CircleShape cs(global::bW*3, 30);
+  cs.setFillColor(sf::Color(255, 178, 102, 60));
+  cs.setPosition(winWidth / 30.f, 26.f * winHeight / 27.f);
+  for (int i = 0; i < global::playerHealth; i++)
+  {
+    window.draw(cs);
+    cs.move(Vec2(0, -10));
+  }
 }
 
 void draw_menu_screen(RenderWindow &window)

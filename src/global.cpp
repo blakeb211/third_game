@@ -373,9 +373,9 @@ bool global::handle_keyboard_input(float &timer, const float maxTime, RenderWind
     {
       if (player_ptr && player_ptr->type == EType::Player)
       {
-        auto &dvel_ref = player_ptr->dvel;
         if (player_ptr->center.x < 30.f)
           return false;
+        auto &dvel_ref = player_ptr->dvel;
         dvel_ref += (abs(dvel_ref.x) < 8.9f) ? Vec2(-4.1f, 0.f) : Vec2(0.f, 0.f);
       }
     }
@@ -383,9 +383,9 @@ bool global::handle_keyboard_input(float &timer, const float maxTime, RenderWind
     {
       if (player_ptr && player_ptr->type == EType::Player)
       {
-        auto &dvel_ref = player_ptr->dvel;
-        if (player_ptr->center.x > winWidth - 30.f)
+        if (player_ptr->center.x > global::winWidth - 30.f)
           return false;
+        auto &dvel_ref = player_ptr->dvel;
         dvel_ref += (abs(dvel_ref.x) < 8.9f) ? Vec2(+4.1f, 0.f) : Vec2(0.f, 0.f);
       }
     }
@@ -405,7 +405,7 @@ bool global::handle_keyboard_input(float &timer, const float maxTime, RenderWind
   }
   else if (state == GAME_STATE::Menu)
   {
-    // return true to quit the game from the menu 
+    // return true to quit the game from the menu
     if (timer < maxTime)
       return false;
     // check for return to Game

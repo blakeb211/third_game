@@ -102,6 +102,11 @@ void Player::update(FrameTime ftStep)
   currTimer += ftStep;
   global::move_entity(*this, vel + dvel);
   dvel *= (abs(dvel.x) < 0.01f) ? 0 : 0.85f;
+   if (center.x < 30.f || center.x > global::winWidth - 30.f)
+   {
+      vel.x = 0.f;
+      dvel.x = 0.f;
+    }
 }
 
 void Player::collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos, sf::Color c)
