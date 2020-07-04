@@ -184,7 +184,7 @@ void global::erase_freed_frags()
     }
     // set free_frag limit to see if it helps draw timings
     unsigned int ffSize = free_frags.size();
-    const uint32_t ffCutoff = 50u;
+    const uint32_t ffCutoff = 100u;
     if (ffSize > ffCutoff)
     {
       unsigned int sizeDiff = ffSize - ffCutoff;
@@ -328,7 +328,7 @@ unique_ptr<RenderWindow> global::create_window()
   const ContextSettings cs(0, 0, 2, 4, 4, ContextSettings::Default, true);
   auto window = make_unique<RenderWindow>(VideoMode(global::winWidth, global::winHeight),
                                           "Iteration 3", Style::Close, cs);
-  window->setVerticalSyncEnabled(true); // prevent screen tearing
+  window->setVerticalSyncEnabled(false); // prevent screen tearing
   return move(window);
 }
 

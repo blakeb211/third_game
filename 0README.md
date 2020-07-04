@@ -11,8 +11,9 @@ Purpose of project: Re-Write Second Shooter to run faster and have the explosion
 *******************************************************************
 
 
-add score system
 draw player health with transparency
+add score system
+refactor to draw using vertexArray
 
 ROTATE ENTITY ON GRID
   colliding bullets, enemies 
@@ -22,7 +23,6 @@ DOTPRODUCTS
 LERP FUNCTION
 make-unit-vector
 
-refactor to draw using vertexArray
 
 Add enemy AI with raycasts
 add particle system
@@ -50,13 +50,10 @@ NEED LEVELS
 ADD SOUND
 
 
-SETUP CMakeLists.txt to copy the debug dlls 
-
 Study Materials
   read through sfml game project code
   read through sfml api
   2nd half of Moo book
-
 
 Coding Guidelines 
 

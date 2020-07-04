@@ -42,6 +42,7 @@ inline unsigned int level {0};
 inline unsigned int playerHealth {3};
 inline sf::Font font; // unitialized
 inline std::vector<sf::Text> menu_text;
+inline sf::VertexArray ff_varray{sf::PrimitiveType::Quads, 200};
 //
 // free functions
 //

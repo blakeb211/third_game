@@ -783,6 +783,7 @@ depthBits	c:\SFML\include\SFML\Window\ContextSettings.hpp	/^    unsigned int dep
 doClient	c:\SFML\examples\voip\Client.cpp	/^void doClient(unsigned short port)$/;"	f
 doServer	c:\SFML\examples\voip\Server.cpp	/^void doServer(unsigned short port)$/;"	f
 draw	c:\SFML\examples\shader\Effect.hpp	/^    void draw(sf::RenderTarget& target, sf::RenderStates states) const$/;"	f	class:Effect
+draw_free_frags	.\main1.cpp	/^void draw_free_frags(RenderWindow &window) {$/;"	f
 draw_menu_screen	.\main1.cpp	/^void draw_menu_screen(RenderWindow &window)$/;"	f
 draw_player_test	.\main1.cpp	/^void draw_player_test(RenderWindow &window)$/;"	f
 dvel	.\entity.h	/^    Vec2 dvel;$/;"	m	struct:EType::Frag
@@ -800,6 +801,7 @@ family	c:\SFML\include\SFML\Graphics\Font.hpp	/^        std::string family; \/\/
 finger	c:\SFML\include\SFML\Window\Event.hpp	/^        unsigned int finger; \/\/\/< Index of the finger in case of multi-touch events$/;"	m	struct:sf::Event::TouchEvent
 fire_shot	.\entity.cpp	/^void Enemy::fire_shot() { }$/;"	f	class:Enemy
 fire_shot	.\entity.cpp	/^void Player::fire_shot()$/;"	f	class:Player
+font	.\global.h	/^inline sf::Font font; \/\/ unitialized$/;"	v
 frags	.\entity.h	/^    std::vector<Frag> frags;$/;"	m	struct:EType::IEntity
 frags_to_free	.\global.h	/^inline std::set<std::pair<size_t, size_t>> frags_to_free;$/;"	v
 free_frags	.\global.h	/^inline std::vector<Frag> free_frags;$/;"	v
@@ -1075,7 +1077,7 @@ main	c:\SFML\examples\window\Window.cpp	/^int main()$/;"	f
 main	c:\SFML\include\SFML\Main.hpp	38;"	d
 majorVersion	c:\SFML\include\SFML\Window\ContextSettings.hpp	/^    unsigned int majorVersion;      \/\/\/< Major number of the context version to create$/;"	m	struct:sf::ContextSettings
 make_unit_vec	.\global.cpp	/^Vec2 global::make_unit_vec(Vec2 v)$/;"	f	class:global
-menu_text	.\global.h	/^inline std::vector<std::pair<sf::Text, Vec2>> menu_text;$/;"	v
+menu_text	.\global.h	/^inline std::vector<sf::Text> menu_text;$/;"	v
 minorVersion	c:\SFML\include\SFML\Window\ContextSettings.hpp	/^    unsigned int minorVersion;      \/\/\/< Minor number of the context version to create$/;"	m	struct:sf::ContextSettings
 mouseButton	c:\SFML\include\SFML\Window\Event.hpp	/^        MouseButtonEvent      mouseButton;       \/\/\/< Mouse button event parameters (Event::MouseButtonPressed, Event::MouseButtonReleased)$/;"	m	union:sf::Event::__anon8
 mouseMove	c:\SFML\include\SFML\Window\Event.hpp	/^        MouseMoveEvent        mouseMove;         \/\/\/< Mouse move event parameters (Event::MouseMoved)$/;"	m	union:sf::Event::__anon8

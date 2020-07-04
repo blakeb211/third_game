@@ -121,7 +121,22 @@ void update_player_test(const float &ftStep)
     global::check_free_frags_for_collisions();
   }
 }
-
+void draw_free_frags(RenderWindow &window) {
+  global::ff_varray.clear();
+  size_t num = 4;
+  sf::Color col;
+  sf::Transform trans;
+  for(auto & f : free_frags) {
+    col = f.getFillColor();
+    trans = f.getTransform();
+    for (int i {0}; i < num; i++) {
+      Vec2 p_transformed = trans.transformPoint(f.getPoint(i)); 
+      sf::Vertex v = sf::Vertex(p_transformed, col);
+      ff_varray.append(v);
+    }
+  }
+  window.draw(ff_varray);
+}
 void draw_player_test(RenderWindow &window)
 {
   timing::Timer timer("drawing");
@@ -133,7 +148,8 @@ void draw_player_test(RenderWindow &window)
 #endif
   }
   // draw free frags
-  for_each(begin(free_frags), end(free_frags), [&window](const Frag &f) { window.draw(f); });
+  draw_free_frags(window);
+  //for_each(begin(free_frags), end(free_frags), [&window](const Frag &f) { window.draw(f); });
 }
 
 void draw_menu_screen(RenderWindow &window)
