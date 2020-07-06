@@ -11,7 +11,6 @@ Purpose of project: Re-Write Second Shooter to run faster and have the explosion
 *******************************************************************
 
 
-add score system
 add level screen
 Add enemy AI with raycasts
 IN GAME LEVEL EDITOR WITH A FIXED GRID
