@@ -154,7 +154,7 @@ void draw_player_test(RenderWindow &window)
   // draw_free_frags(window);
   for_each(begin(free_frags), end(free_frags), [&window](const Frag &f) { window.draw(f); });
   // draw player health bar
-  sf::CircleShape cs(global::bW*3, 30);
+  sf::CircleShape cs(global::bW * 3, 30);
   cs.setFillColor(sf::Color(255, 178, 102, 60));
   cs.setPosition(winWidth / 30.f, 26.f * winHeight / 27.f);
   for (int i = 0; i < global::playerHealth; i++)
@@ -238,9 +238,9 @@ int main()
       }
       if (frameCounter % 800 == 0)
       {
-        *log_file << setw(20) << fps_string << "\n";
-        *log_file << setw(20) << "Len(Entity, Free Frag)" << setw(8) << global::entity.size();
-        *log_file << setw(8) << global::free_frags.size() << "\n";
+        *log_file << setw(20) << fps_string << "\n"
+                  << setw(20) << "Len(Entity, Free Frag)" << setw(8) << global::entity.size()
+                  << setw(8) << global::free_frags.size() << "\n";
         timing::calc_and_log_interval_timing_data();
       }
     } // GAME_STATE::Game

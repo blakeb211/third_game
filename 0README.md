@@ -11,44 +11,30 @@ Purpose of project: Re-Write Second Shooter to run faster and have the explosion
 *******************************************************************
 
 
-draw player health with transparency
 add score system
-refactor to draw using vertexArray
+add level screen
+Add enemy AI with raycasts
+IN GAME LEVEL EDITOR WITH A FIXED GRID
+ADD SOUND
+add particle system
 
 ROTATE ENTITY ON GRID
   colliding bullets, enemies 
 
-separate out mathlib
-DOTPRODUCTS 
-LERP FUNCTION
-make-unit-vector
-
-
-Add enemy AI with raycasts
-add particle system
-
-
-
-
-ADD PLAYER HEALTH WITH A HEALTHBAR
 SCORE
 LEVEL SCREEN
 3 LEVELS
-IN GAME LEVEL EDITOR WITH A FIXED GRID
-EDITOR
-ADD FADEOUT AND TIMER TO DYING ENEMIES
-ADD MORE CONSISTENT COLLISIONS
+BOSS
 
-WALLS
-  give walls a self-calculated reflection angle 
+REFACTORING OPTIONS
+    separate out mathlib
+    DOTPRODUCTS 
+    LERP FUNCTION
+    make-unit-vector
 
 READ THROUGH 3 OTHER GAME CODES
 READ THROUGH MY CODE
 READ THROUGH SFML API AGAIN
-
-NEED LEVELS
-ADD SOUND
-
 
 Study Materials
   read through sfml game project code
