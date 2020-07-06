@@ -22,6 +22,7 @@ typedef Vector2f Vec2;
 //
 // PLAYER TEST
 //
+
 void init_menu()
 {
   // Create a graphical text to display
@@ -51,6 +52,19 @@ void init_menu()
     text3.setPosition(Vec2(_x, _y));
     global::menu_text.push_back(text3);
   }
+}
+
+void init_score()
+{
+  global::txt_score = Text(to_string(global::score), global::font, 22);
+  global::txt_score.setFillColor(Color(10, 100, 230, 130));
+  global::txt_score.setOutlineColor(Color(10, 10, 180, 100));
+  txt_score.setPosition(Vec2(winWidth - 70.f, winHeight - 27.f));
+}
+
+void update_score()
+{
+  global::txt_score.setString(global::score);
 }
 
 void init_player_test()
@@ -162,6 +176,8 @@ void draw_player_test(RenderWindow &window)
     window.draw(cs);
     cs.move(Vec2(0, -10));
   }
+  // draw score
+  window.draw(global::txt_score);
 }
 
 void draw_menu_screen(RenderWindow &window)
@@ -193,6 +209,7 @@ int main()
   // Initialize
   init_player_test();
   init_menu();
+  init_score();
   while (window->isOpen())
   {
     if (state == GAME_STATE::Game)
@@ -217,8 +234,8 @@ int main()
       // Update phase
       for (; ftAccum >= ftStep; ftAccum -= ftStep)
       {
-        // rotated_rectange_update();
         update_player_test(ftStep);
+        update_score();
       }
 
       // Frame Timings
