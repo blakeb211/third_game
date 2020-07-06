@@ -268,7 +268,7 @@ void global::remove_dead_entities()
         free_frags.push_back(move(f));
       }
       e->isDead = true;
-      global::score += 20;
+      if (e->type == EType::Enemy) {global::score += 20; }
     }
   }
   // erase all entities flagged as isDead, which can happen by

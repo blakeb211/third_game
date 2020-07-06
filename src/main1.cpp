@@ -64,7 +64,7 @@ void init_score()
 
 void update_score()
 {
-  global::txt_score.setString(global::score);
+  global::txt_score.setString(to_string(global::score));
 }
 
 void init_player_test()
