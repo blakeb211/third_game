@@ -109,15 +109,16 @@ void builder::build_level(unsigned int &levelId)
         ss >> x;
         if (ss.bad())
           throw exception("sstring stream accessed when bad in builder::build_level");
+        // level editor coords are in percentages of winHeight and winWidth
         ss >> y;
         ss >> c;
         assert(x * winWidth <= winWidth);
         assert(y * winHeight <= winHeight);
-        // Convert from level editor coords to game coords
         e_ptr->path.push_back(Vec2(x * winWidth, y * winHeight));
       }
       // set enemies starting position to the first point on its path
-      //global::move_entity(*e_ptr, e_ptr->path[0]);
+      // move entity to its first path point
+      global::move_entity(*e_ptr, e_ptr->path[0]);
     }
     // load the walls
     // check if its a wall line: a B means a bouncy wall, a D means a
@@ -141,10 +142,8 @@ void builder::build_level(unsigned int &levelId)
         // Convert from level editor coords to game coords
         x_start *= winWidth;
         x_end *= winWidth;
-        cout << "wall x_start: " << x_start << "wall x_end:" << x_end << endl;
         y_start *= winHeight;
         y_end *= winHeight;
-        cout << "wall y_start: " << y_start << "wall y_end:" << y_end << endl;
         // build the wall
         if (c == 'B')
         {
@@ -163,6 +162,7 @@ void builder::build_level(unsigned int &levelId)
       cout << "wall was added to the level" << endl;
     }
   }
+  assert(enemyCount == pathCount);
   cout << "closing level loading input file" << endl;
   in_file.close();
   assert(enemyCount == pathCount);

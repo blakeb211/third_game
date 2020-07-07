@@ -182,10 +182,8 @@ Enemy::Enemy(unsigned int enemy_type)
     timerMax = 2000.f; // timerMax in milliseconds
     // IEnemy
     // path loaded from file or generated
-    path.emplace_back(Vec2(global::rand_between(200, 800), global::rand_between(300, 600)));
     currPathPoint = 0;
     global::get_center(*this);
-    global::move_entity(*this, path[currPathPoint]);
     // define when enemy explodes
     healthCutoff = 3 * frags.size() / 4;
     global::build_hitbox(*this);
@@ -196,10 +194,8 @@ Enemy::Enemy(unsigned int enemy_type)
     // ICanShoot
     timerMax = 2000.f; // timerMax in milliseconds
     // randomly generated first path point
-    path.emplace_back(Vec2(global::rand_between(200, 800), global::rand_between(300, 450)));
     currPathPoint = 0;
     global::get_center(*this);
-    global::move_entity(*this, path[currPathPoint]);
     // define when enemy explodes
     healthCutoff = 3 * frags.size() / 4;
     global::build_hitbox(*this);
