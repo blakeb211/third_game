@@ -24,6 +24,38 @@ inline std::ostream &global::operator<<(std::ostream &Str, EType V)
   };
 }
 
+
+// increment level, reset variables, and load the level
+void global::start_next_level() {
+  global::level++;
+  global::free_frags.clear();
+  global::entity.clear();
+  global::playerHealth = 3;
+  global::score = 0;
+  global::state = GAME_STATE::Level_Screen;
+}
+
+void global::restart_current_level() {
+  global::free_frags.clear();
+  global::entity.clear();
+  global::playerHealth = 3;
+  global::score = 0;
+  global::state = GAME_STATE::Level_Screen;
+}
+
+bool global::is_win_condition_met()
+{
+  auto num_alive = count_if(begin(entity), end(entity),
+                            [&](const shared_ptr<IEntity>& e) { return e->type == EType::Enemy; });
+  return num_alive == 0; 
+}
+
+bool global::is_lose_condition_met()
+{
+  return playerHealth <= 0;
+}
+
+
 Vec2 global::make_unit_vec(Vec2 v)
 {
   const auto len = hypot(v.x, v.y);

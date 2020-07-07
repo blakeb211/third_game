@@ -3,15 +3,18 @@
 #include <chrono>
 #include <memory>
 #include <random>
+#include <algorithm>
 /* */
 #include <SFML/Graphics.hpp>
 
 #include "entity.h"
-namespace global {
+namespace global
+{
 //
 // GLOBALS
-// 
-enum GAME_STATE {
+//
+enum GAME_STATE
+{
   Menu,
   Pause,
   Level_Screen,
@@ -20,26 +23,26 @@ enum GAME_STATE {
 };
 
 //
-// Global Inline Variables 
+// Global Inline Variables
 //
-inline const unsigned int winWidth {1024};
-inline const unsigned int winHeight {768};
-inline const unsigned int blockWidth {5};
-inline const unsigned int & bW {blockWidth};
-inline const float ftStep {13.f}; // fixed update interval in ms
-inline const float keyInputStep {ftStep * 3.f};
-inline unsigned int lastFPS {0};
+inline const unsigned int winWidth{1024};
+inline const unsigned int winHeight{768};
+inline const unsigned int blockWidth{5};
+inline const unsigned int &bW{blockWidth};
+inline const float ftStep{13.f}; // fixed update interval in ms
+inline const float keyInputStep{ftStep * 3.f};
+inline unsigned int lastFPS{0};
 inline std::default_random_engine rand_engine;
 inline std::vector<std::shared_ptr<IEntity>> entity;
 inline std::vector<Frag> free_frags;
-inline size_t entityCounter {0};
-inline size_t fragCounter {0};
+inline size_t entityCounter{0};
+inline size_t fragCounter{0};
 inline std::shared_ptr<IEntity> player_ptr;
 inline std::set<std::pair<size_t, size_t>> frags_to_free;
-inline GAME_STATE state {GAME_STATE::Menu};
-inline unsigned int score {0};
-inline unsigned int level {0};
-inline unsigned int playerHealth {3};
+inline GAME_STATE state{GAME_STATE::Menu};
+inline unsigned int score{0};
+inline unsigned int level{0};
+inline unsigned int playerHealth{3};
 inline sf::Font font; // unitialized
 inline std::vector<sf::Text> menu_text;
 inline sf::Text txt_score;
@@ -56,9 +59,19 @@ inline sf::Color clearscreen_color(128, 128, 115, 255);
 Vec2 make_unit_vec(Vec2 v);
 
 // calculate entity center if it hasn't been calculated yet, otherwise return it
-Vec2 get_center(IEntity& e);
+Vec2 get_center(IEntity &e);
 
-void collide_enemy_hitboxes(IEntity& ei, IEntity& ej);
+bool is_win_condition_met();
+
+bool is_lose_condition_met();
+
+// increment level, reset variables, and load the level
+void start_next_level();
+
+// reset variables, load the level
+void restart_current_level();
+
+void collide_enemy_hitboxes(IEntity &ei, IEntity &ej);
 
 // generate random integer between a low and high range
 int rand_between(int low, int high);
@@ -103,8 +116,8 @@ std::unique_ptr<sf::RenderWindow> create_window();
 
 // calculate the frames per second using
 // the time the frame started
-std::pair<float, float>
-calc_frames_per_second(const std::chrono::high_resolution_clock::time_point &);
+std::pair<float, float> calc_frames_per_second(
+    const std::chrono::high_resolution_clock::time_point &);
 
 // check for window close
 bool check_for_window_close(sf::RenderWindow &window, sf::Event &event);
@@ -123,6 +136,5 @@ float calc_dist(const sf::Vector2f &va, const sf::Vector2f &vb);
 
 // return reference to the entity with the given id
 std::shared_ptr<IEntity> get_entity_with_id(unsigned int);
-
 
 } // namespace global

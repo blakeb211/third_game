@@ -1141,6 +1141,7 @@ receiveLoop	c:\SFML\examples\voip\Server.cpp	/^    void receiveLoop()$/;"	f	clas
 remove_dead_entities	.\global.cpp	/^void global::remove_dead_entities()$/;"	f	class:global
 resolutionX	c:\SFML\examples\island\Island.cpp	/^    const unsigned int resolutionX = 800;$/;"	v
 resolutionY	c:\SFML\examples\island\Island.cpp	/^    const unsigned int resolutionY = 600;$/;"	v
+restart_current_level	.\global.cpp	/^void global::restart_current_level() {$/;"	f	class:global
 return_current_time_and_date	.\global.cpp	/^const string global::return_current_time_and_date()$/;"	f	class:global
 rotate_entity	.\global.cpp	/^void global::rotate_entity(IEntity &e, const float ang_offset)$/;"	f	class:global
 rows	c:\SFML\include\SFML\Graphics\Font.hpp	/^        std::vector<Row> rows;    \/\/\/< List containing the position of all the existing rows$/;"	m	struct:sf::Font::Page
@@ -1254,6 +1255,7 @@ snowcapHeight	c:\SFML\examples\island\Island.cpp	/^    float snowcapHeight = 0.6
 sstr	c:\SFML\examples\joystick\Joystick.cpp	/^    std::ostringstream sstr;$/;"	v
 start	.\timing_manager.h	/^  high_res_clock::time_point start;$/;"	m	struct:timing::Timer
 start	c:\SFML\examples\voip\Server.cpp	/^    void start(unsigned short port)$/;"	f	class:NetworkAudioStream
+start_next_level	.\global.cpp	/^void global::start_next_level() {$/;"	f	class:global
 stencilBits	c:\SFML\include\SFML\Window\ContextSettings.hpp	/^    unsigned int stencilBits;       \/\/\/< Bits of the stencil buffer$/;"	m	struct:sf::ContextSettings
 system	c:\SFML\include\SFML\Window\Event.hpp	/^        bool          system;  \/\/\/< Is the System key pressed?$/;"	m	struct:sf::Event::KeyEvent
 targetBuffer	c:\SFML\examples\island\Island.cpp	/^        sf::Vertex* targetBuffer;$/;"	m	struct:__anon1::WorkItem	file:
@@ -1295,7 +1297,7 @@ updateButtons	c:\SFML\examples\joystick\Joystick.cpp	/^    void updateButtons(un
 updateIdentification	c:\SFML\examples\joystick\Joystick.cpp	/^    void updateIdentification(unsigned int index)$/;"	f	namespace:__anon2
 updateStripes	c:\SFML\doc\html\dynsections.js	/^function updateStripes()$/;"	f
 updateValues	c:\SFML\examples\joystick\Joystick.cpp	/^    void updateValues(unsigned int index)$/;"	f	namespace:__anon2
-update_level_screen	.\main1.cpp	/^void update_level_screen() {$/;"	f
+update_level_screen	.\main1.cpp	/^void update_level_screen()$/;"	f
 update_menu_screen	.\main1.cpp	/^void update_menu_screen(const float &ftStep)$/;"	f
 update_player_test	.\main1.cpp	/^void update_player_test(const float &ftStep)$/;"	f
 update_score	.\main1.cpp	/^void update_score()$/;"	f
