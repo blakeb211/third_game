@@ -423,6 +423,25 @@ bool global::handle_keyboard_input(float &timer, const float maxTime, RenderWind
     }
     return false;
   } // GAME_STATE::Menu
+    else if (state == GAME_STATE::Level_Screen)
+  {
+    // return true to quit the game from the menu
+    if (timer < maxTime)
+      return false;
+    // check for return to Game
+    if (Keyboard::isKeyPressed(sf::Keyboard::Enter))
+    {
+      // Enter key key enters the game
+      timer = 0.0f;
+      state = GAME_STATE::Game;
+    }
+    if (Keyboard::isKeyPressed(sf::Keyboard::Delete))
+    {
+      cout << "game exited from Level Screen" << endl;
+      return true;
+    }
+    return false;
+  } // GAME_STATE::Level_Screen
   return false;
 } // handle_keyboard_input
 

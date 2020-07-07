@@ -186,8 +186,32 @@ void draw_menu_screen(RenderWindow &window)
   for_each(begin(menu_text), end(menu_text), [&window](const sf::Text t) { window.draw(t); });
 }
 
+void draw_level_screen(RenderWindow &window)
+{
+  sf::Text txt_level("Level: " + to_string(global::level), global::font, 50);
+  auto width = txt_level.getLocalBounds().width;
+  auto height = txt_level.getLocalBounds().height;
+  txt_level.setOutlineThickness(3.f);
+  txt_level.setOutlineColor(sf::Color(0, 102, 204, 255));
+  txt_level.setPosition(Vec2(winWidth / 2 - (width / 2.f), winHeight / 2 - (height / 2.f))); 
+  // instructions text
+  sf::Text txt_level2("Press enter key to start ", global::font, 30);
+  auto width2 = txt_level2.getLocalBounds().width;
+  auto height2 = txt_level2.getLocalBounds().height;
+  txt_level2.setOutlineThickness(2.f);
+  txt_level2.setOutlineColor(sf::Color(0, 52, 204, 255));
+  txt_level2.setPosition(Vec2(winWidth / 2 - (width2 / 2.f), 4.f * winHeight / 5.f - (height2 / 2.f))); 
+  window.draw(txt_level);
+  window.draw(txt_level2);
+}
+
+void update_level_screen() {
+// in case we want some moving graphics on the level screen
+}
+
 void update_menu_screen(const float &ftStep)
 {
+// in case we want some moving graphics on the level screen
 }
 
 //
@@ -205,7 +229,7 @@ int main()
   // Setup timers
   timing::initialize_timers(*log_file, {"drawing", "update", "entity collision", "process frags",
                                         "remove entities", "free frag collision", "frametime"});
-  state = GAME_STATE::Game;
+  state = GAME_STATE::Level_Screen;
 
   // Initialize
   init_player_test();
@@ -266,7 +290,8 @@ int main()
     else if (state == GAME_STATE::Menu)
     {
       // Accumulate keyTimeAccum so that pressing keys doesn't generate too many events in the menu
-      keyTimeAccum += global::ftStep;
+      // -> adding fictional time so that timer doesn't sit at 0
+      keyTimeAccum += global::ftStep / 2;
       // check for switching state back to game
       //
       if (handle_keyboard_input(keyTimeAccum, keyInputStep, *window) ||
@@ -283,6 +308,22 @@ int main()
 
     else if (state == GAME_STATE::Level_Screen)
     {
+      // adding fictional time so that timer doesn't sit at 0
+      keyTimeAccum += global::ftStep / 2;
+      if (handle_keyboard_input(keyTimeAccum, keyInputStep, *window) ||
+          check_for_window_close(*window, event))
+      {
+        break;
+      }
+      // start timer
+      window->clear(clearscreen_color);
+      draw_level_screen(*window);
+      window->display();
+      // clear entity vector
+      // clear free frags
+      // reset playerHealth
+      // save and reset score
+      update_level_screen();
 
     } // GAME_STATE::Level_Screen
 
