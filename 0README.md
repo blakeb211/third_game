@@ -10,9 +10,9 @@ Purpose of project: Re-Write Second Shooter to run faster and have the explosion
 **    set O2 level and possibly switch STL algorithms for EASTL or hand-rolled
 *******************************************************************
 
-
 add level screen
-Add enemy AI with raycasts
+level reset on player death
+Add enemy AI 
 IN GAME LEVEL EDITOR WITH A FIXED GRID
 ADD SOUND
 add particle system
