@@ -26,7 +26,7 @@ inline std::ostream &global::operator<<(std::ostream &Str, EType V)
 
 Vec2 global::make_unit_vec(Vec2 v)
 {
-  auto len = hypot(v.x, v.y);
+  const auto len = hypot(v.x, v.y);
   return v / len;
 }
 
@@ -69,7 +69,7 @@ unique_ptr<Frag> global::get_frag_with_id(IEntity &e, size_t frag_id)
 // calculate entity center if it hasn't been calculated yet, otherwise return it
 Vec2 global::get_center(IEntity &e)
 {
-  if (e.center.x > 0 || e.center.y > 0)
+  if (e.center.x > -15.f || e.center.y > -15.f)
   {
     return e.center;
   }
@@ -184,7 +184,7 @@ void global::erase_freed_frags()
     }
     // set free_frag limit to see if it helps draw timings
     unsigned int ffSize = free_frags.size();
-    const uint32_t ffCutoff = 100u;
+    const uint32_t ffCutoff = 200u;
     if (ffSize > ffCutoff)
     {
       unsigned int sizeDiff = ffSize - ffCutoff;
@@ -374,7 +374,7 @@ bool global::handle_keyboard_input(float &timer, const float maxTime, RenderWind
     {
       if (player_ptr && player_ptr->type == EType::Player)
       {
-        if (player_ptr->center.x < 30.f)
+        if (player_ptr->center.x < 6*global::bW)
           return false;
         auto &dvel_ref = player_ptr->dvel;
         dvel_ref += (abs(dvel_ref.x) < 8.9f) ? Vec2(-4.1f, 0.f) : Vec2(0.f, 0.f);
@@ -384,7 +384,7 @@ bool global::handle_keyboard_input(float &timer, const float maxTime, RenderWind
     {
       if (player_ptr && player_ptr->type == EType::Player)
       {
-        if (player_ptr->center.x > global::winWidth - 30.f)
+        if (player_ptr->center.x > global::winWidth - 6*global::bW)
           return false;
         auto &dvel_ref = player_ptr->dvel;
         dvel_ref += (abs(dvel_ref.x) < 8.9f) ? Vec2(+4.1f, 0.f) : Vec2(0.f, 0.f);

@@ -36,7 +36,7 @@ struct IEntity {
     Vec2 vel;
     Vec2 dvel;
     sf::RectangleShape hitbox;
-    Vec2 center{ -1.f, -1.f };
+    Vec2 center{ -200.f, -200.f };
     bool isDead { false };
 };
 

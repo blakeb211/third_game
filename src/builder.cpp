@@ -180,12 +180,12 @@ void builder::add_bullet1_frags(IEntity& e)
 
 void builder::add_bullet2_frags(IEntity& e)
 {
-    e.frags.emplace_back(2.f * bW, 0.f * bW, Color(112, 1, 209, 255));
-    e.frags.emplace_back(1.f * bW, 1.f * bW, Color(112, 1, 209, 255));
-    e.frags.emplace_back(2.f * bW, 1.f * bW, Color(112, 1, 209, 255));
-    e.frags.emplace_back(3.f * bW, 1.f * bW, Color(112, 1, 209, 255));
-    e.frags.emplace_back(1.f * bW, 2.f * bW, Color(112, 1, 209, 255));
-    e.frags.emplace_back(3.f * bW, 2.f * bW, Color(112, 1, 209, 255));
+    e.frags.emplace_back(2.f * bW, 0.f * bW, Color(255, 165, 0, 255));
+    e.frags.emplace_back(1.f * bW, 1.f * bW, Color(255, 165, 0, 255));
+    e.frags.emplace_back(2.f * bW, 1.f * bW, Color(255, 165, 0, 255));
+    e.frags.emplace_back(3.f * bW, 1.f * bW, Color(255, 165, 0, 255));
+    e.frags.emplace_back(1.f * bW, 2.f * bW, Color(255, 165, 0, 255));
+    e.frags.emplace_back(3.f * bW, 2.f * bW, Color(255, 165, 0, 255));
 }
 
 void builder::add_enemy1_frags(IEntity& e)

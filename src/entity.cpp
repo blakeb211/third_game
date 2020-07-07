@@ -105,6 +105,7 @@ Player::Player()
   canShoot = false;
   currTimer = 0.f;
   timerMax = 215.f;
+  global::get_center(*this);
   move_entity(*this, Vec2(winWidth / 2.f, winHeight - 4.f * (float)global::bW));
 }
 
@@ -113,11 +114,11 @@ void Player::update(FrameTime ftStep)
   currTimer += ftStep;
   global::move_entity(*this, vel + dvel);
   dvel *= (abs(dvel.x) < 0.01f) ? 0 : 0.85f;
-  if (center.x < 30.f || center.x > global::winWidth - 30.f)
-  {
-    vel.x = 0.f;
-    dvel.x = 0.f;
-  }
+//  if (center.x < 5*global::bW || center.x > global::winWidth - 5*global::bW)
+//  {
+//    vel.x = 0.f;
+//    dvel.x = 0.f;
+//  }
 }
 
 void Player::collide_with(const IEntity &e, unsigned int ivox, Vec2 voxPos, sf::Color c)
@@ -150,13 +151,16 @@ void Player::fire_shot()
   }
   Vec2 player_pos = hitbox.getPosition();
   auto hitbox_width = hitbox.getSize().x;
-  auto player_center = player_pos + Vec2(hitbox_width / 2.f, 0.f);
+  auto player_center = global::get_center(*this);
   // create bullet
   auto new_bullet = make_shared<Bullet>(Vec2(0.f, 0.f));
   // position bullet in front of player
   auto bullet_width = new_bullet->hitbox.getSize().x;
+  // this is a hack to center the bullet over the player
+  // not sure why I can't subtract bullet_width / 2 and have
+  // it line up properly but 3/4 works
   global::move_entity(*new_bullet,
-                      player_center - Vec2(bullet_width / 4.f, +1.f * global::blockWidth * 4.f));
+                      player_center - Vec2(3.f * bullet_width / 4.f, +1.f * global::blockWidth * 4.f));
   // add bullet to entity mega-vector
   global::entity.push_back(move(new_bullet));
   // reset shot timer
@@ -183,6 +187,7 @@ Enemy::Enemy(unsigned int enemy_type)
     // path loaded from file or generated
     path.emplace_back(Vec2(global::rand_between(200, 800), global::rand_between(300, 600)));
     currPathPoint = 0;
+    global::get_center(*this);
     global::move_entity(*this, path[currPathPoint]);
     // define when enemy explodes
     healthCutoff = 3 * frags.size() / 4;
@@ -196,6 +201,7 @@ Enemy::Enemy(unsigned int enemy_type)
     // randomly generated first path point
     path.emplace_back(Vec2(global::rand_between(200, 800), global::rand_between(300, 450)));
     currPathPoint = 0;
+    global::get_center(*this);
     global::move_entity(*this, path[currPathPoint]);
     // define when enemy explodes
     healthCutoff = 3 * frags.size() / 4;
@@ -285,6 +291,7 @@ Bullet::Bullet(Vec2 pos)
   healthCutoff = 3;
   vel = Vec2(0.f, -5.5f);
   dvel = Vec2(0.f, -3.f);
+  global::get_center(*this);
   move_entity(*this, pos);
 }
 void Bullet::update(FrameTime ftStep)

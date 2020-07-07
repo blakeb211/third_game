@@ -11,7 +11,7 @@
 #include "global.h"
 #include "timing_manager.h"
 #include <tuple>
-//#define HITBOX
+#define HITBOX
 
 using namespace std;
 using namespace sf;
@@ -135,6 +135,7 @@ void update_player_test(const float &ftStep)
     global::check_free_frags_for_collisions();
   }
 }
+
 void draw_free_frags(RenderWindow &window)
 {
   global::ff_varray.clear();
@@ -273,7 +274,7 @@ int main()
       {
         break;
       }
-      window->clear(sf::Color(128, 128, 115, 255));
+      window->clear(clearscreen_color);
       draw_menu_screen(*window);
       update_menu_screen(global::ftStep);
       window->display();

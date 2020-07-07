@@ -44,6 +44,9 @@ inline sf::Font font; // unitialized
 inline std::vector<sf::Text> menu_text;
 inline sf::Text txt_score;
 inline sf::VertexArray ff_varray{sf::PrimitiveType::Quads, 200};
+// inline global colors
+inline sf::Color clearscreen_color(128, 128, 115, 255);
+
 //
 // free functions
 //
