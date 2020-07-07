@@ -232,7 +232,7 @@ int main()
   init_menu();
   init_score();
   global::start_next_level();
-  init_player_test();
+  //init_player_test();
   while (window->isOpen())
   {
     if (state == GAME_STATE::Game)
@@ -261,9 +261,11 @@ int main()
         update_score();
         if (is_win_condition_met())
         {
+          cout << "win condition met" << endl;
           start_next_level();
         }
         else if (is_lose_condition_met()) {
+          cout << "lose condition met" << endl;
           restart_current_level();
         }
       }

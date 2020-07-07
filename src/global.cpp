@@ -1,5 +1,5 @@
 #include "global.h"
-
+#include "builder.h"
 #include "stdlibs.h"
 //#define COLL_LOGGING
 
@@ -33,6 +33,9 @@ void global::start_next_level() {
   global::playerHealth = 3;
   global::score = 0;
   global::state = GAME_STATE::Level_Screen;
+  global::entityCounter = 0;
+  global::fragCounter = 0;
+  builder::build_level(global::level);
 }
 
 void global::restart_current_level() {
@@ -40,7 +43,10 @@ void global::restart_current_level() {
   global::entity.clear();
   global::playerHealth = 3;
   global::score = 0;
+  global::entityCounter = 0;
+  global::fragCounter = 0;
   global::state = GAME_STATE::Level_Screen;
+  builder::build_level(global::level);
 }
 
 bool global::is_win_condition_met()
