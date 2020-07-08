@@ -139,16 +139,14 @@ void builder::build_level(unsigned int &levelId)
         ss >> y_end;
         ss >> c; // read in type of wall, 'B' or 'D'
         assert(c == 'B' || c == 'D');
-        // Convert from level editor coords to game coords
+        // Convert from percentages of width and height to pixels 
         x_start *= winWidth;
         x_end *= winWidth;
         y_start *= winHeight;
         y_end *= winHeight;
-        // build the wall
         if (c == 'B')
         {
-          // divide wall up into 30 pixel-wide segments
-          entity.push_back(make_shared<BouncyWall>(Vec2(x_start, y_start), Vec2(x_end, y_end)));
+          build_long_wall(Vec2(x_start,y_start), Vec2(x_end,y_end));
           // break out of the stringstream reading loop
           break;
         }
@@ -158,11 +156,8 @@ void builder::build_level(unsigned int &levelId)
           break;
         }
       }
-      // set enemies starting position to the first point on its path
-      cout << "wall was added to the level" << endl;
     }
   }
-  assert(enemyCount == pathCount);
   cout << "closing level loading input file" << endl;
   in_file.close();
   assert(enemyCount == pathCount);
