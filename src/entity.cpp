@@ -215,11 +215,12 @@ void Enemy::update(FrameTime ftStep)
   // dampen enemies dvel
   dvel *= 0.03f;
   // mark enemies as dead if they move off screen
-  if (hitbox_pos.x < 0 || hitbox_pos.x + hitbox_size.x > global::winWidth || hitbox_pos.y < 0 ||
-      hitbox_pos.y > global::winHeight)
+  if (hitbox_pos.x < 0 || hitbox_pos.x + hitbox_size.x / 2 > global::winWidth || hitbox_pos.y < 0 ||
+      hitbox_pos.y + hitbox_size.y / 2 > global::winHeight)
   {
     isDead = true;
   }
+  // TODO: Make enemies move
 }
 
 void Enemy::collide_with(const IEntity &e, unsigned int ivox, Vec2 voxPos, sf::Color c)
