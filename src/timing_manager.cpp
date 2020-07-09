@@ -5,6 +5,7 @@
 #include <memory>
 #include <tuple>
 using namespace std;
+using Vecf = std::vector<float>;
 
 void timing::initialize_timers(ostream &os, const initializer_list<string> timing_labels)
 {
@@ -62,11 +63,11 @@ void timing::calc_and_log_interval_timing_data()
   for (auto &timer_pair : timing_map)
   {
     auto label = timer_pair.first;
-    auto &vec_ref = get<0>(timer_pair.second);
-    auto datapoint_count = vec_ref.size();
-    auto &min_ref = get<1>(timer_pair.second); // already calc'd
-    auto &max_ref = get<2>(timer_pair.second); // already calc'd
-    auto &avg_ref = get<3>(timer_pair.second); // needs calc'd
+    Vecf &vec_ref = get<0>(timer_pair.second);
+    float &min_ref = get<1>(timer_pair.second); // already calc'd
+    float &max_ref = get<2>(timer_pair.second); // already calc'd
+    float &avg_ref = get<3>(timer_pair.second); // needs calc'd
+    size_t datapoint_count = vec_ref.size();
     // report the min and the max for that interval
     // calc the average for that interval
     avg_ref = avg_ref / datapoint_count;

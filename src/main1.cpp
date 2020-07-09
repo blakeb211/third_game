@@ -212,6 +212,14 @@ void update_menu_screen(const float &ftStep)
   // in case we want some moving graphics on the level screen
 }
 
+void draw_editor(RenderWindow &window)
+{
+}
+
+void update_editor(const float &ftStep)
+{
+}
+
 //
 // MAIN PROGRAM
 //
@@ -232,7 +240,6 @@ int main()
   init_menu();
   init_score();
   global::start_next_level();
-  //init_player_test();
   while (window->isOpen())
   {
     if (state == GAME_STATE::Game)
@@ -264,7 +271,8 @@ int main()
           cout << "win condition met" << endl;
           start_next_level();
         }
-        else if (is_lose_condition_met()) {
+        else if (is_lose_condition_met())
+        {
           cout << "lose condition met" << endl;
           restart_current_level();
         }
@@ -285,7 +293,7 @@ int main()
         ftAccum += ftMilli;
         keyTimeAccum += ftMilli;
       }
-      if (frameCounter % 800 == 0)
+      if (frameCounter % 80 == 0)
       {
         *log_file << setw(20) << fps_string << "\n"
                   << setw(20) << "Len(Entity, Free Frag)" << setw(8) << global::entity.size()
@@ -329,6 +337,29 @@ int main()
       update_level_screen();
 
     } // GAME_STATE::Level_Screen
+    else if (state == GAME_STATE::Editor)
+    {
+      high_res_clock::time_point editor_time1 = high_res_clock::now();
+      // check for switching state back to game
+      //
+      if (handle_keyboard_input(keyTimeAccum, keyInputStep, *window) ||
+          check_for_window_close(*window, event))
+      {
+        break;
+      }
+      window->clear(clearscreen_color);
+      // Update phase
+      for (; ftAccum >= global::ftStep; ftAccum -= global::ftStep)
+      {
+        update_editor(global::ftStep);
+      }
+      draw_editor(*window);
+      window->display();
+      high_res_clock::time_point editor_time2 = high_res_clock::now();
+      float ftMilli{chrono::duration_cast<chrono::duration<float, milli>>(editor_time2 - editor_time1).count()};
+      keyTimeAccum += ftMilli;
+      ftAccum += ftMilli;
+    } // GAME_STATE::Editor
 
   } // Main game loop
   log_file->close();

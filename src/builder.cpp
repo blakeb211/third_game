@@ -53,6 +53,7 @@ void builder::build_level(unsigned int &levelId)
   unsigned int wallCount = 0;
   queue<unsigned int> enemyIds = {};
   entity.push_back(make_shared<Player>());
+  cout << "player entity id" << entity.back()->id << endl;
   while (in_file.good())
   {
     string line;

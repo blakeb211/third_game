@@ -24,9 +24,9 @@ inline std::ostream &global::operator<<(std::ostream &Str, EType V)
   };
 }
 
-
 // increment level, reset variables, and load the level
-void global::start_next_level() {
+void global::start_next_level()
+{
   global::level++;
   global::free_frags.clear();
   global::entity.clear();
@@ -36,9 +36,11 @@ void global::start_next_level() {
   global::entityCounter = 0;
   global::fragCounter = 0;
   builder::build_level(global::level);
+  global::player_ptr = get_entity_with_id(0);
 }
 
-void global::restart_current_level() {
+void global::restart_current_level()
+{
   global::free_frags.clear();
   global::entity.clear();
   global::playerHealth = 3;
@@ -47,20 +49,20 @@ void global::restart_current_level() {
   global::fragCounter = 0;
   global::state = GAME_STATE::Level_Screen;
   builder::build_level(global::level);
+  global::player_ptr = get_entity_with_id(0);
 }
 
 bool global::is_win_condition_met()
 {
   auto num_alive = count_if(begin(entity), end(entity),
-                            [&](const shared_ptr<IEntity>& e) { return e->type == EType::Enemy; });
-  return num_alive == 0; 
+                            [&](const shared_ptr<IEntity> &e) { return e->type == EType::Enemy; });
+  return num_alive == 0;
 }
 
 bool global::is_lose_condition_met()
 {
   return playerHealth <= 0;
 }
-
 
 Vec2 global::make_unit_vec(Vec2 v)
 {
@@ -306,7 +308,10 @@ void global::remove_dead_entities()
         free_frags.push_back(move(f));
       }
       e->isDead = true;
-      if (e->type == EType::Enemy) {global::score += 20; }
+      if (e->type == EType::Enemy)
+      {
+        global::score += 20;
+      }
     }
   }
   // erase all entities flagged as isDead, which can happen by
@@ -412,7 +417,7 @@ bool global::handle_keyboard_input(float &timer, const float maxTime, RenderWind
     {
       if (player_ptr && player_ptr->type == EType::Player)
       {
-        if (player_ptr->center.x < 6*global::bW)
+        if (player_ptr->center.x < 6 * global::bW)
           return false;
         auto &dvel_ref = player_ptr->dvel;
         dvel_ref += (abs(dvel_ref.x) < 8.9f) ? Vec2(-4.1f, 0.f) : Vec2(0.f, 0.f);
@@ -422,7 +427,7 @@ bool global::handle_keyboard_input(float &timer, const float maxTime, RenderWind
     {
       if (player_ptr && player_ptr->type == EType::Player)
       {
-        if (player_ptr->center.x > global::winWidth - 6*global::bW)
+        if (player_ptr->center.x > global::winWidth - 6 * global::bW)
           return false;
         auto &dvel_ref = player_ptr->dvel;
         dvel_ref += (abs(dvel_ref.x) < 8.9f) ? Vec2(+4.1f, 0.f) : Vec2(0.f, 0.f);
@@ -459,9 +464,16 @@ bool global::handle_keyboard_input(float &timer, const float maxTime, RenderWind
       cout << "game exited from menu" << endl;
       return true;
     }
+    if (Keyboard::isKeyPressed(sf::Keyboard::Tab))
+    {
+      cout << "Editor entered from menu" << endl;
+      timer = 0.0f;
+      state = GAME_STATE::Editor;
+      return false;
+    }
     return false;
   } // GAME_STATE::Menu
-    else if (state == GAME_STATE::Level_Screen)
+  else if (state == GAME_STATE::Level_Screen)
   {
     // return true to quit the game from the menu
     if (timer < maxTime)
@@ -480,6 +492,21 @@ bool global::handle_keyboard_input(float &timer, const float maxTime, RenderWind
     }
     return false;
   } // GAME_STATE::Level_Screen
+  else if (state == GAME_STATE::Editor)
+  {
+    // limit how often keystrokes are checked
+    if (timer < maxTime)
+      return false;
+    // check for return to Game
+    if (Keyboard::isKeyPressed(sf::Keyboard::Escape))
+    {
+      // Escape key key enters the Menu 
+      timer = 0.0f;
+      state = GAME_STATE::Menu;
+    }
+    return false;
+  } // GAME_STATE::Editor
+
   return false;
 } // handle_keyboard_input
 
