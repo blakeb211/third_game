@@ -20,6 +20,7 @@ enum GAME_STATE
   Level_Screen,
   Game,
   Editor,
+  Game_Over
 };
 
 //

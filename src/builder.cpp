@@ -4,6 +4,8 @@
 
 #include "entity.h"
 #include "global.h"
+#include <filesystem>
+
 using namespace std;
 using namespace sf;
 using namespace global;
@@ -43,11 +45,16 @@ void builder::add_wall_frags(IEntity &e, Vec2 start, Vec2 end, Color c)
   }
 }
 
-void builder::build_level(unsigned int &levelId)
+bool builder::build_level(unsigned int &levelId)
 {
   // open the file levelN_data.txt
   cout << "opening level loading input file" << endl;
-  ifstream in_file("../assets/level" + to_string(levelId) + "_data.txt", ios::in);
+  string in_file_string = "../assets/level" + to_string(levelId) + "_data.txt";
+  if (!std::filesystem::exists(in_file_string)) {
+    cerr << "File: " << in_file_string << " does not exist" << endl;
+    return false;
+  }
+  ifstream in_file(in_file_string, ios::in);
   unsigned int enemyCount = 0;
   unsigned int pathCount = 0;
   unsigned int wallCount = 0;
@@ -162,6 +169,7 @@ void builder::build_level(unsigned int &levelId)
   cout << "closing level loading input file" << endl;
   in_file.close();
   assert(enemyCount == pathCount);
+  return true;
 }
 
 void builder::add_player_frags(IEntity &e)

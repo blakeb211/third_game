@@ -35,7 +35,10 @@ void global::start_next_level()
   global::state = GAME_STATE::Level_Screen;
   global::entityCounter = 0;
   global::fragCounter = 0;
-  builder::build_level(global::level);
+  if (!builder::build_level(global::level))
+  {
+    global::state = GAME_STATE::Game_Over;
+  }
   global::player_ptr = get_entity_with_id(0);
 }
 
@@ -500,7 +503,7 @@ bool global::handle_keyboard_input(float &timer, const float maxTime, RenderWind
     // check for return to Game
     if (Keyboard::isKeyPressed(sf::Keyboard::Escape))
     {
-      // Escape key key enters the Menu 
+      // Escape key key enters the Menu
       timer = 0.0f;
       state = GAME_STATE::Menu;
     }
