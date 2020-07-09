@@ -9,7 +9,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
-
+#include <optional>
 #include "entity.h"
 #include "stdlibs.h"
 
