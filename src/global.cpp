@@ -509,6 +509,19 @@ bool global::handle_keyboard_input(float &timer, const float maxTime, RenderWind
     }
     return false;
   } // GAME_STATE::Editor
+  else if (state == GAME_STATE::Game_Over)
+  {
+    // limit how often keystrokes are checked
+    if (timer < maxTime)
+      return false;
+    // check for return to Game
+    if (Keyboard::isKeyPressed(sf::Keyboard::Escape))
+    {
+      // Escape key key ends the game 
+      return true;
+    }
+    return false;
+  } // GAME_STATE::Editor
 
   return false;
 } // handle_keyboard_input

@@ -1,1 +1,2 @@
 C:\code\third_game\profile_msvc\Project1.exe
+C:\code\third_game\profile_msvc\Project1.pdb

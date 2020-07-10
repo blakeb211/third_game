@@ -6,22 +6,12 @@
 
 #IncludeRegexTransform: 
 
-C:/code/third_game/src/builder.cpp
-builder.h
-C:/code/third_game/src/builder.h
-SFML/Graphics.hpp
--
-entity.h
-C:/code/third_game/src/entity.h
-global.h
-C:/code/third_game/src/global.h
-filesystem
--
-
 C:/code/third_game/src/builder.h
 SFML/Graphics.hpp
 -
 SFML/System.hpp
+-
+optional
 -
 entity.h
 C:/code/third_game/src/entity.h
@@ -59,6 +49,22 @@ SFML/Graphics.hpp
 -
 entity.h
 C:/code/third_game/src/entity.h
+
+C:/code/third_game/src/main1.cpp
+stdlibs.h
+C:/code/third_game/src/stdlibs.h
+SFML/Graphics.hpp
+-
+SFML/System.hpp
+-
+builder.h
+C:/code/third_game/src/builder.h
+global.h
+C:/code/third_game/src/global.h
+timing_manager.h
+C:/code/third_game/src/timing_manager.h
+tuple
+-
 
 C:/code/third_game/src/stdlibs.h
 iostream
@@ -114,5 +120,27 @@ random
 utility
 -
 optional
+-
+
+C:/code/third_game/src/timing_manager.h
+chrono
+-
+filesystem
+-
+fstream
+-
+initializer_list
+-
+memory
+-
+unordered_map
+-
+iostream
+-
+fstream
+-
+functional
+-
+set
 -
 

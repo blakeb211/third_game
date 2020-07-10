@@ -202,6 +202,27 @@ void draw_level_screen(RenderWindow &window)
   window.draw(txt_level2);
 }
 
+void draw_game_over_screen(RenderWindow &window)
+{
+  sf::Text txt("GAME OVER", global::font, 50);
+  auto width = txt.getLocalBounds().width;
+  auto height = txt.getLocalBounds().height;
+  txt.setOutlineThickness(3.f);
+  txt.setOutlineColor(sf::Color(0, 102, 204, 255));
+  txt.setPosition(Vec2(winWidth / 2 - (width / 2.f), winHeight / 2 - (height / 2.f)));
+  // instructions text
+  sf::Text txt2("Press escape to exit", global::font, 30);
+  auto width2 = txt2.getLocalBounds().width;
+  auto height2 = txt2.getLocalBounds().height;
+  txt2.setOutlineThickness(2.f);
+  txt2.setOutlineColor(sf::Color(0, 52, 204, 255));
+  txt2.setPosition(
+      Vec2(winWidth / 2 - (width2 / 2.f), 4.f * winHeight / 5.f - (height2 / 2.f)));
+  window.draw(txt);
+  window.draw(txt2);
+}
+
+
 void update_level_screen()
 {
   // in case we want some moving graphics on the level screen
@@ -355,11 +376,26 @@ int main()
       }
       draw_editor(*window);
       window->display();
-      high_res_clock::time_point editor_time2 = high_res_clock::now();
-      float ftMilli{chrono::duration_cast<chrono::duration<float, milli>>(editor_time2 - editor_time1).count()};
+      float ftMilli{chrono::duration_cast<chrono::duration<float, milli>>(high_res_clock::now() -
+                                                                          editor_time1)
+                        .count()};
       keyTimeAccum += ftMilli;
       ftAccum += ftMilli;
     } // GAME_STATE::Editor
+    else if (state == GAME_STATE::Game_Over)
+    {
+      // adding fictional time so that timer doesn't sit at 0
+      keyTimeAccum += global::ftStep / 20;
+      if (handle_keyboard_input(keyTimeAccum, keyInputStep, *window) ||
+          check_for_window_close(*window, event))
+      {
+        break;
+      }
+      // start timer
+      window->clear(clearscreen_color);
+      draw_game_over_screen(*window);
+      window->display();
+    } // GAME_STATE::Level_Screen
 
   } // Main game loop
   log_file->close();

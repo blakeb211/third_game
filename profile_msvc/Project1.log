@@ -77,8 +77,5 @@ C:\code\third_game\src\main1.cpp(87,42): warning C4244: 'argument': conversion f
 C:\code\third_game\src\main1.cpp(168,33): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
 C:\code\third_game\src\main1.cpp(171,21): warning C4018: '<': signed/unsigned mismatch
   timing_manager.cpp
-  Generating code
-  Previous IPDB not found, fall back to full compilation.
-  All 1537 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
-  Finished generating code
+  Generating Code...
   Project1.vcxproj -> C:\code\third_game\profile_msvc\.\Project1.exe
