@@ -7,20 +7,20 @@ Purpose of project: Re-Write Second Shooter to run faster and have the explosion
 **  ROOM FOR OPTIMIZATION
 **    reduce draw calls using SFML vertexarray
 **    reduce looping over frags with for_each -> use for()
+**    Do not need to use a quadtree for this game because the 
+**    collision timings are around 300ms, which is 
+**    approximately 1/10th or less of a frame
 *******************************************************************
 
 Add enemy AI 
 IN GAME LEVEL EDITOR WITH A FIXED GRID
 ADD SOUND
 add particle system
-Add You Won Screen
 Add BOSS
 
 ROTATE ENTITY ON GRID
   colliding bullets, enemies 
 
-SCORE
-LEVEL SCREEN
 3 LEVELS
 BOSS
 
