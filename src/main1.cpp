@@ -396,6 +396,7 @@ int main()
     } // GAME_STATE::Level_Screen
 
   } // Main game loop
+  timing::calc_and_log_final_timing_data({"drawing", "frametime"});
   log_file->close();
   cerr << "Logfile closing" << endl;
   return 0;

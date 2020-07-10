@@ -5,7 +5,7 @@ add_executable(game timing_manager.cpp global.cpp entity.cpp builder.cpp main1.c
 #link_directories(c:/SFML/lib)
 #set the C++17 standard
 set(CMAKE_CXX_STANDARD 17)
-SET(CLANG_COMPILE_FLAGS "-fuse-ld=lld -std=c++17 -Ic:/SFML/include")
+SET(CLANG_COMPILE_FLAGS "-fuse-ld=lld -std=c++17 -Ic:/SFML/include -Ic:/Boost172")
 SET(CLANG_LINK_FLAGS "-Lc:/SFML/lib -lsfml-graphics -lsfml-window -lsfml-system")
 #append compile flags
 SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${CLANG_COMPILE_FLAGS}")

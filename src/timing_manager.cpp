@@ -1,4 +1,6 @@
 #include "timing_manager.h"
+#include <boost/histogram.hpp>
+#include <boost/histogram/ostream.hpp>
 #include <functional>
 #include <iomanip>
 #include <iostream>
@@ -65,10 +67,10 @@ void timing::calc_and_log_interval_timing_data()
     auto label = timer_pair.first;
     auto &[vec_ref, min_ref, max_ref, avg_ref] = timer_pair.second;
     size_t datapoint_count = vec_ref.size();
-    // report the min and the max for that interval
     // calc the average for that interval
     avg_ref = avg_ref / datapoint_count;
-    // Log calculated data to the log file
+    // Log calculated data to histogram data structure 
+    // report the min, max and average for th interval
     auto &os = timing_ostream.get();
     os << left << setw(20) << " " << setw(8) << "min" << setw(8) << "max" << setw(8)
        << "avg (microseconds)"
@@ -84,8 +86,18 @@ void timing::calc_and_log_interval_timing_data()
   }
 }
 
-void timing::calc_and_log_final_timing_data()
-{ // call at end of program
+void timing::calc_and_log_final_timing_data(initializer_list<string> labels)
+{ // calculate and print a 1D histogram for each timing label in labels
+  // verify timing label is present in timing_map
+  for (auto l : labels)
+  {
+    if (timing_map.count(s) != 1)
+    {
+      cout << "timing label given to calc_and_log_final_timing_data is not present!!\n";
+      throw exception("incorrect timer label used to construct a Timer");
+    }
+    // loop through log_file creating a histogram
+  }
 }
 
 //

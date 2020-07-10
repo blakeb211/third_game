@@ -14,15 +14,21 @@ namespace timing {
 using Vecf = std::vector<float>;
 using high_res_clock = std::chrono::high_resolution_clock;
 
+
 // hold a reference to the output stream
 inline auto timing_ostream = std::ref(std::cout);
 
 // map a timing label to a tuple
-// tuple: <0> interval timings  microseconds
+// tuple: <0> vector of timings for each frame (microseconds)
 //        <1> overall min
 //        <2> overall max,
 //        <3> overall avg
 inline std::unordered_map<std::string, std::tuple<Vecf, float, float, float>> timing_map;
+
+// store the min, max, and average timings for each label for each timing interval 
+// The individual frame timings are thrown out. 
+// This is the data that will be logged to a file.
+inline std::vector<IntervalData> histogram_data;
 
 // Initialize the timing manager.
 //      Connect up timing_stream
@@ -47,16 +53,21 @@ struct Timer {
   high_res_clock::time_point end;
 };
 
+// store the min, max, and average timings for each timing interval
+struct IntervalData {
+  std::unordered_map<std::string, std::tuple<float, float, float>> data_map;
+
+};
+
+
 // calc_min_max_and_avg for last interval
-// update overall min, max, avg for all timers
-// log them to file
+// store them to histogram_data vector
 // clear interval timing vectors
 void calc_and_log_interval_timing_data(); // call at end of frame
 
 // print timing statistics to cout
-// log timing statistics to file
-// TODO: Implement this function for statistical summary at end
-void calc_and_log_final_timing_data(); // call at end of program
+// log timing data to file
+void calc_and_log_final_timing_data(std::initializer_list<std::string>); // call at end of program
 
 // Accessory functions
   std::pair<float, float> calc_frames_per_second(const high_res_clock::time_point& time1);
