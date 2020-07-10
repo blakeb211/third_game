@@ -156,14 +156,22 @@ void draw_player_test(RenderWindow &window)
   timing::Timer timer("drawing");
   for (const auto &e : entity)
   {
-    for_each(begin(e->frags), end(e->frags), [&window](const Frag &f) { window.draw(f); });
+    auto sz = e->frags.size();
+    for (int i = 0; i < sz; i++)
+    {
+      window.draw(e->frags[i]);
+    }
 #ifdef HITBOX
     window.draw(e->hitbox);
 #endif
   }
   // draw free frags
   // draw_free_frags(window);
-  for_each(begin(free_frags), end(free_frags), [&window](const Frag &f) { window.draw(f); });
+  auto sz = free_frags.size();
+  for (int i = 0; i < sz; i++)
+  {
+    window.draw(free_frags[i]);
+  }
   // draw player health bar
   sf::CircleShape cs(global::bW * 3, 30);
   cs.setFillColor(sf::Color(255, 178, 102, 60));
@@ -216,12 +224,10 @@ void draw_game_over_screen(RenderWindow &window)
   auto height2 = txt2.getLocalBounds().height;
   txt2.setOutlineThickness(2.f);
   txt2.setOutlineColor(sf::Color(0, 52, 204, 255));
-  txt2.setPosition(
-      Vec2(winWidth / 2 - (width2 / 2.f), 4.f * winHeight / 5.f - (height2 / 2.f)));
+  txt2.setPosition(Vec2(winWidth / 2 - (width2 / 2.f), 4.f * winHeight / 5.f - (height2 / 2.f)));
   window.draw(txt);
   window.draw(txt2);
 }
-
 
 void update_level_screen()
 {

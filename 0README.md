@@ -6,8 +6,7 @@ Purpose of project: Re-Write Second Shooter to run faster and have the explosion
 *******************************************************************
 **  ROOM FOR OPTIMIZATION
 **    reduce draw calls using SFML vertexarray
-**    make logfile async? - not sure if this would help
-**    set O2 level and possibly switch STL algorithms for EASTL or hand-rolled
+**    reduce looping over frags with for_each -> use for()
 *******************************************************************
 
 Add enemy AI 
