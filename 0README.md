@@ -12,11 +12,12 @@ Purpose of project: Re-Write Second Shooter to run faster and have the explosion
 **    approximately 1/10th or less of a frame
 *******************************************************************
 
-Add enemy AI 
-IN GAME LEVEL EDITOR WITH A FIXED GRID
-ADD SOUND
-add particle system
-Add BOSS
+TODO:
+  IN GAME LEVEL EDITOR WITH A FIXED GRID
+  Add enemy AI 
+  ADD SOUND
+  add particle system
+  Add BOSSES
 
 ROTATE ENTITY ON GRID
   colliding bullets, enemies 

@@ -116,16 +116,9 @@ void update_player_test(const float &ftStep)
     timing::Timer t("entity collision");
     global::check_entities_for_collisions();
   }
-  {
-    timing::Timer timer("process frags");
-    global::process_set_of_freed_frags();
-    global::erase_freed_frags();
-  }
-
-  {
-    timing::Timer timer("remove entities");
-    global::remove_dead_entities();
-  }
+  global::process_set_of_freed_frags();
+  global::erase_freed_frags();
+  global::remove_dead_entities();
   {
     timing::Timer timer("free frag collision");
     global::check_free_frags_for_collisions();
@@ -260,8 +253,8 @@ int main()
   auto log_file = create_log_file(return_current_time_and_date());
   size_t frameCounter{0};
   // Setup timers
-  timing::initialize_timers(*log_file, {"drawing", "update", "entity collision", "process frags",
-                                        "remove entities", "free frag collision", "frametime"});
+  timing::initialize_timers(
+      *log_file, {"drawing", "update", "entity collision", "free frag collision", "frametime"});
 
   // Initialize
   init_menu();
@@ -295,12 +288,10 @@ int main()
         update_score();
         if (is_win_condition_met())
         {
-          cout << "win condition met" << endl;
           start_next_level();
         }
         else if (is_lose_condition_met())
         {
-          cout << "lose condition met" << endl;
           restart_current_level();
         }
       }
@@ -382,6 +373,7 @@ int main()
       }
       draw_editor(*window);
       window->display();
+      // level editor frame timing
       float ftMilli{chrono::duration_cast<chrono::duration<float, milli>>(high_res_clock::now() -
                                                                           editor_time1)
                         .count()};

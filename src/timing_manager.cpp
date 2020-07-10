@@ -63,10 +63,7 @@ void timing::calc_and_log_interval_timing_data()
   for (auto &timer_pair : timing_map)
   {
     auto label = timer_pair.first;
-    Vecf &vec_ref = get<0>(timer_pair.second);
-    float &min_ref = get<1>(timer_pair.second); // already calc'd
-    float &max_ref = get<2>(timer_pair.second); // already calc'd
-    float &avg_ref = get<3>(timer_pair.second); // needs calc'd
+    auto &[vec_ref, min_ref, max_ref, avg_ref] = timer_pair.second;
     size_t datapoint_count = vec_ref.size();
     // report the min and the max for that interval
     // calc the average for that interval
