@@ -6,7 +6,6 @@ Purpose of project: Re-Write Second Shooter to run faster and have the explosion
 *******************************************************************
 **  ROOM FOR OPTIMIZATION
 **    reduce draw calls using SFML vertexarray
-**    reduce looping over frags with for_each -> use for()
 **    Do not need to use a quadtree for this game because the 
 **    collision timings are around 300ms, which is 
 **    approximately 1/10th or less of a frame
@@ -14,6 +13,7 @@ Purpose of project: Re-Write Second Shooter to run faster and have the explosion
 
 TODO:
   IN GAME LEVEL EDITOR WITH A FIXED GRID
+    Fix level editor format and use regex or propertymap
   Add enemy AI 
   ADD SOUND
   add particle system
