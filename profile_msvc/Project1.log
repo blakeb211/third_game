@@ -1,39 +1,7 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8004: Intermediate Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Intermediate Directory.
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(453,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
-  builder.cpp
-  entity.cpp
-C:\code\third_game\src\entity.cpp(19,32): warning C4244: 'argument': conversion from 'const unsigned int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\code\third_game\src\entity.cpp(19,20): warning C4244: 'argument': conversion from 'const unsigned int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\code\third_game\src\entity.cpp(57,22): warning C4267: 'return': conversion from 'size_t' to 'unsigned int', possible loss of data
-C:\code\third_game\src\entity.cpp(188,40): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
-C:\code\third_game\src\entity.cpp(200,40): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
-  global.cpp
-C:\code\third_game\src\global.cpp(138,33): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\code\third_game\src\global.cpp(139,30): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\code\third_game\src\global.cpp(198,47): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
-C:\code\third_game\src\global.cpp(210,21): warning C4101: 'e': unreferenced local variable
-C:\code\third_game\src\global.cpp(229,44): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
-C:\code\third_game\src\global.cpp(309,55): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\code\third_game\src\global.cpp(309,34): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\code\third_game\src\global.cpp(332,34): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\code\third_game\src\global.cpp(369,25): warning C4267: 'return': conversion from 'size_t' to 'unsigned int', possible loss of data
   main1.cpp
+  timing_manager.cpp
 C:\code\third_game\src\main1.cpp(76,64): warning C4244: 'argument': conversion from 'const unsigned int' to 'T', possible loss of data
           with
           [
@@ -74,8 +42,11 @@ C:\code\third_game\src\main1.cpp(87,42): warning C4244: 'argument': conversion f
           [
               T=float
           ]
-C:\code\third_game\src\main1.cpp(168,33): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-C:\code\third_game\src\main1.cpp(171,21): warning C4018: '<': signed/unsigned mismatch
-  timing_manager.cpp
-  Generating Code...
+C:\code\third_game\src\main1.cpp(169,33): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+C:\code\third_game\src\main1.cpp(172,21): warning C4018: '<': signed/unsigned mismatch
+  Generating code
+  220 of 1755 functions (12.5%) were compiled, the rest were copied from previous compilation.
+    99 functions were new in current compilation
+    135 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
   Project1.vcxproj -> C:\code\third_game\profile_msvc\.\Project1.exe

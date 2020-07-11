@@ -6,6 +6,7 @@
 #include <iostream>
 #include <memory>
 #include <tuple>
+#include <vector>
 using namespace std;
 using Vecf = std::vector<float>;
 
@@ -69,15 +70,12 @@ void timing::calc_and_log_interval_timing_data()
     size_t datapoint_count = vec_ref.size();
     // calc the average for that interval
     avg_ref = avg_ref / datapoint_count;
-    // Log calculated data to histogram data structure 
+    // Log calculated data to histogram data structure
     // report the min, max and average for th interval
     auto &os = timing_ostream.get();
-    os << left << setw(20) << " " << setw(8) << "min" << setw(8) << "max" << setw(8)
-       << "avg (microseconds)"
-       << "\n"
-       << setw(20) << label << setw(8) << min_ref << setw(8) << max_ref << setw(8) << avg_ref
-       << "\n";
-
+    timing::IntervalData idata;
+    idata[label] = make_tuple(min_ref, max_ref, avg_ref);
+    timing::histogram_data.push_back(idata);
     // reset the tuple values
     avg_ref = 0.f;
     max_ref = 0.f;
@@ -86,17 +84,32 @@ void timing::calc_and_log_interval_timing_data()
   }
 }
 
-void timing::calc_and_log_final_timing_data(initializer_list<string> labels)
-{ // calculate and print a 1D histogram for each timing label in labels
-  // verify timing label is present in timing_map
-  for (auto l : labels)
+void timing::calc_and_log_final_timing_data(const initializer_list<string> labels)
+{ // create a 1D histogram for each timing label in labels
+  using namespace boost::histogram;
+
+  // create a vector of histograms
+  using axis_t = axis::regular<>;
+  auto h = make_histogram(axis_t(13, 0.0, 13'000));
+  vector<decltype(h)> hist_data{};
+  auto num_intervals = timing::histogram_data.size();
+  for (auto label : labels)
   {
-    if (timing_map.count(s) != 1)
+    auto h = make_histogram(axis::regular<>(13, 0.0, 13'000));
+
+    for (auto &interval : timing::histogram_data)
     {
-      cout << "timing label given to calc_and_log_final_timing_data is not present!!\n";
-      throw exception("incorrect timer label used to construct a Timer");
+      // verify data for each timing label is present in the Interval
+      if (interval.count(label) != 1)
+      {
+        cout << "timing label given to calc_and_log_final_timing_data is not present!!\n";
+        throw exception("incorrect timer label used to construct a Timer");
+      }
+      // add data from interval to current histogram
+      h(get<1>(interval[label]));
     }
-    // loop through log_file creating a histogram
+    // add histogram to histogram vector
+    hist_data.push_back(h);
   }
 }
 

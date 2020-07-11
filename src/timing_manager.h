@@ -28,6 +28,9 @@ inline std::unordered_map<std::string, std::tuple<Vecf, float, float, float>> ti
 // store the min, max, and average timings for each label for each timing interval 
 // The individual frame timings are thrown out. 
 // This is the data that will be logged to a file.
+
+// store the min, max, and average timings for each timing interval
+using IntervalData = std::unordered_map<std::string, std::tuple<float, float, float>>;
 inline std::vector<IntervalData> histogram_data;
 
 // Initialize the timing manager.
@@ -53,11 +56,7 @@ struct Timer {
   high_res_clock::time_point end;
 };
 
-// store the min, max, and average timings for each timing interval
-struct IntervalData {
-  std::unordered_map<std::string, std::tuple<float, float, float>> data_map;
 
-};
 
 
 // calc_min_max_and_avg for last interval
@@ -67,7 +66,7 @@ void calc_and_log_interval_timing_data(); // call at end of frame
 
 // print timing statistics to cout
 // log timing data to file
-void calc_and_log_final_timing_data(std::initializer_list<std::string>); // call at end of program
+void calc_and_log_final_timing_data(const std::initializer_list<std::string>); // call at end of program
 
 // Accessory functions
   std::pair<float, float> calc_frames_per_second(const high_res_clock::time_point& time1);
