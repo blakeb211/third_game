@@ -94,7 +94,7 @@ void timing::calc_and_log_final_timing_data(const initializer_list<string> label
   auto num_intervals = timing::histogram_data.size();
   for (auto label : labels)
   {
-    auto h = make_histogram(axis::regular<>(10, 0.0, 10'000));
+    auto h = make_histogram(axis::regular<>(16, 0.0, 8'000));
 
     for (auto &interval_data : timing::histogram_data)
     {

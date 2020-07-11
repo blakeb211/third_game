@@ -312,11 +312,11 @@ int main()
         keyTimeAccum += ftMilli;
       }
       // Log data every X number of frames. Throw away first several hundred frames
-      if (frameCounter % 80 == 0 && frameCounter > 200)
+      if (frameCounter % 80 == 0 && frameCounter > 500)
       {
-        *log_file << setw(20) << fps_string << "\n"
-                  << setw(20) << "Len(Entity, Free Frag)" << setw(8) << global::entity.size()
-                  << setw(8) << global::free_frags.size() << "\n";
+        //*log_file << setw(20) << fps_string << "\n"
+        //          << setw(20) << "Len(Entity, Free Frag)" << setw(8) << global::entity.size()
+        //          << setw(8) << global::free_frags.size() << "\n";
         timing::calc_and_log_interval_timing_data();
       }
     } // GAME_STATE::Game
