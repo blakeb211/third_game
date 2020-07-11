@@ -9,8 +9,11 @@ enum struct EType { Player = 1, Bullet = 2, BouncyWall = 3, BreakableWall = 4, E
 
 struct IEntity;
 
+// need Frag to keep a set of vertices on m_vertex array
+// every time it's color is changed we want the vertices changed 
+// every time it is moved we want the vertices changed
+// when we destroy it we want the vertices removed
 struct Frag : sf::RectangleShape {
-    Frag();
     Frag(float mX, float mY, sf::Color c);
     void update();
     void collide_with(const IEntity& e, Vec2 voxPos);

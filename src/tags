@@ -786,7 +786,6 @@ doClient	c:\SFML\examples\voip\Client.cpp	/^void doClient(unsigned short port)$/
 doServer	c:\SFML\examples\voip\Server.cpp	/^void doServer(unsigned short port)$/;"	f
 draw	c:\SFML\examples\shader\Effect.hpp	/^    void draw(sf::RenderTarget& target, sf::RenderStates states) const$/;"	f	class:Effect
 draw_editor	.\main1.cpp	/^void draw_editor(RenderWindow &window)$/;"	f
-draw_free_frags	.\main1.cpp	/^void draw_free_frags(RenderWindow &window)$/;"	f
 draw_game_over_screen	.\main1.cpp	/^void draw_game_over_screen(RenderWindow &window)$/;"	f
 draw_level_screen	.\main1.cpp	/^void draw_level_screen(RenderWindow &window)$/;"	f
 draw_menu_screen	.\main1.cpp	/^void draw_menu_screen(RenderWindow &window)$/;"	f

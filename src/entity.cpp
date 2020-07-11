@@ -21,10 +21,12 @@ Frag::Frag(float mX, float mY, sf::Color c = sf::Color::White)
   setFillColor(c);
   id = global::fragCounter++;
 }
+
 void Frag::update()
 {
   move(vel + dvel);
 }
+
 void Frag::collide_with(const IEntity &e, Vec2 voxPos)
 {
   Vec2 bounce_unit_vec;

@@ -125,25 +125,26 @@ void update_player_test(const float &ftStep)
   }
 }
 
-void draw_free_frags(RenderWindow &window)
-{
-  global::ff_varray.clear();
-  size_t num = 4;
-  sf::Color col;
-  sf::Transform trans;
-  for (auto &f : free_frags)
-  {
-    col = f.getFillColor();
-    trans = f.getTransform();
-    for (int i{0}; i < num; i++)
-    {
-      Vec2 p_transformed = trans.transformPoint(f.getPoint(i));
-      sf::Vertex v = sf::Vertex(p_transformed, col);
-      ff_varray.append(v);
-    }
-  }
-  window.draw(ff_varray);
-}
+//void draw_free_frags(RenderWindow &window)
+//{
+//  global::ff_varray.clear();
+//  size_t num = 4;
+//  sf::Color col;
+//  sf::Transform trans;
+//  for (auto &f : free_frags)
+//  {
+//    col = f.getFillColor();
+//    trans = f.getTransform();
+//    for (int i{0}; i < num; i++)
+//    {
+//      Vec2 p_transformed = trans.transformPoint(f.getPoint(i));
+//      sf::Vertex v = sf::Vertex(p_transformed, col);
+//      ff_varray.append(v);
+//    }
+//  }
+//  window.draw(ff_varray);
+//}
+
 void draw_player_test(RenderWindow &window)
 {
   timing::Timer timer("drawing");
@@ -159,7 +160,6 @@ void draw_player_test(RenderWindow &window)
 #endif
   }
   // draw free frags
-  // draw_free_frags(window);
   auto sz = free_frags.size();
   for (int i = 0; i < sz; i++)
   {
