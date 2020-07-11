@@ -89,12 +89,9 @@ void timing::calc_and_log_final_timing_data(const initializer_list<string> label
   using namespace boost::histogram;
 
   // create a vector of histograms
-  using axis_t = axis::regular<>;
-  auto h = make_histogram(axis_t(14, 0.0, 14'000));
-  auto num_intervals = timing::histogram_data.size();
   for (auto label : labels)
   {
-    auto h = make_histogram(axis::regular<>(16, 0.0, 8'000));
+    auto h = make_histogram(axis::regular<>(22, 0.0, 11'000));
 
     for (auto &interval_data : timing::histogram_data)
     {

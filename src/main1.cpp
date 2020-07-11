@@ -289,10 +289,12 @@ int main()
         if (is_win_condition_met())
         {
           start_next_level();
+          frameCounter = 0;
         }
         else if (is_lose_condition_met())
         {
           restart_current_level();
+          frameCounter = 0;
         }
       }
 
