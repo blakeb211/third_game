@@ -745,7 +745,7 @@ builder	.\builder.h	/^namespace builder {$/;"	n
 button	c:\SFML\examples\win32\Win32.cpp	/^HWND button;$/;"	v
 button	c:\SFML\include\SFML\Window\Event.hpp	/^        Mouse::Button button; \/\/\/< Code of the button that has been pressed$/;"	m	struct:sf::Event::MouseButtonEvent
 button	c:\SFML\include\SFML\Window\Event.hpp	/^        unsigned int button;     \/\/\/< Index of the button that has been pressed (in range [0 .. Joystick::ButtonCount - 1])$/;"	m	struct:sf::Event::JoystickButtonEvent
-calc_and_log_final_timing_data	.\timing_manager.cpp	/^void timing::calc_and_log_final_timing_data(initializer_list<string> labels)$/;"	f	class:timing
+calc_and_log_final_timing_data	.\timing_manager.cpp	/^void timing::calc_and_log_final_timing_data(const initializer_list<string> labels)$/;"	f	class:timing
 calc_and_log_interval_timing_data	.\timing_manager.cpp	/^void timing::calc_and_log_interval_timing_data()$/;"	f	class:timing
 calc_dist	.\global.cpp	/^float global::calc_dist(const sf::Vector2f &va, const sf::Vector2f &vb)$/;"	f	class:global
 calc_frames_per_second	.\timing_manager.cpp	/^pair<float, float> timing::calc_frames_per_second(const high_res_clock::time_point &time1)$/;"	f	class:timing

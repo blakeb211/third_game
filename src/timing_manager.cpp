@@ -90,27 +90,34 @@ void timing::calc_and_log_final_timing_data(const initializer_list<string> label
 
   // create a vector of histograms
   using axis_t = axis::regular<>;
-  auto h = make_histogram(axis_t(13, 0.0, 13'000));
-  vector<decltype(h)> hist_data{};
+  auto h = make_histogram(axis_t(14, 0.0, 14'000));
   auto num_intervals = timing::histogram_data.size();
   for (auto label : labels)
   {
-    auto h = make_histogram(axis::regular<>(13, 0.0, 13'000));
+    auto h = make_histogram(axis::regular<>(10, 0.0, 10'000));
 
-    for (auto &interval : timing::histogram_data)
+    for (auto &interval_data : timing::histogram_data)
     {
       // verify data for each timing label is present in the Interval
-      if (interval.count(label) != 1)
+      if (interval_data.count(label) != 1)
       {
-        cout << "timing label given to calc_and_log_final_timing_data is not present!!\n";
-        throw exception("incorrect timer label used to construct a Timer");
+        // if interval_data doesn't have data for all the timers given in labels,
+        // don't use that interval to create the histogram
+        continue;
       }
       // add data from interval to current histogram
-      h(get<1>(interval[label]));
+      auto& [min_val, max_val, avg_val] = interval_data[label];
+      // functional style addition of a data point to histogram
+      h(max_val);
     }
-    // add histogram to histogram vector
-    hist_data.push_back(h);
+    // print out histogram to timing_ostream 
+    string sep(20, '-');
+    sep += '\n';
+    ostringstream os;
+    os << sep << label << "(microseconds)" << endl << sep << h << endl;
+    timing_ostream.get() << os.str() << endl;
   }
+  assert(hist_data.size() == labels.size());
 }
 
 //

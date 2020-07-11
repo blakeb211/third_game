@@ -311,7 +311,8 @@ int main()
         ftAccum += ftMilli;
         keyTimeAccum += ftMilli;
       }
-      if (frameCounter % 80 == 0)
+      // Log data every X number of frames. Throw away first several hundred frames
+      if (frameCounter % 80 == 0 && frameCounter > 200)
       {
         *log_file << setw(20) << fps_string << "\n"
                   << setw(20) << "Len(Entity, Free Frag)" << setw(8) << global::entity.size()
