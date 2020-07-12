@@ -22,6 +22,16 @@ Frag::Frag(float mX, float mY, sf::Color c = sf::Color::White)
   id = global::fragCounter++;
 }
 
+//vertarray
+//1     421
+//2
+//3
+//4     532
+//5
+//6
+//7
+//8
+
 void Frag::update()
 {
   move(vel + dvel);
