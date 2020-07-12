@@ -49,8 +49,8 @@ inline sf::Font font; // unitialized
 inline std::vector<sf::Text> menu_text;
 inline sf::Text txt_score;
 // free frag vertexes
-inline sf::VertexArray ff_varray{sf::PrimitiveType::Quads, 500};
-inline std::vector<size_t> ff_offset{};
+//inline sf::VertexArray ff_varray{sf::PrimitiveType::Quads, 500};
+//inline std::vector<size_t> ff_offset{};
 // colors
 inline sf::Color clearscreen_color(128, 128, 115, 255);
 

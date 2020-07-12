@@ -127,7 +127,7 @@ void update_player_test(const float &ftStep)
 
 void draw_free_frags(RenderWindow &window)
 {
-  window.draw(ff_varray);
+  //window.draw(ff_varray);
 }
 
 void draw_player_test(RenderWindow &window)
@@ -387,6 +387,9 @@ int main()
   } // Main game loop
   timing::calc_and_log_final_timing_data({"drawing", "frametime"});
   log_file->close();
-  cerr << "Logfile closing" << endl;
+  cout << "Logfile closing" << endl;
+  // print out memory information
+  cout << "sizeof Frag" << sizeof(Frag) << endl;
+  cout << "sizeof Vec2" << sizeof(Vec2) << endl;
   return 0;
 }

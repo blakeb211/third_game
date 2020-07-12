@@ -5,6 +5,7 @@ Purpose of project: Re-Write Second Shooter to run faster and have the explosion
 
 *******************************************************************
 **  ROOM FOR OPTIMIZATION
+**    add a memory pool for frags 
 **    reduce draw calls using SFML vertexarray
 **    Do not need to use a quadtree for this game because the 
 **    collision timings are around 300ms, which is 
