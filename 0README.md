@@ -5,16 +5,25 @@ Purpose of project: Re-Write Second Shooter to run faster and have the explosion
 
 *******************************************************************
 **  ROOM FOR OPTIMIZATION
-**    add a memory pool for frags 
 **    reduce draw calls using SFML vertexarray
-**    Do not need to use a quadtree for this game because the 
-**    collision timings are around 300ms, which is 
-**    approximately 1/10th or less of a frame
+**    add a memory pool for frags 
+**    quadtree
+**      collisions are approximately 1/10th or less of a frame
 *******************************************************************
+
+******************************
+REDUCE DRAW CALLS PLAN
+******************************
+save bucket of log data to compare -> saved logs before changing draw
+
+
+
 
 TODO:
   IN GAME LEVEL EDITOR WITH A FIXED GRID
-    Fix level editor format and use regex or propertymap
+    Fix level editor format with regex or propertymap
+    use boost circ buff
+    make 3 levels
   Add enemy AI 
   ADD SOUND
   add particle system
