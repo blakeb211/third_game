@@ -14,9 +14,10 @@ Purpose of project: Re-Write Second Shooter to run faster and have the explosion
 ******************************
 REDUCE DRAW CALLS PLAN
 ******************************
-save bucket of log data to compare -> saved logs before changing draw
-
-
+# of calls b4 change: 1 + 3 + 1 per free frag + 1 per entity frag
+# ~1000 frags per level 
+add a frag_manager class
+done - save bucket of log data to compare -> saved logs before changing draw
 
 
 TODO:

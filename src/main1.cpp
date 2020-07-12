@@ -274,11 +274,16 @@ int main()
         update_score();
         if (is_win_condition_met())
         {
+          cout << "Frag Count for Level " << global::level << ": "; 
+          cout << global::fragCounter << endl;
           start_next_level();
           frameCounter = 0;
         }
         else if (is_lose_condition_met())
         {
+          cout << "Frag Count for Level " << global::level << ": ";
+          cout << global::fragCounter << endl;
+          start_next_level();
           restart_current_level();
           frameCounter = 0;
         }
