@@ -30,6 +30,8 @@ void global::start_next_level()
 {
   global::level++;
   global::free_frags.clear();
+  frag_man::ff_varray.clear();
+  frag_man::id_to_vertex_location.clear();
   global::entity.clear();
   global::playerHealth = 3;
   global::score = 0;
@@ -46,6 +48,8 @@ void global::start_next_level()
 void global::restart_current_level()
 {
   global::free_frags.clear();
+  frag_man::ff_varray.clear();
+  frag_man::id_to_vertex_location.clear();
   global::entity.clear();
   global::playerHealth = 3;
   global::score = 0;
@@ -88,11 +92,20 @@ void global::set_frag_health(IEntity &e, optional<unsigned int> h)
 }
 void global::erase_frag_with_id(IEntity &e, size_t frag_id)
 {
-  for (auto it = e.frags.begin(); it != e.frags.end(); it++)
+  auto sz = e.frags.size();
+  for(auto i = 0; i < sz; i++) 
   {
-    if (it->id == frag_id)
+    if (e.frags[i].id == frag_id)
     {
-      e.frags.erase(it);
+      e.frags.erase(begin(e.frags)+i);
+    // erase vertices corresponding to that frag
+      auto sz = e.varray.getVertexCount();
+      // copy all the vertices to the right leftward 4 spaces 
+      // and then resize
+      for(int vi = i*4 + 4; vi < sz; vi++) {
+        e.varray[vi - 4] = e.varray[vi];
+      }
+      e.varray.resize(sz - 4);
       return;
     }
   }
@@ -202,13 +215,17 @@ void global::process_set_of_freed_frags()
     if (f_ptr != nullptr)
     {
       free_frags.push_back(*f_ptr);
+      // add frag_id and its location in ff_varray to the fragman::id_to_vertex_location
+      frag_man::id_to_vertex_location.push_back(make_pair(f_ptr->id, frag_man::ff_varray.getVertexCount()));
+      
+      // add 4 vertices to frag_man::ff_varray for each frag
       auto pos = f_ptr->getPosition();
       auto col = f_ptr->getFillColor();
-      // add 4 vertices for each frag
       frag_man::ff_varray.append(sf::Vertex(pos, col));
       frag_man::ff_varray.append(sf::Vertex(pos + x_offset, col));
       frag_man::ff_varray.append(sf::Vertex(pos + x_offset + y_offset, col));
       frag_man::ff_varray.append(sf::Vertex(pos + y_offset, col));
+      // vector 
       // TODO: This is where we add a frag to free_frag so we should
       // add the 4 verticies to frag_man ff_varray
       erase_frag_with_id(*e_ptr, frag_id);
@@ -313,7 +330,18 @@ void global::remove_dead_entities()
         (*f.health) = 1;
         f.vel = Vec2(rand_between(-3, 6), rand_between(-3, 6));
         // explode entities into free frags
+        auto frag_id = f.id;
+        auto pos = f.getPosition();
+        auto col = f.getFillColor();
         free_frags.push_back(move(f));
+        // since we moved a frag into the free_frags we have to add its id to the id_to_vertex_offset vector and 
+        // the vertices to draw to frag_man::ff_varray
+        frag_man::id_to_vertex_location.push_back(make_pair(frag_id, frag_man::ff_varray.getVertexCount()));
+        // add 4 vertices to frag_man::ff_varray for each frag
+        frag_man::ff_varray.append(sf::Vertex(pos, col));
+        frag_man::ff_varray.append(sf::Vertex(pos + x_offset, col));
+        frag_man::ff_varray.append(sf::Vertex(pos + x_offset + y_offset, col));
+        frag_man::ff_varray.append(sf::Vertex(pos + y_offset, col));
       }
       e->isDead = true;
       if (e->type == EType::Enemy)
@@ -363,6 +391,19 @@ void global::rotate_entity(IEntity &e, const float ang_offset)
 // move frag and it's corresponding verticies in frag_man::ff_varray
 void global::move_frag_and_vertices(Frag &f, const Vec2 offset)
 {
+  f.move(offset);
+  // move verties in ff_varray corresponding to this vertex 
+  // using the fragid to find them 
+  for(auto & id_to_varray_offset : frag_man::id_to_vertex_location) {
+    auto & [frag_id, varray_offset] = id_to_varray_offset; 
+    if (frag_id == f.id) {
+      frag_man::ff_varray[varray_offset].position += offset;
+      frag_man::ff_varray[varray_offset+1].position += offset;
+      frag_man::ff_varray[varray_offset+2].position += offset;
+      frag_man::ff_varray[varray_offset+3].position += offset;
+      return;
+    }
+  }
 }
 
 // move entity frags and its hitbox

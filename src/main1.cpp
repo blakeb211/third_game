@@ -118,7 +118,7 @@ void update_player_test(const float &ftStep)
     global::check_entities_for_collisions();
   }
   global::process_set_of_freed_frags();
-  global::erase_freed_frags();
+  //global::erase_freed_frags();
   global::remove_dead_entities();
   {
     timing::Timer timer("free frag collision");
