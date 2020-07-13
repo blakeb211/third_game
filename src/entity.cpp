@@ -38,9 +38,8 @@ void Frag::collide_with(const IEntity &e, Vec2 voxPos)
   case EType::BouncyWall:
     curr_vel_len = hypot(dvel.x + vel.x, dvel.y + vel.y);
     bounce_unit_vec = global::make_unit_vec(getPosition() - voxPos);
-    global::move_frag_and_vertices(*this, bounce_unit_vec * static_cast<float>(global::bW) * 1.4f);
-    //TODO: add move free_frag vertices here
     vel = bounce_unit_vec * curr_vel_len;
+    global::move_frag_and_vertices(*this, bounce_unit_vec * static_cast<float>(global::bW) * 1.4f);
     break;
   case EType::Bullet:
     (*health) -= 2;
@@ -78,11 +77,19 @@ BouncyWall::BouncyWall(Vec2 start, Vec2 end)
 
 void BouncyWall::update(FrameTime ftStep)
 {
+
 }
+
 void BouncyWall::collide_with(const IEntity &e, unsigned int ivox, Vec2 voxPos, sf::Color fragColor)
 {
   // this really should be the color of the frag that hit it not the
-  frags[ivox].setFillColor(frags[ivox].getFillColor() + sf::Color(0, 40, 9, 0));
+  auto modified_color = frags[ivox].getFillColor() + sf::Color(0, 40, 9, 0);
+  frags[ivox].setFillColor(modified_color);
+  // if we change the frags color we should change it's vertices color
+  varray[ivox*4].color = modified_color;
+  varray[ivox*4 + 1].color = modified_color;
+  varray[ivox*4 + 1].color = modified_color;
+  varray[ivox*4 + 1].color = modified_color;
 }
 
 void BouncyWall::collide_with_free_frag(unsigned int vi, const Frag &f)

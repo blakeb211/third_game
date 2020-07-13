@@ -774,7 +774,6 @@ control	c:\SFML\include\SFML\Window\Event.hpp	/^        bool          control; \
 create	c:\SFML\include\SFML\Audio\SoundFileFactory.hpp	/^        SoundFileReader* (*create)();$/;"	m	struct:sf::SoundFileFactory::ReaderFactory
 create	c:\SFML\include\SFML\Audio\SoundFileFactory.hpp	/^        SoundFileWriter* (*create)();$/;"	m	struct:sf::SoundFileFactory::WriterFactory
 create_entity_varray_from_frags	.\builder.cpp	/^void builder::create_entity_varray_from_frags(IEntity &e) {$/;"	f	class:builder
-create_entity_varray_from_frags	.\frag_man.cpp	/^void frag_man::create_entity_varray_from_frags(IEntity &e) {$/;"	f	class:frag_man
 create_log_file	.\global.cpp	/^unique_ptr<fstream> global::create_log_file(const string currDateTime)$/;"	f	class:global
 create_window	.\global.cpp	/^unique_ptr<RenderWindow> global::create_window()$/;"	f	class:global
 currPathPoint	.\entity.h	/^    unsigned int currPathPoint;$/;"	m	struct:EType::IEnemy
@@ -1093,7 +1092,7 @@ mouseMove	c:\SFML\include\SFML\Window\Event.hpp	/^        MouseMoveEvent        
 mouseWheel	c:\SFML\include\SFML\Window\Event.hpp	/^        MouseWheelEvent       mouseWheel;        \/\/\/< Mouse wheel event parameters (Event::MouseWheelMoved) (deprecated)$/;"	m	union:sf::Event::__anon8
 mouseWheelScroll	c:\SFML\include\SFML\Window\Event.hpp	/^        MouseWheelScrollEvent mouseWheelScroll;  \/\/\/< Mouse wheel event parameters (Event::MouseWheelScrolled)$/;"	m	union:sf::Event::__anon8
 move_entity	.\global.cpp	/^void global::move_entity(IEntity &e, const Vec2 offset)$/;"	f	class:global
-move_frag_and_vertices	.\global.cpp	/^void global::move_frag_and_vertices(Frag &f, const Vec2 offset) {$/;"	f	class:global
+move_frag_and_vertices	.\global.cpp	/^void global::move_frag_and_vertices(Frag &f, const Vec2 offset)$/;"	f	class:global
 name	c:\SFML\examples\island\Island.cpp	/^        const char* name;$/;"	m	struct:__anon1::Setting	file:
 name	c:\SFML\include\SFML\Window\Joystick.hpp	/^        String       name;      \/\/\/< Name of the joystick$/;"	m	struct:sf::Joystick::Identification
 nextRow	c:\SFML\include\SFML\Graphics\Font.hpp	/^        unsigned int     nextRow; \/\/\/< Y position of the next new row in the texture$/;"	m	struct:sf::Font::Page

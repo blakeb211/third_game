@@ -176,7 +176,7 @@ void global::check_free_frags_for_collisions()
           if (collision_flag)
           {
             // break here if want frags to collide only once per frame
-            break;
+            //break;
           }
         }
       }
@@ -218,6 +218,8 @@ void global::process_set_of_freed_frags()
       // add frag_id and its location in ff_varray to the fragman::id_to_vertex_location
       frag_man::id_to_vertex_location.push_back(make_pair(f_ptr->id, frag_man::ff_varray.getVertexCount()));
       
+      // This is where we add a frag to free_frag so we should
+      // add the 4 verticies to frag_man ff_varray
       // add 4 vertices to frag_man::ff_varray for each frag
       auto pos = f_ptr->getPosition();
       auto col = f_ptr->getFillColor();
@@ -225,12 +227,7 @@ void global::process_set_of_freed_frags()
       frag_man::ff_varray.append(sf::Vertex(pos + x_offset, col));
       frag_man::ff_varray.append(sf::Vertex(pos + x_offset + y_offset, col));
       frag_man::ff_varray.append(sf::Vertex(pos + y_offset, col));
-      // vector 
-      // TODO: This is where we add a frag to free_frag so we should
-      // add the 4 verticies to frag_man ff_varray
       erase_frag_with_id(*e_ptr, frag_id);
-      // TODO: this is where we erase a frag from an entity so we should
-      // also erase that frags vertices
     }
   }
   frags_to_free.clear();
@@ -404,6 +401,7 @@ void global::move_frag_and_vertices(Frag &f, const Vec2 offset)
       return;
     }
   }
+  cout << "this code in move_frag_and_vertices should not be reached " << endl;
 }
 
 // move entity frags and its hitbox
