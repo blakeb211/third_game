@@ -31,6 +31,8 @@ void Frag::update()
 
 void Frag::collide_with(const IEntity &e, Vec2 voxPos)
 {
+  // frags should bounce off bouncy walls and lose health when they hit
+  // everything else
   Vec2 bounce_unit_vec;
   float curr_vel_len;
   switch (e.type)
@@ -52,8 +54,6 @@ void Frag::collide_with(const IEntity &e, Vec2 voxPos)
     (*health) -= 2;
     break;
   };
-  // frags should bounce off bouncy walls and lose health when they hit
-  // everything else
 }
 // member functions
 unsigned int IEntity::get_health()
@@ -251,12 +251,20 @@ void Enemy::collide_with(const IEntity &e, unsigned int ivox, Vec2 voxPos, sf::C
     dvel += bounce_unit_vec * 0.5f;
     frag_velocity = bv_len * bounce_unit_vec;
     // if enemy frag health decreased move it to free frag
-    if (*frags[ivox].health <= 1)
+    if (*frags[ivox].health == 1)
     {
       // move the frag outside the enemy so doesn't hurt itself
       frags[ivox].vel = frag_velocity;
       auto move_dist = hypot(hitbox.getSize().x / 2, hitbox.getSize().y / 2);
+      
       // TODO move frag away from collision site before freeing it?
+      //auto move_vec = move_dist * bounce_unit_vec;
+      //frags[ivox].move(move_vec);
+      //varray[ivox*4].position += move_vec;
+      //varray[ivox*4 + 1].position += move_vec;
+      //varray[ivox*4 + 2].position += move_vec;
+      //varray[ivox*4 + 3].position += move_vec;
+
       global::frags_to_free.insert(make_pair(id, frags[ivox].id));
     }
     break;

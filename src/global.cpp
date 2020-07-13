@@ -189,7 +189,7 @@ void global::check_free_frags_for_collisions()
         cout << "(" << entity[ei]->type << ")" << endl;
 #endif
         // break here if want frags to collide only once per frame
-        break;
+        //break;
       }
     }
   }
