@@ -193,6 +193,33 @@ entity.cpp.s:
 	$(MAKE) -f CMakeFiles\game.dir\build.make CMakeFiles/game.dir/entity.cpp.s
 .PHONY : entity.cpp.s
 
+frag_man.obj: frag_man.cpp.obj
+
+.PHONY : frag_man.obj
+
+# target to build an object file
+frag_man.cpp.obj:
+	$(MAKE) -f CMakeFiles\game.dir\build.make CMakeFiles/game.dir/frag_man.cpp.obj
+.PHONY : frag_man.cpp.obj
+
+frag_man.i: frag_man.cpp.i
+
+.PHONY : frag_man.i
+
+# target to preprocess a source file
+frag_man.cpp.i:
+	$(MAKE) -f CMakeFiles\game.dir\build.make CMakeFiles/game.dir/frag_man.cpp.i
+.PHONY : frag_man.cpp.i
+
+frag_man.s: frag_man.cpp.s
+
+.PHONY : frag_man.s
+
+# target to generate assembly for a file
+frag_man.cpp.s:
+	$(MAKE) -f CMakeFiles\game.dir\build.make CMakeFiles/game.dir/frag_man.cpp.s
+.PHONY : frag_man.cpp.s
+
 global.obj: global.cpp.obj
 
 .PHONY : global.obj
@@ -289,6 +316,9 @@ help:
 	@echo ... entity.obj
 	@echo ... entity.i
 	@echo ... entity.s
+	@echo ... frag_man.obj
+	@echo ... frag_man.i
+	@echo ... frag_man.s
 	@echo ... global.obj
 	@echo ... global.i
 	@echo ... global.s

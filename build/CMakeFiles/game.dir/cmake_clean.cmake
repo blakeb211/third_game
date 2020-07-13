@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/game.dir/builder.cpp.obj"
   "CMakeFiles/game.dir/entity.cpp.obj"
+  "CMakeFiles/game.dir/frag_man.cpp.obj"
   "CMakeFiles/game.dir/global.cpp.obj"
   "CMakeFiles/game.dir/main1.cpp.obj"
   "CMakeFiles/game.dir/timing_manager.cpp.obj"

@@ -73,9 +73,22 @@ include CMakeFiles/game.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/game.dir/flags.make
 
+CMakeFiles/game.dir/frag_man.cpp.obj: CMakeFiles/game.dir/flags.make
+CMakeFiles/game.dir/frag_man.cpp.obj: C:/code/third_game/src/frag_man.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\code\third_game\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/game.dir/frag_man.cpp.obj"
+	C:\LLVM\bin\clang++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\game.dir\frag_man.cpp.obj -c C:\code\third_game\src\frag_man.cpp
+
+CMakeFiles/game.dir/frag_man.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/game.dir/frag_man.cpp.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/game.dir/frag_man.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/game.dir/frag_man.cpp.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+
 CMakeFiles/game.dir/timing_manager.cpp.obj: CMakeFiles/game.dir/flags.make
 CMakeFiles/game.dir/timing_manager.cpp.obj: C:/code/third_game/src/timing_manager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\code\third_game\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/game.dir/timing_manager.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\code\third_game\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/game.dir/timing_manager.cpp.obj"
 	C:\LLVM\bin\clang++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\game.dir\timing_manager.cpp.obj -c C:\code\third_game\src\timing_manager.cpp
 
 CMakeFiles/game.dir/timing_manager.cpp.i: cmake_force
@@ -88,7 +101,7 @@ CMakeFiles/game.dir/timing_manager.cpp.s: cmake_force
 
 CMakeFiles/game.dir/global.cpp.obj: CMakeFiles/game.dir/flags.make
 CMakeFiles/game.dir/global.cpp.obj: C:/code/third_game/src/global.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\code\third_game\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/game.dir/global.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\code\third_game\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/game.dir/global.cpp.obj"
 	C:\LLVM\bin\clang++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\game.dir\global.cpp.obj -c C:\code\third_game\src\global.cpp
 
 CMakeFiles/game.dir/global.cpp.i: cmake_force
@@ -101,7 +114,7 @@ CMakeFiles/game.dir/global.cpp.s: cmake_force
 
 CMakeFiles/game.dir/entity.cpp.obj: CMakeFiles/game.dir/flags.make
 CMakeFiles/game.dir/entity.cpp.obj: C:/code/third_game/src/entity.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\code\third_game\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/game.dir/entity.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\code\third_game\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/game.dir/entity.cpp.obj"
 	C:\LLVM\bin\clang++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\game.dir\entity.cpp.obj -c C:\code\third_game\src\entity.cpp
 
 CMakeFiles/game.dir/entity.cpp.i: cmake_force
@@ -114,7 +127,7 @@ CMakeFiles/game.dir/entity.cpp.s: cmake_force
 
 CMakeFiles/game.dir/builder.cpp.obj: CMakeFiles/game.dir/flags.make
 CMakeFiles/game.dir/builder.cpp.obj: C:/code/third_game/src/builder.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\code\third_game\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/game.dir/builder.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\code\third_game\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/game.dir/builder.cpp.obj"
 	C:\LLVM\bin\clang++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\game.dir\builder.cpp.obj -c C:\code\third_game\src\builder.cpp
 
 CMakeFiles/game.dir/builder.cpp.i: cmake_force
@@ -127,7 +140,7 @@ CMakeFiles/game.dir/builder.cpp.s: cmake_force
 
 CMakeFiles/game.dir/main1.cpp.obj: CMakeFiles/game.dir/flags.make
 CMakeFiles/game.dir/main1.cpp.obj: C:/code/third_game/src/main1.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\code\third_game\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/game.dir/main1.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\code\third_game\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/game.dir/main1.cpp.obj"
 	C:\LLVM\bin\clang++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\game.dir\main1.cpp.obj -c C:\code\third_game\src\main1.cpp
 
 CMakeFiles/game.dir/main1.cpp.i: cmake_force
@@ -140,6 +153,7 @@ CMakeFiles/game.dir/main1.cpp.s: cmake_force
 
 # Object files for target game
 game_OBJECTS = \
+"CMakeFiles/game.dir/frag_man.cpp.obj" \
 "CMakeFiles/game.dir/timing_manager.cpp.obj" \
 "CMakeFiles/game.dir/global.cpp.obj" \
 "CMakeFiles/game.dir/entity.cpp.obj" \
@@ -149,6 +163,7 @@ game_OBJECTS = \
 # External object files for target game
 game_EXTERNAL_OBJECTS =
 
+game.exe: CMakeFiles/game.dir/frag_man.cpp.obj
 game.exe: CMakeFiles/game.dir/timing_manager.cpp.obj
 game.exe: CMakeFiles/game.dir/global.cpp.obj
 game.exe: CMakeFiles/game.dir/entity.cpp.obj
@@ -158,7 +173,7 @@ game.exe: CMakeFiles/game.dir/build.make
 game.exe: CMakeFiles/game.dir/linklibs.rsp
 game.exe: CMakeFiles/game.dir/objects1.rsp
 game.exe: CMakeFiles/game.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\code\third_game\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable game.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\code\third_game\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable game.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\game.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

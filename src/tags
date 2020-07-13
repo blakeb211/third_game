@@ -142,8 +142,6 @@ F6	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        F6,           \/\/\/< The 
 F7	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        F7,           \/\/\/< The F7 key$/;"	e	enum:sf::Keyboard::Key
 F8	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        F8,           \/\/\/< The F8 key$/;"	e	enum:sf::Keyboard::Key
 F9	c:\SFML\include\SFML\Window\Keyboard.hpp	/^        F9,           \/\/\/< The F9 key$/;"	e	enum:sf::Keyboard::Key
-FIGHT	.\AI.cpp	/^  FIGHT \/\/ follow path and shoot$/;"	e	enum:state	file:
-FLEE	.\AI.cpp	/^  FLEE, \/\/ move away from bullets and enemies$/;"	e	enum:state	file:
 Factor	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^    enum Factor$/;"	g	struct:sf::BlendMode
 FieldTable	c:\SFML\include\SFML\Network\Http.hpp	/^        typedef std::map<std::string, std::string> FieldTable;$/;"	t	class:sf::Http::Request
 FieldTable	c:\SFML\include\SFML\Network\Http.hpp	/^        typedef std::map<std::string, std::string> FieldTable;$/;"	t	class:sf::Http::Response
@@ -775,6 +773,8 @@ computeNormal	c:\SFML\examples\island\Island.cpp	/^sf::Vector2f computeNormal(in
 control	c:\SFML\include\SFML\Window\Event.hpp	/^        bool          control; \/\/\/< Is the Control key pressed?$/;"	m	struct:sf::Event::KeyEvent
 create	c:\SFML\include\SFML\Audio\SoundFileFactory.hpp	/^        SoundFileReader* (*create)();$/;"	m	struct:sf::SoundFileFactory::ReaderFactory
 create	c:\SFML\include\SFML\Audio\SoundFileFactory.hpp	/^        SoundFileWriter* (*create)();$/;"	m	struct:sf::SoundFileFactory::WriterFactory
+create_entity_varray_from_frags	.\builder.cpp	/^void builder::create_entity_varray_from_frags(IEntity &e) {$/;"	f	class:builder
+create_entity_varray_from_frags	.\frag_man.cpp	/^void frag_man::create_entity_varray_from_frags(IEntity &e) {$/;"	f	class:frag_man
 create_log_file	.\global.cpp	/^unique_ptr<fstream> global::create_log_file(const string currDateTime)$/;"	f	class:global
 create_window	.\global.cpp	/^unique_ptr<RenderWindow> global::create_window()$/;"	f	class:global
 currPathPoint	.\entity.h	/^    unsigned int currPathPoint;$/;"	m	struct:EType::IEnemy
@@ -806,6 +806,7 @@ finger	c:\SFML\include\SFML\Window\Event.hpp	/^        unsigned int finger; \/\/
 fire_shot	.\entity.cpp	/^void Enemy::fire_shot()$/;"	f	class:Enemy
 fire_shot	.\entity.cpp	/^void Player::fire_shot()$/;"	f	class:Player
 font	.\global.h	/^inline sf::Font font; \/\/ unitialized$/;"	v
+frag_man	.\frag_man.h	/^namespace frag_man$/;"	n
 frags	.\entity.h	/^    std::vector<Frag> frags;$/;"	m	struct:EType::IEntity
 frags_to_free	.\global.h	/^inline std::set<std::pair<size_t, size_t>> frags_to_free;$/;"	v
 free_frags	.\global.h	/^inline std::vector<Frag> free_frags;$/;"	v
@@ -824,6 +825,7 @@ get_entity_with_id	.\global.cpp	/^shared_ptr<IEntity> global::get_entity_with_id
 get_frag_with_id	.\global.cpp	/^unique_ptr<Frag> global::get_frag_with_id(IEntity &e, size_t frag_id)$/;"	f	class:global
 get_health	.\entity.cpp	/^unsigned int IEntity::get_health()$/;"	f	class:IEntity
 get_new_entity_id	.\global.cpp	/^unsigned int global::get_new_entity_id()$/;"	f	class:global
+get_new_frag	.\frag_man.cpp	/^std::unique_ptr<Frag> frag_man::get_new_frag(float mx, float my, sf::Color c)$/;"	f	class:frag_man
 glStatesSet	c:\SFML\include\SFML\Graphics\RenderTarget.hpp	/^        bool      glStatesSet;    \/\/\/< Are our internal GL states set yet?$/;"	m	struct:sf::RenderTarget::StatesCache
 global	.\global.h	/^namespace global$/;"	n
 glyphs	c:\SFML\include\SFML\Graphics\Font.hpp	/^        GlyphTable       glyphs;  \/\/\/< Table mapping code points to their corresponding glyph$/;"	m	struct:sf::Font::Page
@@ -1091,6 +1093,7 @@ mouseMove	c:\SFML\include\SFML\Window\Event.hpp	/^        MouseMoveEvent        
 mouseWheel	c:\SFML\include\SFML\Window\Event.hpp	/^        MouseWheelEvent       mouseWheel;        \/\/\/< Mouse wheel event parameters (Event::MouseWheelMoved) (deprecated)$/;"	m	union:sf::Event::__anon8
 mouseWheelScroll	c:\SFML\include\SFML\Window\Event.hpp	/^        MouseWheelScrollEvent mouseWheelScroll;  \/\/\/< Mouse wheel event parameters (Event::MouseWheelScrolled)$/;"	m	union:sf::Event::__anon8
 move_entity	.\global.cpp	/^void global::move_entity(IEntity &e, const Vec2 offset)$/;"	f	class:global
+move_frag_and_vertices	.\global.cpp	/^void global::move_frag_and_vertices(Frag &f, const Vec2 offset) {$/;"	f	class:global
 name	c:\SFML\examples\island\Island.cpp	/^        const char* name;$/;"	m	struct:__anon1::Setting	file:
 name	c:\SFML\include\SFML\Window\Joystick.hpp	/^        String       name;      \/\/\/< Name of the joystick$/;"	m	struct:sf::Joystick::Identification
 nextRow	c:\SFML\include\SFML\Graphics\Font.hpp	/^        unsigned int     nextRow; \/\/\/< Y position of the next new row in the texture$/;"	m	struct:sf::Font::Page
@@ -1262,7 +1265,6 @@ sstr	c:\SFML\examples\joystick\Joystick.cpp	/^    std::ostringstream sstr;$/;"	v
 start	.\timing_manager.h	/^  high_res_clock::time_point start;$/;"	m	struct:timing::Timer
 start	c:\SFML\examples\voip\Server.cpp	/^    void start(unsigned short port)$/;"	f	class:NetworkAudioStream
 start_next_level	.\global.cpp	/^void global::start_next_level()$/;"	f	class:global
-state	.\AI.cpp	/^enum state {$/;"	g	file:
 stencilBits	c:\SFML\include\SFML\Window\ContextSettings.hpp	/^    unsigned int stencilBits;       \/\/\/< Bits of the stencil buffer$/;"	m	struct:sf::ContextSettings
 system	c:\SFML\include\SFML\Window\Event.hpp	/^        bool          system;  \/\/\/< Is the System key pressed?$/;"	m	struct:sf::Event::KeyEvent
 targetBuffer	c:\SFML\examples\island\Island.cpp	/^        sf::Vertex* targetBuffer;$/;"	m	struct:__anon1::WorkItem	file:

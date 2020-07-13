@@ -11,6 +11,21 @@ using namespace sf;
 using namespace global;
 using Vec2 = Vector2<float>;
 
+
+void builder::create_entity_varray_from_frags(IEntity &e) {
+  auto sz = e.frags.size();
+  auto col = e.frags[0].getFillColor();
+ 
+  for (auto i = 0; i < sz; i++) {
+    auto pos = e.frags[i].getPosition();
+    //add 4 vertices for each frag
+    e.varray.append(sf::Vertex(pos, col));  
+    e.varray.append(sf::Vertex(pos + x_offset, col));
+    e.varray.append(sf::Vertex(pos + x_offset + y_offset, col));
+    e.varray.append(sf::Vertex(pos + y_offset, col));
+  }
+}
+
 void builder::build_long_wall(Vec2 wall_start, Vec2 wall_end)
 {
   // start of build a multi-segment wall
@@ -43,6 +58,7 @@ void builder::add_wall_frags(IEntity &e, Vec2 start, Vec2 end, Color c)
     // start and end vectors
     start += unitVec * 1.f * (float)(bW);
   }
+  create_entity_varray_from_frags(e);
 }
 
 bool builder::build_level(unsigned int &levelId)
@@ -178,6 +194,7 @@ void builder::add_player_frags(IEntity &e)
   e.frags.emplace_back(0.f + 1.f * bW, 0.f, Color::White);
   e.frags.emplace_back(0.f + 2.f * bW, 0.f, Color::White);
   e.frags.emplace_back(0.f + 1.f * bW, 0.f - 1.f * bW, Color::Cyan);
+  create_entity_varray_from_frags(e);
 }
 
 void builder::add_bullet1_frags(IEntity &e)
@@ -187,6 +204,7 @@ void builder::add_bullet1_frags(IEntity &e)
   e.frags.emplace_back(1.f * bW, 1.f * bW, Color(153, 76, 0, 255));
   e.frags.emplace_back(2.f * bW, 1.f * bW, Color(153, 76, 0, 255));
   e.frags.emplace_back(1.f * bW, 2.f * bW, Color(153, 76, 0, 255));
+  create_entity_varray_from_frags(e);
 }
 
 void builder::add_bullet2_frags(IEntity &e)
@@ -197,6 +215,7 @@ void builder::add_bullet2_frags(IEntity &e)
   e.frags.emplace_back(3.f * bW, 1.f * bW, Color(255, 165, 0, 255));
   e.frags.emplace_back(1.f * bW, 2.f * bW, Color(255, 165, 0, 255));
   e.frags.emplace_back(3.f * bW, 2.f * bW, Color(255, 165, 0, 255));
+  create_entity_varray_from_frags(e);
 }
 
 void builder::add_enemy1_frags(IEntity &e)
@@ -255,6 +274,7 @@ void builder::add_enemy1_frags(IEntity &e)
   e.frags.emplace_back(9.f * bW, 7.f * bW, Color::Cyan);
   e.frags.emplace_back(12.f * bW, 7.f * bW, Color::Cyan);
   e.frags.emplace_back(15.f * bW, 7.f * bW, Color::Cyan);
+  create_entity_varray_from_frags(e);
 }
 
 void builder::add_enemy2_frags(IEntity &e)
@@ -333,6 +353,7 @@ void builder::add_enemy2_frags(IEntity &e)
   e.frags.emplace_back(15.f * bW, 7.f * bW, Color::Magenta);
   e.frags.emplace_back(16.f * bW, 7.f * bW, Color::Magenta);
   e.frags.emplace_back(17.f * bW, 7.f * bW, Color::Magenta);
+  create_entity_varray_from_frags(e);
 }
 
 void builder::add_enemy3_frags(IEntity &e)
@@ -413,6 +434,7 @@ void builder::add_enemy3_frags(IEntity &e)
   e.frags.emplace_back(17.f * bW, 7.f * bW, Color::Red + Color::Yellow);
   e.frags.emplace_back(18.f * bW, 7.f * bW, Color::Red + Color::Yellow);
   e.frags.emplace_back(19.f * bW, 7.f * bW, Color::Red + Color::Yellow);
+  create_entity_varray_from_frags(e);
 }
 
 void builder::add_enemy4_frags(IEntity &e)
@@ -534,5 +556,6 @@ void builder::add_enemy4_frags(IEntity &e)
   e.frags.emplace_back(24.f * bW, 5.f * bW, Color(255, 140, 0, 245));
   e.frags.emplace_back(7.f * bW, 6.f * bW, Color(255, 140, 0, 245));
   e.frags.emplace_back(22.f * bW, 6.f * bW, Color(255, 140, 0, 245));
+  create_entity_varray_from_frags(e);
 }
 

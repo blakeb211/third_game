@@ -52,6 +52,20 @@ SFML/System.hpp
 stdlibs.h
 C:/code/third_game/src/stdlibs.h
 
+C:/code/third_game/src/frag_man.h
+entity.h
+C:/code/third_game/src/entity.h
+SFML/Graphics.hpp
+-
+SFML/System.hpp
+-
+memory
+-
+vector
+-
+utility
+-
+
 C:/code/third_game/src/global.cpp
 global.h
 C:/code/third_game/src/global.h
@@ -59,6 +73,8 @@ builder.h
 C:/code/third_game/src/builder.h
 stdlibs.h
 C:/code/third_game/src/stdlibs.h
+frag_man.h
+C:/code/third_game/src/frag_man.h
 
 C:/code/third_game/src/global.h
 SFML/System.hpp
@@ -89,6 +105,8 @@ global.h
 C:/code/third_game/src/global.h
 timing_manager.h
 C:/code/third_game/src/timing_manager.h
+frag_man.h
+C:/code/third_game/src/frag_man.h
 tuple
 -
 

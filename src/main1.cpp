@@ -10,6 +10,7 @@
 #include "builder.h"
 #include "global.h"
 #include "timing_manager.h"
+#include "frag_man.h"
 #include <tuple>
 //#define HITBOX
 
@@ -125,32 +126,30 @@ void update_player_test(const float &ftStep)
   }
 }
 
-void draw_free_frags(RenderWindow &window)
-{
-  //window.draw(ff_varray);
-}
-
 void draw_player_test(RenderWindow &window)
 {
   timing::Timer timer("drawing");
   for (const auto &e : entity)
   {
-    auto sz = e->frags.size();
-    for (int i = 0; i < sz; i++)
-    {
-      window.draw(e->frags[i]);
-    }
+    // draw entity's vertex array in a single draw call
+    window.draw(e->varray);
+    //auto sz = e->frags.size();
+    //for (int i = 0; i < sz; i++)
+    //{
+    //  window.draw(e->frags[i]);
+    //}
 #ifdef HITBOX
     window.draw(e->hitbox);
 #endif
   }
   // draw free frags
-  auto sz = free_frags.size();
-  for (int i = 0; i < sz; i++)
-  {
-    window.draw(free_frags[i]);
-  }
-  //draw_free_frags(*window);
+  //auto sz = free_frags.size();
+  //for (int i = 0; i < sz; i++)
+  //{
+  //  window.draw(free_frags[i]);
+  //}
+  // draw free frags in a single draw call
+  window.draw(frag_man::ff_varray);
   // draw player health bar
   sf::CircleShape cs(global::bW * 3, 30);
   cs.setFillColor(sf::Color(255, 178, 102, 60));
@@ -394,7 +393,8 @@ int main()
   log_file->close();
   cout << "Logfile closing" << endl;
   // print out memory information
-  cout << "sizeof Frag" << sizeof(Frag) << endl;
-  cout << "sizeof Vec2" << sizeof(Vec2) << endl;
+  cout << "sizeof Frag: " << sizeof(Frag) << endl;
+  cout << "sizeof Vec2: " << sizeof(Vec2) << endl;
+  cout << "sizeof sf::Vertex " << sizeof(sf::Vertex) << endl;
   return 0;
 }

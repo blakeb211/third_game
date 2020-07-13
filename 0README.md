@@ -17,9 +17,12 @@ REDUCE DRAW CALLS PLAN
 # of calls b4 change: 1 + 3 + 1 per free frag + 1 per entity frag
 # ~1000 frags per level 
 add a frag_manager class
-done - save bucket of log data to compare -> saved logs before changing draw
+  store free frags in ff_varray
+  store entity vertices in entity::varray
+  each entity will be one draw call and 
+  free frags will be one draw call
 
-
+compare timings
 TODO:
   IN GAME LEVEL EDITOR WITH A FIXED GRID
     Fix level editor format with regex or propertymap

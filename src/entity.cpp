@@ -17,6 +17,8 @@ Frag::Frag(float mX, float mY, sf::Color c = sf::Color::White)
 {
   setOrigin(global::bW / 2.f, global::bW / 2.f);
   setSize({global::bW, global::bW});
+  // don't need to touch vertices here because vertices are
+  // added after this move
   move(Vec2(mX, mY));
   setFillColor(c);
   id = global::fragCounter++;
@@ -24,7 +26,7 @@ Frag::Frag(float mX, float mY, sf::Color c = sf::Color::White)
 
 void Frag::update()
 {
-  move(vel + dvel);
+  global::move_frag_and_vertices(*this, vel+dvel);
 }
 
 void Frag::collide_with(const IEntity &e, Vec2 voxPos)
@@ -36,7 +38,8 @@ void Frag::collide_with(const IEntity &e, Vec2 voxPos)
   case EType::BouncyWall:
     curr_vel_len = hypot(dvel.x + vel.x, dvel.y + vel.y);
     bounce_unit_vec = global::make_unit_vec(getPosition() - voxPos);
-    move(bounce_unit_vec * static_cast<float>(global::bW) * 1.4f);
+    global::move_frag_and_vertices(*this, bounce_unit_vec * static_cast<float>(global::bW) * 1.4f);
+    //TODO: add move free_frag vertices here
     vel = bounce_unit_vec * curr_vel_len;
     break;
   case EType::Bullet:
@@ -67,9 +70,9 @@ BouncyWall::BouncyWall(Vec2 start, Vec2 end)
   // data
   id = global::get_new_entity_id();
   type = EType::BouncyWall;
+  builder::add_wall_frags(*this, start, end, Color(210, 35, 90, 255));
   global::set_frag_health(*this, nullopt);
   healthCutoff = 4;
-  builder::add_wall_frags(*this, start, end, Color(210, 35, 90, 255));
   global::build_hitbox(*this);
 }
 
@@ -161,6 +164,7 @@ void Player::fire_shot()
   global::move_entity(*new_bullet,
                       player_center - Vec2(3.f * bullet_width / 4.f, +1.f * global::blockWidth * 4.f));
   // add bullet to entity mega-vector
+  // TODO: is this move doing anything??
   global::entity.push_back(move(new_bullet));
   // reset shot timer
   currTimer = 0.f;
@@ -245,7 +249,7 @@ void Enemy::collide_with(const IEntity &e, unsigned int ivox, Vec2 voxPos, sf::C
       // move the frag outside the enemy so doesn't hurt itself
       frags[ivox].vel = frag_velocity;
       auto move_dist = hypot(hitbox.getSize().x / 2, hitbox.getSize().y / 2);
-      frags[ivox].move(bounce_unit_vec * (float)global::bW);
+      // TODO move frag away from collision site before freeing it?
       global::frags_to_free.insert(make_pair(id, frags[ivox].id));
     }
     break;

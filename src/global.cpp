@@ -1,6 +1,7 @@
 #include "global.h"
 #include "builder.h"
 #include "stdlibs.h"
+#include "frag_man.h"
 //#define COLL_LOGGING
 
 using namespace std;
@@ -184,32 +185,36 @@ void global::check_free_frags_for_collisions()
 void global::process_set_of_freed_frags()
 {
   // move frags to the free frag vector and remove it from the
-  // bullet entity vector
+  // entity vector
   // The pair in frags_to_free is entity_id, frag idx.
 
   size_t frag_id;
   shared_ptr<IEntity> e_ptr;
   unique_ptr<Frag> f_ptr;
 
-  try
+  for (const auto &eid_fid : frags_to_free)
   {
-    for (const auto &eid_fid : frags_to_free)
+    e_ptr = get_entity_with_id(eid_fid.first);
+    if (e_ptr == nullptr)
+      continue;
+    frag_id = eid_fid.second;
+    f_ptr = get_frag_with_id(*e_ptr, frag_id);
+    if (f_ptr != nullptr)
     {
-      e_ptr = get_entity_with_id(eid_fid.first);
-      if (e_ptr == nullptr)
-        continue;
-      frag_id = eid_fid.second;
-      f_ptr = get_frag_with_id(*e_ptr, frag_id);
-      if (f_ptr != nullptr)
-      {
-        free_frags.push_back(*f_ptr);
-        erase_frag_with_id(*e_ptr, frag_id);
-      }
+      free_frags.push_back(*f_ptr);
+      auto pos = f_ptr->getPosition();
+      auto col = f_ptr->getFillColor();
+      // add 4 vertices for each frag
+      frag_man::ff_varray.append(sf::Vertex(pos, col));
+      frag_man::ff_varray.append(sf::Vertex(pos + x_offset, col));
+      frag_man::ff_varray.append(sf::Vertex(pos + x_offset + y_offset, col));
+      frag_man::ff_varray.append(sf::Vertex(pos + y_offset, col));
+      // TODO: This is where we add a frag to free_frag so we should
+      // add the 4 verticies to frag_man ff_varray
+      erase_frag_with_id(*e_ptr, frag_id);
+      // TODO: this is where we erase a frag from an entity so we should
+      // also erase that frags vertices
     }
-  }
-  catch (exception &e)
-  {
-    cout << "exception in for loop of process_set_of_freed_frags" << endl;
   }
   frags_to_free.clear();
 }
@@ -270,8 +275,8 @@ void global::check_entities_for_collisions()
             {
               ii_pos = ei_ref.frags[ii].getPosition();
               jj_pos = ej_ref.frags[jj].getPosition();
-              ei_ref.collide_with(ej_ref, ii, move(jj_pos), ej_ref.frags[jj].getFillColor());
-              ej_ref.collide_with(ei_ref, jj, move(ii_pos), ei_ref.frags[ii].getFillColor());
+              ei_ref.collide_with(ej_ref, ii, std::move(jj_pos), ej_ref.frags[jj].getFillColor());
+              ej_ref.collide_with(ei_ref, jj, std::move(ii_pos), ei_ref.frags[ii].getFillColor());
               collision_flag = true;
             }
           }
@@ -355,12 +360,24 @@ void global::rotate_entity(IEntity &e, const float ang_offset)
 {
 }
 
+// move frag and it's corresponding verticies in frag_man::ff_varray
+void global::move_frag_and_vertices(Frag &f, const Vec2 offset)
+{
+}
+
 // move entity frags and its hitbox
 void global::move_entity(IEntity &e, const Vec2 offset)
 {
   for_each(begin(e.frags), end(e.frags), [&offset](Frag &f) { f.move(offset); });
   e.hitbox.move(offset);
   e.center += offset;
+  // move each vertex by offset
+  auto sz = e.varray.getVertexCount();
+  for (int i = 0; i < sz; i++)
+  {
+    auto &vref = e.varray[i];
+    vref.position += offset;
+  }
 }
 
 // free function to get a new entity id
@@ -517,7 +534,7 @@ bool global::handle_keyboard_input(float &timer, const float maxTime, RenderWind
     // check for return to Game
     if (Keyboard::isKeyPressed(sf::Keyboard::Escape))
     {
-      // Escape key key ends the game 
+      // Escape key key ends the game
       return true;
     }
     return false;

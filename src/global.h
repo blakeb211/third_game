@@ -48,10 +48,13 @@ inline unsigned int playerHealth{3};
 inline sf::Font font; // unitialized
 inline std::vector<sf::Text> menu_text;
 inline sf::Text txt_score;
+// vertex building constants
+inline const Vec2 x_offset{static_cast<float>(global::blockWidth), 0.0f};
+inline const Vec2 y_offset{0.0f, global::blockWidth};
+
 
 // free frag vertexes
-//inline sf::VertexArray ff_varray{sf::PrimitiveType::Quads, 500};
-//inline std::vector<size_t> ff_offset{};
+
 // colors
 inline sf::Color clearscreen_color(128, 128, 115, 255);
 
@@ -83,6 +86,7 @@ int rand_between(int low, int high);
 //
 // loop of the frags in an entity and set their health
 void set_frag_health(IEntity &e, std::optional<unsigned int> h);
+
 // use some criteria to erase free frags
 void erase_freed_frags();
 
@@ -109,6 +113,9 @@ void build_hitbox(IEntity &e);
 
 // move entity's pos variable and all its frags with it
 void move_entity(IEntity &e, const Vec2 offset);
+
+// move frag and it's corresponding verticies in frag_man::ff_varray
+void move_frag_and_vertices(Frag &f, const Vec2 offset);
 
 // rotate entity's frags by offset
 void rotate_entity(IEntity &e, const float ang_offset);

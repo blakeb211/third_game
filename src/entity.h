@@ -41,6 +41,7 @@ struct IEntity {
     sf::RectangleShape hitbox;
     Vec2 center{ -200.f, -200.f };
     bool isDead { false };
+    sf::VertexArray varray{sf::PrimitiveType::Quads};
 };
 
 struct ICanShoot { // players and enemies
