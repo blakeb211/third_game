@@ -101,9 +101,7 @@ void BouncyWall::collide_with(const IEntity &e, unsigned int ivox, Vec2 voxPos, 
   varray[ivox*4 + 1].color = modified_color;
 }
 
-void BouncyWall::collide_with_free_frag(unsigned int vi, const Frag &f)
-{
-}
+void BouncyWall::collide_with_free_frag(unsigned int vi, const Frag &f) { }
 
 //
 // Player Definitions
