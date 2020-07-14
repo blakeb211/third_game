@@ -726,6 +726,7 @@ alphaSrcFactor	c:\SFML\include\SFML\Graphics\BlendMode.hpp	/^    Factor   alphaS
 alt	c:\SFML\include\SFML\Window\Event.hpp	/^        bool          alt;     \/\/\/< Is the Alt key pressed?$/;"	m	struct:sf::Event::KeyEvent
 antialiasingLevel	c:\SFML\include\SFML\Window\ContextSettings.hpp	/^    unsigned int antialiasingLevel; \/\/\/< Level of antialiasing$/;"	m	struct:sf::ContextSettings
 are_frags_and_varray_synced_up	.\main1.cpp	/^bool are_frags_and_varray_synced_up()$/;"	f
+are_free_frags_and_varray_synced_up	.\main1.cpp	/^bool are_free_frags_and_varray_synced_up()$/;"	f
 attributeFlags	c:\SFML\include\SFML\Window\ContextSettings.hpp	/^    Uint32       attributeFlags;    \/\/\/< The attribute flags to create the context with$/;"	m	struct:sf::ContextSettings
 audioData	c:\SFML\examples\voip\Client.cpp	/^const sf::Uint8 audioData   = 1;$/;"	v
 audioData	c:\SFML\examples\voip\Server.cpp	/^const sf::Uint8 audioData   = 1;$/;"	v
@@ -801,6 +802,7 @@ endOfStream	c:\SFML\examples\voip\Server.cpp	/^const sf::Uint8 endOfStream = 2;$
 entity	.\global.h	/^inline std::vector<std::shared_ptr<IEntity>> entity;$/;"	v
 entity_broke_off_from	.\entity.h	/^    std::optional<size_t> entity_broke_off_from; $/;"	m	struct:EType::Frag
 erase_frag_with_id	.\global.cpp	/^void global::erase_frag_with_id(IEntity &e, size_t frag_id)$/;"	f	class:global
+erase_free_frags_and_verticies_if_cutoff_hit	.\frag_man.cpp	/^void frag_man::erase_free_frags_and_verticies_if_cutoff_hit(int ffCutoff) {$/;"	f	class:frag_man
 erase_freed_frags	.\global.cpp	/^void global::erase_freed_frags()$/;"	f	class:global
 family	c:\SFML\include\SFML\Graphics\Font.hpp	/^        std::string family; \/\/\/< The font family$/;"	m	struct:sf::Font::Info
 finger	c:\SFML\include\SFML\Window\Event.hpp	/^        unsigned int finger; \/\/\/< Index of the finger in case of multi-touch events$/;"	m	struct:sf::Event::TouchEvent
@@ -1267,6 +1269,7 @@ start	.\timing_manager.h	/^  high_res_clock::time_point start;$/;"	m	struct:timi
 start	c:\SFML\examples\voip\Server.cpp	/^    void start(unsigned short port)$/;"	f	class:NetworkAudioStream
 start_next_level	.\global.cpp	/^void global::start_next_level()$/;"	f	class:global
 stencilBits	c:\SFML\include\SFML\Window\ContextSettings.hpp	/^    unsigned int stencilBits;       \/\/\/< Bits of the stencil buffer$/;"	m	struct:sf::ContextSettings
+swap_and_erase_free_frag_and_vertices	.\frag_man.cpp	/^void frag_man::swap_and_erase_free_frag_and_vertices(int ff_offset_from, int ff_offset_to) {$/;"	f	class:frag_man
 system	c:\SFML\include\SFML\Window\Event.hpp	/^        bool          system;  \/\/\/< Is the System key pressed?$/;"	m	struct:sf::Event::KeyEvent
 targetBuffer	c:\SFML\examples\island\Island.cpp	/^        sf::Vertex* targetBuffer;$/;"	m	struct:__anon1::WorkItem	file:
 texCoords	c:\SFML\include\SFML\Graphics\Vertex.hpp	/^    Vector2f  texCoords; \/\/\/< Coordinates of the texture's pixel to map to the vertex$/;"	m	class:sf::Vertex

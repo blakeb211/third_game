@@ -101,6 +101,7 @@ void init_player_test()
 
 bool are_frags_and_varray_synced_up()
 {
+  assert(global::free_frags.size() == 4*frag_man::ff_varray.getVertexCount());
   for (auto &e : global::entity)
   {
     for (auto i = 0; i < e->frags.size(); i++)
@@ -109,20 +110,21 @@ bool are_frags_and_varray_synced_up()
         return false;
     }
   }
+  
   return true;
 }
 
-// TODO: Implement this test function
 bool are_free_frags_and_varray_synced_up()
 {
-  for (auto &f : global::free_frags)
+  auto sz = global::free_frags.size();
+  for (auto i = 0; i < sz; i++)
   {
-    return true;
+    auto &fi = global::free_frags[i];
+    if (global::calc_dist(fi.getPosition(), frag_man::ff_varray[i*4].position) > 0.2f)
+      return false;
   }
   return true;
 }
-
-
 
 void update_player_test(const float &ftStep)
 {
@@ -143,7 +145,7 @@ void update_player_test(const float &ftStep)
     global::check_entities_for_collisions();
   }
   global::process_set_of_freed_frags();
-  // global::erase_freed_frags();
+  global::erase_freed_frags();
   global::remove_dead_entities();
   {
     timing::Timer timer("free frag collision");
@@ -331,9 +333,6 @@ int main()
       // Log data every X number of frames. Throw away first several hundred frames
       if (frameCounter % 80 == 0 && frameCounter > 500)
       {
-        //*log_file << setw(20) << fps_string << "\n"
-        //          << setw(20) << "Len(Entity, Free Frag)" << setw(8) << global::entity.size()
-        //          << setw(8) << global::free_frags.size() << "\n";
         timing::calc_and_log_interval_timing_data();
       }
     } // GAME_STATE::Game

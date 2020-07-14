@@ -53,11 +53,11 @@ void Frag::collide_with(const IEntity &e, Vec2 voxPos)
     global::move_frag_and_vertices(*this, bounce_unit_vec * static_cast<float>(global::bW) * 1.4f);
     break;
   case EType::Bullet:
-    (*health) = 0;
+    (*health) = -1;
     bounce_unit_vec = global::make_unit_vec(getPosition() - voxPos);
     vel = bounce_unit_vec * hypot(dvel.x + vel.x, dvel.y + vel.y);
   case EType::Enemy:
-    (*health) = 0;
+    (*health) = -2;
     break;
   default:
     (*health) = 0;

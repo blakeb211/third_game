@@ -1,7 +1,7 @@
 #include "global.h"
 #include "builder.h"
-#include "stdlibs.h"
 #include "frag_man.h"
+#include "stdlibs.h"
 //#define COLL_LOGGING
 
 using namespace std;
@@ -31,7 +31,6 @@ void global::start_next_level()
   global::level++;
   global::free_frags.clear();
   frag_man::ff_varray.clear();
-  frag_man::id_to_vertex_location.clear();
   global::entity.clear();
   global::playerHealth = 3;
   global::score = 0;
@@ -49,7 +48,6 @@ void global::restart_current_level()
 {
   global::free_frags.clear();
   frag_man::ff_varray.clear();
-  frag_man::id_to_vertex_location.clear();
   global::entity.clear();
   global::playerHealth = 3;
   global::score = 0;
@@ -90,19 +88,21 @@ void global::set_frag_health(IEntity &e, optional<unsigned int> h)
     *(f.health) = *h;
   }
 }
+
 void global::erase_frag_with_id(IEntity &e, size_t frag_id)
 {
   auto sz = e.frags.size();
-  for(auto i = 0; i < sz; i++) 
+  for (auto i = 0; i < sz; i++)
   {
     if (e.frags[i].id == frag_id)
     {
-      e.frags.erase(begin(e.frags)+i);
-    // erase vertices corresponding to that frag
+      e.frags.erase(begin(e.frags) + i);
+      // erase vertices corresponding to that frag
       auto sz = e.varray.getVertexCount();
-      // copy all the vertices to the right leftward 4 spaces 
+      // copy all the vertices to the right leftward 4 spaces
       // and then resize
-      for(int vi = i*4 + 4; vi < sz; vi++) {
+      for (int vi = i * 4 + 4; vi < sz; vi++)
+      {
         e.varray[vi - 4] = e.varray[vi];
       }
       e.varray.resize(sz - 4);
@@ -162,7 +162,8 @@ void global::check_free_frags_for_collisions()
         auto &fi_ref = free_frags[fi];
         auto &ei_ref = *entity[ei];
         // dampening to reduce explosivity of collisions
-        if (fi_ref.entity_broke_off_from == ei_ref.id) break;
+        if (fi_ref.entity_broke_off_from == ei_ref.id)
+          break;
         auto ev_size = ei_ref.frags.size();
         // check which pixels the frag hit
         Vec2 ff_pos = free_frags[fi].getPosition();
@@ -209,20 +210,19 @@ void global::process_set_of_freed_frags()
 
   for (const auto &eid_fid : frags_to_free)
   {
-    auto & [entity_id, frag_id] = eid_fid;
+    auto &[entity_id, frag_id] = eid_fid;
     e_ptr = get_entity_with_id(entity_id);
     if (e_ptr == nullptr)
       continue;
     f_ptr = get_frag_with_id(*e_ptr, frag_id);
     if (f_ptr != nullptr)
     {
-      // mark the newly freed frag for which entity it broke off from to avoid future self-collisions
-      f_ptr -> entity_broke_off_from = entity_id;
+      // mark the newly freed frag for which entity it broke off from to avoid future
+      // self-collisions
+      f_ptr->entity_broke_off_from = entity_id;
       *(f_ptr->health) = 1;
       free_frags.push_back(*f_ptr);
-      // add frag_id and its location in ff_varray to the fragman::id_to_vertex_location
-      frag_man::id_to_vertex_location.push_back(make_pair(f_ptr->id, frag_man::ff_varray.getVertexCount()));
-      
+
       // This is where we add a frag to free_frag so we should
       // add the 4 verticies to frag_man ff_varray
       // add 4 vertices to frag_man::ff_varray for each frag
@@ -241,22 +241,29 @@ void global::process_set_of_freed_frags()
 void global::erase_freed_frags()
 {
   Vec2 pos;
-  for (auto it = begin(free_frags); it != end(free_frags); it++)
+  auto sz = free_frags.size();
+  for (auto fi = 0; fi < sz; fi++)
   {
-    pos = it->getPosition();
-    if (*(it->health) <= 0 || pos.x < 0 || pos.x > winWidth || pos.y < 0 || pos.y > winHeight)
+    auto &frag = global::free_frags[fi];
+
+    pos = frag.getPosition();
+    if (*(frag.health) <= 0 || pos.x < 0 || pos.x > winWidth || pos.y < 0 || pos.y > winHeight)
     {
-      free_frags.erase(it);
+      //                      ff_varray
+      //
+      // swap frag with last frag
+      std::swap(free_frags[fi], free_frags[sz - 1]);
+      // swap vertices with last 4 vertices
+      std::swap(frag_man::ff_varray[fi * 4], frag_man::ff_varray[(sz - 1) * 4]);
+      std::swap(frag_man::ff_varray[fi * 4 + 1], frag_man::ff_varray[(sz - 1) * 4 + 1]);
+      std::swap(frag_man::ff_varray[fi * 4 + 2], frag_man::ff_varray[(sz - 1) * 4 + 2]);
+      std::swap(frag_man::ff_varray[fi * 4 + 3], frag_man::ff_varray[(sz - 1) * 4 + 3]);
+      // erase last free frag from free_frags
+      free_frags.erase(--end(free_frags));
+      // erase last 4 vertices from ff_varray
+      auto vertex_count = frag_man::ff_varray.getVertexCount();
+      frag_man::ff_varray.resize(vertex_count - 4);
       break;
-    }
-    // set free_frag limit to see if it helps draw timings
-    unsigned int ffSize = free_frags.size();
-    const uint32_t ffCutoff = 200u;
-    if (ffSize > ffCutoff)
-    {
-      unsigned int sizeDiff = ffSize - ffCutoff;
-      swap_ranges(begin(free_frags) + ffCutoff, end(free_frags), begin(free_frags));
-      free_frags.erase(begin(free_frags) + ffCutoff, end(free_frags));
     }
   }
 }
@@ -336,9 +343,8 @@ void global::remove_dead_entities()
         auto pos = f.getPosition();
         auto col = f.getFillColor();
         free_frags.push_back(move(f));
-        // since we moved a frag into the free_frags we have to add its id to the id_to_vertex_offset vector and 
-        // the vertices to draw to frag_man::ff_varray
-        frag_man::id_to_vertex_location.push_back(make_pair(frag_id, frag_man::ff_varray.getVertexCount()));
+        // since we moved a frag into the free_frags we have to add its
+        // vertices to draw to frag_man::ff_varray
         // add 4 vertices to frag_man::ff_varray for each frag
         frag_man::ff_varray.append(sf::Vertex(pos, col));
         frag_man::ff_varray.append(sf::Vertex(pos + x_offset, col));
@@ -394,19 +400,22 @@ void global::rotate_entity(IEntity &e, const float ang_offset)
 void global::move_frag_and_vertices(Frag &f, const Vec2 offset)
 {
   f.move(offset);
-  // move verties in ff_varray corresponding to this vertex 
-  // using the fragid to find them 
-  for(auto & id_to_varray_offset : frag_man::id_to_vertex_location) {
-    auto & [frag_id, varray_offset] = id_to_varray_offset; 
-    if (frag_id == f.id) {
-      frag_man::ff_varray[varray_offset].position += offset;
-      frag_man::ff_varray[varray_offset+1].position += offset;
-      frag_man::ff_varray[varray_offset+2].position += offset;
-      frag_man::ff_varray[varray_offset+3].position += offset;
-      return;
-    }
-  }
-  cout << "this code in move_frag_and_vertices should not be reached " << endl;
+  // move verties in ff_varray corresponding to this vertex
+  // using the frag_id to find them
+  auto sz = global::free_frags.size();
+  const auto &id_of_frag_to_move = f.id;
+
+  auto begin_ff = begin(free_frags);
+  auto end_ff = end(free_frags);
+  auto it = find_if(begin_ff, end_ff, [&](auto const &f) { return f.id == id_of_frag_to_move; });
+  //assert(it != end_ff);
+  auto free_frag_offset = std::distance(begin_ff, it);
+  auto varray_offset = free_frag_offset * 4;
+
+  frag_man::ff_varray[varray_offset].position += offset;
+  frag_man::ff_varray[varray_offset + 1].position += offset;
+  frag_man::ff_varray[varray_offset + 2].position += offset;
+  frag_man::ff_varray[varray_offset + 3].position += offset;
 }
 
 // move entity frags and its hitbox
