@@ -14,13 +14,14 @@ Purpose of project: Re-Write Second Shooter to run faster and have the explosion
 ******************************
 REDUCE DRAW CALLS PLAN
 ******************************
-# of calls b4 change: 1 + 3 + 1 per free frag + 1 per entity frag
-# ~1000 frags per level 
 add a frag_manager class
-  store free frags in ff_varray
-  store entity vertices in entity::varray
-  each entity will be one draw call and 
-  free frags will be one draw call
+  done - each entity will be one draw call and 
+  done - free frags will be one draw call
+  --> verify that free_frags stay synced with frag_man::varray
+
+Take as step back and refactor
+
+Then take timings and implement a memory_pool for bullets and or frags
 
 compare timings
 TODO:
