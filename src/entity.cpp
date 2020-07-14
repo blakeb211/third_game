@@ -13,7 +13,7 @@ using namespace sf;
 
 // Frag constructors
 Frag::Frag(float mX, float mY, sf::Color c = sf::Color::White)
-    : vel{0.f, 0.f}, dvel{vel}, health{nullopt}
+    : vel{0.f, 0.f}, dvel{vel}, health{nullopt}, entity_broke_off_from{nullopt}
 {
   setOrigin(global::bW / 2.f, global::bW / 2.f);
   setSize({global::bW, global::bW});
@@ -26,13 +26,22 @@ Frag::Frag(float mX, float mY, sf::Color c = sf::Color::White)
 
 void Frag::update()
 {
+  if (vel.x > global::frag_speed_max) {
+    vel.x *= 0.95f;
+  }
+  if (vel.y > global::frag_speed_max) {
+    vel.y *= 0.95f;
+  }
   global::move_frag_and_vertices(*this, vel+dvel);
+    
 }
 
 void Frag::collide_with(const IEntity &e, Vec2 voxPos)
 {
   // frags should bounce off bouncy walls and lose health when they hit
   // everything else
+  // Dampen explosivity of collisions
+  //if (entity_broke_off_from == e.id) return;
   Vec2 bounce_unit_vec;
   float curr_vel_len;
   switch (e.type)
@@ -44,14 +53,14 @@ void Frag::collide_with(const IEntity &e, Vec2 voxPos)
     global::move_frag_and_vertices(*this, bounce_unit_vec * static_cast<float>(global::bW) * 1.4f);
     break;
   case EType::Bullet:
-    (*health) -= 2;
+    (*health) = 0;
     bounce_unit_vec = global::make_unit_vec(getPosition() - voxPos);
     vel = bounce_unit_vec * hypot(dvel.x + vel.x, dvel.y + vel.y);
   case EType::Enemy:
-    (*health) -= 3;
+    (*health) = 0;
     break;
   default:
-    (*health) -= 2;
+    (*health) = 0;
     break;
   };
 }
@@ -123,11 +132,6 @@ void Player::update(FrameTime ftStep)
   currTimer += ftStep;
   global::move_entity(*this, vel + dvel);
   dvel *= (abs(dvel.x) < 0.01f) ? 0 : 0.85f;
-//  if (center.x < 5*global::bW || center.x > global::winWidth - 5*global::bW)
-//  {
-//    vel.x = 0.f;
-//    dvel.x = 0.f;
-//  }
 }
 
 void Player::collide_with(const IEntity &e, unsigned int ivox, Vec2 voxPos, sf::Color c)
@@ -255,16 +259,6 @@ void Enemy::collide_with(const IEntity &e, unsigned int ivox, Vec2 voxPos, sf::C
     {
       // move the frag outside the enemy so doesn't hurt itself
       frags[ivox].vel = frag_velocity;
-      auto move_dist = hypot(hitbox.getSize().x / 2, hitbox.getSize().y / 2);
-      
-      // TODO move frag away from collision site before freeing it?
-      //auto move_vec = move_dist * bounce_unit_vec;
-      //frags[ivox].move(move_vec);
-      //varray[ivox*4].position += move_vec;
-      //varray[ivox*4 + 1].position += move_vec;
-      //varray[ivox*4 + 2].position += move_vec;
-      //varray[ivox*4 + 3].position += move_vec;
-
       global::frags_to_free.insert(make_pair(id, frags[ivox].id));
     }
     break;
@@ -303,7 +297,7 @@ Bullet::Bullet(Vec2 pos)
   builder::add_bullet2_frags(*this);
   builder::set_frag_health(*this, 2);
   global::build_hitbox(*this);
-  healthCutoff = 3;
+  healthCutoff = 2;
   vel = Vec2(0.f, -5.5f);
   dvel = Vec2(0.f, -3.f);
   global::get_center(*this);

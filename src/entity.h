@@ -20,6 +20,7 @@ struct Frag : sf::RectangleShape {
     // member data
     Vec2 vel;
     Vec2 dvel;
+    std::optional<size_t> entity_broke_off_from; 
     std::optional<int> health; // voxel health
     size_t id;
 };

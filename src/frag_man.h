@@ -32,8 +32,12 @@ inline std::vector<std::pair<size_t, size_t>> id_to_vertex_location;
 std::unique_ptr<Frag> get_new_frag(float mx, float my, sf::Color c);
 
 void create_entity_varray_from_frags(IEntity &e);
-// inline std::vector<size_t> ff_offset{};
 
+//TODO: Implement these so that frags are erased better and free_frags stays 
+//      synced up with frag_man::ff_varray
+void swap_free_frag_and_vertices_within_vector(int ff_offset_from, int ff_offset_to);
+
+void erase_free_frags_and_verticies_if_cutoff_hit(int ffCutoff);
 // void pre_allocate_frags(size_t count);
 
 } // namespace frag_man

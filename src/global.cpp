@@ -161,6 +161,8 @@ void global::check_free_frags_for_collisions()
       {
         auto &fi_ref = free_frags[fi];
         auto &ei_ref = *entity[ei];
+        // dampening to reduce explosivity of collisions
+        if (fi_ref.entity_broke_off_from == ei_ref.id) break;
         auto ev_size = ei_ref.frags.size();
         // check which pixels the frag hit
         Vec2 ff_pos = free_frags[fi].getPosition();
@@ -176,7 +178,7 @@ void global::check_free_frags_for_collisions()
           if (collision_flag)
           {
             // break here if want frags to collide only once per frame
-            //break;
+            // break;
           }
         }
       }
@@ -189,7 +191,7 @@ void global::check_free_frags_for_collisions()
         cout << "(" << entity[ei]->type << ")" << endl;
 #endif
         // break here if want frags to collide only once per frame
-        //break;
+        // break;
       }
     }
   }
@@ -207,13 +209,16 @@ void global::process_set_of_freed_frags()
 
   for (const auto &eid_fid : frags_to_free)
   {
-    e_ptr = get_entity_with_id(eid_fid.first);
+    auto & [entity_id, frag_id] = eid_fid;
+    e_ptr = get_entity_with_id(entity_id);
     if (e_ptr == nullptr)
       continue;
-    frag_id = eid_fid.second;
     f_ptr = get_frag_with_id(*e_ptr, frag_id);
     if (f_ptr != nullptr)
     {
+      // mark the newly freed frag for which entity it broke off from to avoid future self-collisions
+      f_ptr -> entity_broke_off_from = entity_id;
+      *(f_ptr->health) = 1;
       free_frags.push_back(*f_ptr);
       // add frag_id and its location in ff_varray to the fragman::id_to_vertex_location
       frag_man::id_to_vertex_location.push_back(make_pair(f_ptr->id, frag_man::ff_varray.getVertexCount()));
@@ -239,7 +244,7 @@ void global::erase_freed_frags()
   for (auto it = begin(free_frags); it != end(free_frags); it++)
   {
     pos = it->getPosition();
-    if (*(it->health) < 0 || pos.x < 0 || pos.x > winWidth || pos.y < 0 || pos.y > winHeight)
+    if (*(it->health) <= 0 || pos.x < 0 || pos.x > winWidth || pos.y < 0 || pos.y > winHeight)
     {
       free_frags.erase(it);
       break;

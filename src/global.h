@@ -33,6 +33,7 @@ inline const unsigned int &bW{blockWidth};
 inline const float ftStep{13.f}; // fixed update interval in ms
 inline const float keyInputStep{ftStep * 5.f};
 inline unsigned int lastFPS{0};
+inline const float frag_speed_max {4.f};
 inline std::default_random_engine rand_engine;
 inline std::vector<std::shared_ptr<IEntity>> entity;
 inline std::vector<Frag> free_frags;

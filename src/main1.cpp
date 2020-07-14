@@ -8,9 +8,9 @@
 #include <SFML/System.hpp>
 
 #include "builder.h"
+#include "frag_man.h"
 #include "global.h"
 #include "timing_manager.h"
-#include "frag_man.h"
 #include <tuple>
 //#define HITBOX
 
@@ -99,6 +99,31 @@ void init_player_test()
   }
 }
 
+bool are_frags_and_varray_synced_up()
+{
+  for (auto &e : global::entity)
+  {
+    for (auto i = 0; i < e->frags.size(); i++)
+    {
+      if (global::calc_dist(e->frags[i].getPosition(), e->varray[i * 4].position) > 0.2f)
+        return false;
+    }
+  }
+  return true;
+}
+
+// TODO: Implement this test function
+bool are_free_frags_and_varray_synced_up()
+{
+  for (auto &f : global::free_frags)
+  {
+    return true;
+  }
+  return true;
+}
+
+
+
 void update_player_test(const float &ftStep)
 {
 
@@ -118,7 +143,7 @@ void update_player_test(const float &ftStep)
     global::check_entities_for_collisions();
   }
   global::process_set_of_freed_frags();
-  //global::erase_freed_frags();
+  // global::erase_freed_frags();
   global::remove_dead_entities();
   {
     timing::Timer timer("free frag collision");
@@ -133,8 +158,8 @@ void draw_player_test(RenderWindow &window)
   {
     // draw entity's vertex array in a single draw call
     window.draw(e->varray);
-    //auto sz = e->frags.size();
-    //for (int i = 0; i < sz; i++)
+    // auto sz = e->frags.size();
+    // for (int i = 0; i < sz; i++)
     //{
     //  window.draw(e->frags[i]);
     //}
@@ -143,8 +168,8 @@ void draw_player_test(RenderWindow &window)
 #endif
   }
   // draw free frags
-  //auto sz = free_frags.size();
-  //for (int i = 0; i < sz; i++)
+  // auto sz = free_frags.size();
+  // for (int i = 0; i < sz; i++)
   //{
   //  window.draw(free_frags[i]);
   //}
@@ -273,7 +298,7 @@ int main()
         update_score();
         if (is_win_condition_met())
         {
-          cout << "Frag Count for Level " << global::level << ": "; 
+          cout << "Frag Count for Level " << global::level << ": ";
           cout << global::fragCounter << endl;
           start_next_level();
           frameCounter = 0;
