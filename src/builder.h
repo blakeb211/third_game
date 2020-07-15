@@ -23,6 +23,7 @@ void add_enemy2_frags(IEntity& e);
 void add_enemy3_frags(IEntity& e);
 void add_enemy4_frags(IEntity& e);
 bool build_level(unsigned int& levelId);
+
 void add_wall_frags(IEntity& e, Vec2 start, Vec2 end, sf::Color c);
 void set_frag_health(IEntity& e, std::optional<unsigned int> num);
 void build_long_wall(Vec2 wall_start, Vec2 wall_end);

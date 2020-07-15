@@ -64,6 +64,12 @@ inline sf::Color clearscreen_color(128, 128, 115, 255);
 //
 //
 
+// increment level, reset variables, and load the level
+void start_next_level();
+
+// reset variables, load the level
+void restart_current_level();
+
 // make a unit vec from a vector
 Vec2 make_unit_vec(Vec2 v);
 
@@ -74,13 +80,8 @@ bool is_win_condition_met();
 
 bool is_lose_condition_met();
 
-// increment level, reset variables, and load the level
-void start_next_level();
 
-// reset variables, load the level
-void restart_current_level();
-
-void collide_enemy_hitboxes(IEntity &ei, IEntity &ej);
+void separate_hitboxes(IEntity &ei, IEntity &ej);
 
 // generate random integer between a low and high range
 int rand_between(int low, int high);
@@ -98,7 +99,7 @@ std::unique_ptr<Frag> get_frag_with_id(IEntity &e, size_t frag_id);
 // function to move frags that were freed from their entities
 void process_set_of_freed_frags();
 // function to print out ETypes as strings
-inline std::ostream &operator<<(std::ostream &Str, EType V);
+std::ostream &operator<<(std::ostream &Str, EType V);
 
 // check entities for collisions
 void check_entities_for_collisions();

@@ -12,7 +12,7 @@
 #include "global.h"
 #include "timing_manager.h"
 #include <tuple>
-//#define HITBOX
+#define HITBOX
 
 using namespace std;
 using namespace sf;

@@ -8,7 +8,7 @@ using namespace std;
 using namespace sf;
 typedef chrono::high_resolution_clock high_res_clock;
 
-inline std::ostream &global::operator<<(std::ostream &Str, EType V)
+std::ostream &global::operator<<(std::ostream &Str, EType V)
 {
   switch (V)
   {
@@ -137,7 +137,7 @@ Vec2 global::get_center(IEntity &e)
   return e.center;
 }
 // collide enemy hitboxes to keep the out of each others hitbox
-void global::collide_enemy_hitboxes(IEntity &ei_ref, IEntity &ej_ref)
+void global::separate_hitboxes(IEntity &ei_ref, IEntity &ej_ref)
 {
   auto ei_cent = get_center(ei_ref);
   auto ej_cent = get_center(ej_ref);
@@ -286,7 +286,7 @@ void global::check_entities_for_collisions()
         {
           // enemies collide one another with their hitboxes not their voxels
           // calc hitbox centers to get rough approx of collision vector
-          collide_enemy_hitboxes(ei_ref, ej_ref);
+          separate_hitboxes(ei_ref, ej_ref);
           return;
         }
         auto fi_size = ei_ref.frags.size();

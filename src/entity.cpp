@@ -88,7 +88,6 @@ BouncyWall::BouncyWall(Vec2 start, Vec2 end)
 
 void BouncyWall::update(FrameTime ftStep)
 {
-
 }
 
 void BouncyWall::collide_with(const IEntity &e, unsigned int ivox, Vec2 voxPos, sf::Color fragColor)
