@@ -6,6 +6,8 @@
 #include "builder.h"
 #include "entity.h"
 #include "global.h"
+#include "frag_man.h"
+
 using FrameTime = float;
 
 using namespace std;
@@ -249,7 +251,10 @@ void Enemy::collide_with(const IEntity &e, unsigned int ivox, Vec2 voxPos, sf::C
   case EType::Bullet:
     (*frags[ivox].health)--;
     frags[ivox].setFillColor(sf::Color::Red);
-    // dvel = hypot(vel.x, vel.y) * bounce_unit_vec * 1.2f;
+    varray[ivox*4].color = sf::Color::Red;
+    varray[ivox*4+1].color = sf::Color::Red;
+    varray[ivox*4+2].color = sf::Color::Red;
+    varray[ivox*4+3].color = sf::Color::Red;
     dvel += bounce_unit_vec * 0.5f;
     frag_velocity = bv_len * bounce_unit_vec;
     // if enemy frag health decreased move it to free frag

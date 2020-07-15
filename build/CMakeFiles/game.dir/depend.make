@@ -10,6 +10,7 @@ CMakeFiles/game.dir/builder.cpp.obj: C:/code/third_game/src/stdlibs.h
 CMakeFiles/game.dir/entity.cpp.obj: C:/code/third_game/src/builder.h
 CMakeFiles/game.dir/entity.cpp.obj: C:/code/third_game/src/entity.cpp
 CMakeFiles/game.dir/entity.cpp.obj: C:/code/third_game/src/entity.h
+CMakeFiles/game.dir/entity.cpp.obj: C:/code/third_game/src/frag_man.h
 CMakeFiles/game.dir/entity.cpp.obj: C:/code/third_game/src/global.h
 CMakeFiles/game.dir/entity.cpp.obj: C:/code/third_game/src/stdlibs.h
 
