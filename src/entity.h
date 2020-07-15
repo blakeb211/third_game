@@ -5,7 +5,7 @@
 #include "stdlibs.h"
 using Vec2 = sf::Glsl::Vec2;
 using FrameTime = float;
-enum struct EType { Player = 1, Bullet = 2, BouncyWall = 3, BreakableWall = 4, Enemy = 5 };
+enum struct EType { Player = 1, Bullet = 2, BouncyWall = 3, AbsorbyWall = 4, Enemy = 5 };
 
 struct IEntity;
 
