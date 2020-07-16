@@ -36,24 +36,26 @@ int main()
        << global::winHeight;
   cout << right << setw(15) << "blockWidth: " << global::blockWidth << sep;
 
-  // obj_list circular buffer and print objects out
-  // current object is obj_list.front()
-  boost::circular_buffer<EType> obj_list(6);
+  // cb_obj circular buffer and print objects out
+  // current object is cb_obj.front()
+  boost::circular_buffer<EType> cb_obj(6);
   EType curr_object;
   constexpr auto all_objects = magic_enum::enum_values<EType>();
   cout << "Objects available to editor: " << endl;
   for (auto &i : all_objects)
   {
-    obj_list.push_back(i);
+    cb_obj.push_back(i);
     cout << "\t" << static_cast<unsigned>(i) << ": " << magic_enum::enum_name(i) << endl;
   }
   cout << sep;
+  curr_object = cb_obj.front();
 
-  // obj_list.rotate(begin(obj_list) + 1);
+  // cb_obj.rotate(begin(cb_obj) + 1);
 
   // build level_file circular buffer and print files out
   // current file is level_list.front()
-  boost::circular_buffer<fs::path> level_list;
+  boost::circular_buffer<fs::path> cb_level;
+  fs::path curr_level{};
   cout << "Level files available to edit:" << endl;
   string level_path{"../assets/"};
   auto const level_data_regex = regex("level(\\d+)_data(\\.+)txt", regex::ECMAScript);
@@ -66,10 +68,11 @@ int main()
     if (path_matches_regex)
     {
       cout << "\t" << entry.path() << endl;
-      level_list.push_back(entry.path());
+      cb_level.push_back(entry.path());
     }
   }
   cout << sep;
+  //curr_level = cb_level.front().path(); // Error
 
   // create window
   auto win = global::create_window();
