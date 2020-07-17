@@ -10,8 +10,8 @@
 
 using FrameTime = float;
 
-using namespace std;
 using namespace sf;
+using namespace std;
 
 // Frag constructors
 Frag::Frag(float mX, float mY, sf::Color c = sf::Color::White)
