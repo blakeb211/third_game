@@ -30,7 +30,7 @@ using Vec2 = sf::Vector2f;
 // global variables
 const unsigned MAX_OBJ_COUNT = 10;
 const unsigned MAX_LEVEL_COUNT = 10;
-
+const string TITLE_STRING = "Level Editor";
 //
 
 string sep(3, '\n');
@@ -42,18 +42,6 @@ Vec2 perc_to_pix(float x, float y)
   assert(y >= 0 && y <= 100);
   return Vec2((x / 100.f) * global::winWidth, (y / 100.f) * global::winHeight);
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -108,7 +96,7 @@ int main()
   // create window
   auto win = global::create_window();
   win->setVerticalSyncEnabled(true);
-  win->setTitle("Level editor");
+  win->setTitle(TITLE_STRING);
   win->display();
   sf::Text mouse_coords("", global::font, 15);
   
@@ -132,6 +120,10 @@ int main()
         win->draw(f);
       }
     }
+    // set window current title: Level editor  
+    stringstream ss;
+    ss << "current file: " << left << setw(20) << cb_level.front().filename().string() << " current object: " << left << setw(20) << magic_enum::enum_name(cb_obj.front());
+    win->setTitle(ss.str()); 
     // draw mouse position
     auto mouse_pos = sf::Mouse::getPosition(*win);
     mouse_coords.setString("x: " + to_string(mouse_pos.x) + " y: " + to_string(mouse_pos.y));
@@ -139,15 +131,15 @@ int main()
     auto mt_w = txt_size.width;
     auto mt_h = txt_size.height; 
     auto txt_offset = Vec2(mt_w / 2.f, mt_h + 3.f);
-    txt_offset.x += (global::winWidth - mouse_pos.x < mt_w ? -mt_w - 5.f : 0.f); // right case 
-    txt_offset.x += (mouse_pos.x - mt_w -5.f < 0.f ? +mt_w + 5.f : 0.f); // left case 
-    txt_offset.y += (global::winHeight - mouse_pos.y < mt_h ? -mt_h - 5.f : 0.f); // bottom case
-    txt_offset.y += (mouse_pos.y - mt_h - 5.f < 0.f ? +mt_h + 5.f : 0.f); // top case
+    txt_offset.x += (global::winWidth - mouse_pos.x < mt_w*2.f ? -mt_w*2.f - 5.f : 0.f);            // right case 
+    txt_offset.x += (mouse_pos.x - mt_w*2.f -5.f < 0.f ? +mt_w + 5.f : 0.f);                        // left case 
+    txt_offset.y += (global::winHeight - (mouse_pos.y +mt_h*4.f)  < mt_h ? -mt_h*3.f - 5.f : 0.f);  // bottom case
+    txt_offset.y += (mouse_pos.y - mt_h - 5.f < 0.f ? +mt_h + 5.f : 0.f);                           // top case
     mouse_coords.setPosition(Vec2(mouse_pos.x, mouse_pos.y) + txt_offset);
     win->draw(mouse_coords);
+    // done drawing cursor
     win->display();
   }
 
-  
-  return 0;
+ return 0;
 }
