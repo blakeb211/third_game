@@ -1,3 +1,14 @@
+/* Level editor:
+ *      Create New Level Files
+ *      Load Level Files
+ *      Edit Newly created or Loaded Level file
+ *          place and delete objects
+*/ 
+
+
+
+
+
 #include "global.h"
 /* */
 #include "builder.h"
@@ -6,17 +17,21 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 #include <boost/circular_buffer.hpp>
+#include <boost/serialization/serialization.hpp>
 #include <cassert>
 #include <filesystem>
 #include <iostream>
 #include <regex>
-#include <string>
-#include <vector>
+
 using namespace std;
 namespace fs = std::filesystem;
 using Vec2 = sf::Vector2f;
-// Support objects to place
-// BouncyWall, AbsorbyWall, Enemy1, Enemy2, Enemy3, Enemy4
+
+// global variables
+const unsigned MAX_OBJ_COUNT = 10;
+const unsigned MAX_LEVEL_COUNT = 10;
+
+//
 
 string sep(3, '\n');
 
@@ -28,9 +43,29 @@ Vec2 perc_to_pix(float x, float y)
   return Vec2((x / 100.f) * global::winWidth, (y / 100.f) * global::winHeight);
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 int main()
 {
-
+  
+  // Create a graphical text to display
+  if (!global::font.loadFromFile("../assets/LucidaSansRegular.ttf"))
+  {
+    cerr << "Error loading font from file!" << endl;
+    return 1;
+  }
   // print out level editor information
   cout << left << setw(15) << "Window dimensions: " << global::winWidth << " x "
        << global::winHeight;
@@ -38,8 +73,7 @@ int main()
 
   // cb_obj circular buffer and print objects out
   // current object is cb_obj.front()
-  boost::circular_buffer<EType> cb_obj(6);
-  EType curr_object;
+  boost::circular_buffer<EType> cb_obj(MAX_OBJ_COUNT  );
   constexpr auto all_objects = magic_enum::enum_values<EType>();
   cout << "Objects available to editor: " << endl;
   for (auto &i : all_objects)
@@ -48,14 +82,12 @@ int main()
     cout << "\t" << static_cast<unsigned>(i) << ": " << magic_enum::enum_name(i) << endl;
   }
   cout << sep;
-  curr_object = cb_obj.front();
 
   // cb_obj.rotate(begin(cb_obj) + 1);
 
   // build level_file circular buffer and print files out
-  // current file is level_list.front()
-  boost::circular_buffer<fs::path> cb_level;
-  fs::path curr_level{};
+  // current file is cb_level.front()
+  boost::circular_buffer<fs::path> cb_level(MAX_LEVEL_COUNT);
   cout << "Level files available to edit:" << endl;
   string level_path{"../assets/"};
   auto const level_data_regex = regex("level(\\d+)_data(\\.+)txt", regex::ECMAScript);
@@ -72,24 +104,27 @@ int main()
     }
   }
   cout << sep;
-  //curr_level = cb_level.front().path(); // Error
 
   // create window
   auto win = global::create_window();
   win->setVerticalSyncEnabled(true);
   win->setTitle("Level editor");
   win->display();
-
-  sf::Event event;
+  sf::Text mouse_coords("", global::font, 15);
+  
+// text wall adding
   builder::build_long_wall(perc_to_pix(1, 0), perc_to_pix(1, 99));
   builder::build_long_wall(perc_to_pix(99, 0), perc_to_pix(99, 99));
+  
   // main loop
+  sf::Event event;
   while (true)
   {
     win->clear(global::clearscreen_color);
     if (global::check_for_window_close(*win, event))
       break;
-
+    // get the mouse position relative to the window
+    
     for (auto e : global::entity)
     {
       for (auto f : e->frags)
@@ -97,8 +132,22 @@ int main()
         win->draw(f);
       }
     }
+    // draw mouse position
+    auto mouse_pos = sf::Mouse::getPosition(*win);
+    mouse_coords.setString("x: " + to_string(mouse_pos.x) + " y: " + to_string(mouse_pos.y));
+    auto txt_size = mouse_coords.getLocalBounds();
+    auto mt_w = txt_size.width;
+    auto mt_h = txt_size.height; 
+    auto txt_offset = Vec2(mt_w / 2.f, mt_h + 3.f);
+    txt_offset.x += (global::winWidth - mouse_pos.x < mt_w ? -mt_w - 5.f : 0.f); // right case 
+    txt_offset.x += (mouse_pos.x - mt_w -5.f < 0.f ? +mt_w + 5.f : 0.f); // left case 
+    txt_offset.y += (global::winHeight - mouse_pos.y < mt_h ? -mt_h - 5.f : 0.f); // bottom case
+    txt_offset.y += (mouse_pos.y - mt_h - 5.f < 0.f ? +mt_h + 5.f : 0.f); // top case
+    mouse_coords.setPosition(Vec2(mouse_pos.x, mouse_pos.y) + txt_offset);
+    win->draw(mouse_coords);
     win->display();
   }
 
+  
   return 0;
 }
