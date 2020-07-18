@@ -89,7 +89,7 @@ int main()
   }
   // add an additional file "new_file"
   fs::path new_file = level_path;
-  new_file.replace_filename("level" + to_string(++file_num) + "_data.txt"); 
+  new_file.replace_filename("level" + to_string(++file_num) + "_data.txt");
   cb_level.push_back(new_file);
   cout << "\t" << new_file << endl;
   cout << sep;
@@ -100,11 +100,11 @@ int main()
   win->setTitle(TITLE_STRING);
   win->display();
   sf::Text mouse_coords("", global::font, 15);
-  
-// text wall adding
+
+  // text wall adding
   builder::build_long_wall(perc_to_pix(1, 0), perc_to_pix(1, 99));
   builder::build_long_wall(perc_to_pix(99, 0), perc_to_pix(99, 99));
-  
+
   // main loop
   sf::Event event;
   while (true)
@@ -122,7 +122,17 @@ int main()
       }
     }
     // handle keyboard events
-
+    if (event.type == sf::Event::KeyReleased)
+    {
+      if (event.key.code == sf::Keyboard::Escape)
+      {
+        std::cout << "the escape key was pressed" << std::endl;
+        std::cout << "control:" << event.key.control << std::endl;
+        std::cout << "alt:" << event.key.alt << std::endl;
+        std::cout << "shift:" << event.key.shift << std::endl;
+        std::cout << "system:" << event.key.system << std::endl;
+      }
+    }
     // set window current title: Level editor
     stringstream ss;
     ss << "current file: " << left << setw(20) << cb_level.front().filename().string()
@@ -147,5 +157,5 @@ int main()
     win->display();
   }
 
- return 0;
+  return 0;
 }
