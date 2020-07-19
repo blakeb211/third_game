@@ -121,18 +121,6 @@ int main()
         win->draw(f);
       }
     }
-    // handle keyboard events
-    if (event.type == sf::Event::KeyReleased)
-    {
-      if (event.key.code == sf::Keyboard::Escape)
-      {
-        std::cout << "the escape key was pressed" << std::endl;
-        std::cout << "control:" << event.key.control << std::endl;
-        std::cout << "alt:" << event.key.alt << std::endl;
-        std::cout << "shift:" << event.key.shift << std::endl;
-        std::cout << "system:" << event.key.system << std::endl;
-      }
-    }
     // set window current title: Level editor
     stringstream ss;
     ss << "current file: " << left << setw(20) << cb_level.front().filename().string()
@@ -153,7 +141,27 @@ int main()
     txt_offset.y += (mouse_pos.y - mt_h - 5.f < 0.f ? +mt_h + 5.f : 0.f);          // top case
     mouse_coords.setPosition(Vec2(mouse_pos.x, mouse_pos.y) + txt_offset);
     win->draw(mouse_coords);
-    // done drawing cursor
+    // handle keyboard events
+    if (event.type == sf::Event::KeyPressed)
+    {
+      if (event.key.code == sf::Keyboard::Space)
+      {
+        auto curr_obj = cb_obj.front();
+        cout << "placing object type: " << setw(10) << magic_enum::enum_name(cb_obj.front())
+             << endl;
+        switch (curr_obj)
+        {
+        case EType::Enemy:
+            global::entity.push_back(make_shared<Enemy>(1));
+            break;
+           case EType::BouncyWall:
+            break;
+           default:
+            cout << "Error - unhandled type placed" << endl;
+            break;
+        };
+      }
+    }
     win->display();
   }
 

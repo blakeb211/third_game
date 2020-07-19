@@ -6,18 +6,6 @@
 
 #IncludeRegexTransform: 
 
-C:/code/third_game/src/builder.cpp
-builder.h
-C:/code/third_game/src/builder.h
-SFML/Graphics.hpp
--
-entity.h
-C:/code/third_game/src/entity.h
-global.h
-C:/code/third_game/src/global.h
-filesystem
--
-
 C:/code/third_game/src/builder.h
 SFML/Graphics.hpp
 -
@@ -54,20 +42,6 @@ SFML/System.hpp
 stdlibs.h
 C:/code/third_game/src/stdlibs.h
 
-C:/code/third_game/src/frag_man.cpp
-frag_man.h
-C:/code/third_game/src/frag_man.h
-entity.h
-C:/code/third_game/src/entity.h
-global.h
-C:/code/third_game/src/global.h
-SFML/Graphics.hpp
--
-memory
--
-cassert
--
-
 C:/code/third_game/src/frag_man.h
 entity.h
 C:/code/third_game/src/entity.h
@@ -81,16 +55,6 @@ vector
 -
 utility
 -
-
-C:/code/third_game/src/global.cpp
-global.h
-C:/code/third_game/src/global.h
-builder.h
-C:/code/third_game/src/builder.h
-frag_man.h
-C:/code/third_game/src/frag_man.h
-stdlibs.h
-C:/code/third_game/src/stdlibs.h
 
 C:/code/third_game/src/global.h
 SFML/System.hpp
@@ -107,24 +71,6 @@ SFML/Graphics.hpp
 -
 entity.h
 C:/code/third_game/src/entity.h
-
-C:/code/third_game/src/main1.cpp
-stdlibs.h
-C:/code/third_game/src/stdlibs.h
-SFML/Graphics.hpp
--
-SFML/System.hpp
--
-builder.h
-C:/code/third_game/src/builder.h
-frag_man.h
-C:/code/third_game/src/frag_man.h
-global.h
-C:/code/third_game/src/global.h
-timing_manager.h
-C:/code/third_game/src/timing_manager.h
-tuple
--
 
 C:/code/third_game/src/stdlibs.h
 iostream
@@ -180,27 +126,5 @@ random
 utility
 -
 optional
--
-
-C:/code/third_game/src/timing_manager.h
-chrono
--
-filesystem
--
-fstream
--
-initializer_list
--
-memory
--
-unordered_map
--
-iostream
--
-fstream
--
-functional
--
-set
 -
 
