@@ -12,18 +12,16 @@
 #include "global.h"
 #include "timing_manager.h"
 #include <tuple>
-#define HITBOX
+//#define HITBOX
 
 using namespace std;
 using namespace sf;
 using namespace global;
 typedef chrono::high_resolution_clock high_res_clock;
 typedef Vector2f Vec2;
-
 //
 // PLAYER TEST
 //
-
 void init_menu()
 {
   // Create a graphical text to display
@@ -45,6 +43,7 @@ void init_menu()
     text1.setPosition(Vec2(_x, _y));
     global::menu_text.push_back(text1);
     sf::Text text2("Level_editor---------Tab key", global::font, 20);
+  
     _y += _dy;
     text2.setPosition(Vec2(_x, _y));
     global::menu_text.push_back(text2);

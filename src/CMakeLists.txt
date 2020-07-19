@@ -7,6 +7,7 @@ add_executable(game frag_man.cpp timing_manager.cpp global.cpp entity.cpp builde
 set(CMAKE_CXX_STANDARD 17)
 SET(CLANG_COMPILE_FLAGS "-O1 -fuse-ld=lld -std=c++17 -Ic:/SFML/include -Ic:/Boost172")
 SET(CLANG_LINK_FLAGS "-Lc:/SFML/lib -lsfml-graphics -lsfml-window -lsfml-system")
+set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 #append compile flags
 SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${CLANG_COMPILE_FLAGS}")
 SET(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} ${CLANG_LINK_FLAGS}")
