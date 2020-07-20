@@ -167,10 +167,17 @@ int main()
         shared_ptr<Enemy> ehandle = dynamic_pointer_cast<Enemy>(global::get_entity_with_id(e->id));
         sf::CircleShape cs(global::bW * 3, 12);
         cs.setFillColor(sf::Color(255, 178, 102, 160));
+        sf::Text txt("", global::font, 14);
+        txt.setFillColor(sf::Color::Black);
+        unsigned path_count = 1;
         for (Vec2 pt : ehandle->path)
         {
           cs.setPosition(Vec2(pt.x * global::winWidth, pt.y * global::winHeight));
+          txt.setString(to_string(path_count));
+          txt.setPosition(cs.getPosition() + Vec2(5,5));
+          path_count++;
           win->draw(cs);
+          win->draw(txt);
         }
       }
     }
