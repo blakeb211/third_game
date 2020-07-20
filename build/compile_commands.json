@@ -1,0 +1,32 @@
+[
+{
+  "directory": "C:/code/third_game/build",
+  "command": "C:\\LLVM\\bin\\clang++.exe     -O1 -fuse-ld=lld -std=c++17 -Ic:/SFML/include -Ic:/Boost172 -O3 -DNDEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrt   -o CMakeFiles\\game.dir\\frag_man.cpp.obj -c C:\\code\\third_game\\src\\frag_man.cpp",
+  "file": "C:/code/third_game/src/frag_man.cpp"
+},
+{
+  "directory": "C:/code/third_game/build",
+  "command": "C:\\LLVM\\bin\\clang++.exe     -O1 -fuse-ld=lld -std=c++17 -Ic:/SFML/include -Ic:/Boost172 -O3 -DNDEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrt   -o CMakeFiles\\game.dir\\timing_manager.cpp.obj -c C:\\code\\third_game\\src\\timing_manager.cpp",
+  "file": "C:/code/third_game/src/timing_manager.cpp"
+},
+{
+  "directory": "C:/code/third_game/build",
+  "command": "C:\\LLVM\\bin\\clang++.exe     -O1 -fuse-ld=lld -std=c++17 -Ic:/SFML/include -Ic:/Boost172 -O3 -DNDEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrt   -o CMakeFiles\\game.dir\\global.cpp.obj -c C:\\code\\third_game\\src\\global.cpp",
+  "file": "C:/code/third_game/src/global.cpp"
+},
+{
+  "directory": "C:/code/third_game/build",
+  "command": "C:\\LLVM\\bin\\clang++.exe     -O1 -fuse-ld=lld -std=c++17 -Ic:/SFML/include -Ic:/Boost172 -O3 -DNDEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrt   -o CMakeFiles\\game.dir\\entity.cpp.obj -c C:\\code\\third_game\\src\\entity.cpp",
+  "file": "C:/code/third_game/src/entity.cpp"
+},
+{
+  "directory": "C:/code/third_game/build",
+  "command": "C:\\LLVM\\bin\\clang++.exe     -O1 -fuse-ld=lld -std=c++17 -Ic:/SFML/include -Ic:/Boost172 -O3 -DNDEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrt   -o CMakeFiles\\game.dir\\builder.cpp.obj -c C:\\code\\third_game\\src\\builder.cpp",
+  "file": "C:/code/third_game/src/builder.cpp"
+},
+{
+  "directory": "C:/code/third_game/build",
+  "command": "C:\\LLVM\\bin\\clang++.exe     -O1 -fuse-ld=lld -std=c++17 -Ic:/SFML/include -Ic:/Boost172 -O3 -DNDEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrt   -o CMakeFiles\\game.dir\\main1.cpp.obj -c C:\\code\\third_game\\src\\main1.cpp",
+  "file": "C:/code/third_game/src/main1.cpp"
+}
+]
