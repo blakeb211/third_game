@@ -53,18 +53,20 @@ optional<size_t> check_for_nearby_enemy(sf::Vector2i mouse_pos)
   optional<size_t> ent_id;
   for (auto &e : global::entity)
   {
-   if ( e->type == EType::Enemy && global::calc_dist(e->center, Vec2(mouse_pos.x, mouse_pos.y)) < ENEMY_NEARBY_CUTOFF ) {
-    ent_id = e->id;
-    // if enemy is already selected then unselect it
-    if (ent_id == curr_selected_enemy) {
-      curr_selected_enemy = nullopt;
-      return nullopt;
+    if (e->type == EType::Enemy &&
+        global::calc_dist(e->center, Vec2(mouse_pos.x, mouse_pos.y)) < ENEMY_NEARBY_CUTOFF)
+    {
+      ent_id = e->id;
+      // if enemy is already selected then unselect it
+      if (ent_id == curr_selected_enemy)
+      {
+        curr_selected_enemy = nullopt;
+        return nullopt;
+      }
     }
-   }
   }
   return ent_id;
 }
-
 
 int main()
 {
@@ -140,23 +142,36 @@ int main()
     win->clear(global::clearscreen_color);
     if (global::check_for_window_close(*win, event))
       break;
-    // get the mouse position relative to the window
 
-    for (auto e : global::entity)
+    for (auto &e : global::entity)
     {
       bool change_fill_color = (e->id == curr_selected_enemy) ? true : false;
       for (auto f : e->frags)
       {
         // record old vals
         // change vals so drawn differently this frame
-        if (change_fill_color) {
+        if (change_fill_color)
+        {
           f.setOutlineColor(sf::Color::Red);
           f.setOutlineThickness(3.f);
         }
-        else {
+        else
+        {
           f.setOutlineThickness(0.f);
         }
         win->draw(f);
+      }
+      // draw enemy paths
+      if (e->type == EType::Enemy)
+      {
+        shared_ptr<Enemy> ehandle = dynamic_pointer_cast<Enemy>(global::get_entity_with_id(e->id));
+        sf::CircleShape cs(global::bW * 3, 12);
+        cs.setFillColor(sf::Color(255, 178, 102, 160));
+        for (Vec2 pt : ehandle->path)
+        {
+          cs.setPosition(Vec2(pt.x * global::winWidth, pt.y * global::winHeight));
+          win->draw(cs);
+        }
       }
     }
     // set window current title: Level editor
@@ -187,23 +202,38 @@ int main()
     bool okayToMoveToNextObject{false};
     bool enemySelectedForPathAddition{false};
     bool addPathPointToCurrSelectedEnemy{false};
-    // Set flags to do Editor Actions in this block
+    // Set flags to do Editor Actions
     if (event.type == sf::Event::KeyPressed)
     {
       if (event.key.code == sf::Keyboard::Space && time_accum > KEY_EVENT_GAP_MILLI)
       {
+        // Place an object at the mouse position
         okayToPlaceObject = true;
       }
       else if (event.key.code == sf::Keyboard::Down && time_accum > KEY_EVENT_GAP_MILLI)
       {
+        // Switch to next object
         okayToMoveToNextObject = true;
+      }
+      else if (event.key.code == sf::Keyboard::A && time_accum > KEY_EVENT_GAP_MILLI)
+      {
+        // Add a path point to the selected enemy
+        if (curr_selected_enemy)
+        {
+          shared_ptr<Enemy> ehandle =
+              dynamic_pointer_cast<Enemy>(global::get_entity_with_id(*curr_selected_enemy));
+          ehandle->path.push_back(
+              Vec2((float)mouse_pos.x / global::winWidth, (float)mouse_pos.y / global::winHeight));
+          cout << "added " << ehandle->path[ehandle->path.size()-1].x << " , " << ehandle->path[ehandle->path.size()-1].y << endl;
+        }
       }
       else if (event.key.code == sf::Keyboard::P && time_accum > KEY_EVENT_GAP_MILLI)
       {
-        if (auto nearby_enemy_id = check_for_nearby_enemy(mouse_pos); nearby_enemy_id  )
+        // Select or unselect nearby enemy
+        if (auto nearby_enemy_id = check_for_nearby_enemy(mouse_pos); nearby_enemy_id)
         {
           enemySelectedForPathAddition = !enemySelectedForPathAddition;
-          curr_selected_enemy = enemySelectedForPathAddition ? nearby_enemy_id : nullopt; 
+          curr_selected_enemy = enemySelectedForPathAddition ? nearby_enemy_id : nullopt;
         }
       }
       time_accum = 0.f;
