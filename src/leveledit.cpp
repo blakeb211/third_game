@@ -47,6 +47,7 @@ Vec2 perc_to_pix(float x, float y)
   return Vec2((x / 100.f) * global::winWidth, (y / 100.f) * global::winHeight);
 }
 
+// find nearby enemy to do enemy selection
 optional<size_t> check_for_nearby_enemy(sf::Vector2i mouse_pos)
 {
   optional<size_t> ent_id;
@@ -63,6 +64,7 @@ optional<size_t> check_for_nearby_enemy(sf::Vector2i mouse_pos)
   }
   return ent_id;
 }
+
 
 int main()
 {
@@ -184,6 +186,7 @@ int main()
     bool okayToPlaceObject{false};
     bool okayToMoveToNextObject{false};
     bool enemySelectedForPathAddition{false};
+    bool addPathPointToCurrSelectedEnemy{false};
     // Set flags to do Editor Actions in this block
     if (event.type == sf::Event::KeyPressed)
     {
