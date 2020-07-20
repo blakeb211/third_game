@@ -371,6 +371,7 @@ int main()
       update_level_screen();
 
     } // GAME_STATE::Level_Screen
+    // TODO: Take editor state out of main game code
     else if (state == GAME_STATE::Editor)
     {
       high_res_clock::time_point editor_time1 = high_res_clock::now();

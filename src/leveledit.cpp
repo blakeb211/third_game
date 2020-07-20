@@ -12,21 +12,29 @@
 #include "magic_enum.hpp"
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
+#include <array>
 #include <boost/circular_buffer.hpp>
-#include <boost/serialization/serialization.hpp>
 #include <cassert>
+#include <chrono>
 #include <filesystem>
 #include <iostream>
+#include <optional>
 #include <regex>
 
 using namespace std;
 namespace fs = std::filesystem;
 using Vec2 = sf::Vector2f;
-
+using high_res_clock = std::chrono::high_resolution_clock;
 // global variables
-const unsigned MAX_OBJ_COUNT = 10;
-const unsigned MAX_LEVEL_COUNT = 10;
-const string TITLE_STRING = "Level Editor";
+const unsigned MAX_OBJ_COUNT{10};
+const unsigned MAX_LEVEL_COUNT{10};
+const string TITLE_STRING{"Level Editor"};
+float time_accum{0.0};
+const float KEY_EVENT_GAP_MILLI{200.0f};
+const float ENEMY_NEARBY_CUTOFF{50.f};
+optional<size_t> curr_selected_enemy{nullopt};
+// array to hold the start and end vector of a wall segment
+array<optional<Vec2>, 2> wall_vecs = {nullopt, nullopt};
 //
 
 string sep(3, '\n');
@@ -37,6 +45,23 @@ Vec2 perc_to_pix(float x, float y)
   assert(x >= 0 && x <= 100);
   assert(y >= 0 && y <= 100);
   return Vec2((x / 100.f) * global::winWidth, (y / 100.f) * global::winHeight);
+}
+
+optional<size_t> check_for_nearby_enemy(sf::Vector2i mouse_pos)
+{
+  optional<size_t> ent_id;
+  for (auto &e : global::entity)
+  {
+   if ( e->type == EType::Enemy && global::calc_dist(e->center, Vec2(mouse_pos.x, mouse_pos.y)) < ENEMY_NEARBY_CUTOFF ) {
+    ent_id = e->id;
+    // if enemy is already selected then unselect it
+    if (ent_id == curr_selected_enemy) {
+      curr_selected_enemy = nullopt;
+      return nullopt;
+    }
+   }
+  }
+  return ent_id;
 }
 
 int main()
@@ -102,13 +127,14 @@ int main()
   sf::Text mouse_coords("", global::font, 15);
 
   // text wall adding
-  builder::build_long_wall(perc_to_pix(1, 0), perc_to_pix(1, 99));
-  builder::build_long_wall(perc_to_pix(99, 0), perc_to_pix(99, 99));
+  // builder::build_long_wall(perc_to_pix(1, 0), perc_to_pix(1, 99));
+  // builder::build_long_wall(perc_to_pix(99, 0), perc_to_pix(99, 99));
 
   // main loop
   sf::Event event;
   while (true)
   {
+    high_res_clock::time_point t_start = high_res_clock::now();
     win->clear(global::clearscreen_color);
     if (global::check_for_window_close(*win, event))
       break;
@@ -116,8 +142,18 @@ int main()
 
     for (auto e : global::entity)
     {
+      bool change_fill_color = (e->id == curr_selected_enemy) ? true : false;
       for (auto f : e->frags)
       {
+        // record old vals
+        // change vals so drawn differently this frame
+        if (change_fill_color) {
+          f.setOutlineColor(sf::Color::Red);
+          f.setOutlineThickness(3.f);
+        }
+        else {
+          f.setOutlineThickness(0.f);
+        }
         win->draw(f);
       }
     }
@@ -141,29 +177,75 @@ int main()
     txt_offset.y += (mouse_pos.y - mt_h - 5.f < 0.f ? +mt_h + 5.f : 0.f);          // top case
     mouse_coords.setPosition(Vec2(mouse_pos.x, mouse_pos.y) + txt_offset);
     win->draw(mouse_coords);
+    // display window
+    win->display();
+
     // handle keyboard events
+    bool okayToPlaceObject{false};
+    bool okayToMoveToNextObject{false};
+    bool enemySelectedForPathAddition{false};
+    // Set flags to do Editor Actions in this block
     if (event.type == sf::Event::KeyPressed)
     {
-      if (event.key.code == sf::Keyboard::Space)
+      if (event.key.code == sf::Keyboard::Space && time_accum > KEY_EVENT_GAP_MILLI)
       {
-        auto curr_obj = cb_obj.front();
-        cout << "placing object type: " << setw(10) << magic_enum::enum_name(cb_obj.front())
-             << endl;
-        switch (curr_obj)
-        {
-        case EType::Enemy:
-            global::entity.push_back(make_shared<Enemy>(1));
-            break;
-           case EType::BouncyWall:
-            break;
-           default:
-            cout << "Error - unhandled type placed" << endl;
-            break;
-        };
+        okayToPlaceObject = true;
       }
+      else if (event.key.code == sf::Keyboard::Down && time_accum > KEY_EVENT_GAP_MILLI)
+      {
+        okayToMoveToNextObject = true;
+      }
+      else if (event.key.code == sf::Keyboard::P && time_accum > KEY_EVENT_GAP_MILLI)
+      {
+        if (auto nearby_enemy_id = check_for_nearby_enemy(mouse_pos); nearby_enemy_id  )
+        {
+          enemySelectedForPathAddition = !enemySelectedForPathAddition;
+          curr_selected_enemy = enemySelectedForPathAddition ? nearby_enemy_id : nullopt; 
+        }
+      }
+      time_accum = 0.f;
     }
-    win->display();
-  }
+    // Perform editor actions based on flags set
+    if (okayToMoveToNextObject)
+    {
+      cb_obj.rotate(begin(cb_obj) + 1);
+    }
+
+    // place object if flag is set
+    if (okayToPlaceObject)
+    {
+      auto curr_obj = cb_obj.front();
+      cout << "placing object type: " << setw(10) << magic_enum::enum_name(curr_obj) << endl;
+      switch (curr_obj)
+      {
+      case EType::Enemy:
+        global::entity.push_back(make_shared<Enemy>(1, Vec2(mouse_pos.x, mouse_pos.y)));
+        break;
+      case EType::BouncyWall:
+        if (!wall_vecs[0])
+        {
+          wall_vecs[0] = Vec2(mouse_pos.x, mouse_pos.y);
+        }
+        else if (!wall_vecs[1])
+        {
+          wall_vecs[1] = Vec2(mouse_pos.x, mouse_pos.y);
+        }
+        if (wall_vecs[0] && wall_vecs[1])
+        {
+          builder::build_long_wall(*wall_vecs[0], *wall_vecs[1]);
+          wall_vecs = {nullopt, nullopt};
+        }
+        break;
+      default:
+        cout << "Error - unhandled type placed" << endl;
+        break;
+      };
+    }
+    // handle time_accum
+    high_res_clock::time_point t_end = high_res_clock::now();
+    float ftMilli{chrono::duration_cast<chrono::duration<float, milli>>(t_end - t_start).count()};
+    time_accum += ftMilli;
+  } // end of main game loop
 
   return 0;
 }

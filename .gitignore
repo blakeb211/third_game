@@ -25,6 +25,7 @@ log*.txt
 cscope.files
 cscope.out
 /tags
+src/tags
 
 #==============================================================================#
 # Directories to ignore (do not add trailing '/'s, they skip symlinks).

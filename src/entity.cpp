@@ -218,6 +218,11 @@ Enemy::Enemy(unsigned int enemy_type)
     break;
   };
 }
+
+Enemy::Enemy(unsigned int enemy_type, Vec2 offset) : Enemy(enemy_type) {
+  global::move_entity(*this, offset);
+}
+
 void Enemy::fire_shot()
 {
 }

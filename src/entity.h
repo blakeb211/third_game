@@ -64,6 +64,7 @@ struct IEnemy {
 
 struct Enemy : IEntity, ICanShoot, IEnemy {
     Enemy(unsigned int enemy_type);
+    Enemy(unsigned int enemy_type, Vec2 offset);
     void fire_shot();
     void update(FrameTime ftStep);
     void collide_with(const IEntity& e, unsigned int ivox, Vec2 voxPos, sf::Color c);
