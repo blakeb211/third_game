@@ -37,20 +37,35 @@ const string sep(3, '\n');
 // array to hold the start and end vector of a wall segment
 array<optional<Vec2>, 2> wall_vecs = {nullopt, nullopt};
 
-
-constexpr unsigned find_fixed_grid_spacing(unsigned w, unsigned h) {
-  unsigned result = 0;
+// computed grid spacing that divides evenly into both winWidth and winHeight
+constexpr unsigned find_fixed_grid_spacing(unsigned w, unsigned h)
+{
   for (int i = global::blockWidth; i < std::min({w, h}); i++)
   {
-    if (w % i == 0 && h % i == 0) {
-      result = i;
-      break;
+    if (w % i == 0 && h % i == 0)
+    {
+      if (i < 15)
+      {
+        i *= 2;
+      }
+      return i;
     }
   }
-  return result;
+  return 0;
 }
-
 constexpr unsigned grid_spacing = find_fixed_grid_spacing(global::winWidth, global::winHeight);
+
+// round vector to grid functions
+Vec2 round_vec_to_grid(const Vec2 vec)
+{
+  int midx = grid_spacing * static_cast<int>(round((round(vec.x) / grid_spacing)));
+  int midy = grid_spacing * static_cast<int>(round((round(vec.y) / grid_spacing)));
+  return Vec2(midx, midy);
+}
+Vec2 round_vec_to_grid(sf::Vector2i vec)
+{
+  return round_vec_to_grid(Vec2(vec.x, vec.y));
+}
 
 // return a vector given in percent as a vector in pixels
 Vec2 perc_to_pix(float x, float y)
@@ -93,7 +108,8 @@ int main()
   // print out level editor information
   cout << left << setw(15) << "Window dimensions: " << global::winWidth << " x "
        << global::winHeight;
-  cout << right << setw(15) << "blockWidth: " << global::blockWidth << sep;
+  cout << right << setw(15) << "Block width: " << global::blockWidth << endl;
+  cout << left << setw(15) << "Grid spacing: " << grid_spacing << sep;
 
   // cb_obj circular buffer and print objects out
   // current object is cb_obj.front()
@@ -156,6 +172,17 @@ int main()
     if (global::check_for_window_close(*win, event))
       break;
 
+    // draw grid
+    sf::CircleShape cgrid(2.f);
+    cgrid.setFillColor(sf::Color(50, 50, 50, 255));
+    for (int i = grid_spacing; i < global::winWidth; i += grid_spacing)
+    {
+      for (int j = grid_spacing; j < global::winHeight; j += grid_spacing)
+      {
+        cgrid.setPosition(Vec2(i, j));
+        win->draw(cgrid);
+      }
+    }
     for (auto &e : global::entity)
     {
       bool change_fill_color = (e->id == curr_selected_enemy) ? true : false;
@@ -187,7 +214,7 @@ int main()
         {
           cs.setPosition(Vec2(pt.x * global::winWidth, pt.y * global::winHeight));
           txt.setString(to_string(path_count));
-          txt.setPosition(cs.getPosition() + Vec2(5,5));
+          txt.setPosition(cs.getPosition() + Vec2(5, 5));
           path_count++;
           win->draw(cs);
           win->draw(txt);
@@ -200,7 +227,9 @@ int main()
        << " current object: " << left << setw(20) << magic_enum::enum_name(cb_obj.front());
     win->setTitle(ss.str());
     // draw mouse position
-    auto mouse_pos = sf::Mouse::getPosition(*win);
+    sf::Vector2i mouse_pos = sf::Mouse::getPosition(*win);
+    Vec2 rounded_mouse_pos = round_vec_to_grid(mouse_pos);
+    mouse_pos = sf::Vector2i(rounded_mouse_pos.x, rounded_mouse_pos.y);
     mouse_coords.setString("x: " + to_string(mouse_pos.x) + " y: " + to_string(mouse_pos.y));
     auto txt_size = mouse_coords.getLocalBounds();
     auto mt_w = txt_size.width;
@@ -242,9 +271,10 @@ int main()
         {
           shared_ptr<Enemy> ehandle =
               dynamic_pointer_cast<Enemy>(global::get_entity_with_id(*curr_selected_enemy));
-          ehandle->path.push_back(
-              Vec2((float)mouse_pos.x / global::winWidth, (float)mouse_pos.y / global::winHeight));
-          cout << "added " << ehandle->path[ehandle->path.size()-1].x << " , " << ehandle->path[ehandle->path.size()-1].y << endl;
+          ehandle->path.push_back(Vec2((float)rounded_mouse_pos.x / global::winWidth,
+                                       (float)rounded_mouse_pos.y / global::winHeight));
+          cout << "added " << ehandle->path[ehandle->path.size() - 1].x << " , "
+               << ehandle->path[ehandle->path.size() - 1].y << endl;
         }
       }
       else if (event.key.code == sf::Keyboard::P && time_accum > KEY_EVENT_GAP_MILLI)
@@ -272,16 +302,16 @@ int main()
       switch (curr_obj)
       {
       case EType::Enemy:
-        global::entity.push_back(make_shared<Enemy>(1, Vec2(mouse_pos.x, mouse_pos.y)));
+        global::entity.push_back(make_shared<Enemy>(1, rounded_mouse_pos));
         break;
       case EType::BouncyWall:
         if (!wall_vecs[0])
         {
-          wall_vecs[0] = Vec2(mouse_pos.x, mouse_pos.y);
+          wall_vecs[0] = rounded_mouse_pos;
         }
         else if (!wall_vecs[1])
         {
-          wall_vecs[1] = Vec2(mouse_pos.x, mouse_pos.y);
+          wall_vecs[1] = rounded_mouse_pos;
         }
         if (wall_vecs[0] && wall_vecs[1])
         {

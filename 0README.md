@@ -11,7 +11,7 @@ Goals
 
 Current Feature
   Level editor
-    add fixed grid
+    add fixed grid - complete
     save level data
 
 Optimization
