@@ -1,66 +1,39 @@
-KEEP IT SIMPLE STUPID
-
 Purpose of project: Re-Write Second Shooter to run faster and have the explosion
                     and enemy AI effects that I want
 
-*******************************************************************
-**  ROOM FOR OPTIMIZATION
-**    DONE  reduce draw calls using SFML vertexarray
-**    NO    add a memory pool for frags 
-**    NO    quadtree
-**          collisions are approximately 1/10th or less of a frame
-*******************************************************************
+Author:             Blake Baird, 2020
+Philosophy:         K.I.S.S.
 
-******************************
-REDUCE DRAW CALLS PLAN
-******************************
-add a frag_manager class
-  done - each entity will be one draw call and 
-  done - free frags will be one draw call
+Goals
+  3 levels
+  Enemies shoot
+  Sound
 
-Take a step back and refactor
+Current Feature
+  Level editor
+    add fixed grid
+    save level data
 
-TODO:
-  IN GAME LEVEL EDITOR WITH A FIXED GRID
-	ADD FIXED GRID
-	ADD WRITING TO FILE
-    make 3 levels
-  Add enemy shooting
-  ADD SOUND
-  add particle system
+Optimization
+  Complete
+    reduce draw calls 
+  Unnecessary so far 
+    memory pool
+    quadtree (collisions are 1/10th of frametime so this isn't priority)
 
+Engine Additions
+  rotating entities
+  particle effects - Smoke
+  different backgrounds per level 
 
-ROTATE ENTITY ON GRID
-  colliding bullets, enemies 
+Refactoring 
+  separate out mathlib
+  dot products 
+  lerp function 
+  unit vector creation
 
-GOALS
-  3 LEVELS
-  BOSS
-
-REFACTORING OPTIONS
-    separate out mathlib
-    DOTPRODUCTS 
-    LERP FUNCTION
-    make-unit-vector
-
-READ THROUGH 3 OTHER GAME CODES
-READ THROUGH MY CODE
-READ THROUGH SFML API AGAIN
-
-Study Materials
-  read through sfml game project code
-  read through sfml api
-  2nd half of Moo book
-
-Coding Guidelines 
-
-Directory Org
-  src directory for source files 
-
-  Engine changes
-    add hit boxes and only check against those -> if those intersect then do voxel-by-voxel checking
-
-NOTES:
-  use lldb to debug 
-
+Directory Organization
+  src directory for all *.cpp and *.h files
+  assets directory for fonts, level data, sounds
+  build directory for *.dll and *.exe
 

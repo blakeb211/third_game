@@ -26,9 +26,9 @@ enum GAME_STATE
 //
 // Global Inline Variables
 //
-inline const unsigned int winWidth{1024};
-inline const unsigned int winHeight{768};
-inline const unsigned int blockWidth{5};
+inline constexpr unsigned int winWidth{1024};
+inline constexpr unsigned int winHeight{768};
+inline constexpr unsigned int blockWidth{5};
 inline const unsigned int &bW{blockWidth};
 inline const float ftStep{13.f}; // fixed update interval in ms
 inline const float keyInputStep{ftStep * 5.f};

@@ -33,11 +33,24 @@ float time_accum{0.0};
 const float KEY_EVENT_GAP_MILLI{200.0f};
 const float ENEMY_NEARBY_CUTOFF{50.f};
 optional<size_t> curr_selected_enemy{nullopt};
+const string sep(3, '\n');
 // array to hold the start and end vector of a wall segment
 array<optional<Vec2>, 2> wall_vecs = {nullopt, nullopt};
-//
 
-string sep(3, '\n');
+
+constexpr unsigned find_fixed_grid_spacing(unsigned w, unsigned h) {
+  unsigned result = 0;
+  for (int i = global::blockWidth; i < std::min({w, h}); i++)
+  {
+    if (w % i == 0 && h % i == 0) {
+      result = i;
+      break;
+    }
+  }
+  return result;
+}
+
+constexpr unsigned grid_spacing = find_fixed_grid_spacing(global::winWidth, global::winHeight);
 
 // return a vector given in percent as a vector in pixels
 Vec2 perc_to_pix(float x, float y)
