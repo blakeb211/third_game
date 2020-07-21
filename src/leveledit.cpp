@@ -12,14 +12,17 @@
 #include "magic_enum.hpp"
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
+#include <algorithm>
 #include <array>
 #include <boost/circular_buffer.hpp>
 #include <cassert>
 #include <chrono>
 #include <filesystem>
+#include <fstream>
 #include <iostream>
 #include <optional>
 #include <regex>
+#include <utility>
 
 using namespace std;
 namespace fs = std::filesystem;
@@ -36,6 +39,8 @@ optional<size_t> curr_selected_enemy{nullopt};
 const string sep(3, '\n');
 // array to hold the start and end vector of a wall segment
 array<optional<Vec2>, 2> wall_vecs = {nullopt, nullopt};
+vector<pair<Vec2, Vec2>> bouncy_wall_vecs;
+vector<pair<Vec2, Vec2>> absorby_wall_vecs;
 
 // computed grid spacing that divides evenly into both winWidth and winHeight
 constexpr unsigned find_fixed_grid_spacing(unsigned w, unsigned h)
@@ -94,6 +99,34 @@ optional<size_t> check_for_nearby_enemy(sf::Vector2i mouse_pos)
     }
   }
   return ent_id;
+}
+
+// save level to file
+void save_level_to_file(ofstream &out_file)
+{
+  // loop to print out enemy paths
+  for (auto &e : global::entity)
+  {
+    if (e->type == EType::Enemy)
+    {
+      shared_ptr<Enemy> ehandle = dynamic_pointer_cast<Enemy>(global::get_entity_with_id(e->id));
+      out_file << "-1\n";
+      for (auto &p : ehandle->path)
+      {
+        out_file << left << setw(4) << p.x << " " << p.y << "|";
+      }
+      out_file << endl;
+    }
+  }
+  // print bouncy wall coords
+  for (auto &w : bouncy_wall_vecs)
+  {
+    auto width = (float)global::winWidth;
+    auto height = (float)global::winHeight;
+    out_file << w.first.x / width << " " << w.first.y / height;
+    out_file << " " << w.second.x / width << " " << w.second.y / height;
+    out_file << "B" << endl;
+  }
 }
 
 int main()
@@ -286,6 +319,15 @@ int main()
           curr_selected_enemy = enemySelectedForPathAddition ? nearby_enemy_id : nullopt;
         }
       }
+      else if (event.key.code == sf::Keyboard::S && time_accum > KEY_EVENT_GAP_MILLI)
+      {
+        // open file for writing
+        std::ofstream out_file(new_file, ios::out);
+        // write level data to file
+        save_level_to_file(out_file);
+        // exit program
+        return 0;
+      }
       time_accum = 0.f;
     }
     // Perform editor actions based on flags set
@@ -316,6 +358,9 @@ int main()
         if (wall_vecs[0] && wall_vecs[1])
         {
           builder::build_long_wall(*wall_vecs[0], *wall_vecs[1]);
+          // save to bouncy_wall_vecs so editor can print out
+          bouncy_wall_vecs.push_back(make_pair(*wall_vecs[0], *wall_vecs[1])); // end of wall
+          // reset wall vecs
           wall_vecs = {nullopt, nullopt};
         }
         break;

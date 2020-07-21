@@ -147,7 +147,7 @@ bool builder::build_level(unsigned int &levelId)
     // load the walls
     // check if its a wall line: a B means a bouncy wall, a D means a
     // destructible wall
-    if (line.find('B') != string::npos || line.find('D') != string::npos)
+    if (line.find('B') != string::npos || line.find('A') != string::npos)
     {
       wallCount++;
       // read in the path
@@ -161,8 +161,8 @@ bool builder::build_level(unsigned int &levelId)
         ss >> y_start;
         ss >> x_end;
         ss >> y_end;
-        ss >> c; // read in type of wall, 'B' or 'D'
-        assert(c == 'B' || c == 'D');
+        ss >> c; // read in type of wall, 'B' or 'A'
+        assert(c == 'B' || c == 'A');
         // Convert from percentages of width and height to pixels 
         x_start *= winWidth;
         x_end *= winWidth;
@@ -174,8 +174,9 @@ bool builder::build_level(unsigned int &levelId)
           // break out of the stringstream reading loop
           break;
         }
-        if (c == 'D')
+        if (c == 'A')
         {
+          // build_long_absorby_wall
           // break out of the stringstream reading loop
           break;
         }

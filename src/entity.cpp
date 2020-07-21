@@ -78,6 +78,8 @@ unsigned int IEntity::get_health()
 BouncyWall::BouncyWall(Vec2 start, Vec2 end)
 {
   // data
+  this->start = start;  // record start and end vecs so that level editor
+  this->end = end;      // can write them out to file
   id = global::get_new_entity_id();
   type = EType::BouncyWall;
   builder::add_wall_frags(*this, start, end, Color(210, 35, 90, 255));
