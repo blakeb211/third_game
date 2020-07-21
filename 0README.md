@@ -5,26 +5,16 @@ Author:             Blake Baird, 2020
 Philosophy:         K.I.S.S.
 
 Goals
-  3 levels
+  3 levels with bouncy and absorby walls
   Enemies shoot
-  Sound
+  Enemies follow paths
+  Sound - same for all levels
 
-Current Feature
-  Level editor
-    add fixed grid - complete
-    save level data
-
-Optimization
-  Complete
-    reduce draw calls 
-  Unnecessary so far 
-    memory pool
-    quadtree (collisions are 1/10th of frametime so this isn't priority)
-
-Engine Additions
-  rotating entities
-  particle effects - Smoke
-  different backgrounds per level 
+TODO:
+    add enemies follow paths
+    add enemies shoot
+    add absorby wall to editor and game
+    update screenshots_and_vids folder
 
 Refactoring 
   separate out mathlib
@@ -37,3 +27,14 @@ Directory Organization
   assets directory for fonts, level data, sounds
   build directory for *.dll and *.exe
 
+Optimization
+  Complete
+    reduce draw calls 
+  Unnecessary so far 
+    memory pool
+    quadtree (collisions are 1/10th of frametime so this isn't priority)
+
+Engine Additions
+  rotating entities
+  particle effects - Smoke
+  different backgrounds per level 
