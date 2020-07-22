@@ -13,13 +13,15 @@ std::ostream &global::operator<<(std::ostream &Str, EType V)
   switch (V)
   {
   case EType::Bullet:
-    return Str << "bullet";
+    return Str << "Bullet";
   case EType::BouncyWall:
-    return Str << "bouncyWall";
+    return Str << "BouncyWall";
+  case EType::AbsorbyWall:
+    return Str << "AbsorbyWall";
   case EType::Player:
-    return Str << "player";
+    return Str << "Player";
   case EType::Enemy:
-    return Str << "enemy";
+    return Str << "Enemy";
   default:
     return Str << (int)V;
   };

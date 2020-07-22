@@ -40,6 +40,20 @@ void builder::build_long_wall(Vec2 wall_start, Vec2 wall_end)
   } // end of build a multi-segment wall
 }
 
+void builder::build_long_absorby_wall(Vec2 wall_start, Vec2 wall_end)
+{
+  // start of build a multi-segment wall
+  const auto unit_vec = make_unit_vec(wall_end - wall_start);
+
+  while (calc_dist(wall_start, wall_end) >= 2.8f * bW)
+  {
+    // place voxel
+    auto tmp_end = wall_start + unit_vec * 5.f * static_cast<float>(bW);
+    entity.push_back(make_shared<AbsorbyWall>(wall_start, tmp_end));
+    wall_start = tmp_end + unit_vec * 0.2f * static_cast<float>(bW);
+  } // end of build a multi-segment wall
+}
+
 void builder::set_frag_health(IEntity &e, optional<unsigned int> num)
 {
   for_each(begin(e.frags), end(e.frags), [&num](auto &f) { f.health = num; });

@@ -27,7 +27,10 @@ bool build_level(unsigned int& levelId);
 void add_wall_frags(IEntity& e, Vec2 start, Vec2 end, sf::Color c);
 void set_frag_health(IEntity& e, std::optional<unsigned int> num);
 void build_long_wall(Vec2 wall_start, Vec2 wall_end);
+void build_long_absorby_wall(Vec2 wall_start, Vec2 wall_end);
 
+// Entity varrays were added on later to draw entities as a single draw call
+// instead of calling draw on each frag.
 void create_entity_varray_from_frags(IEntity &e);
 
 

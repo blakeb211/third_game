@@ -54,6 +54,9 @@ void Frag::collide_with(const IEntity &e, Vec2 voxPos)
     vel = bounce_unit_vec * curr_vel_len;
     global::move_frag_and_vertices(*this, bounce_unit_vec * static_cast<float>(global::bW) * 1.4f);
     break;
+  case EType::AbsorbyWall:
+    vel = Vec2(0.f, 0.f);  // absorb the frags!
+    break;
   case EType::Bullet:
     (*health) = -1;
     bounce_unit_vec = global::make_unit_vec(getPosition() - voxPos);
@@ -105,6 +108,41 @@ void BouncyWall::collide_with(const IEntity &e, unsigned int ivox, Vec2 voxPos, 
 }
 
 void BouncyWall::collide_with_free_frag(unsigned int vi, const Frag &f) { }
+
+//
+// AbsorbyWall Definitions
+//
+AbsorbyWall::AbsorbyWall(Vec2 start, Vec2 end)
+{
+  // data
+  this->start = start;  // record start and end vecs so that level editor
+  this->end = end;      // can write them out to file
+  id = global::get_new_entity_id();
+  type = EType::AbsorbyWall;
+  builder::add_wall_frags(*this, start, end, Color(255, 140, 0, 255));
+  global::set_frag_health(*this, nullopt);
+  healthCutoff = 4;
+  global::build_hitbox(*this);
+}
+
+void AbsorbyWall::update(FrameTime ftStep)
+{
+}
+
+void AbsorbyWall::collide_with(const IEntity &e, unsigned int ivox, Vec2 voxPos, sf::Color fragColor)
+{
+  // this really should be the color of the frag that hit it not the
+  auto modified_color = frags[ivox].getFillColor() + sf::Color(0, 40, 9, 0);
+  frags[ivox].setFillColor(modified_color);
+  // if we change the frags color we should change it's vertices color
+  varray[ivox*4].color = modified_color;
+  varray[ivox*4 + 1].color = modified_color;
+  varray[ivox*4 + 1].color = modified_color;
+  varray[ivox*4 + 1].color = modified_color;
+}
+
+void AbsorbyWall::collide_with_free_frag(unsigned int vi, const Frag &f) { }
+
 
 //
 // Player Definitions
@@ -274,7 +312,10 @@ void Enemy::collide_with(const IEntity &e, unsigned int ivox, Vec2 voxPos, sf::C
   case EType::Enemy:
     // this case left out because its handled by global::collide_enemy_hitboxes()
     return;
-  case EType::BouncyWall:
+  case EType::BouncyWall:  // enemies bounce off all walls
+    dvel += bounce_unit_vec * 0.8f;
+    break;
+  case EType::AbsorbyWall:
     dvel += bounce_unit_vec * 0.8f;
     break;
   };
@@ -338,6 +379,12 @@ void Bullet::collide_with(const IEntity &e, unsigned int ivox, Vec2 voxPos, sf::
     global::move_entity(*this, bounce_unit_vec * (float)global::bW * 0.6f);
     vel = hypot(vel.x, vel.y) * bounce_unit_vec;
     vel += Vec2((-2.5f + global::rand_engine() % 4) * 0.05f, 0.f);
+    frag_velocity = vel;
+    break;
+  case EType::AbsorbyWall:
+    // bullets should explode from absorby wall touching 
+    //vel = Vec2(0.f,0.f); 
+    this->healthCutoff = frags.size() + 1;
     frag_velocity = vel;
     break;
   case EType::Enemy:

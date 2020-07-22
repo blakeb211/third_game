@@ -94,6 +94,14 @@ struct BouncyWall : IEntity
   void collide_with_free_frag(unsigned int vi, const Frag &f);
 };
 
+struct AbsorbyWall : IEntity
+{
+  AbsorbyWall(Vec2 start, Vec2 end);
+  void update(FrameTime ftStep);
+  void collide_with(const IEntity &e, unsigned int ivox, Vec2 voxPos, sf::Color c);
+  void collide_with_free_frag(unsigned int vi, const Frag &f);
+};
+
 struct Player : IEntity, ICanShoot
 {
   Player();

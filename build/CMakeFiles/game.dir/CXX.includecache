@@ -54,20 +54,6 @@ SFML/System.hpp
 stdlibs.h
 C:/code/third_game/src/stdlibs.h
 
-C:/code/third_game/src/frag_man.cpp
-frag_man.h
-C:/code/third_game/src/frag_man.h
-entity.h
-C:/code/third_game/src/entity.h
-global.h
-C:/code/third_game/src/global.h
-SFML/Graphics.hpp
--
-memory
--
-cassert
--
-
 C:/code/third_game/src/frag_man.h
 entity.h
 C:/code/third_game/src/entity.h
