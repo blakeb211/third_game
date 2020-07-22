@@ -539,10 +539,6 @@ bool global::handle_keyboard_input(float &timer, const float maxTime, RenderWind
     }
     if (Keyboard::isKeyPressed(sf::Keyboard::Tab))
     {
-      cout << "Editor entered from menu" << endl;
-      timer = 0.0f;
-      state = GAME_STATE::Editor;
-      return false;
     }
     return false;
   } // GAME_STATE::Menu
@@ -565,20 +561,6 @@ bool global::handle_keyboard_input(float &timer, const float maxTime, RenderWind
     }
     return false;
   } // GAME_STATE::Level_Screen
-  else if (state == GAME_STATE::Editor)
-  {
-    // limit how often keystrokes are checked
-    if (timer < maxTime)
-      return false;
-    // check for return to Game
-    if (Keyboard::isKeyPressed(sf::Keyboard::Escape))
-    {
-      // Escape key key enters the Menu
-      timer = 0.0f;
-      state = GAME_STATE::Menu;
-    }
-    return false;
-  } // GAME_STATE::Editor
   else if (state == GAME_STATE::Game_Over)
   {
     // limit how often keystrokes are checked
@@ -591,7 +573,7 @@ bool global::handle_keyboard_input(float &timer, const float maxTime, RenderWind
       return true;
     }
     return false;
-  } // GAME_STATE::Editor
+  } // GAME_STATE::Game_Over
 
   return false;
 } // handle_keyboard_input

@@ -19,7 +19,6 @@ enum GAME_STATE
   Pause,
   Level_Screen,
   Game,
-  Editor,
   Game_Over
 };
 

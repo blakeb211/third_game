@@ -371,32 +371,6 @@ int main()
       update_level_screen();
 
     } // GAME_STATE::Level_Screen
-    // TODO: Take editor state out of main game code
-    else if (state == GAME_STATE::Editor)
-    {
-      high_res_clock::time_point editor_time1 = high_res_clock::now();
-      // check for switching state back to game
-      //
-      if (handle_keyboard_input(keyTimeAccum, keyInputStep, *window) ||
-          check_for_window_close(*window, event))
-      {
-        break;
-      }
-      window->clear(clearscreen_color);
-      // Update phase
-      for (; ftAccum >= global::ftStep; ftAccum -= global::ftStep)
-      {
-        update_editor(global::ftStep);
-      }
-      draw_editor(*window);
-      window->display();
-      // level editor frame timing
-      float ftMilli{chrono::duration_cast<chrono::duration<float, milli>>(high_res_clock::now() -
-                                                                          editor_time1)
-                        .count()};
-      keyTimeAccum += ftMilli;
-      ftAccum += ftMilli;
-    } // GAME_STATE::Editor
     else if (state == GAME_STATE::Game_Over)
     {
       // adding fictional time so that timer doesn't sit at 0
