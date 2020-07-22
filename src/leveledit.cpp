@@ -127,6 +127,15 @@ void save_level_to_file(ofstream &out_file)
     out_file << " " << w.second.x / width << " " << w.second.y / height;
     out_file << "B" << endl;
   }
+  // print absorby wall coords
+  for (auto &w : absorby_wall_vecs)
+  {
+    auto width = (float)global::winWidth;
+    auto height = (float)global::winHeight;
+    out_file << w.first.x / width << " " << w.first.y / height;
+    out_file << " " << w.second.x / width << " " << w.second.y / height;
+    out_file << "A" << endl;
+  }
 }
 
 int main()
@@ -360,6 +369,24 @@ int main()
           builder::build_long_wall(*wall_vecs[0], *wall_vecs[1]);
           // save to bouncy_wall_vecs so editor can print out
           bouncy_wall_vecs.push_back(make_pair(*wall_vecs[0], *wall_vecs[1])); // end of wall
+          // reset wall vecs
+          wall_vecs = {nullopt, nullopt};
+        }
+        break;
+      case EType::AbsorbyWall:
+        if (!wall_vecs[0])
+        {
+          wall_vecs[0] = rounded_mouse_pos;
+        }
+        else if (!wall_vecs[1])
+        {
+          wall_vecs[1] = rounded_mouse_pos;
+        }
+        if (wall_vecs[0] && wall_vecs[1])
+        {
+          builder::build_long_absorby_wall(*wall_vecs[0], *wall_vecs[1]);
+          // save to absorby_wall_vecs so editor can print out
+          absorby_wall_vecs.push_back(make_pair(*wall_vecs[0], *wall_vecs[1])); // end of wall
           // reset wall vecs
           wall_vecs = {nullopt, nullopt};
         }

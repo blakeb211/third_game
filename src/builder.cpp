@@ -190,7 +190,7 @@ bool builder::build_level(unsigned int &levelId)
         }
         if (c == 'A')
         {
-          // build_long_absorby_wall
+          build_long_absorby_wall(Vec2(x_start,y_start), Vec2(x_end,y_end));
           // break out of the stringstream reading loop
           break;
         }
