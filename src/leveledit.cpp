@@ -163,14 +163,14 @@ int main()
   boost::circular_buffer<fs::path> cb_level(MAX_LEVEL_COUNT);
   cout << "Level files available to edit:" << endl;
   string level_path{"../assets/"};
-  auto const level_data_regex = regex("level(\\d+)_data(\\.+)txt", regex::ECMAScript);
+  auto const level_data_regex = regex("^level(\\d+)_data(\\.+)txt$", regex::ECMAScript);
   // loop over files in the assets directory
   auto file_num = 0;
   for (const auto &entry : fs::directory_iterator(level_path))
   {
-    string abs_path = entry.path().string();
     // verify filename matches pattern
-    bool const path_matches_regex = regex_search(abs_path, level_data_regex);
+    string filename = entry.path().filename().string();
+    bool const path_matches_regex = regex_search(filename, level_data_regex);
     if (path_matches_regex)
     {
       file_num++;
