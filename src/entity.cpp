@@ -260,6 +260,26 @@ Enemy::Enemy(unsigned int enemy_type)
     healthCutoff = 3 * frags.size() / 4;
     global::build_hitbox(*this);
     break;
+  case 2:
+    builder::add_enemy3_frags(*this);
+    global::set_frag_health(*this, 3);
+    // ICanShoot
+    timerMax = 2000.f; // timerMax in milliseconds
+    global::get_center(*this);
+    // define when enemy explodes
+    healthCutoff = 3 * frags.size() / 4;
+    global::build_hitbox(*this);
+    break;
+  case 3:
+    builder::add_enemy4_frags(*this);
+    global::set_frag_health(*this, 3);
+    // ICanShoot
+    timerMax = 2000.f; // timerMax in milliseconds
+    global::get_center(*this);
+    // define when enemy explodes
+    healthCutoff = 3 * frags.size() / 4;
+    global::build_hitbox(*this);
+    break;
   };
 }
 
@@ -344,7 +364,13 @@ void Enemy::collide_with_free_frag(unsigned int vi, const Frag &f)
   auto bounce_vec = frags[vi].getPosition() - voxPos;
   auto bv_len = hypot(bounce_vec.x, bounce_vec.y);
   auto bounce_unit_vec = bounce_vec / bv_len;
-  frags[vi].setFillColor(sf::Color::Red - sf::Color(90, 0, 0, 0));
+  auto modified_color = sf::Color::Red; 
+  frags[vi].setFillColor(modified_color);
+  // if we change the frags color we should change it's vertices color
+  varray[vi * 4].color = modified_color;
+  varray[vi * 4 + 1].color = modified_color;
+  varray[vi * 4 + 1].color = modified_color;
+  varray[vi * 4 + 1].color = modified_color;
   (*(frags[vi]).health)--;
   if (*frags[vi].health <= 1)
   {

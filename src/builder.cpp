@@ -113,10 +113,10 @@ bool builder::build_level(unsigned int &levelId)
             entity.push_back(make_shared<Enemy>(1));
             break;
           case 3:
-            entity.push_back(make_shared<Enemy>(0));
+            entity.push_back(make_shared<Enemy>(2));
             break;
           case 4:
-            entity.push_back(make_shared<Enemy>(1));
+            entity.push_back(make_shared<Enemy>(3));
             break;
           default:
             throw exception("switch in builder::build_level failed");
