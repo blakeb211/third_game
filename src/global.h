@@ -1,9 +1,9 @@
 #pragma once
 #include <SFML/System.hpp>
+#include <algorithm>
 #include <chrono>
 #include <memory>
 #include <random>
-#include <algorithm>
 /* */
 #include <SFML/Graphics.hpp>
 
@@ -32,7 +32,7 @@ inline const unsigned int &bW{blockWidth};
 inline const float ftStep{13.f}; // fixed update interval in ms
 inline const float keyInputStep{ftStep * 5.f};
 inline unsigned int lastFPS{0};
-inline const float frag_speed_max {3.5};
+inline const float frag_speed_max{3.5};
 inline std::default_random_engine rand_engine;
 inline std::vector<std::shared_ptr<IEntity>> entity;
 inline std::vector<Frag> free_frags;
@@ -44,6 +44,7 @@ inline GAME_STATE state{GAME_STATE::Menu};
 inline unsigned int score{0};
 inline unsigned int level{0};
 inline unsigned int playerHealth{3};
+inline const float Enemy_Speed{2.f};
 // drawing stuff
 inline sf::Font font; // unitialized
 inline std::vector<sf::Text> menu_text;
@@ -51,7 +52,6 @@ inline sf::Text txt_score;
 // vertex building constants
 inline const Vec2 x_offset{static_cast<float>(global::blockWidth), 0.0f};
 inline const Vec2 y_offset{0.0f, global::blockWidth};
-
 
 // free frag vertexes
 
@@ -78,7 +78,6 @@ Vec2 get_center(IEntity &e);
 bool is_win_condition_met();
 
 bool is_lose_condition_met();
-
 
 void separate_hitboxes(IEntity &ei, IEntity &ej);
 
