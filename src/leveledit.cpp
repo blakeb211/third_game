@@ -3,6 +3,10 @@
  *      Load Level Files
  *      Edit Newly created or Loaded Level file
  *          place and delete objects
+ *
+ *      TODO: Logic that creates and sets flags in the main loop is inconsistent.
+ *            Change to either set a flag for each action or don't set flags for 
+ *            any actions
  */
 
 #include "global.h"

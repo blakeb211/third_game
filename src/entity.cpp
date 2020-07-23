@@ -56,6 +56,7 @@ void Frag::collide_with(const IEntity &e, Vec2 voxPos)
     break;
   case EType::AbsorbyWall:
     vel = Vec2(0.f, 0.f);  // absorb the frags!
+    absorbed = true;
     break;
   case EType::Bullet:
     (*health) = -1;

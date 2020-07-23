@@ -156,6 +156,10 @@ void global::check_free_frags_for_collisions()
   bool collision_flag = false;
   for (int fi = 0; fi < ffSize; fi++)
   {
+    if (free_frags[fi].absorbed == true)
+    {
+      continue;
+    }
     for (int ei = 0; ei < entSize; ei++)
     {
       // check if hitboxes collide
@@ -410,7 +414,7 @@ void global::move_frag_and_vertices(Frag &f, const Vec2 offset)
   auto begin_ff = begin(free_frags);
   auto end_ff = end(free_frags);
   auto it = find_if(begin_ff, end_ff, [&](auto const &f) { return f.id == id_of_frag_to_move; });
-  //assert(it != end_ff);
+  // assert(it != end_ff);
   auto free_frag_offset = std::distance(begin_ff, it);
   auto varray_offset = free_frag_offset * 4;
 

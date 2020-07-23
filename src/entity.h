@@ -5,6 +5,7 @@
 #include "stdlibs.h"
 using Vec2 = sf::Glsl::Vec2;
 using FrameTime = float;
+
 enum struct EType
 {
   Player = 1,
@@ -31,6 +32,7 @@ struct Frag : sf::RectangleShape
   std::optional<size_t> entity_broke_off_from;
   std::optional<int> health; // voxel health
   size_t id;
+  bool absorbed{false};
 };
 
 struct IEntity
