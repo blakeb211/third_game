@@ -19,6 +19,7 @@ using namespace sf;
 using namespace global;
 typedef chrono::high_resolution_clock high_res_clock;
 typedef Vector2f Vec2;
+float gameOverTimerAccum{0.f};
 //
 // PLAYER TEST
 //
@@ -43,7 +44,7 @@ void init_menu()
     text1.setPosition(Vec2(_x, _y));
     global::menu_text.push_back(text1);
     sf::Text text2("Level_editor---------Tab key", global::font, 20);
-  
+
     _y += _dy;
     text2.setPosition(Vec2(_x, _y));
     global::menu_text.push_back(text2);
@@ -100,7 +101,7 @@ void init_player_test()
 
 bool are_frags_and_varray_synced_up()
 {
-  assert(global::free_frags.size() == 4*frag_man::ff_varray.getVertexCount());
+  assert(global::free_frags.size() == 4 * frag_man::ff_varray.getVertexCount());
   for (auto &e : global::entity)
   {
     for (auto i = 0; i < e->frags.size(); i++)
@@ -109,7 +110,7 @@ bool are_frags_and_varray_synced_up()
         return false;
     }
   }
-  
+
   return true;
 }
 
@@ -119,7 +120,7 @@ bool are_free_frags_and_varray_synced_up()
   for (auto i = 0; i < sz; i++)
   {
     auto &fi = global::free_frags[i];
-    if (global::calc_dist(fi.getPosition(), frag_man::ff_varray[i*4].position) > 0.2f)
+    if (global::calc_dist(fi.getPosition(), frag_man::ff_varray[i * 4].position) > 0.2f)
       return false;
   }
   return true;
@@ -299,10 +300,15 @@ int main()
         update_score();
         if (is_win_condition_met())
         {
-          cout << "Frag Count for Level " << global::level << ": ";
-          cout << global::fragCounter << endl;
-          start_next_level();
-          frameCounter = 0;
+          gameOverTimerAccum += ftStep;
+          if (gameOverTimerAccum > global::gameOverTimerMax)
+          {
+            cout << "Frag Count for Level " << global::level << ": ";
+            cout << global::fragCounter << endl;
+            start_next_level();
+            frameCounter = 0;
+            gameOverTimerAccum = 0.f;
+          }
         }
         else if (is_lose_condition_met())
         {

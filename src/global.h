@@ -44,6 +44,7 @@ inline GAME_STATE state{GAME_STATE::Menu};
 inline unsigned int score{0};
 inline unsigned int level{0};
 inline unsigned int playerHealth{3};
+inline const float gameOverTimerMax {2500.f};
 inline const float Enemy_Speed{2.f};
 // drawing stuff
 inline sf::Font font; // unitialized
