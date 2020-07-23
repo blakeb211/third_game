@@ -11,9 +11,9 @@ Goals
   Sound - same for all levels
 
 TODO:
+    debug absorbed frags from being in collision checking
     add enemies follow paths
     add enemies shoot
-    add absorby wall to editor and game
     update screenshots_and_vids folder
 
 Refactoring 
