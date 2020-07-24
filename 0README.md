@@ -11,10 +11,8 @@ Goals
   Sound - same for all levels
 
 TODO:
-    debug absorbed frags from being in collision checking
-    add enemies follow paths
+    error occurs when dying - level not restarted properly
     add enemies shoot
-    update screenshots_and_vids folder
 
 Refactoring 
   separate out mathlib
