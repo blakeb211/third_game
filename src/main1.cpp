@@ -12,7 +12,7 @@
 #include "global.h"
 #include "timing_manager.h"
 #include <tuple>
-//#define HITBOX
+#define HITBOX
 
 using namespace std;
 using namespace sf;
@@ -113,7 +113,7 @@ bool are_frags_and_varray_synced_up()
 
   return true;
 }
-
+// This is a test method to make sure frags and vertices are in same position
 bool are_free_frags_and_varray_synced_up()
 {
   auto sz = global::free_frags.size();
@@ -128,7 +128,6 @@ bool are_free_frags_and_varray_synced_up()
 
 void update_player_test(const float &ftStep)
 {
-
   {
     timing::Timer timer("update");
     for (auto &e : entity)
@@ -303,7 +302,7 @@ int main()
           gameOverTimerAccum += ftStep;
           if (gameOverTimerAccum > global::gameOverTimerMax)
           {
-            cout << "Frag Count for Level " << global::level << ": ";
+            cout << "Player won" << endl;
             cout << global::fragCounter << endl;
             start_next_level();
             frameCounter = 0;
@@ -312,11 +311,10 @@ int main()
         }
         else if (is_lose_condition_met())
         {
-          cout << "Frag Count for Level " << global::level << ": ";
-          cout << global::fragCounter << endl;
-          start_next_level();
+          cout << "Player lost" << endl;
           restart_current_level();
           frameCounter = 0;
+          gameOverTimerAccum = 0.f;
         }
       }
 
@@ -396,9 +394,5 @@ int main()
   timing::calc_and_log_final_timing_data({"drawing", "frametime"});
   log_file->close();
   cout << "Logfile closing" << endl;
-  // print out memory information
-  cout << "sizeof Frag: " << sizeof(Frag) << endl;
-  cout << "sizeof Vec2: " << sizeof(Vec2) << endl;
-  cout << "sizeof sf::Vertex " << sizeof(sf::Vertex) << endl;
   return 0;
 }

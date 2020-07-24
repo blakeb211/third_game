@@ -11,7 +11,6 @@ Goals
   Sound - same for all levels
 
 TODO:
-    error occurs when dying - level not restarted properly
     add enemies shoot
 
 Refactoring 
