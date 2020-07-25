@@ -40,6 +40,16 @@ vector
 utility
 -
 
+C:/code/third_game/src/global.cpp
+global.h
+C:/code/third_game/src/global.h
+builder.h
+C:/code/third_game/src/builder.h
+frag_man.h
+C:/code/third_game/src/frag_man.h
+stdlibs.h
+C:/code/third_game/src/stdlibs.h
+
 C:/code/third_game/src/global.h
 SFML/System.hpp
 -
